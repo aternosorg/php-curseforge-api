@@ -1,0 +1,6 @@
+invokerPackage: Aternos\CurseForgeApi
+artifactVersion: 1.0.0
+generatorName: php
+outputDir: .
+sourceFolder: src
+inputSpec: openapi.yaml
