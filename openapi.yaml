@@ -287,6 +287,14 @@ paths:
           schema:
             type: integer
             format: int32
+        - name: authorId
+          in: query
+          description: >-
+            Filter only mods that the given authorId is a member of.
+          required: false
+          schema:
+            type: integer
+            format: int32
         - name: slug
           in: query
           description: >-
