@@ -118,9 +118,9 @@ class ModSearchOptions
     }
 
     /**
-     * @return ModSearchSortField
+     * @return ModSearchSortField|null
      */
-    public function getSortField(): ModSearchSortField
+    public function getSortField(): ?ModSearchSortField
     {
         return $this->sortFiled;
     }
@@ -134,9 +134,9 @@ class ModSearchOptions
     }
 
     /**
-     * @return SortOrder
+     * @return SortOrder|null
      */
-    public function getSortOrder(): SortOrder
+    public function getSortOrder(): ?SortOrder
     {
         return $this->sortOrder;
     }
@@ -150,9 +150,9 @@ class ModSearchOptions
     }
 
     /**
-     * @return ModLoaderType
+     * @return ModLoaderType|null
      */
-    public function getModLoaderType(): ModLoaderType
+    public function getModLoaderType(): ?ModLoaderType
     {
         return $this->modLoaderType;
     }
