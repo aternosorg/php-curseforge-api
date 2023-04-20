@@ -11,6 +11,7 @@ use Aternos\CurseForgeApi\Api\ModsApi;
 use Aternos\CurseForgeApi\ApiException;
 use Aternos\CurseForgeApi\Client\List\PaginatedGameList;
 use Aternos\CurseForgeApi\Configuration;
+use Aternos\CurseForgeApi\Model\GameVersionsByTypeV2;
 
 /**
  * Class HangarAPIClient
@@ -102,11 +103,65 @@ class CurseForgeAPIClient
     }
 
     /**
+     * Get a game by its ID
+     * @param int $gameId
+     * @return Game
+     * @throws ApiException
+     */
+    public function getGame(int $gameId): Game
+    {
+        return new Game($this, $this->games->getGame($gameId)->getData());
+    }
+
+    /**
+     * Get all version types for a game
+     * @param int $gameId
+     * @return GameVersionType[]
+     * @throws ApiException
+     */
+    public function getGameVersionTypes(int $gameId): array
+    {
+        return array_map(fn($versionType) => new GameVersionType($this, $versionType),
+            $this->games->getVersionTypes($gameId)->getData());
+    }
+
+    /**
+     * Get all versions for each version type of the specified game
+     * @param int $gameId
+     * @return GameVersionsByTypeV2[]
+     * @throws ApiException
+     */
+    public function getGameVersions(int $gameId): array
+    {
+        return $this->games->getVersionsV2($gameId)->getData();
+    }
+
+    /**
+     * Get all versions of a version type and game
+     * @param int $gameId
+     * @param int $versionTypeId
+     * @return GameVersionsByTypeV2[]
+     * @throws ApiException
+     */
+    public function getGameVersionsByType(int $gameId, int $versionTypeId): array
+    {
+        $versions = $this->getGameVersions($gameId);
+
+        foreach ($versions as $version) {
+            if ($version->getType() === $versionTypeId) {
+                return $version->getVersions();
+            }
+        }
+
+        return [];
+    }
+
+    /**
      * Get all categories and category classes for a game
      * @param int $gameId The ID of the game you want to query categories for (e.g. 432 for Minecraft)
      * @param int|null $classId The ID of the category class you want to query categories for (e.g. 5 for plugins or 6 for mods)
      * @param bool|null $classesOnly only return category classes (e.g. plugins or mods). This option appears to be ignored right now. TODO: create ticket
-     * @return array
+     * @return Category[]
      * @throws ApiException
      */
     public function getCategories(int $gameId, ?int $classId = null, ?bool $classesOnly = null): array
