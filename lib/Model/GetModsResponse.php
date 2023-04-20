@@ -57,7 +57,7 @@ class GetModsResponse implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'data' => '\Aternos\CurseForgeApi\Model\Mod'
+        'data' => '\Aternos\CurseForgeApi\Model\Mod[]'
     ];
 
     /**
@@ -292,7 +292,7 @@ class GetModsResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets data
      *
-     * @return \Aternos\CurseForgeApi\Model\Mod|null
+     * @return \Aternos\CurseForgeApi\Model\Mod[]|null
      */
     public function getData()
     {
@@ -302,7 +302,7 @@ class GetModsResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets data
      *
-     * @param \Aternos\CurseForgeApi\Model\Mod|null $data data
+     * @param \Aternos\CurseForgeApi\Model\Mod[]|null $data data
      *
      * @return self
      */

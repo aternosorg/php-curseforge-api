@@ -1346,7 +1346,9 @@ components:
       type: object
       properties:
         data:
-          $ref: '#/components/schemas/Mod'
+          type: array
+          items:
+            $ref: '#/components/schemas/Mod'
     GetVersionTypesResponse:
       type: object
       properties:
