@@ -10,8 +10,12 @@ use Aternos\CurseForgeApi\Api\MinecraftApi;
 use Aternos\CurseForgeApi\Api\ModsApi;
 use Aternos\CurseForgeApi\ApiException;
 use Aternos\CurseForgeApi\Client\List\PaginatedGameList;
+use Aternos\CurseForgeApi\Client\List\PaginatedModList;
+use Aternos\CurseForgeApi\Client\Options\ModSearch\SearchModsOptions;
 use Aternos\CurseForgeApi\Configuration;
 use Aternos\CurseForgeApi\Model\GameVersionsByTypeV2;
+use Aternos\CurseForgeApi\Model\GetFeaturedModsRequestBody;
+use Aternos\CurseForgeApi\Model\GetModsByIdsListRequestBody;
 
 /**
  * Class HangarAPIClient
@@ -168,5 +172,71 @@ class CurseForgeAPIClient
     {
         return array_map(fn($category) => new Category($this, $category),
             $this->categories->getCategories($gameId, $classId, $classesOnly)->getData());
+    }
+
+    /**
+     * Search for mods
+     * @param SearchModsOptions $options
+     * @return PaginatedModList
+     * @throws ApiException
+     */
+    public function searchMods(SearchModsOptions $options): PaginatedModList
+    {
+        return new PaginatedModList($this, $this->mods->searchMods(
+            $options->getGameId(),
+            $options->getClassId(),
+            $options->getCategoryId(),
+            $options->getGameVersion(),
+            $options->getSearchFilter(),
+            $options->getSortField()->value,
+            $options->getSortOrder()->value,
+            $options->getModLoaderType()->value,
+            $options->getGameVersionTypeId(),
+            $options->getAuthorId(),
+            $options->getSlug(),
+            $options->getOffset(),
+            $options->getPageSize()
+        ), $options);
+    }
+
+    /**
+     * Get a mod by its ID
+     * @param int $modId
+     * @return Mod
+     * @throws ApiException
+     */
+    public function getMod(int $modId): Mod
+    {
+        return new Mod($this, $this->mods->getMod($modId)->getData());
+    }
+
+    /**
+     * Fetch multiple mods at once
+     * @param int[] $modIds
+     * @return Mod[]
+     * @throws ApiException
+     */
+    public function getMods(array $modIds): array
+    {
+        $body = (new GetModsByIdsListRequestBody())->setModIds($modIds);
+        return array_map(fn($mod) => new Mod($this, $mod), $this->mods->getMods($body)->getData());
+    }
+
+    /**
+     * Get all featured mods for a game
+     * @param int $gameId
+     * @param array $excludedModIds
+     * @param int|null $gameVersionTypeId
+     * @return FeaturedMods
+     * @throws ApiException
+     */
+    public function getFeaturedMods(int $gameId, array $excludedModIds = [], int $gameVersionTypeId = null): FeaturedMods
+    {
+        $body = (new GetFeaturedModsRequestBody())
+            ->setGameId($gameId)
+            ->setExcludedModIds($excludedModIds)
+            ->setGameVersionTypeId($gameVersionTypeId);
+
+        return new FeaturedMods($this, $this->mods->getFeaturedMods($body)->getData());
     }
 }
