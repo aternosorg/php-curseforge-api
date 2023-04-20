@@ -139,14 +139,14 @@ class FilesApi
      *
      * Get files
      *
-     * @param  \Aternos\CurseForgeApi\Model\GetModFilesRequestBody $get_mod_files_request_body get_mod_files_request_body (optional)
+     * @param  \Aternos\CurseForgeApi\Model\GetModFilesRequestBody $get_mod_files_request_body get_mod_files_request_body (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getFiles'] to see the possible values for this operation
      *
      * @throws \Aternos\CurseForgeApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \Aternos\CurseForgeApi\Model\GetFilesResponse
      */
-    public function getFiles($get_mod_files_request_body = null, string $contentType = self::contentTypes['getFiles'][0])
+    public function getFiles($get_mod_files_request_body, string $contentType = self::contentTypes['getFiles'][0])
     {
         list($response) = $this->getFilesWithHttpInfo($get_mod_files_request_body, $contentType);
         return $response;
@@ -157,14 +157,14 @@ class FilesApi
      *
      * Get files
      *
-     * @param  \Aternos\CurseForgeApi\Model\GetModFilesRequestBody $get_mod_files_request_body (optional)
+     * @param  \Aternos\CurseForgeApi\Model\GetModFilesRequestBody $get_mod_files_request_body (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getFiles'] to see the possible values for this operation
      *
      * @throws \Aternos\CurseForgeApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \Aternos\CurseForgeApi\Model\GetFilesResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getFilesWithHttpInfo($get_mod_files_request_body = null, string $contentType = self::contentTypes['getFiles'][0])
+    public function getFilesWithHttpInfo($get_mod_files_request_body, string $contentType = self::contentTypes['getFiles'][0])
     {
         $request = $this->getFilesRequest($get_mod_files_request_body, $contentType);
 
@@ -257,13 +257,13 @@ class FilesApi
      *
      * Get files
      *
-     * @param  \Aternos\CurseForgeApi\Model\GetModFilesRequestBody $get_mod_files_request_body (optional)
+     * @param  \Aternos\CurseForgeApi\Model\GetModFilesRequestBody $get_mod_files_request_body (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getFiles'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getFilesAsync($get_mod_files_request_body = null, string $contentType = self::contentTypes['getFiles'][0])
+    public function getFilesAsync($get_mod_files_request_body, string $contentType = self::contentTypes['getFiles'][0])
     {
         return $this->getFilesAsyncWithHttpInfo($get_mod_files_request_body, $contentType)
             ->then(
@@ -278,13 +278,13 @@ class FilesApi
      *
      * Get files
      *
-     * @param  \Aternos\CurseForgeApi\Model\GetModFilesRequestBody $get_mod_files_request_body (optional)
+     * @param  \Aternos\CurseForgeApi\Model\GetModFilesRequestBody $get_mod_files_request_body (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getFiles'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getFilesAsyncWithHttpInfo($get_mod_files_request_body = null, string $contentType = self::contentTypes['getFiles'][0])
+    public function getFilesAsyncWithHttpInfo($get_mod_files_request_body, string $contentType = self::contentTypes['getFiles'][0])
     {
         $returnType = '\Aternos\CurseForgeApi\Model\GetFilesResponse';
         $request = $this->getFilesRequest($get_mod_files_request_body, $contentType);
@@ -328,15 +328,21 @@ class FilesApi
     /**
      * Create request for operation 'getFiles'
      *
-     * @param  \Aternos\CurseForgeApi\Model\GetModFilesRequestBody $get_mod_files_request_body (optional)
+     * @param  \Aternos\CurseForgeApi\Model\GetModFilesRequestBody $get_mod_files_request_body (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getFiles'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getFilesRequest($get_mod_files_request_body = null, string $contentType = self::contentTypes['getFiles'][0])
+    public function getFilesRequest($get_mod_files_request_body, string $contentType = self::contentTypes['getFiles'][0])
     {
 
+        // verify the required parameter 'get_mod_files_request_body' is set
+        if ($get_mod_files_request_body === null || (is_array($get_mod_files_request_body) && count($get_mod_files_request_body) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $get_mod_files_request_body when calling getFiles'
+            );
+        }
 
 
         $resourcePath = '/v1/mods/files';

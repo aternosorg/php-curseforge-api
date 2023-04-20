@@ -370,6 +370,7 @@ paths:
       description: Get a list of mods.
       operationId: getMods
       requestBody:
+        required: true
         content:
           application/json:
             schema:
@@ -554,6 +555,7 @@ paths:
       description: Get a list of files.
       operationId: getFiles
       requestBody:
+        required: true
         content:
           application/json:
             schema:

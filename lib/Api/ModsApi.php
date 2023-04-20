@@ -996,14 +996,14 @@ class ModsApi
      *
      * Get a list of mods.
      *
-     * @param  \Aternos\CurseForgeApi\Model\GetModsByIdsListRequestBody $get_mods_by_ids_list_request_body get_mods_by_ids_list_request_body (optional)
+     * @param  \Aternos\CurseForgeApi\Model\GetModsByIdsListRequestBody $get_mods_by_ids_list_request_body get_mods_by_ids_list_request_body (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getMods'] to see the possible values for this operation
      *
      * @throws \Aternos\CurseForgeApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \Aternos\CurseForgeApi\Model\GetModsResponse
      */
-    public function getMods($get_mods_by_ids_list_request_body = null, string $contentType = self::contentTypes['getMods'][0])
+    public function getMods($get_mods_by_ids_list_request_body, string $contentType = self::contentTypes['getMods'][0])
     {
         list($response) = $this->getModsWithHttpInfo($get_mods_by_ids_list_request_body, $contentType);
         return $response;
@@ -1014,14 +1014,14 @@ class ModsApi
      *
      * Get a list of mods.
      *
-     * @param  \Aternos\CurseForgeApi\Model\GetModsByIdsListRequestBody $get_mods_by_ids_list_request_body (optional)
+     * @param  \Aternos\CurseForgeApi\Model\GetModsByIdsListRequestBody $get_mods_by_ids_list_request_body (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getMods'] to see the possible values for this operation
      *
      * @throws \Aternos\CurseForgeApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \Aternos\CurseForgeApi\Model\GetModsResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getModsWithHttpInfo($get_mods_by_ids_list_request_body = null, string $contentType = self::contentTypes['getMods'][0])
+    public function getModsWithHttpInfo($get_mods_by_ids_list_request_body, string $contentType = self::contentTypes['getMods'][0])
     {
         $request = $this->getModsRequest($get_mods_by_ids_list_request_body, $contentType);
 
@@ -1114,13 +1114,13 @@ class ModsApi
      *
      * Get a list of mods.
      *
-     * @param  \Aternos\CurseForgeApi\Model\GetModsByIdsListRequestBody $get_mods_by_ids_list_request_body (optional)
+     * @param  \Aternos\CurseForgeApi\Model\GetModsByIdsListRequestBody $get_mods_by_ids_list_request_body (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getMods'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getModsAsync($get_mods_by_ids_list_request_body = null, string $contentType = self::contentTypes['getMods'][0])
+    public function getModsAsync($get_mods_by_ids_list_request_body, string $contentType = self::contentTypes['getMods'][0])
     {
         return $this->getModsAsyncWithHttpInfo($get_mods_by_ids_list_request_body, $contentType)
             ->then(
@@ -1135,13 +1135,13 @@ class ModsApi
      *
      * Get a list of mods.
      *
-     * @param  \Aternos\CurseForgeApi\Model\GetModsByIdsListRequestBody $get_mods_by_ids_list_request_body (optional)
+     * @param  \Aternos\CurseForgeApi\Model\GetModsByIdsListRequestBody $get_mods_by_ids_list_request_body (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getMods'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getModsAsyncWithHttpInfo($get_mods_by_ids_list_request_body = null, string $contentType = self::contentTypes['getMods'][0])
+    public function getModsAsyncWithHttpInfo($get_mods_by_ids_list_request_body, string $contentType = self::contentTypes['getMods'][0])
     {
         $returnType = '\Aternos\CurseForgeApi\Model\GetModsResponse';
         $request = $this->getModsRequest($get_mods_by_ids_list_request_body, $contentType);
@@ -1185,15 +1185,21 @@ class ModsApi
     /**
      * Create request for operation 'getMods'
      *
-     * @param  \Aternos\CurseForgeApi\Model\GetModsByIdsListRequestBody $get_mods_by_ids_list_request_body (optional)
+     * @param  \Aternos\CurseForgeApi\Model\GetModsByIdsListRequestBody $get_mods_by_ids_list_request_body (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getMods'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getModsRequest($get_mods_by_ids_list_request_body = null, string $contentType = self::contentTypes['getMods'][0])
+    public function getModsRequest($get_mods_by_ids_list_request_body, string $contentType = self::contentTypes['getMods'][0])
     {
 
+        // verify the required parameter 'get_mods_by_ids_list_request_body' is set
+        if ($get_mods_by_ids_list_request_body === null || (is_array($get_mods_by_ids_list_request_body) && count($get_mods_by_ids_list_request_body) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $get_mods_by_ids_list_request_body when calling getMods'
+            );
+        }
 
 
         $resourcePath = '/v1/mods';
