@@ -1,6 +1,6 @@
 <?php
 /**
- * FingerprintsMatchesResult
+ * FingerprintMatchesResult
  *
  * PHP version 7.4
  *
@@ -32,7 +32,7 @@ use \ArrayAccess;
 use \Aternos\CurseForgeApi\ObjectSerializer;
 
 /**
- * FingerprintsMatchesResult Class Doc Comment
+ * FingerprintMatchesResult Class Doc Comment
  *
  * @category Class
  * @package  Aternos\CurseForgeApi
@@ -40,7 +40,7 @@ use \Aternos\CurseForgeApi\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class FingerprintsMatchesResult implements ModelInterface, ArrayAccess, \JsonSerializable
+class FingerprintMatchesResult implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class FingerprintsMatchesResult implements ModelInterface, ArrayAccess, \JsonSer
       *
       * @var string
       */
-    protected static $openAPIModelName = 'FingerprintsMatchesResult';
+    protected static $openAPIModelName = 'FingerprintMatchesResult';
 
     /**
       * Array of property to type mappings. Used for (de)serialization

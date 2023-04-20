@@ -57,7 +57,7 @@ class GetFingerprintMatchesResponse implements ModelInterface, ArrayAccess, \Jso
       * @var string[]
       */
     protected static $openAPITypes = [
-        'data' => '\Aternos\CurseForgeApi\Model\FingerprintsMatchesResult'
+        'data' => '\Aternos\CurseForgeApi\Model\FingerprintMatchesResult'
     ];
 
     /**
@@ -292,7 +292,7 @@ class GetFingerprintMatchesResponse implements ModelInterface, ArrayAccess, \Jso
     /**
      * Gets data
      *
-     * @return \Aternos\CurseForgeApi\Model\FingerprintsMatchesResult|null
+     * @return \Aternos\CurseForgeApi\Model\FingerprintMatchesResult|null
      */
     public function getData()
     {
@@ -302,7 +302,7 @@ class GetFingerprintMatchesResponse implements ModelInterface, ArrayAccess, \Jso
     /**
      * Sets data
      *
-     * @param \Aternos\CurseForgeApi\Model\FingerprintsMatchesResult|null $data data
+     * @param \Aternos\CurseForgeApi\Model\FingerprintMatchesResult|null $data data
      *
      * @return self
      */

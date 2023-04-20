@@ -1,6 +1,6 @@
 <?php
 /**
- * FingerprintsMatchesResultTest
+ * FingerprintMatchesResultTest
  *
  * PHP version 7.4
  *
@@ -31,15 +31,15 @@ namespace Aternos\CurseForgeApi\Test\Model;
 use PHPUnit\Framework\TestCase;
 
 /**
- * FingerprintsMatchesResultTest Class Doc Comment
+ * FingerprintMatchesResultTest Class Doc Comment
  *
  * @category    Class
- * @description FingerprintsMatchesResult
+ * @description FingerprintMatchesResult
  * @package     Aternos\CurseForgeApi
  * @author      OpenAPI Generator team
  * @link        https://openapi-generator.tech
  */
-class FingerprintsMatchesResultTest extends TestCase
+class FingerprintMatchesResultTest extends TestCase
 {
 
     /**
@@ -71,9 +71,9 @@ class FingerprintsMatchesResultTest extends TestCase
     }
 
     /**
-     * Test "FingerprintsMatchesResult"
+     * Test "FingerprintMatchesResult"
      */
-    public function testFingerprintsMatchesResult()
+    public function testFingerprintMatchesResult()
     {
         // TODO: implement
         $this->markTestIncomplete('Not implemented');
