@@ -176,7 +176,7 @@ class CurseForgeAPIClient
      * Get all categories and category classes for a game
      * @param int $gameId The ID of the game you want to query categories for (e.g. 432 for Minecraft)
      * @param int|null $classId The ID of the category class you want to query categories for (e.g. 5 for plugins or 6 for mods)
-     * @param bool|null $classesOnly only return category classes (e.g. plugins or mods). This option appears to be ignored right now. TODO: create ticket
+     * @param bool|null $classesOnly only return category classes (e.g. plugins or mods). This option appears to be ignored right now. (Ticket #159826)
      * @return Category[]
      * @throws ApiException
      */
