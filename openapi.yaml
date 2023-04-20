@@ -202,6 +202,12 @@ paths:
           schema:
             type: integer
             format: int32
+        - name: classesOnly
+          in: query
+          description: A flag used to only return classes
+          required: false
+          schema:
+            type: boolean
       responses:
         '200':
           description: OK

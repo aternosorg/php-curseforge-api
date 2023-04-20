@@ -129,15 +129,16 @@ class CategoriesApi
      *
      * @param  int $game_id A game unique id (required)
      * @param  int $class_id A class unique id (optional)
+     * @param  bool $classes_only A flag used to only return classes (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCategories'] to see the possible values for this operation
      *
      * @throws \Aternos\CurseForgeApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \Aternos\CurseForgeApi\Model\GetCategoriesResponse
      */
-    public function getCategories($game_id, $class_id = null, string $contentType = self::contentTypes['getCategories'][0])
+    public function getCategories($game_id, $class_id = null, $classes_only = null, string $contentType = self::contentTypes['getCategories'][0])
     {
-        list($response) = $this->getCategoriesWithHttpInfo($game_id, $class_id, $contentType);
+        list($response) = $this->getCategoriesWithHttpInfo($game_id, $class_id, $classes_only, $contentType);
         return $response;
     }
 
@@ -148,15 +149,16 @@ class CategoriesApi
      *
      * @param  int $game_id A game unique id (required)
      * @param  int $class_id A class unique id (optional)
+     * @param  bool $classes_only A flag used to only return classes (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCategories'] to see the possible values for this operation
      *
      * @throws \Aternos\CurseForgeApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \Aternos\CurseForgeApi\Model\GetCategoriesResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getCategoriesWithHttpInfo($game_id, $class_id = null, string $contentType = self::contentTypes['getCategories'][0])
+    public function getCategoriesWithHttpInfo($game_id, $class_id = null, $classes_only = null, string $contentType = self::contentTypes['getCategories'][0])
     {
-        $request = $this->getCategoriesRequest($game_id, $class_id, $contentType);
+        $request = $this->getCategoriesRequest($game_id, $class_id, $classes_only, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -249,14 +251,15 @@ class CategoriesApi
      *
      * @param  int $game_id A game unique id (required)
      * @param  int $class_id A class unique id (optional)
+     * @param  bool $classes_only A flag used to only return classes (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCategories'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getCategoriesAsync($game_id, $class_id = null, string $contentType = self::contentTypes['getCategories'][0])
+    public function getCategoriesAsync($game_id, $class_id = null, $classes_only = null, string $contentType = self::contentTypes['getCategories'][0])
     {
-        return $this->getCategoriesAsyncWithHttpInfo($game_id, $class_id, $contentType)
+        return $this->getCategoriesAsyncWithHttpInfo($game_id, $class_id, $classes_only, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -271,15 +274,16 @@ class CategoriesApi
      *
      * @param  int $game_id A game unique id (required)
      * @param  int $class_id A class unique id (optional)
+     * @param  bool $classes_only A flag used to only return classes (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCategories'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getCategoriesAsyncWithHttpInfo($game_id, $class_id = null, string $contentType = self::contentTypes['getCategories'][0])
+    public function getCategoriesAsyncWithHttpInfo($game_id, $class_id = null, $classes_only = null, string $contentType = self::contentTypes['getCategories'][0])
     {
         $returnType = '\Aternos\CurseForgeApi\Model\GetCategoriesResponse';
-        $request = $this->getCategoriesRequest($game_id, $class_id, $contentType);
+        $request = $this->getCategoriesRequest($game_id, $class_id, $classes_only, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -322,12 +326,13 @@ class CategoriesApi
      *
      * @param  int $game_id A game unique id (required)
      * @param  int $class_id A class unique id (optional)
+     * @param  bool $classes_only A flag used to only return classes (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCategories'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getCategoriesRequest($game_id, $class_id = null, string $contentType = self::contentTypes['getCategories'][0])
+    public function getCategoriesRequest($game_id, $class_id = null, $classes_only = null, string $contentType = self::contentTypes['getCategories'][0])
     {
 
         // verify the required parameter 'game_id' is set
@@ -336,6 +341,7 @@ class CategoriesApi
                 'Missing the required parameter $game_id when calling getCategories'
             );
         }
+
 
 
 
@@ -360,6 +366,15 @@ class CategoriesApi
             $class_id,
             'classId', // param base name
             'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $classes_only,
+            'classesOnly', // param base name
+            'boolean', // openApiType
             'form', // style
             true, // explode
             false // required
