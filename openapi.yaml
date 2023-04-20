@@ -672,6 +672,40 @@ paths:
           description: Service Unavailable
       security:
         - ApiKeyAuth: [ ]
+  /v1/fingerprints/{gameId}:
+    post:
+      tags:
+        - Fingerprints
+      summary: Get Fingerprints Matches
+      description: Get mod files that match a list of fingerprints.
+      operationId: getFingerprintsMatchesByGame
+      parameters:
+        - name: gameId
+          in: path
+          description: The game id the find matches in
+          required: true
+          schema:
+            type: integer
+            format: int32
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GetFingerprintMatchesRequestBody'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetFingerprintMatchesResponse'
+        '400':
+          description: Bad Request
+        '503':
+          description: Service Unavailable
+      security:
+        - ApiKeyAuth: [ ]
   /v1/fingerprints/fuzzy:
     post:
       tags:
@@ -679,6 +713,40 @@ paths:
       summary: Get Fingerprints Fuzzy Matches
       description: Get mod files that match a list of fingerprints using fuzzy matching.
       operationId: getFingerprintsFuzzyMatches
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GetFuzzyMatchesRequestBody'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetFingerprintsFuzzyMatchesResponse'
+        '400':
+          description: Bad Request
+        '503':
+          description: Service Unavailable
+      security:
+        - ApiKeyAuth: [ ]
+  /v1/fingerprints/fuzzy/{gameId}:
+    post:
+      tags:
+        - Fingerprints
+      summary: Get Fingerprints Fuzzy Matches
+      description: Get mod files that match a list of fingerprints using fuzzy matching.
+      operationId: getFingerprintsFuzzyMatchesByGame
+      parameters:
+        - name: gameId
+          in: path
+          description: The game id the find matches in
+          required: true
+          schema:
+              type: integer
+              format: int32
       requestBody:
         required: true
         content:

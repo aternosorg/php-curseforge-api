@@ -74,7 +74,13 @@ class FingerprintsApi
         'getFingerprintsFuzzyMatches' => [
             'application/json',
         ],
+        'getFingerprintsFuzzyMatchesByGame' => [
+            'application/json',
+        ],
         'getFingerprintsMatches' => [
+            'application/json',
+        ],
+        'getFingerprintsMatchesByGame' => [
             'application/json',
         ],
     ];
@@ -413,6 +419,313 @@ class FingerprintsApi
     }
 
     /**
+     * Operation getFingerprintsFuzzyMatchesByGame
+     *
+     * Get Fingerprints Fuzzy Matches
+     *
+     * @param  int $game_id The game id the find matches in (required)
+     * @param  \Aternos\CurseForgeApi\Model\GetFuzzyMatchesRequestBody $get_fuzzy_matches_request_body get_fuzzy_matches_request_body (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getFingerprintsFuzzyMatchesByGame'] to see the possible values for this operation
+     *
+     * @throws \Aternos\CurseForgeApi\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Aternos\CurseForgeApi\Model\GetFingerprintsFuzzyMatchesResponse
+     */
+    public function getFingerprintsFuzzyMatchesByGame($game_id, $get_fuzzy_matches_request_body, string $contentType = self::contentTypes['getFingerprintsFuzzyMatchesByGame'][0])
+    {
+        list($response) = $this->getFingerprintsFuzzyMatchesByGameWithHttpInfo($game_id, $get_fuzzy_matches_request_body, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation getFingerprintsFuzzyMatchesByGameWithHttpInfo
+     *
+     * Get Fingerprints Fuzzy Matches
+     *
+     * @param  int $game_id The game id the find matches in (required)
+     * @param  \Aternos\CurseForgeApi\Model\GetFuzzyMatchesRequestBody $get_fuzzy_matches_request_body (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getFingerprintsFuzzyMatchesByGame'] to see the possible values for this operation
+     *
+     * @throws \Aternos\CurseForgeApi\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \Aternos\CurseForgeApi\Model\GetFingerprintsFuzzyMatchesResponse, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function getFingerprintsFuzzyMatchesByGameWithHttpInfo($game_id, $get_fuzzy_matches_request_body, string $contentType = self::contentTypes['getFingerprintsFuzzyMatchesByGame'][0])
+    {
+        $request = $this->getFingerprintsFuzzyMatchesByGameRequest($game_id, $get_fuzzy_matches_request_body, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            switch($statusCode) {
+                case 200:
+                    if ('\Aternos\CurseForgeApi\Model\GetFingerprintsFuzzyMatchesResponse' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\Aternos\CurseForgeApi\Model\GetFingerprintsFuzzyMatchesResponse' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Aternos\CurseForgeApi\Model\GetFingerprintsFuzzyMatchesResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\Aternos\CurseForgeApi\Model\GetFingerprintsFuzzyMatchesResponse';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Aternos\CurseForgeApi\Model\GetFingerprintsFuzzyMatchesResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation getFingerprintsFuzzyMatchesByGameAsync
+     *
+     * Get Fingerprints Fuzzy Matches
+     *
+     * @param  int $game_id The game id the find matches in (required)
+     * @param  \Aternos\CurseForgeApi\Model\GetFuzzyMatchesRequestBody $get_fuzzy_matches_request_body (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getFingerprintsFuzzyMatchesByGame'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getFingerprintsFuzzyMatchesByGameAsync($game_id, $get_fuzzy_matches_request_body, string $contentType = self::contentTypes['getFingerprintsFuzzyMatchesByGame'][0])
+    {
+        return $this->getFingerprintsFuzzyMatchesByGameAsyncWithHttpInfo($game_id, $get_fuzzy_matches_request_body, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation getFingerprintsFuzzyMatchesByGameAsyncWithHttpInfo
+     *
+     * Get Fingerprints Fuzzy Matches
+     *
+     * @param  int $game_id The game id the find matches in (required)
+     * @param  \Aternos\CurseForgeApi\Model\GetFuzzyMatchesRequestBody $get_fuzzy_matches_request_body (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getFingerprintsFuzzyMatchesByGame'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getFingerprintsFuzzyMatchesByGameAsyncWithHttpInfo($game_id, $get_fuzzy_matches_request_body, string $contentType = self::contentTypes['getFingerprintsFuzzyMatchesByGame'][0])
+    {
+        $returnType = '\Aternos\CurseForgeApi\Model\GetFingerprintsFuzzyMatchesResponse';
+        $request = $this->getFingerprintsFuzzyMatchesByGameRequest($game_id, $get_fuzzy_matches_request_body, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'getFingerprintsFuzzyMatchesByGame'
+     *
+     * @param  int $game_id The game id the find matches in (required)
+     * @param  \Aternos\CurseForgeApi\Model\GetFuzzyMatchesRequestBody $get_fuzzy_matches_request_body (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getFingerprintsFuzzyMatchesByGame'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function getFingerprintsFuzzyMatchesByGameRequest($game_id, $get_fuzzy_matches_request_body, string $contentType = self::contentTypes['getFingerprintsFuzzyMatchesByGame'][0])
+    {
+
+        // verify the required parameter 'game_id' is set
+        if ($game_id === null || (is_array($game_id) && count($game_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $game_id when calling getFingerprintsFuzzyMatchesByGame'
+            );
+        }
+
+        // verify the required parameter 'get_fuzzy_matches_request_body' is set
+        if ($get_fuzzy_matches_request_body === null || (is_array($get_fuzzy_matches_request_body) && count($get_fuzzy_matches_request_body) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $get_fuzzy_matches_request_body when calling getFingerprintsFuzzyMatchesByGame'
+            );
+        }
+
+
+        $resourcePath = '/v1/fingerprints/fuzzy/{gameId}';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($game_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'gameId' . '}',
+                ObjectSerializer::toPathValue($game_id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($get_fuzzy_matches_request_body)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($get_fuzzy_matches_request_body));
+            } else {
+                $httpBody = $get_fuzzy_matches_request_body;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('x-api-key');
+        if ($apiKey !== null) {
+            $headers['x-api-key'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation getFingerprintsMatches
      *
      * Get Fingerprints Matches
@@ -632,6 +945,313 @@ class FingerprintsApi
 
 
 
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($get_fingerprint_matches_request_body)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($get_fingerprint_matches_request_body));
+            } else {
+                $httpBody = $get_fingerprint_matches_request_body;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('x-api-key');
+        if ($apiKey !== null) {
+            $headers['x-api-key'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation getFingerprintsMatchesByGame
+     *
+     * Get Fingerprints Matches
+     *
+     * @param  int $game_id The game id the find matches in (required)
+     * @param  \Aternos\CurseForgeApi\Model\GetFingerprintMatchesRequestBody $get_fingerprint_matches_request_body get_fingerprint_matches_request_body (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getFingerprintsMatchesByGame'] to see the possible values for this operation
+     *
+     * @throws \Aternos\CurseForgeApi\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Aternos\CurseForgeApi\Model\GetFingerprintMatchesResponse
+     */
+    public function getFingerprintsMatchesByGame($game_id, $get_fingerprint_matches_request_body, string $contentType = self::contentTypes['getFingerprintsMatchesByGame'][0])
+    {
+        list($response) = $this->getFingerprintsMatchesByGameWithHttpInfo($game_id, $get_fingerprint_matches_request_body, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation getFingerprintsMatchesByGameWithHttpInfo
+     *
+     * Get Fingerprints Matches
+     *
+     * @param  int $game_id The game id the find matches in (required)
+     * @param  \Aternos\CurseForgeApi\Model\GetFingerprintMatchesRequestBody $get_fingerprint_matches_request_body (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getFingerprintsMatchesByGame'] to see the possible values for this operation
+     *
+     * @throws \Aternos\CurseForgeApi\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \Aternos\CurseForgeApi\Model\GetFingerprintMatchesResponse, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function getFingerprintsMatchesByGameWithHttpInfo($game_id, $get_fingerprint_matches_request_body, string $contentType = self::contentTypes['getFingerprintsMatchesByGame'][0])
+    {
+        $request = $this->getFingerprintsMatchesByGameRequest($game_id, $get_fingerprint_matches_request_body, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            switch($statusCode) {
+                case 200:
+                    if ('\Aternos\CurseForgeApi\Model\GetFingerprintMatchesResponse' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\Aternos\CurseForgeApi\Model\GetFingerprintMatchesResponse' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Aternos\CurseForgeApi\Model\GetFingerprintMatchesResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\Aternos\CurseForgeApi\Model\GetFingerprintMatchesResponse';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Aternos\CurseForgeApi\Model\GetFingerprintMatchesResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation getFingerprintsMatchesByGameAsync
+     *
+     * Get Fingerprints Matches
+     *
+     * @param  int $game_id The game id the find matches in (required)
+     * @param  \Aternos\CurseForgeApi\Model\GetFingerprintMatchesRequestBody $get_fingerprint_matches_request_body (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getFingerprintsMatchesByGame'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getFingerprintsMatchesByGameAsync($game_id, $get_fingerprint_matches_request_body, string $contentType = self::contentTypes['getFingerprintsMatchesByGame'][0])
+    {
+        return $this->getFingerprintsMatchesByGameAsyncWithHttpInfo($game_id, $get_fingerprint_matches_request_body, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation getFingerprintsMatchesByGameAsyncWithHttpInfo
+     *
+     * Get Fingerprints Matches
+     *
+     * @param  int $game_id The game id the find matches in (required)
+     * @param  \Aternos\CurseForgeApi\Model\GetFingerprintMatchesRequestBody $get_fingerprint_matches_request_body (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getFingerprintsMatchesByGame'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getFingerprintsMatchesByGameAsyncWithHttpInfo($game_id, $get_fingerprint_matches_request_body, string $contentType = self::contentTypes['getFingerprintsMatchesByGame'][0])
+    {
+        $returnType = '\Aternos\CurseForgeApi\Model\GetFingerprintMatchesResponse';
+        $request = $this->getFingerprintsMatchesByGameRequest($game_id, $get_fingerprint_matches_request_body, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'getFingerprintsMatchesByGame'
+     *
+     * @param  int $game_id The game id the find matches in (required)
+     * @param  \Aternos\CurseForgeApi\Model\GetFingerprintMatchesRequestBody $get_fingerprint_matches_request_body (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getFingerprintsMatchesByGame'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function getFingerprintsMatchesByGameRequest($game_id, $get_fingerprint_matches_request_body, string $contentType = self::contentTypes['getFingerprintsMatchesByGame'][0])
+    {
+
+        // verify the required parameter 'game_id' is set
+        if ($game_id === null || (is_array($game_id) && count($game_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $game_id when calling getFingerprintsMatchesByGame'
+            );
+        }
+
+        // verify the required parameter 'get_fingerprint_matches_request_body' is set
+        if ($get_fingerprint_matches_request_body === null || (is_array($get_fingerprint_matches_request_body) && count($get_fingerprint_matches_request_body) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $get_fingerprint_matches_request_body when calling getFingerprintsMatchesByGame'
+            );
+        }
+
+
+        $resourcePath = '/v1/fingerprints/{gameId}';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($game_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'gameId' . '}',
+                ObjectSerializer::toPathValue($game_id),
+                $resourcePath
+            );
+        }
 
 
         $headers = $this->headerSelector->selectHeaders(
