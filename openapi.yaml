@@ -899,11 +899,17 @@ components:
       type: object
       properties:
         featured:
-          $ref: '#/components/schemas/Mod'
+          type: array
+          items:
+            $ref: '#/components/schemas/Mod'
         popular:
-          $ref: '#/components/schemas/Mod'
+          type: array
+          items:
+            $ref: '#/components/schemas/Mod'
         recentlyUpdated:
-          $ref: '#/components/schemas/Mod'
+          type: array
+          items:
+            $ref: '#/components/schemas/Mod'
     File:
       type: object
       properties:

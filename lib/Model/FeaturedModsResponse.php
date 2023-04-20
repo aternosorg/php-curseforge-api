@@ -57,9 +57,9 @@ class FeaturedModsResponse implements ModelInterface, ArrayAccess, \JsonSerializ
       * @var string[]
       */
     protected static $openAPITypes = [
-        'featured' => '\Aternos\CurseForgeApi\Model\Mod',
-        'popular' => '\Aternos\CurseForgeApi\Model\Mod',
-        'recently_updated' => '\Aternos\CurseForgeApi\Model\Mod'
+        'featured' => '\Aternos\CurseForgeApi\Model\Mod[]',
+        'popular' => '\Aternos\CurseForgeApi\Model\Mod[]',
+        'recently_updated' => '\Aternos\CurseForgeApi\Model\Mod[]'
     ];
 
     /**
@@ -306,7 +306,7 @@ class FeaturedModsResponse implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Gets featured
      *
-     * @return \Aternos\CurseForgeApi\Model\Mod|null
+     * @return \Aternos\CurseForgeApi\Model\Mod[]|null
      */
     public function getFeatured()
     {
@@ -316,7 +316,7 @@ class FeaturedModsResponse implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets featured
      *
-     * @param \Aternos\CurseForgeApi\Model\Mod|null $featured featured
+     * @param \Aternos\CurseForgeApi\Model\Mod[]|null $featured featured
      *
      * @return self
      */
@@ -333,7 +333,7 @@ class FeaturedModsResponse implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Gets popular
      *
-     * @return \Aternos\CurseForgeApi\Model\Mod|null
+     * @return \Aternos\CurseForgeApi\Model\Mod[]|null
      */
     public function getPopular()
     {
@@ -343,7 +343,7 @@ class FeaturedModsResponse implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets popular
      *
-     * @param \Aternos\CurseForgeApi\Model\Mod|null $popular popular
+     * @param \Aternos\CurseForgeApi\Model\Mod[]|null $popular popular
      *
      * @return self
      */
@@ -360,7 +360,7 @@ class FeaturedModsResponse implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Gets recently_updated
      *
-     * @return \Aternos\CurseForgeApi\Model\Mod|null
+     * @return \Aternos\CurseForgeApi\Model\Mod[]|null
      */
     public function getRecentlyUpdated()
     {
@@ -370,7 +370,7 @@ class FeaturedModsResponse implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets recently_updated
      *
-     * @param \Aternos\CurseForgeApi\Model\Mod|null $recently_updated recently_updated
+     * @param \Aternos\CurseForgeApi\Model\Mod[]|null $recently_updated recently_updated
      *
      * @return self
      */
