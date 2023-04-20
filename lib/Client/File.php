@@ -45,4 +45,14 @@ class File
     {
         return $this->client->getModFileChangelog($this->file->getModId(), $this->file->getId());
     }
+
+    /**
+     * Get the mod of this file
+     * @return Mod
+     * @throws ApiException
+     */
+    public function getMod(): Mod
+    {
+        return $this->client->getMod($this->file->getModId());
+    }
 }

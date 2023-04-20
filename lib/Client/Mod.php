@@ -54,4 +54,14 @@ class Mod
     {
         return $this->client->getModFiles($options ?? new ModFilesOptions($this->mod->getId()));
     }
+
+    /**
+     * Get game this mod belongs to
+     * @return Game
+     * @throws ApiException
+     */
+    public function getGame(): Game
+    {
+        return $this->client->getGame($this->mod->getGameId());
+    }
 }

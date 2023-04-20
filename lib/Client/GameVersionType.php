@@ -32,4 +32,14 @@ class GameVersionType
     {
         return $this->client->getGameVersionsByType($this->gameVersion->getGameId(), $this->gameVersion->getId());
     }
+
+    /**
+     * Get the game of this type
+     * @return Game
+     * @throws ApiException
+     */
+    public function getGame(): Game
+    {
+        return $this->client->getGame($this->gameVersion->getGameId());
+    }
 }

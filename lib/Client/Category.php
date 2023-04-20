@@ -39,4 +39,14 @@ class Category
 
         return $this->client->searchMods($options);
     }
+
+    /**
+     * Get the game of this category
+     * @return Game
+     * @throws ApiException
+     */
+    public function getGame(): Game
+    {
+        return $this->client->getGame($this->category->getGameId());
+    }
 }
