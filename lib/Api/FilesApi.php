@@ -339,7 +339,7 @@ class FilesApi
 
 
 
-        $resourcePath = '/mods/files';
+        $resourcePath = '/v1/mods/files';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -638,7 +638,7 @@ class FilesApi
         }
 
 
-        $resourcePath = '/mods/{modId}/files/{fileId}';
+        $resourcePath = '/v1/mods/{modId}/files/{fileId}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -946,7 +946,7 @@ class FilesApi
         }
 
 
-        $resourcePath = '/mods/{modId}/files/{fileId}/changelog';
+        $resourcePath = '/v1/mods/{modId}/files/{fileId}/changelog';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -1254,7 +1254,7 @@ class FilesApi
         }
 
 
-        $resourcePath = '/mods/{modId}/files/{fileId}/download-url';
+        $resourcePath = '/v1/mods/{modId}/files/{fileId}/download-url';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -1580,7 +1580,7 @@ class FilesApi
 
 
 
-        $resourcePath = '/mods/{modId}/files';
+        $resourcePath = '/v1/mods/{modId}/files';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];

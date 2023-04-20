@@ -330,7 +330,7 @@ class FingerprintsApi
 
 
 
-        $resourcePath = '/fingerprints/fuzzy';
+        $resourcePath = '/v1/fingerprints/fuzzy';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -611,7 +611,7 @@ class FingerprintsApi
 
 
 
-        $resourcePath = '/fingerprints';
+        $resourcePath = '/v1/fingerprints';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];

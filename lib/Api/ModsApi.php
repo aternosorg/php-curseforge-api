@@ -339,7 +339,7 @@ class ModsApi
 
 
 
-        $resourcePath = '/mods/featured';
+        $resourcePath = '/v1/mods/featured';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -626,7 +626,7 @@ class ModsApi
         }
 
 
-        $resourcePath = '/mods/{modId}';
+        $resourcePath = '/v1/mods/{modId}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -914,7 +914,7 @@ class ModsApi
         }
 
 
-        $resourcePath = '/mods/{modId}/description';
+        $resourcePath = '/v1/mods/{modId}/description';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -1196,7 +1196,7 @@ class ModsApi
 
 
 
-        $resourcePath = '/mods';
+        $resourcePath = '/v1/mods';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -1549,7 +1549,7 @@ class ModsApi
 
 
 
-        $resourcePath = '/mods/search';
+        $resourcePath = '/v1/mods/search';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];

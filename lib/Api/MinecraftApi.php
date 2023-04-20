@@ -342,7 +342,7 @@ class MinecraftApi
 
 
 
-        $resourcePath = '/minecraft/modloader';
+        $resourcePath = '/v1/minecraft/modloader';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -634,7 +634,7 @@ class MinecraftApi
 
 
 
-        $resourcePath = '/minecraft/version';
+        $resourcePath = '/v1/minecraft/version';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -923,7 +923,7 @@ class MinecraftApi
         }
 
 
-        $resourcePath = '/minecraft/modloader/{modLoaderName}';
+        $resourcePath = '/v1/minecraft/modloader/{modLoaderName}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -1211,7 +1211,7 @@ class MinecraftApi
         }
 
 
-        $resourcePath = '/minecraft/version/{gameVersionString}';
+        $resourcePath = '/v1/minecraft/version/{gameVersionString}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];

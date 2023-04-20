@@ -83,6 +83,9 @@ class GamesApi
         'getVersions' => [
             'application/json',
         ],
+        'getVersionsV2' => [
+            'application/json',
+        ],
     ];
 
 /**
@@ -342,7 +345,7 @@ class GamesApi
         }
 
 
-        $resourcePath = '/games/{gameId}';
+        $resourcePath = '/v1/games/{gameId}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -630,7 +633,7 @@ class GamesApi
 
 
 
-        $resourcePath = '/games';
+        $resourcePath = '/v1/games';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -928,7 +931,7 @@ class GamesApi
         }
 
 
-        $resourcePath = '/games/{gameId}/version-types';
+        $resourcePath = '/v1/games/{gameId}/version-types';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -1216,7 +1219,295 @@ class GamesApi
         }
 
 
-        $resourcePath = '/games/{gameId}/versions';
+        $resourcePath = '/v1/games/{gameId}/versions';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($game_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'gameId' . '}',
+                ObjectSerializer::toPathValue($game_id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('x-api-key');
+        if ($apiKey !== null) {
+            $headers['x-api-key'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'GET',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation getVersionsV2
+     *
+     * Get versions
+     *
+     * @param  int $game_id A game unique id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getVersionsV2'] to see the possible values for this operation
+     *
+     * @throws \Aternos\CurseForgeApi\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Aternos\CurseForgeApi\Model\GetVersionsV2Response
+     */
+    public function getVersionsV2($game_id, string $contentType = self::contentTypes['getVersionsV2'][0])
+    {
+        list($response) = $this->getVersionsV2WithHttpInfo($game_id, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation getVersionsV2WithHttpInfo
+     *
+     * Get versions
+     *
+     * @param  int $game_id A game unique id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getVersionsV2'] to see the possible values for this operation
+     *
+     * @throws \Aternos\CurseForgeApi\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \Aternos\CurseForgeApi\Model\GetVersionsV2Response, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function getVersionsV2WithHttpInfo($game_id, string $contentType = self::contentTypes['getVersionsV2'][0])
+    {
+        $request = $this->getVersionsV2Request($game_id, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            switch($statusCode) {
+                case 200:
+                    if ('\Aternos\CurseForgeApi\Model\GetVersionsV2Response' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\Aternos\CurseForgeApi\Model\GetVersionsV2Response' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Aternos\CurseForgeApi\Model\GetVersionsV2Response', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\Aternos\CurseForgeApi\Model\GetVersionsV2Response';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Aternos\CurseForgeApi\Model\GetVersionsV2Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation getVersionsV2Async
+     *
+     * Get versions
+     *
+     * @param  int $game_id A game unique id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getVersionsV2'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getVersionsV2Async($game_id, string $contentType = self::contentTypes['getVersionsV2'][0])
+    {
+        return $this->getVersionsV2AsyncWithHttpInfo($game_id, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation getVersionsV2AsyncWithHttpInfo
+     *
+     * Get versions
+     *
+     * @param  int $game_id A game unique id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getVersionsV2'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getVersionsV2AsyncWithHttpInfo($game_id, string $contentType = self::contentTypes['getVersionsV2'][0])
+    {
+        $returnType = '\Aternos\CurseForgeApi\Model\GetVersionsV2Response';
+        $request = $this->getVersionsV2Request($game_id, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'getVersionsV2'
+     *
+     * @param  int $game_id A game unique id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getVersionsV2'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function getVersionsV2Request($game_id, string $contentType = self::contentTypes['getVersionsV2'][0])
+    {
+
+        // verify the required parameter 'game_id' is set
+        if ($game_id === null || (is_array($game_id) && count($game_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $game_id when calling getVersionsV2'
+            );
+        }
+
+
+        $resourcePath = '/v2/games/{gameId}/versions';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];

@@ -339,7 +339,7 @@ class CategoriesApi
 
 
 
-        $resourcePath = '/categories';
+        $resourcePath = '/v1/categories';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];

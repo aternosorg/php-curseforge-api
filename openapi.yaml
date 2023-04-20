@@ -13,7 +13,7 @@ tags:
   - name: Fingerprints
   - name: Minecraft
 paths:
-  /games:
+  /v1/games:
     get:
       tags:
         - Games
@@ -50,7 +50,7 @@ paths:
           description: Internal Server Error
       security:
         - ApiKeyAuth: [ ]
-  /games/{gameId}:
+  /v1/games/{gameId}:
     get:
       tags:
         - Games
@@ -80,7 +80,7 @@ paths:
           description: Internal Server Error
       security:
         - ApiKeyAuth: [ ]
-  /games/{gameId}/versions:
+  /v1/games/{gameId}/versions:
     get:
       tags:
         - Games
@@ -110,7 +110,37 @@ paths:
           description: Internal Server Error
       security:
         - ApiKeyAuth: [ ]
-  /games/{gameId}/version-types:
+  /v2/games/{gameId}/versions:
+    get:
+      tags:
+        - Games
+      summary: Get versions
+      description: >-
+        Get all available versions for each known version type of the specified
+        game. A private game is only accessible to its respective API key.
+      operationId: getVersionsV2
+      parameters:
+        - name: gameId
+          in: path
+          description: A game unique id
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetVersionsV2Response'
+        '404':
+          description: Not Found
+        '500':
+          description: Internal Server Error
+      security:
+        - ApiKeyAuth: [ ]
+  /v1/games/{gameId}/version-types:
     get:
       tags:
         - Games
@@ -147,7 +177,7 @@ paths:
           description: Internal Server Error
       security:
         - ApiKeyAuth: [ ]
-  /categories:
+  /v1/categories:
     get:
       tags:
         - Categories
@@ -185,7 +215,7 @@ paths:
           description: Internal Server Error
       security:
         - ApiKeyAuth: [ ]
-  /mods/search:
+  /v1/mods/search:
     get:
       tags:
         - Mods
@@ -296,7 +326,7 @@ paths:
           description: Internal Server Error
       security:
         - ApiKeyAuth: [ ]
-  /mods/{modId}:
+  /v1/mods/{modId}:
     get:
       tags:
         - Mods
@@ -324,7 +354,7 @@ paths:
           description: Internal Server Error
       security:
         - ApiKeyAuth: [ ]
-  /mods:
+  /v1/mods:
     post:
       tags:
         - Mods
@@ -349,7 +379,7 @@ paths:
           description: Internal Server Error
       security:
         - ApiKeyAuth: [ ]
-  /mods/featured:
+  /v1/mods/featured:
     post:
       tags:
         - Mods
@@ -376,7 +406,7 @@ paths:
           description: Internal Server Error
       security:
         - ApiKeyAuth: [ ]
-  /mods/{modId}/description:
+  /v1/mods/{modId}/description:
     get:
       tags:
         - Mods
@@ -404,7 +434,7 @@ paths:
           description: Internal Server Error
       security:
         - ApiKeyAuth: [ ]
-  /mods/{modId}/files/{fileId}:
+  /v1/mods/{modId}/files/{fileId}:
     get:
       tags:
         - Files
@@ -439,7 +469,7 @@ paths:
           description: Internal Server Error
       security:
         - ApiKeyAuth: [ ]
-  /mods/{modId}/files:
+  /v1/mods/{modId}/files:
     get:
       tags:
         - Files
@@ -508,7 +538,7 @@ paths:
           description: Internal Server Error
       security:
         - ApiKeyAuth: [ ]
-  /mods/files:
+  /v1/mods/files:
     post:
       tags:
         - Files
@@ -535,7 +565,7 @@ paths:
           description: Internal Server Error
       security:
         - ApiKeyAuth: [ ]
-  /mods/{modId}/files/{fileId}/changelog:
+  /v1/mods/{modId}/files/{fileId}/changelog:
     get:
       tags:
         - Files
@@ -570,7 +600,7 @@ paths:
           description: Internal Server Error
       security:
         - ApiKeyAuth: [ ]
-  /mods/{modId}/files/{fileId}/download-url:
+  /v1/mods/{modId}/files/{fileId}/download-url:
     get:
       tags:
         - Files
@@ -605,7 +635,7 @@ paths:
           description: Internal Server Error
       security:
         - ApiKeyAuth: [ ]
-  /fingerprints:
+  /v1/fingerprints:
     post:
       tags:
         - Fingerprints
@@ -630,7 +660,7 @@ paths:
           description: Service Unavailable
       security:
         - ApiKeyAuth: [ ]
-  /fingerprints/fuzzy:
+  /v1/fingerprints/fuzzy:
     post:
       tags:
         - Fingerprints
@@ -655,7 +685,7 @@ paths:
           description: Service Unavailable
       security:
         - ApiKeyAuth: [ ]
-  /minecraft/version:
+  /v1/minecraft/version:
     get:
       tags:
         - Minecraft
@@ -681,7 +711,7 @@ paths:
           description: Internal Server Error
       security:
         - ApiKeyAuth: [ ]
-  /minecraft/version/{gameVersionString}:
+  /v1/minecraft/version/{gameVersionString}:
     get:
       tags:
         - Minecraft
@@ -707,7 +737,7 @@ paths:
           description: Internal Server Error
       security:
         - ApiKeyAuth: [ ]
-  /minecraft/modloader:
+  /v1/minecraft/modloader:
     get:
       tags:
         - Minecraft
@@ -739,7 +769,7 @@ paths:
           description: Internal Server Error
       security:
         - ApiKeyAuth: [ ]
-  /minecraft/modloader/{modLoaderName}:
+  /v1/minecraft/modloader/{modLoaderName}:
     get:
       tags:
         - Minecraft
@@ -1176,6 +1206,26 @@ components:
           type: array
           items:
             type: string
+    GameVersionsByTypeV2:
+      type: object
+      properties:
+        type:
+          type: integer
+          format: int32
+        versions:
+          type: array
+          items:
+            $ref: '#/components/schemas/GameVersion'
+    GameVersion:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int32
+        name:
+          type: string
+        slug:
+          type: string
     GameVersionStatus:
       description: |
         Possible enum values:
@@ -1304,6 +1354,14 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/GameVersionsByType'
+          description: The response data
+    GetVersionsV2Response:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/GameVersionsByTypeV2'
           description: The response data
     GetFeaturedModsRequestBody:
       type: object
