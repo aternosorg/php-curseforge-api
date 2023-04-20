@@ -1790,7 +1790,7 @@ components:
         data:
           type: array
           items:
-            $ref: '#/components/schemas/Category'
+            $ref: '#/components/schemas/Mod'
           description: The response data
         pagination:
           $ref: '#/components/schemas/Pagination'

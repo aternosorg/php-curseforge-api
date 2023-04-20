@@ -57,7 +57,7 @@ class SearchModsResponse implements ModelInterface, ArrayAccess, \JsonSerializab
       * @var string[]
       */
     protected static $openAPITypes = [
-        'data' => '\Aternos\CurseForgeApi\Model\Category[]',
+        'data' => '\Aternos\CurseForgeApi\Model\Mod[]',
         'pagination' => '\Aternos\CurseForgeApi\Model\Pagination'
     ];
 
@@ -299,7 +299,7 @@ class SearchModsResponse implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Gets data
      *
-     * @return \Aternos\CurseForgeApi\Model\Category[]|null
+     * @return \Aternos\CurseForgeApi\Model\Mod[]|null
      */
     public function getData()
     {
@@ -309,7 +309,7 @@ class SearchModsResponse implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets data
      *
-     * @param \Aternos\CurseForgeApi\Model\Category[]|null $data The response data
+     * @param \Aternos\CurseForgeApi\Model\Mod[]|null $data The response data
      *
      * @return self
      */
