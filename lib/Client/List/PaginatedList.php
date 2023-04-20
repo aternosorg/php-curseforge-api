@@ -52,7 +52,7 @@ abstract class PaginatedList implements Iterator, ArrayAccess, Countable
      */
     public function hasNextPage(): bool
     {
-        return $this->pagination->getResultCount() > $this->getNextOffset();
+        return $this->pagination->getTotalCount() > $this->getNextOffset();
     }
 
     /**
@@ -95,7 +95,7 @@ abstract class PaginatedList implements Iterator, ArrayAccess, Countable
      */
     protected function getPreviousOffset(): int
     {
-        return max(0, $this->pagination->getIndex() - $this->pagination->getResultCount());
+        return max(0, $this->pagination->getIndex() - $this->pagination->getPageSize());
     }
 
     /**
