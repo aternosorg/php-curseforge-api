@@ -652,7 +652,7 @@ paths:
         - Fingerprints
       summary: Get Fingerprints Matches
       description: Get mod files that match a list of fingerprints.
-      operationId: getFingerprintsMatches
+      operationId: getFingerprintMatches
       requestBody:
         required: true
         content:
@@ -678,7 +678,7 @@ paths:
         - Fingerprints
       summary: Get Fingerprints Matches
       description: Get mod files that match a list of fingerprints.
-      operationId: getFingerprintsMatchesByGame
+      operationId: getFingerprintMatchesByGame
       parameters:
         - name: gameId
           in: path
@@ -712,7 +712,7 @@ paths:
         - Fingerprints
       summary: Get Fingerprints Fuzzy Matches
       description: Get mod files that match a list of fingerprints using fuzzy matching.
-      operationId: getFingerprintsFuzzyMatches
+      operationId: getFingerprintFuzzyMatches
       requestBody:
         required: true
         content:
@@ -725,7 +725,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/GetFingerprintsFuzzyMatchesResponse'
+                $ref: '#/components/schemas/GetFingerprintFuzzyMatchesResponse'
         '400':
           description: Bad Request
         '503':
@@ -738,7 +738,7 @@ paths:
         - Fingerprints
       summary: Get Fingerprints Fuzzy Matches
       description: Get mod files that match a list of fingerprints using fuzzy matching.
-      operationId: getFingerprintsFuzzyMatchesByGame
+      operationId: getFingerprintFuzzyMatchesByGame
       parameters:
         - name: gameId
           in: path
@@ -759,7 +759,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/GetFingerprintsFuzzyMatchesResponse'
+                $ref: '#/components/schemas/GetFingerprintFuzzyMatchesResponse'
         '400':
           description: Bad Request
         '503':
@@ -1371,7 +1371,7 @@ components:
       properties:
         data:
           $ref: '#/components/schemas/FingerprintsMatchesResult'
-    GetFingerprintsFuzzyMatchesResponse:
+    GetFingerprintFuzzyMatchesResponse:
       type: object
       properties:
         data:

@@ -1,6 +1,6 @@
 <?php
 /**
- * GetFingerprintsFuzzyMatchesResponseTest
+ * GetFingerprintFuzzyMatchesResponseTest
  *
  * PHP version 7.4
  *
@@ -31,15 +31,15 @@ namespace Aternos\CurseForgeApi\Test\Model;
 use PHPUnit\Framework\TestCase;
 
 /**
- * GetFingerprintsFuzzyMatchesResponseTest Class Doc Comment
+ * GetFingerprintFuzzyMatchesResponseTest Class Doc Comment
  *
  * @category    Class
- * @description GetFingerprintsFuzzyMatchesResponse
+ * @description GetFingerprintFuzzyMatchesResponse
  * @package     Aternos\CurseForgeApi
  * @author      OpenAPI Generator team
  * @link        https://openapi-generator.tech
  */
-class GetFingerprintsFuzzyMatchesResponseTest extends TestCase
+class GetFingerprintFuzzyMatchesResponseTest extends TestCase
 {
 
     /**
@@ -71,9 +71,9 @@ class GetFingerprintsFuzzyMatchesResponseTest extends TestCase
     }
 
     /**
-     * Test "GetFingerprintsFuzzyMatchesResponse"
+     * Test "GetFingerprintFuzzyMatchesResponse"
      */
-    public function testGetFingerprintsFuzzyMatchesResponse()
+    public function testGetFingerprintFuzzyMatchesResponse()
     {
         // TODO: implement
         $this->markTestIncomplete('Not implemented');

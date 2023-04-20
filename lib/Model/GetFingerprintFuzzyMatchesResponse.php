@@ -1,6 +1,6 @@
 <?php
 /**
- * GetFingerprintsFuzzyMatchesResponse
+ * GetFingerprintFuzzyMatchesResponse
  *
  * PHP version 7.4
  *
@@ -32,7 +32,7 @@ use \ArrayAccess;
 use \Aternos\CurseForgeApi\ObjectSerializer;
 
 /**
- * GetFingerprintsFuzzyMatchesResponse Class Doc Comment
+ * GetFingerprintFuzzyMatchesResponse Class Doc Comment
  *
  * @category Class
  * @package  Aternos\CurseForgeApi
@@ -40,7 +40,7 @@ use \Aternos\CurseForgeApi\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class GetFingerprintsFuzzyMatchesResponse implements ModelInterface, ArrayAccess, \JsonSerializable
+class GetFingerprintFuzzyMatchesResponse implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class GetFingerprintsFuzzyMatchesResponse implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $openAPIModelName = 'GetFingerprintsFuzzyMatchesResponse';
+    protected static $openAPIModelName = 'GetFingerprintFuzzyMatchesResponse';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
