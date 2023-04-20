@@ -23,6 +23,14 @@ class Game
     }
 
     /**
+     * @return GameModel
+     */
+    public function getData(): GameModel
+    {
+        return $this->game;
+    }
+
+    /**
      * Get all version types for this game
      * @return GameVersionType[]
      * @throws ApiException
