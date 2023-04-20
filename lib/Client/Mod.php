@@ -2,6 +2,7 @@
 
 namespace Aternos\CurseForgeApi\Client;
 
+use Aternos\CurseForgeApi\ApiException;
 use Aternos\CurseForgeApi\Model\Mod as ModModel;
 
 class Mod
@@ -14,6 +15,16 @@ class Mod
     }
 
     /**
+     * @param CurseForgeAPIClient $client
+     * @param ModModel[] $models
+     * @return Mod[]
+     */
+    public static function fromModels(CurseForgeAPIClient $client, array $models): array
+    {
+        return array_map(fn($mod) => new Mod($client, $mod), $models);
+    }
+
+    /**
      * @return ModModel
      */
     public function getData(): ModModel
@@ -22,12 +33,12 @@ class Mod
     }
 
     /**
-     * @param CurseForgeAPIClient $client
-     * @param ModModel[] $models
-     * @return Mod[]
+     * Fetch the description of this mod as html
+     * @return string|null
+     * @throws ApiException
      */
-    public static function fromModels(CurseForgeAPIClient $client, array $models): array
+    public function getDescription(): ?string
     {
-        return array_map(fn($mod) => new Mod($client, $mod), $models);
+        return $this->client->getModDescription($this->mod->getId());
     }
 }

@@ -11,7 +11,7 @@ use Aternos\CurseForgeApi\Api\ModsApi;
 use Aternos\CurseForgeApi\ApiException;
 use Aternos\CurseForgeApi\Client\List\PaginatedGameList;
 use Aternos\CurseForgeApi\Client\List\PaginatedModList;
-use Aternos\CurseForgeApi\Client\Options\ModSearch\SearchModsOptions;
+use Aternos\CurseForgeApi\Client\Options\ModSearch\ModSearchOptions;
 use Aternos\CurseForgeApi\Configuration;
 use Aternos\CurseForgeApi\Model\GameVersionsByTypeV2;
 use Aternos\CurseForgeApi\Model\GetFeaturedModsRequestBody;
@@ -176,11 +176,11 @@ class CurseForgeAPIClient
 
     /**
      * Search for mods
-     * @param SearchModsOptions $options
+     * @param ModSearchOptions $options
      * @return PaginatedModList
      * @throws ApiException
      */
-    public function searchMods(SearchModsOptions $options): PaginatedModList
+    public function searchMods(ModSearchOptions $options): PaginatedModList
     {
         return new PaginatedModList($this, $this->mods->searchMods(
             $options->getGameId(),
@@ -225,12 +225,12 @@ class CurseForgeAPIClient
     /**
      * Get all featured mods for a game
      * @param int $gameId
-     * @param array $excludedModIds
+     * @param int[] $excludedModIds
      * @param int|null $gameVersionTypeId
      * @return FeaturedMods
      * @throws ApiException
      */
-    public function getFeaturedMods(int $gameId, array $excludedModIds = [], int $gameVersionTypeId = null): FeaturedMods
+    public function getFeaturedMods(int $gameId, array $excludedModIds = [], ?int $gameVersionTypeId = null): FeaturedMods
     {
         $body = (new GetFeaturedModsRequestBody())
             ->setGameId($gameId)
@@ -238,5 +238,16 @@ class CurseForgeAPIClient
             ->setGameVersionTypeId($gameVersionTypeId);
 
         return new FeaturedMods($this, $this->mods->getFeaturedMods($body)->getData());
+    }
+
+    /**
+     * Get the description of a mod as html
+     * @param int $modId
+     * @return string|null
+     * @throws ApiException
+     */
+    public function getModDescription(int $modId): ?string
+    {
+        return $this->mods->getModDescription($modId)->getData();
     }
 }

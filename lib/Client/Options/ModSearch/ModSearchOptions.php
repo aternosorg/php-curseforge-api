@@ -2,7 +2,7 @@
 
 namespace Aternos\CurseForgeApi\Client\Options\ModSearch;
 
-class SearchModsOptions
+class ModSearchOptions
 {
     /**
      * @param int $gameId
