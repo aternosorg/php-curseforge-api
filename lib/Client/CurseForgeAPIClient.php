@@ -15,8 +15,14 @@ use Aternos\CurseForgeApi\Client\List\PaginatedModList;
 use Aternos\CurseForgeApi\Client\Options\ModFiles\ModFilesOptions;
 use Aternos\CurseForgeApi\Client\Options\ModSearch\ModSearchOptions;
 use Aternos\CurseForgeApi\Configuration;
+use Aternos\CurseForgeApi\Model\FingerprintFuzzyMatchResult;
+use Aternos\CurseForgeApi\Model\FingerprintMatchesResult;
+use Aternos\CurseForgeApi\Model\FingerprintsMatchesResult;
+use Aternos\CurseForgeApi\Model\FolderFingerprint;
 use Aternos\CurseForgeApi\Model\GameVersionsByTypeV2;
 use Aternos\CurseForgeApi\Model\GetFeaturedModsRequestBody;
+use Aternos\CurseForgeApi\Model\GetFingerprintMatchesRequestBody;
+use Aternos\CurseForgeApi\Model\GetFuzzyMatchesRequestBody;
 use Aternos\CurseForgeApi\Model\GetModFilesRequestBody;
 use Aternos\CurseForgeApi\Model\GetModsByIdsListRequestBody;
 
@@ -318,5 +324,39 @@ class CurseForgeAPIClient
     public function getModFileDownloadURL(int $modId, int $fileId): string
     {
         return $this->files->getModFileDownloadURL($modId, $fileId)->getData();
+    }
+
+    /**
+     * Get files matching a list of fingerprints
+     * @param int[] $fingerprints
+     * @param int|null $gameId only return files for this game
+     * @return FingerprintMatchesResult
+     * @throws ApiException
+     */
+    public function getFilesByFingerPrintMatches(array $fingerprints, ?int $gameId = null): FingerprintMatchesResult
+    {
+        $body = (new GetFingerprintMatchesRequestBody())->setFingerprints($fingerprints);
+
+        if ($gameId === null) {
+            return $this->fingerprints->getFingerprintMatches($body)->getData();
+        }
+        return $this->fingerprints->getFingerprintMatchesByGame($gameId, $body)->getData();
+    }
+
+    /**
+     * Get mod files that match a list of fingerprints using fuzzy matching
+     * @param FolderFingerprint[] $fingerprints
+     * @param int|null $gameId only return files for this game
+     * @return FingerprintFuzzyMatchResult
+     * @throws ApiException
+     */
+    public function getFilesByFuzzyFingerPrintMatches(array $fingerprints, ?int $gameId = null): FingerprintFuzzyMatchResult
+    {
+        $body = (new GetFuzzyMatchesRequestBody())->setFingerprints($fingerprints);
+
+        if ($gameId === null) {
+            return $this->fingerprints->getFingerprintFuzzyMatches($body)->getData();
+        }
+        return $this->fingerprints->getFingerprintFuzzyMatchesByGame($gameId, $body)->getData();
     }
 }
