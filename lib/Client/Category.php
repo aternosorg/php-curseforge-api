@@ -2,6 +2,9 @@
 
 namespace Aternos\CurseForgeApi\Client;
 
+use Aternos\CurseForgeApi\ApiException;
+use Aternos\CurseForgeApi\Client\List\PaginatedModList;
+use Aternos\CurseForgeApi\Client\Options\ModSearch\ModSearchOptions;
 use Aternos\CurseForgeApi\Model\Category as CategoryModel;
 
 class Category
@@ -19,5 +22,21 @@ class Category
     public function getData(): CategoryModel
     {
         return $this->category;
+    }
+
+    /**
+     * Search mods in this category
+     * @param ModSearchOptions|null $options
+     * @return PaginatedModList
+     * @throws ApiException
+     */
+    public function getMods(?ModSearchOptions $options = null): PaginatedModList
+    {
+        if ($options === null) {
+            $options = new ModSearchOptions($this->category->getGameId());
+            $options->setCategoryId($this->category->getId());
+        }
+
+        return $this->client->searchMods($options);
     }
 }
