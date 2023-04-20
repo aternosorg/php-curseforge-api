@@ -139,14 +139,14 @@ class ModsApi
      *
      * Get featured mods.
      *
-     * @param  \Aternos\CurseForgeApi\Model\GetFeaturedModsRequestBody $get_featured_mods_request_body get_featured_mods_request_body (optional)
+     * @param  \Aternos\CurseForgeApi\Model\GetFeaturedModsRequestBody $get_featured_mods_request_body get_featured_mods_request_body (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getFeaturedMods'] to see the possible values for this operation
      *
      * @throws \Aternos\CurseForgeApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \Aternos\CurseForgeApi\Model\GetFeaturedModsResponse
      */
-    public function getFeaturedMods($get_featured_mods_request_body = null, string $contentType = self::contentTypes['getFeaturedMods'][0])
+    public function getFeaturedMods($get_featured_mods_request_body, string $contentType = self::contentTypes['getFeaturedMods'][0])
     {
         list($response) = $this->getFeaturedModsWithHttpInfo($get_featured_mods_request_body, $contentType);
         return $response;
@@ -157,14 +157,14 @@ class ModsApi
      *
      * Get featured mods.
      *
-     * @param  \Aternos\CurseForgeApi\Model\GetFeaturedModsRequestBody $get_featured_mods_request_body (optional)
+     * @param  \Aternos\CurseForgeApi\Model\GetFeaturedModsRequestBody $get_featured_mods_request_body (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getFeaturedMods'] to see the possible values for this operation
      *
      * @throws \Aternos\CurseForgeApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \Aternos\CurseForgeApi\Model\GetFeaturedModsResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getFeaturedModsWithHttpInfo($get_featured_mods_request_body = null, string $contentType = self::contentTypes['getFeaturedMods'][0])
+    public function getFeaturedModsWithHttpInfo($get_featured_mods_request_body, string $contentType = self::contentTypes['getFeaturedMods'][0])
     {
         $request = $this->getFeaturedModsRequest($get_featured_mods_request_body, $contentType);
 
@@ -257,13 +257,13 @@ class ModsApi
      *
      * Get featured mods.
      *
-     * @param  \Aternos\CurseForgeApi\Model\GetFeaturedModsRequestBody $get_featured_mods_request_body (optional)
+     * @param  \Aternos\CurseForgeApi\Model\GetFeaturedModsRequestBody $get_featured_mods_request_body (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getFeaturedMods'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getFeaturedModsAsync($get_featured_mods_request_body = null, string $contentType = self::contentTypes['getFeaturedMods'][0])
+    public function getFeaturedModsAsync($get_featured_mods_request_body, string $contentType = self::contentTypes['getFeaturedMods'][0])
     {
         return $this->getFeaturedModsAsyncWithHttpInfo($get_featured_mods_request_body, $contentType)
             ->then(
@@ -278,13 +278,13 @@ class ModsApi
      *
      * Get featured mods.
      *
-     * @param  \Aternos\CurseForgeApi\Model\GetFeaturedModsRequestBody $get_featured_mods_request_body (optional)
+     * @param  \Aternos\CurseForgeApi\Model\GetFeaturedModsRequestBody $get_featured_mods_request_body (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getFeaturedMods'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getFeaturedModsAsyncWithHttpInfo($get_featured_mods_request_body = null, string $contentType = self::contentTypes['getFeaturedMods'][0])
+    public function getFeaturedModsAsyncWithHttpInfo($get_featured_mods_request_body, string $contentType = self::contentTypes['getFeaturedMods'][0])
     {
         $returnType = '\Aternos\CurseForgeApi\Model\GetFeaturedModsResponse';
         $request = $this->getFeaturedModsRequest($get_featured_mods_request_body, $contentType);
@@ -328,15 +328,21 @@ class ModsApi
     /**
      * Create request for operation 'getFeaturedMods'
      *
-     * @param  \Aternos\CurseForgeApi\Model\GetFeaturedModsRequestBody $get_featured_mods_request_body (optional)
+     * @param  \Aternos\CurseForgeApi\Model\GetFeaturedModsRequestBody $get_featured_mods_request_body (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getFeaturedMods'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getFeaturedModsRequest($get_featured_mods_request_body = null, string $contentType = self::contentTypes['getFeaturedMods'][0])
+    public function getFeaturedModsRequest($get_featured_mods_request_body, string $contentType = self::contentTypes['getFeaturedMods'][0])
     {
 
+        // verify the required parameter 'get_featured_mods_request_body' is set
+        if ($get_featured_mods_request_body === null || (is_array($get_featured_mods_request_body) && count($get_featured_mods_request_body) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $get_featured_mods_request_body when calling getFeaturedMods'
+            );
+        }
 
 
         $resourcePath = '/v1/mods/featured';

@@ -130,14 +130,14 @@ class FingerprintsApi
      *
      * Get Fingerprints Fuzzy Matches
      *
-     * @param  \Aternos\CurseForgeApi\Model\GetFuzzyMatchesRequestBody $get_fuzzy_matches_request_body get_fuzzy_matches_request_body (optional)
+     * @param  \Aternos\CurseForgeApi\Model\GetFuzzyMatchesRequestBody $get_fuzzy_matches_request_body get_fuzzy_matches_request_body (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getFingerprintsFuzzyMatches'] to see the possible values for this operation
      *
      * @throws \Aternos\CurseForgeApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \Aternos\CurseForgeApi\Model\GetFingerprintsFuzzyMatchesResponse
      */
-    public function getFingerprintsFuzzyMatches($get_fuzzy_matches_request_body = null, string $contentType = self::contentTypes['getFingerprintsFuzzyMatches'][0])
+    public function getFingerprintsFuzzyMatches($get_fuzzy_matches_request_body, string $contentType = self::contentTypes['getFingerprintsFuzzyMatches'][0])
     {
         list($response) = $this->getFingerprintsFuzzyMatchesWithHttpInfo($get_fuzzy_matches_request_body, $contentType);
         return $response;
@@ -148,14 +148,14 @@ class FingerprintsApi
      *
      * Get Fingerprints Fuzzy Matches
      *
-     * @param  \Aternos\CurseForgeApi\Model\GetFuzzyMatchesRequestBody $get_fuzzy_matches_request_body (optional)
+     * @param  \Aternos\CurseForgeApi\Model\GetFuzzyMatchesRequestBody $get_fuzzy_matches_request_body (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getFingerprintsFuzzyMatches'] to see the possible values for this operation
      *
      * @throws \Aternos\CurseForgeApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \Aternos\CurseForgeApi\Model\GetFingerprintsFuzzyMatchesResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getFingerprintsFuzzyMatchesWithHttpInfo($get_fuzzy_matches_request_body = null, string $contentType = self::contentTypes['getFingerprintsFuzzyMatches'][0])
+    public function getFingerprintsFuzzyMatchesWithHttpInfo($get_fuzzy_matches_request_body, string $contentType = self::contentTypes['getFingerprintsFuzzyMatches'][0])
     {
         $request = $this->getFingerprintsFuzzyMatchesRequest($get_fuzzy_matches_request_body, $contentType);
 
@@ -248,13 +248,13 @@ class FingerprintsApi
      *
      * Get Fingerprints Fuzzy Matches
      *
-     * @param  \Aternos\CurseForgeApi\Model\GetFuzzyMatchesRequestBody $get_fuzzy_matches_request_body (optional)
+     * @param  \Aternos\CurseForgeApi\Model\GetFuzzyMatchesRequestBody $get_fuzzy_matches_request_body (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getFingerprintsFuzzyMatches'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getFingerprintsFuzzyMatchesAsync($get_fuzzy_matches_request_body = null, string $contentType = self::contentTypes['getFingerprintsFuzzyMatches'][0])
+    public function getFingerprintsFuzzyMatchesAsync($get_fuzzy_matches_request_body, string $contentType = self::contentTypes['getFingerprintsFuzzyMatches'][0])
     {
         return $this->getFingerprintsFuzzyMatchesAsyncWithHttpInfo($get_fuzzy_matches_request_body, $contentType)
             ->then(
@@ -269,13 +269,13 @@ class FingerprintsApi
      *
      * Get Fingerprints Fuzzy Matches
      *
-     * @param  \Aternos\CurseForgeApi\Model\GetFuzzyMatchesRequestBody $get_fuzzy_matches_request_body (optional)
+     * @param  \Aternos\CurseForgeApi\Model\GetFuzzyMatchesRequestBody $get_fuzzy_matches_request_body (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getFingerprintsFuzzyMatches'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getFingerprintsFuzzyMatchesAsyncWithHttpInfo($get_fuzzy_matches_request_body = null, string $contentType = self::contentTypes['getFingerprintsFuzzyMatches'][0])
+    public function getFingerprintsFuzzyMatchesAsyncWithHttpInfo($get_fuzzy_matches_request_body, string $contentType = self::contentTypes['getFingerprintsFuzzyMatches'][0])
     {
         $returnType = '\Aternos\CurseForgeApi\Model\GetFingerprintsFuzzyMatchesResponse';
         $request = $this->getFingerprintsFuzzyMatchesRequest($get_fuzzy_matches_request_body, $contentType);
@@ -319,15 +319,21 @@ class FingerprintsApi
     /**
      * Create request for operation 'getFingerprintsFuzzyMatches'
      *
-     * @param  \Aternos\CurseForgeApi\Model\GetFuzzyMatchesRequestBody $get_fuzzy_matches_request_body (optional)
+     * @param  \Aternos\CurseForgeApi\Model\GetFuzzyMatchesRequestBody $get_fuzzy_matches_request_body (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getFingerprintsFuzzyMatches'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getFingerprintsFuzzyMatchesRequest($get_fuzzy_matches_request_body = null, string $contentType = self::contentTypes['getFingerprintsFuzzyMatches'][0])
+    public function getFingerprintsFuzzyMatchesRequest($get_fuzzy_matches_request_body, string $contentType = self::contentTypes['getFingerprintsFuzzyMatches'][0])
     {
 
+        // verify the required parameter 'get_fuzzy_matches_request_body' is set
+        if ($get_fuzzy_matches_request_body === null || (is_array($get_fuzzy_matches_request_body) && count($get_fuzzy_matches_request_body) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $get_fuzzy_matches_request_body when calling getFingerprintsFuzzyMatches'
+            );
+        }
 
 
         $resourcePath = '/v1/fingerprints/fuzzy';
@@ -411,14 +417,14 @@ class FingerprintsApi
      *
      * Get Fingerprints Matches
      *
-     * @param  \Aternos\CurseForgeApi\Model\GetFingerprintMatchesRequestBody $get_fingerprint_matches_request_body get_fingerprint_matches_request_body (optional)
+     * @param  \Aternos\CurseForgeApi\Model\GetFingerprintMatchesRequestBody $get_fingerprint_matches_request_body get_fingerprint_matches_request_body (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getFingerprintsMatches'] to see the possible values for this operation
      *
      * @throws \Aternos\CurseForgeApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \Aternos\CurseForgeApi\Model\GetFingerprintMatchesResponse
      */
-    public function getFingerprintsMatches($get_fingerprint_matches_request_body = null, string $contentType = self::contentTypes['getFingerprintsMatches'][0])
+    public function getFingerprintsMatches($get_fingerprint_matches_request_body, string $contentType = self::contentTypes['getFingerprintsMatches'][0])
     {
         list($response) = $this->getFingerprintsMatchesWithHttpInfo($get_fingerprint_matches_request_body, $contentType);
         return $response;
@@ -429,14 +435,14 @@ class FingerprintsApi
      *
      * Get Fingerprints Matches
      *
-     * @param  \Aternos\CurseForgeApi\Model\GetFingerprintMatchesRequestBody $get_fingerprint_matches_request_body (optional)
+     * @param  \Aternos\CurseForgeApi\Model\GetFingerprintMatchesRequestBody $get_fingerprint_matches_request_body (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getFingerprintsMatches'] to see the possible values for this operation
      *
      * @throws \Aternos\CurseForgeApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \Aternos\CurseForgeApi\Model\GetFingerprintMatchesResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getFingerprintsMatchesWithHttpInfo($get_fingerprint_matches_request_body = null, string $contentType = self::contentTypes['getFingerprintsMatches'][0])
+    public function getFingerprintsMatchesWithHttpInfo($get_fingerprint_matches_request_body, string $contentType = self::contentTypes['getFingerprintsMatches'][0])
     {
         $request = $this->getFingerprintsMatchesRequest($get_fingerprint_matches_request_body, $contentType);
 
@@ -529,13 +535,13 @@ class FingerprintsApi
      *
      * Get Fingerprints Matches
      *
-     * @param  \Aternos\CurseForgeApi\Model\GetFingerprintMatchesRequestBody $get_fingerprint_matches_request_body (optional)
+     * @param  \Aternos\CurseForgeApi\Model\GetFingerprintMatchesRequestBody $get_fingerprint_matches_request_body (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getFingerprintsMatches'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getFingerprintsMatchesAsync($get_fingerprint_matches_request_body = null, string $contentType = self::contentTypes['getFingerprintsMatches'][0])
+    public function getFingerprintsMatchesAsync($get_fingerprint_matches_request_body, string $contentType = self::contentTypes['getFingerprintsMatches'][0])
     {
         return $this->getFingerprintsMatchesAsyncWithHttpInfo($get_fingerprint_matches_request_body, $contentType)
             ->then(
@@ -550,13 +556,13 @@ class FingerprintsApi
      *
      * Get Fingerprints Matches
      *
-     * @param  \Aternos\CurseForgeApi\Model\GetFingerprintMatchesRequestBody $get_fingerprint_matches_request_body (optional)
+     * @param  \Aternos\CurseForgeApi\Model\GetFingerprintMatchesRequestBody $get_fingerprint_matches_request_body (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getFingerprintsMatches'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getFingerprintsMatchesAsyncWithHttpInfo($get_fingerprint_matches_request_body = null, string $contentType = self::contentTypes['getFingerprintsMatches'][0])
+    public function getFingerprintsMatchesAsyncWithHttpInfo($get_fingerprint_matches_request_body, string $contentType = self::contentTypes['getFingerprintsMatches'][0])
     {
         $returnType = '\Aternos\CurseForgeApi\Model\GetFingerprintMatchesResponse';
         $request = $this->getFingerprintsMatchesRequest($get_fingerprint_matches_request_body, $contentType);
@@ -600,15 +606,21 @@ class FingerprintsApi
     /**
      * Create request for operation 'getFingerprintsMatches'
      *
-     * @param  \Aternos\CurseForgeApi\Model\GetFingerprintMatchesRequestBody $get_fingerprint_matches_request_body (optional)
+     * @param  \Aternos\CurseForgeApi\Model\GetFingerprintMatchesRequestBody $get_fingerprint_matches_request_body (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getFingerprintsMatches'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getFingerprintsMatchesRequest($get_fingerprint_matches_request_body = null, string $contentType = self::contentTypes['getFingerprintsMatches'][0])
+    public function getFingerprintsMatchesRequest($get_fingerprint_matches_request_body, string $contentType = self::contentTypes['getFingerprintsMatches'][0])
     {
 
+        // verify the required parameter 'get_fingerprint_matches_request_body' is set
+        if ($get_fingerprint_matches_request_body === null || (is_array($get_fingerprint_matches_request_body) && count($get_fingerprint_matches_request_body) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $get_fingerprint_matches_request_body when calling getFingerprintsMatches'
+            );
+        }
 
 
         $resourcePath = '/v1/fingerprints';
