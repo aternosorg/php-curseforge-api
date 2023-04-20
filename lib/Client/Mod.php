@@ -3,6 +3,8 @@
 namespace Aternos\CurseForgeApi\Client;
 
 use Aternos\CurseForgeApi\ApiException;
+use Aternos\CurseForgeApi\Client\List\PaginatedFilesList;
+use Aternos\CurseForgeApi\Client\Options\ModFiles\ModFilesOptions;
 use Aternos\CurseForgeApi\Model\Mod as ModModel;
 
 class Mod
@@ -40,5 +42,16 @@ class Mod
     public function getDescription(): ?string
     {
         return $this->client->getModDescription($this->mod->getId());
+    }
+
+    /**
+     * Get the files of this mod
+     * @param ModFilesOptions|null $options
+     * @return PaginatedFilesList
+     * @throws ApiException
+     */
+    public function getFiles(?ModFilesOptions $options = null): PaginatedFilesList
+    {
+        return $this->client->getModFiles($options ?? new ModFilesOptions($this->mod->getId()));
     }
 }

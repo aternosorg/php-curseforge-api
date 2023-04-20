@@ -9,12 +9,15 @@ use Aternos\CurseForgeApi\Api\GamesApi;
 use Aternos\CurseForgeApi\Api\MinecraftApi;
 use Aternos\CurseForgeApi\Api\ModsApi;
 use Aternos\CurseForgeApi\ApiException;
+use Aternos\CurseForgeApi\Client\List\PaginatedFilesList;
 use Aternos\CurseForgeApi\Client\List\PaginatedGameList;
 use Aternos\CurseForgeApi\Client\List\PaginatedModList;
+use Aternos\CurseForgeApi\Client\Options\ModFiles\ModFilesOptions;
 use Aternos\CurseForgeApi\Client\Options\ModSearch\ModSearchOptions;
 use Aternos\CurseForgeApi\Configuration;
 use Aternos\CurseForgeApi\Model\GameVersionsByTypeV2;
 use Aternos\CurseForgeApi\Model\GetFeaturedModsRequestBody;
+use Aternos\CurseForgeApi\Model\GetModFilesRequestBody;
 use Aternos\CurseForgeApi\Model\GetModsByIdsListRequestBody;
 
 /**
@@ -249,5 +252,71 @@ class CurseForgeAPIClient
     public function getModDescription(int $modId): ?string
     {
         return $this->mods->getModDescription($modId)->getData();
+    }
+
+    /**
+     * Get a list of all files for a mod
+     * @param ModFilesOptions $options
+     * @return PaginatedFilesList
+     * @throws ApiException
+     */
+    public function getModFiles(ModFilesOptions $options): PaginatedFilesList
+    {
+        return new PaginatedFilesList($this, $this->files->getModFiles(
+            $options->getModId(),
+            $options->getGameVersion(),
+            $options->getModLoaderType()->value,
+            $options->getGameVersionTypeId(),
+            $options->getOffset(),
+            $options->getPageSize(),
+        ), $options);
+    }
+
+    /**
+     * Get a single mod file
+     * @param int $modId
+     * @param int $fileId
+     * @return File
+     * @throws ApiException
+     */
+    public function getModFile(int $modId, int $fileId): File
+    {
+        return new File($this, $this->files->getModFile($modId, $fileId)->getData());
+    }
+
+    /**
+     * Fetch multiple files at once
+     * @param int[] $fileIds
+     * @return File[]
+     * @throws ApiException
+     */
+    public function getFiles(array $fileIds): array
+    {
+        $body = (new GetModFilesRequestBody())->setFileIds($fileIds);
+        return array_map(fn($file) => new File($this, $file), $this->files->getFiles($body)->getData());
+    }
+
+    /**
+     * Get the changelog of a mod file as html
+     * @param int $modId
+     * @param int $fileId
+     * @return string
+     * @throws ApiException
+     */
+    public function getModFileChangelog(int $modId, int $fileId): string
+    {
+        return $this->files->getModFileChangelog($modId, $fileId)->getData();
+    }
+
+    /**
+     * Get the download url of a mod file
+     * @param int $modId
+     * @param int $fileId
+     * @return string
+     * @throws ApiException
+     */
+    public function getModFileDownloadURL(int $modId, int $fileId): string
+    {
+        return $this->files->getModFileDownloadURL($modId, $fileId)->getData();
     }
 }

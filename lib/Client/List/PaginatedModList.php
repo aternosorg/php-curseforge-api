@@ -8,6 +8,13 @@ use Aternos\CurseForgeApi\Client\Options\ModSearch\ModSearchOptions;
 use Aternos\CurseForgeApi\Model\Mod as ModModel;
 use Aternos\CurseForgeApi\Model\SearchModsResponse;
 
+/**
+ * Class PaginatedModList
+ *
+ * @package Aternos\CurseForgeApi\Client\List
+ * @description List of mods
+ * @extends PaginatedList<Mod>
+ */
 class PaginatedModList extends PaginatedList
 {
     public function __construct(
