@@ -14,10 +14,10 @@ use Aternos\CurseForgeApi\Client\List\PaginatedGameList;
 use Aternos\CurseForgeApi\Client\List\PaginatedModList;
 use Aternos\CurseForgeApi\Client\Options\ModFiles\ModFilesOptions;
 use Aternos\CurseForgeApi\Client\Options\ModSearch\ModSearchOptions;
+use Aternos\CurseForgeApi\Client\Options\ModSearch\SortOrder;
 use Aternos\CurseForgeApi\Configuration;
 use Aternos\CurseForgeApi\Model\FingerprintFuzzyMatchResult;
 use Aternos\CurseForgeApi\Model\FingerprintMatchesResult;
-use Aternos\CurseForgeApi\Model\FingerprintsMatchesResult;
 use Aternos\CurseForgeApi\Model\FolderFingerprint;
 use Aternos\CurseForgeApi\Model\GameVersionsByTypeV2;
 use Aternos\CurseForgeApi\Model\GetFeaturedModsRequestBody;
@@ -25,6 +25,9 @@ use Aternos\CurseForgeApi\Model\GetFingerprintMatchesRequestBody;
 use Aternos\CurseForgeApi\Model\GetFuzzyMatchesRequestBody;
 use Aternos\CurseForgeApi\Model\GetModFilesRequestBody;
 use Aternos\CurseForgeApi\Model\GetModsByIdsListRequestBody;
+use Aternos\CurseForgeApi\Model\MinecraftGameVersion;
+use Aternos\CurseForgeApi\Model\MinecraftModLoaderIndex;
+use Aternos\CurseForgeApi\Model\MinecraftModLoaderVersion;
 
 /**
  * Class HangarAPIClient
@@ -358,5 +361,50 @@ class CurseForgeAPIClient
             return $this->fingerprints->getFingerprintFuzzyMatches($body)->getData();
         }
         return $this->fingerprints->getFingerprintFuzzyMatchesByGame($gameId, $body)->getData();
+    }
+
+    /**
+     * Get a list of Minecraft versions
+     * @param SortOrder $sortOrder
+     * @return MinecraftGameVersion[]
+     * @throws ApiException
+     */
+    public function getMinecraftVersions(SortOrder $sortOrder = SortOrder::ASCENDING): array
+    {
+        return $this->minecraft->getMinecraftVersions($sortOrder == SortOrder::DESCENDING)->getData();
+    }
+
+    /**
+     * Get a specific Minecraft version
+     * @param string $minecraftVersion
+     * @return MinecraftGameVersion
+     * @throws ApiException
+     */
+    public function getMinecraftVersion(string $minecraftVersion): MinecraftGameVersion
+    {
+        return $this->minecraft->getSpecificMinecraftVersion($minecraftVersion)->getData();
+    }
+
+    /**
+     * Get Minecraft mod loaders
+     * @param string|null $minecraftVersion
+     * @param bool|null $includeAll
+     * @return MinecraftModLoaderIndex[]
+     * @throws ApiException
+     */
+    public function getMinecraftModLoaders(?string $minecraftVersion = null, ?bool $includeAll = null): array
+    {
+        return $this->minecraft->getMinecraftModLoaders($minecraftVersion, $includeAll)->getData();
+    }
+
+    /**
+     * Get a specific Minecraft mod loader
+     * @param string $modLoaderName
+     * @return MinecraftModLoaderVersion
+     * @throws ApiException
+     */
+    public function getMinecraftModLoader(string $modLoaderName): MinecraftModLoaderVersion
+    {
+        return $this->minecraft->getSpecificMinecraftModLoader($modLoaderName)->getData();
     }
 }
