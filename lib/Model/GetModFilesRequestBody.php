@@ -57,7 +57,7 @@ class GetModFilesRequestBody implements ModelInterface, ArrayAccess, \JsonSerial
       * @var string[]
       */
     protected static $openAPITypes = [
-        'field_ids' => 'int[]'
+        'file_ids' => 'int[]'
     ];
 
     /**
@@ -68,7 +68,7 @@ class GetModFilesRequestBody implements ModelInterface, ArrayAccess, \JsonSerial
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'field_ids' => 'int32'
+        'file_ids' => 'int32'
     ];
 
     /**
@@ -77,7 +77,7 @@ class GetModFilesRequestBody implements ModelInterface, ArrayAccess, \JsonSerial
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'field_ids' => false
+        'file_ids' => false
     ];
 
     /**
@@ -166,7 +166,7 @@ class GetModFilesRequestBody implements ModelInterface, ArrayAccess, \JsonSerial
      * @var string[]
      */
     protected static $attributeMap = [
-        'field_ids' => 'fieldIds'
+        'file_ids' => 'fileIds'
     ];
 
     /**
@@ -175,7 +175,7 @@ class GetModFilesRequestBody implements ModelInterface, ArrayAccess, \JsonSerial
      * @var string[]
      */
     protected static $setters = [
-        'field_ids' => 'setFieldIds'
+        'file_ids' => 'setFileIds'
     ];
 
     /**
@@ -184,7 +184,7 @@ class GetModFilesRequestBody implements ModelInterface, ArrayAccess, \JsonSerial
      * @var string[]
      */
     protected static $getters = [
-        'field_ids' => 'getFieldIds'
+        'file_ids' => 'getFileIds'
     ];
 
     /**
@@ -244,7 +244,7 @@ class GetModFilesRequestBody implements ModelInterface, ArrayAccess, \JsonSerial
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('field_ids', $data ?? [], null);
+        $this->setIfExists('file_ids', $data ?? [], null);
     }
 
     /**
@@ -290,28 +290,28 @@ class GetModFilesRequestBody implements ModelInterface, ArrayAccess, \JsonSerial
 
 
     /**
-     * Gets field_ids
+     * Gets file_ids
      *
      * @return int[]|null
      */
-    public function getFieldIds()
+    public function getFileIds()
     {
-        return $this->container['field_ids'];
+        return $this->container['file_ids'];
     }
 
     /**
-     * Sets field_ids
+     * Sets file_ids
      *
-     * @param int[]|null $field_ids field_ids
+     * @param int[]|null $file_ids file_ids
      *
      * @return self
      */
-    public function setFieldIds($field_ids)
+    public function setFileIds($file_ids)
     {
-        if (is_null($field_ids)) {
-            throw new \InvalidArgumentException('non-nullable field_ids cannot be null');
+        if (is_null($file_ids)) {
+            throw new \InvalidArgumentException('non-nullable file_ids cannot be null');
         }
-        $this->container['field_ids'] = $field_ids;
+        $this->container['file_ids'] = $file_ids;
 
         return $this;
     }

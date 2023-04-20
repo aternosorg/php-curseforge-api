@@ -57,7 +57,7 @@ class GetModsByIdsListRequestBody implements ModelInterface, ArrayAccess, \JsonS
       * @var string[]
       */
     protected static $openAPITypes = [
-        'field_ids' => 'int[]'
+        'mod_ids' => 'int[]'
     ];
 
     /**
@@ -68,7 +68,7 @@ class GetModsByIdsListRequestBody implements ModelInterface, ArrayAccess, \JsonS
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'field_ids' => 'int64'
+        'mod_ids' => 'int64'
     ];
 
     /**
@@ -77,7 +77,7 @@ class GetModsByIdsListRequestBody implements ModelInterface, ArrayAccess, \JsonS
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'field_ids' => false
+        'mod_ids' => false
     ];
 
     /**
@@ -166,7 +166,7 @@ class GetModsByIdsListRequestBody implements ModelInterface, ArrayAccess, \JsonS
      * @var string[]
      */
     protected static $attributeMap = [
-        'field_ids' => 'fieldIds'
+        'mod_ids' => 'modIds'
     ];
 
     /**
@@ -175,7 +175,7 @@ class GetModsByIdsListRequestBody implements ModelInterface, ArrayAccess, \JsonS
      * @var string[]
      */
     protected static $setters = [
-        'field_ids' => 'setFieldIds'
+        'mod_ids' => 'setModIds'
     ];
 
     /**
@@ -184,7 +184,7 @@ class GetModsByIdsListRequestBody implements ModelInterface, ArrayAccess, \JsonS
      * @var string[]
      */
     protected static $getters = [
-        'field_ids' => 'getFieldIds'
+        'mod_ids' => 'getModIds'
     ];
 
     /**
@@ -244,7 +244,7 @@ class GetModsByIdsListRequestBody implements ModelInterface, ArrayAccess, \JsonS
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('field_ids', $data ?? [], null);
+        $this->setIfExists('mod_ids', $data ?? [], null);
     }
 
     /**
@@ -290,28 +290,28 @@ class GetModsByIdsListRequestBody implements ModelInterface, ArrayAccess, \JsonS
 
 
     /**
-     * Gets field_ids
+     * Gets mod_ids
      *
      * @return int[]|null
      */
-    public function getFieldIds()
+    public function getModIds()
     {
-        return $this->container['field_ids'];
+        return $this->container['mod_ids'];
     }
 
     /**
-     * Sets field_ids
+     * Sets mod_ids
      *
-     * @param int[]|null $field_ids field_ids
+     * @param int[]|null $mod_ids mod_ids
      *
      * @return self
      */
-    public function setFieldIds($field_ids)
+    public function setModIds($mod_ids)
     {
-        if (is_null($field_ids)) {
-            throw new \InvalidArgumentException('non-nullable field_ids cannot be null');
+        if (is_null($mod_ids)) {
+            throw new \InvalidArgumentException('non-nullable mod_ids cannot be null');
         }
-        $this->container['field_ids'] = $field_ids;
+        $this->container['mod_ids'] = $mod_ids;
 
         return $this;
     }

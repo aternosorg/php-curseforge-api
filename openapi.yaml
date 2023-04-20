@@ -1409,7 +1409,7 @@ components:
     GetModFilesRequestBody:
       type: object
       properties:
-        fieldIds:
+        fileIds:
           type: array
           items:
             type: integer
@@ -1417,7 +1417,7 @@ components:
     GetModsByIdsListRequestBody:
       type: object
       properties:
-        fieldIds:
+        modIds:
           type: array
           items:
             type: integer
