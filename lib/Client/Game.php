@@ -63,7 +63,7 @@ class Game
 
     /**
      * @param int|null $classId The ID of the category class you want to query categories for (e.g. 5 for plugins or 6 for mods)
-     * @param bool|null $classesOnly only return category classes (e.g. plugins or mods). This option appears to be ignored right now. TODO: create ticket
+     * @param bool|null $classesOnly only return category classes (e.g. plugins or mods).
      * @return array
      * @throws ApiException
      */

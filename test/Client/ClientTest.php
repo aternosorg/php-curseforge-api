@@ -151,7 +151,6 @@ class ClientTest extends TestCase
 
     /**
      * Test getting categories
-     * This is known to be broken: I opened ticket #159826 about that.
      * @return void
      * @throws ApiException
      */

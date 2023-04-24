@@ -61,7 +61,7 @@ class CurseForgeAPIClient
      */
     public function __construct(string $apiToken, ?Configuration $configuration = null)
     {
-        $this->configuration = $configuration ?? (new Configuration())
+        $this->configuration = $configuration ?? (Configuration::getDefaultConfiguration())
             ->setUserAgent("php-curseforge-api/1.0.0");
         $this->setApiToken($apiToken);
     }
@@ -73,6 +73,8 @@ class CurseForgeAPIClient
     public function setConfiguration(Configuration $configuration): static
     {
         $this->configuration = $configuration;
+        $this->configuration->setBooleanFormatForQueryString(Configuration::BOOLEAN_FORMAT_STRING);
+
         $this->categories = new CategoriesApi(null, $this->configuration);
         $this->files = new FilesApi(null, $this->configuration);
         $this->fingerprints = new FingerprintsApi(null, $this->configuration);
@@ -176,7 +178,7 @@ class CurseForgeAPIClient
      * Get all categories and category classes for a game
      * @param int $gameId The ID of the game you want to query categories for (e.g. 432 for Minecraft)
      * @param int|null $classId The ID of the category class you want to query categories for (e.g. 5 for plugins or 6 for mods)
-     * @param bool|null $classesOnly only return category classes (e.g. plugins or mods). This option appears to be ignored right now. (Ticket #159826)
+     * @param bool|null $classesOnly only return category classes (e.g. plugins or mods).
      * @return Category[]
      * @throws ApiException
      */
