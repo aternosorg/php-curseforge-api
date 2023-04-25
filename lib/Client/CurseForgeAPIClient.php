@@ -30,7 +30,7 @@ use Aternos\CurseForgeApi\Model\MinecraftModLoaderIndex;
 use Aternos\CurseForgeApi\Model\MinecraftModLoaderVersion;
 
 /**
- * Class HangarAPIClient
+ * Class CurseForgeAPIClient
  *
  * @package Aternos\HangarApi\Client
  * @description This class is the main entry point for the hangar api. It provides methods to access all hangar api endpoints.
@@ -55,7 +55,7 @@ class CurseForgeAPIClient
     protected ModsApi $mods;
 
     /**
-     * HangarAPIClient constructor.
+     * CurseForgeAPIClient constructor.
      * @param string $apiToken API token used for authentication (required)
      * @param Configuration|null $configuration
      */
@@ -189,6 +189,24 @@ class CurseForgeAPIClient
     }
 
     /**
+     * Get a category by its ID
+     * @param int $gameId
+     * @param int $categoryId
+     * @return Category|null
+     * @throws ApiException
+     */
+    public function getCategory(int $gameId, int $categoryId): ?Category
+    {
+        foreach ($this->getCategories($gameId) as $category) {
+            if ($category->getData()->getId() === $categoryId) {
+                return $category;
+            }
+        }
+
+        return null;
+    }
+
+    /**
      * Search for mods
      * @param ModSearchOptions $options
      * @return PaginatedModList
@@ -276,7 +294,7 @@ class CurseForgeAPIClient
         return new PaginatedFilesList($this, $this->files->getModFiles(
             $options->getModId(),
             $options->getGameVersion(),
-            $options->getModLoaderType()->value,
+            $options->getModLoaderType()?->value,
             $options->getGameVersionTypeId(),
             $options->getOffset(),
             $options->getPageSize(),

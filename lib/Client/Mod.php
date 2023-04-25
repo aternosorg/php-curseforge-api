@@ -64,4 +64,48 @@ class Mod
     {
         return $this->client->getGame($this->mod->getGameId());
     }
+
+    /**
+     * Get the primary category of this mod
+     * @return Category|null
+     */
+    public function getPrimaryCategory(): ?Category
+    {
+        foreach ($this->mod->getCategories() as $category) {
+            if ($category->getId() === $this->mod->getPrimaryCategoryId()) {
+                return new Category($this->client, $category);
+            }
+        }
+        return null;
+    }
+
+    /**
+     * Get the category class of this mod
+     * @return Category
+     * @throws ApiException
+     */
+    public function getCategoryClass(): Category
+    {
+        return $this->client->getCategory($this->mod->getGameId(), $this->mod->getClassId());
+    }
+
+    /**
+     * Get the main file of this mod
+     * @return File
+     * @throws ApiException
+     */
+    public function getMainFile(): File
+    {
+        return $this->getFile($this->mod->getMainFileId());
+    }
+
+    /**
+     * @param int $fileId
+     * @return File
+     * @throws ApiException
+     */
+    public function getFile(int $fileId): File
+    {
+        return $this->client->getModFile($this->mod->getId(), $fileId);
+    }
 }

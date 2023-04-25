@@ -38,10 +38,10 @@ class File
 
     /**
      * Get the changelog of this file
-     * @return string|null
+     * @return string
      * @throws ApiException
      */
-    public function getChangelog(): ?string
+    public function getChangelog(): string
     {
         return $this->client->getModFileChangelog($this->file->getModId(), $this->file->getId());
     }
