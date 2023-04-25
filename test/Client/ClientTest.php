@@ -16,6 +16,14 @@ class ClientTest extends TestCase
 
     protected const MODS_CATEGORY_ID = 6;
 
+    protected const MCLOGS_MOD_ID = 420561;
+
+    protected const MCLOGS_PLUGIN_ID = 278568;
+
+    protected const MOTDGG_PLUGIN_ID = 715033;
+
+    protected const MCLOGS_PRIMARY_CATEGORY_ID = 435;
+
     /**
      * Setup before running any test cases
      */
@@ -213,6 +221,96 @@ class ClientTest extends TestCase
         foreach ($mods as $mod) {
             $this->assertEquals(static::MINECRAFT_GAME_ID, $mod->getData()->getGameId());
             $this->assertEquals(static::MODS_CATEGORY_ID, $mod->getData()->getClassId());
+        }
+    }
+
+    /**
+     * Test fetching a specific mod
+     * @return void
+     * @throws ApiException
+     */
+    public function testGetMod()
+    {
+        $mod = $this->apiClient->getMod(static::MCLOGS_MOD_ID);
+
+        $this->assertEquals(static::MCLOGS_MOD_ID, $mod->getData()->getId());
+        $this->assertEquals(static::MCLOGS_PRIMARY_CATEGORY_ID, $mod->getPrimaryCategory()->getData()->getId());
+    }
+
+    /**
+     * Test fetching multiple mods at once
+     * @return void
+     * @throws ApiException
+     */
+    public function testGetMods()
+    {
+        $ids = [static::MCLOGS_MOD_ID, static::MCLOGS_PLUGIN_ID, static::MOTDGG_PLUGIN_ID];
+        $mods = $this->apiClient->getMods($ids);
+        $this->assertSameSize($ids, $mods);
+        foreach ($ids as $id) {
+            $this->assertNotEmpty(array_filter($mods, fn ($mod) => $mod->getData()->getId() === $id));
+        }
+    }
+
+    /**
+     * Test fetching featured mods
+     * @return void
+     * @throws ApiException
+     */
+    public function testGetFeaturedMods()
+    {
+        $game = $this->apiClient->getGame(static::MINECRAFT_GAME_ID);
+        $featured = $game->getFeaturedMods();
+
+        $this->assertNotEmpty($featured->getFeatured());
+        $this->assertNotEmpty($featured->getRecentlyUpdated());
+        $this->assertNotEmpty($featured->getPopular());
+    }
+
+    /**
+     * Test fetching mod descriptions
+     * @return void
+     * @throws ApiException
+     */
+    public function testGetModDescription()
+    {
+        $mod = $this->apiClient->getMod(static::MCLOGS_MOD_ID);
+        $description = $mod->getDescription();
+        $this->assertNotNull($description);
+        $this->assertNotEmpty($description);
+    }
+
+    /**
+     * Test fetching a mods main file
+     * @return void
+     * @throws ApiException
+     */
+    public function testGetModFile()
+    {
+        $mod = $this->apiClient->getMod(static::MCLOGS_MOD_ID);
+
+        $file = $mod->getMainFile();
+        $this->assertEquals($mod->getData()->getMainFileId(), $file->getData()->getId());
+        $this->assertNotNull($file->getChangelog());
+        $this->assertTrue($mod->getData()->getAllowModDistribution());
+        $this->assertNotEmpty($this->apiClient->getModFileDownloadURL($mod->getData()->getId(), $file->getData()->getId()));
+    }
+
+    /**
+     * Test fetching files
+     * @return void
+     * @throws ApiException
+     */
+    public function testGetModFiles()
+    {
+        $mod = $this->apiClient->getMod(static::MCLOGS_MOD_ID);
+
+        $fileIds = array_map(fn ($file) => $file->getData()->getId(), $mod->getFiles()->getResults());
+        $this->assertNotEmpty($fileIds);
+        $files = $this->apiClient->getFiles($fileIds);
+        $this->assertSameSize($fileIds, $files);
+        foreach ($fileIds as $id) {
+            $this->assertNotEmpty(array_filter($files, fn ($file) => $file->getData()->getId() === $id));
         }
     }
 }
