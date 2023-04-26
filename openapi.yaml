@@ -657,7 +657,7 @@ paths:
       tags:
         - Fingerprints
       summary: Get Fingerprints Matches
-      description: Get mod files that match a list of fingerprints.
+      description: Get mod files that match a list of fingerprints (murmur2 hashes with seed 1).
       operationId: getFingerprintMatches
       requestBody:
         required: true
@@ -1477,6 +1477,7 @@ components:
       type: object
       properties:
         fingerprints:
+          description: list of murmur2 hashes with seed 1
           type: array
           items:
             type: integer

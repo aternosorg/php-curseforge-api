@@ -351,7 +351,7 @@ class CurseForgeAPIClient
 
     /**
      * Get files matching a list of fingerprints
-     * @param int[] $fingerprints
+     * @param int[] $fingerprints murmur2 hashes (seed: 1). Use {@see CursedFingerprintHelper} to calculate them
      * @param int|null $gameId only return files for this game
      * @return FingerprintMatchesResult
      * @throws ApiException
@@ -368,7 +368,7 @@ class CurseForgeAPIClient
 
     /**
      * Get mod files that match a list of fingerprints using fuzzy matching
-     * @param FolderFingerprint[] $fingerprints
+     * @param FolderFingerprint[] $fingerprints murmur2 hashes (seed: 1). Use {@see CursedFingerprintHelper} to calculate them
      * @param int|null $gameId only return files for this game
      * @return FingerprintFuzzyMatchResult
      * @throws ApiException
