@@ -125,13 +125,16 @@ class CursedFingerprintHelper
         $data = $this->remainingBytes . $data;
         $data = static::stripWhiteSpaces($data);
 
-        for ($l = strlen($data); $l >= 4; $l -= 4) {
-            $k = ord($data[0]) | ord($data[1]) << 8 | ord($data[2]) << 16 | ord($data[3]) << 24;
+        $length = strlen($data);
+        for ($index = 0; $index < $length - 3;) {
+            $k = 0;
+            for ($byte = 0; $byte < 4; $byte++) {
+                $k |= ord($data[$index++]) << ($byte * 8);
+            }
             $this->h = $this->mmix($this->h, $k);
-            $data = substr($data, 4); // TODO: stop copying all the time
         }
 
-        $this->remainingBytes = $data;
+        $this->remainingBytes = substr($data, $index);
     }
 
     /**
