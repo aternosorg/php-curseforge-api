@@ -302,7 +302,7 @@ class GetFingerprintMatchesRequestBody implements ModelInterface, ArrayAccess, \
     /**
      * Sets fingerprints
      *
-     * @param int[]|null $fingerprints fingerprints
+     * @param int[]|null $fingerprints list of murmur2 hashes with seed 1
      *
      * @return self
      */

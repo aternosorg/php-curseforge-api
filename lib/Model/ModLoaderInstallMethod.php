@@ -33,7 +33,7 @@ use \Aternos\CurseForgeApi\ObjectSerializer;
  * ModLoaderInstallMethod Class Doc Comment
  *
  * @category Class
- * @description ModLoaderInstallMethod Possible enum values:  * 1 &#x3D; ForgeInstaller  * 2 &#x3D; ForgeJarInstall  * 3 &#x3D; ForgeInstaller_v2
+ * @description ModLoaderInstallMethod Possible enum values:  * 1 &#x3D; ForgeInstaller  * 2 &#x3D; ForgeJarInstall  * 3 &#x3D; ForgeInstaller_v2  * 4 &#x3D; FabricInstaller
  * @package  Aternos\CurseForgeApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -49,6 +49,8 @@ class ModLoaderInstallMethod
 
     public const NUMBER_3 = 3;
 
+    public const NUMBER_4 = 4;
+
     /**
      * Gets allowable values of the enum
      * @return string[]
@@ -58,7 +60,8 @@ class ModLoaderInstallMethod
         return [
             self::NUMBER_1,
             self::NUMBER_2,
-            self::NUMBER_3
+            self::NUMBER_3,
+            self::NUMBER_4
         ];
     }
 }
