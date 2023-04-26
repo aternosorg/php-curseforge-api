@@ -5,6 +5,7 @@ namespace Aternos\CurseForgeApi\Test\Client;
 use Aternos\CurseForgeApi\ApiException;
 use Aternos\CurseForgeApi\Client\CurseForgeAPIClient;
 use Aternos\CurseForgeApi\Client\Options\ModSearch\ModSearchOptions;
+use Aternos\CurseForgeApi\Model\FingerprintMatch;
 use PHPUnit\Framework\TestCase;
 
 class ClientTest extends TestCase
@@ -311,6 +312,34 @@ class ClientTest extends TestCase
         $this->assertSameSize($fileIds, $files);
         foreach ($fileIds as $id) {
             $this->assertNotEmpty(array_filter($files, fn ($file) => $file->getData()->getId() === $id));
+        }
+    }
+
+    public function testGetFilesByFingerPrintMatches()
+    {
+        $fingerprints = [1949504940, 1177254054];
+        $fileIds = [3602226, 4096696];
+        $files = $this->apiClient->getFilesByFingerPrintMatches($fingerprints);
+
+        $this->assertSameSize($fingerprints, $files->getExactFingerprints());
+        $this->assertSameSize($fingerprints, $files->getExactMatches());
+        foreach ($fileIds as $id) {
+            $this->assertNotEmpty(array_filter($files->getExactMatches(),
+                fn (FingerprintMatch $file) => $file->getFile()->getId() === $id));
+        }
+    }
+
+    public function testGetFilesByFingerPrintMatchesForGame()
+    {
+        $fingerprints = [1949504940, 1177254054];
+        $fileIds = [3602226, 4096696];
+        $files = $this->apiClient->getFilesByFingerPrintMatches($fingerprints, static::MINECRAFT_GAME_ID);
+
+        $this->assertSameSize($fingerprints, $files->getExactFingerprints());
+        $this->assertSameSize($fingerprints, $files->getExactMatches());
+        foreach ($fileIds as $id) {
+            $this->assertNotEmpty(array_filter($files->getExactMatches(),
+                fn (FingerprintMatch $file) => $file->getFile()->getId() === $id));
         }
     }
 }
