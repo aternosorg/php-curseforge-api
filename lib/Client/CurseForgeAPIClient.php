@@ -32,7 +32,7 @@ use Aternos\CurseForgeApi\Model\MinecraftModLoaderVersion;
 /**
  * Class CurseForgeAPIClient
  *
- * @package Aternos\HangarApi\Client
+ * @package Aternos\CurseForgeApi\Client
  * @description This class is the main entry point for the hangar api. It provides methods to access all hangar api endpoints.
  */
 class CurseForgeAPIClient
