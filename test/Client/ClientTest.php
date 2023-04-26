@@ -5,6 +5,7 @@ namespace Aternos\CurseForgeApi\Test\Client;
 use Aternos\CurseForgeApi\ApiException;
 use Aternos\CurseForgeApi\Client\CurseForgeAPIClient;
 use Aternos\CurseForgeApi\Client\Options\ModSearch\ModSearchOptions;
+use Aternos\CurseForgeApi\Client\Options\ModSearch\SortOrder;
 use Aternos\CurseForgeApi\Model\FingerprintMatch;
 use PHPUnit\Framework\TestCase;
 
@@ -340,6 +341,36 @@ class ClientTest extends TestCase
         foreach ($fileIds as $id) {
             $this->assertNotEmpty(array_filter($files->getExactMatches(),
                 fn (FingerprintMatch $file) => $file->getFile()->getId() === $id));
+        }
+    }
+
+    /**
+     * Test fetching minecraft versions
+     * @return void
+     * @throws ApiException
+     */
+    public function testGetMinecraftVersions()
+    {
+        $versions = $this->apiClient->getMinecraftVersions(SortOrder::ASCENDING);
+        $this->assertNotEmpty($versions);
+
+        $reverseVersions = $this->apiClient->getMinecraftVersions(SortOrder::DESCENDING);
+        $this->assertNotEmpty($reverseVersions);
+
+        $this->assertEquals($versions, array_reverse($reverseVersions)); // BROKEN: ticket #160399
+    }
+
+    /**
+     * Test fetching specific minecraft versions
+     * @return void
+     * @throws ApiException
+     */
+    public function testGetMinecraftVersion()
+    {
+        foreach (["1.19", "1.16.5", "1.12.2"] as $versionString) {
+            $version = $this->apiClient->getMinecraftVersion($versionString);
+            $this->assertNotNull($version);
+            $this->assertEquals($versionString, $version->getVersionString());
         }
     }
 }
