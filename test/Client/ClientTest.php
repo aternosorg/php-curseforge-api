@@ -307,15 +307,20 @@ class ClientTest extends TestCase
     {
         $mod = $this->apiClient->getMod(static::MCLOGS_MOD_ID);
 
-        $fileIds = array_map(fn ($file) => $file->getData()->getId(), $mod->getFiles()->getResults());
+        $fileIds = array_map(fn($file) => $file->getData()->getId(), $mod->getFiles()->getResults());
         $this->assertNotEmpty($fileIds);
         $files = $this->apiClient->getFiles($fileIds);
         $this->assertSameSize($fileIds, $files);
         foreach ($fileIds as $id) {
-            $this->assertNotEmpty(array_filter($files, fn ($file) => $file->getData()->getId() === $id));
+            $this->assertNotEmpty(array_filter($files, fn($file) => $file->getData()->getId() === $id));
         }
     }
 
+    /**
+     * Test searching for files with fingerprints
+     * @return void
+     * @throws ApiException
+     */
     public function testGetFilesByFingerPrintMatches()
     {
         $fingerprints = [1949504940, 1177254054];
@@ -326,10 +331,15 @@ class ClientTest extends TestCase
         $this->assertSameSize($fingerprints, $files->getExactMatches());
         foreach ($fileIds as $id) {
             $this->assertNotEmpty(array_filter($files->getExactMatches(),
-                fn (FingerprintMatch $file) => $file->getFile()->getId() === $id));
+                fn(FingerprintMatch $file) => $file->getFile()->getId() === $id));
         }
     }
 
+    /**
+     * Test searching for files with fingerprints in a specific game
+     * @return void
+     * @throws ApiException
+     */
     public function testGetFilesByFingerPrintMatchesForGame()
     {
         $fingerprints = [1949504940, 1177254054];
@@ -371,6 +381,32 @@ class ClientTest extends TestCase
             $version = $this->apiClient->getMinecraftVersion($versionString);
             $this->assertNotNull($version);
             $this->assertEquals($versionString, $version->getVersionString());
+        }
+    }
+
+    /**
+     * Test fetching minecraft mod loaders
+     * @return void
+     * @throws ApiException
+     */
+    public function testGetMinecraftModLoaders()
+    {
+        foreach ([null, "1.16.5", "1.12.2"] as $version) {
+            $modLoaders = $this->apiClient->getMinecraftModLoaders($version);
+            $this->assertNotEmpty($modLoaders);
+        }
+    }
+
+    /**
+     * Test fetching specific minecraft mod loaders
+     * @return void
+     * @throws ApiException
+     */
+    public function testGetMinecraftModLoader()
+    {
+        foreach (["forge-36.2.9", "forge-40.2.2", "forge-45.0.9", "fabric-0.14.9-1.19.4"] as $name) {
+            $modLoader = $this->apiClient->getMinecraftModLoader($name);
+            $this->assertNotNull($modLoader);
         }
     }
 }
