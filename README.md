@@ -222,4 +222,20 @@ foreach ($files as $file) {
 ```
 
 ## Minecraft
-TODO
+There are a few Minecraft specific API endpoints as well:
+
+```php
+// Get Minecraft versions
+$versions = $client->getMinecraftVersions();
+
+// Get a specific version
+$version = $client->getMinecraftVersion("1.19.2");
+
+// Get mod loader versions
+$modLoaders = $client->getMinecraftModLoaders();
+$modLoaders = $client->getMinecraftModLoaders("1.19.2"); // optionally provide a Minecraft version
+$modLoaders = $client->getMinecraftModLoaders(null, true); // show all loaders, including fabric
+
+// get more information about a mod loader version
+$version = $client->getMinecraftModLoader("forge-43.2.8");
+```
