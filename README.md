@@ -83,7 +83,7 @@ A Game on CurseForge has category classes and categories.
 Category classes are like "Modpacks" or "Plugins" and categories are like "World Generation" or "Chat".
 You can fetch them like this:
 ```php
-$categoryClasses = $client->getGameCategories(432);
+$categoryClasses = $client->getCategories(432);
 // or
 $categoryClasses = $game->getCategories();
 ```
@@ -91,23 +91,135 @@ Note that this will return both, category classes AND categories.
 
 If you want to get only the category classes you can set the `onlyClasses` parameter to `true`:
 ```php
-$categoryClasses = $client->getGameCategories(432, null, true);
+$categoryClasses = $client->getCategories(432, null, true);
 // or
 $categoryClasses = $game->getCategories(null, true);
 ```
 
 You can fetch categories in a class using the classId parameter:
 ```php
-$categories = $client->getGameCategories(432, 6);
+$categories = $client->getCategories(432, 6);
 // or
 $categories = $game->getCategories(6);
 ```
 
 ## Mods
-TODO
+You can search mods like this:
+```php
+$options = new ModSearchOptions(432); // the game ID is required
+$mods = $this->apiClient->searchMods($options);
+// or
+$mods = $game->searchMods(); // options are optional here
+```
+
+You can also get a list of featured mods for a game:
+```php
+$mods = $client->getFeaturedMods(432);
+// or
+$mods = $game->getFeaturedMods();
+
+$featured = $mods->getFeatured();
+$popular = $mods->getPopular();
+$recentlyUpdated = $mods->getRecentlyUpdated();
+```
+
+You can fetch individual mods like this:
+```php
+$mod = $client->getMod(420561);
+```
+or in bulk
+```php
+$mods = $client->getMods([420561, 278568, 715033]);
+```
+
+You can also fetch the HTML for mod descriptions:
+```php
+$description = $mod->getDescription();
+```
+
+### Mod Files
+To fetch mod files use the getFiles() method:
+```php
+$files = $mod->getFiles();
+```
+It optionally takes a ModFilesOptions object as a parameter:
+```php
+$options = new ModFilesOptions($mod->getData()->getId());
+$options->setGameVersion("1.19.2");
+
+use \Aternos\CurseForgeApi\Client\Options\ModSearch\ModLoaderType;
+$options->setModLoaderType(ModLoaderType::FORGE);
+```
+
+There also is a method in the client for this, so you don't have to fetch the mod first:
+```php
+$options = new ModFilesOptions(420561);
+$options->setGameVersion("1.19.2");
+$options->setModLoaderType(ModLoaderType::FORGE);
+$files = $client->getModFiles($options);
+```
+In this case the options are not optional as the mod id is required.
+
+Just like with mods you can fetch files individually or in bulk:
+```php
+$file = $client->getModFile(420561, 3787455);
+// or
+$files = $client->getModFiles([3787455, 3787456]);
+```
+Note that the bulk endpoint doesn't require a mod id.
+
+#### File Download URLs
+You can get the download URL for a file like this:
+```php
+$url = $file->getData()->getDownloadUrl();
+// or if you don't already have the file object
+$url = $client->getModFileDownloadUrl(420561, 3787455);
+```
+However, this will be null (in the first example) or a 403 error (in the second example)
+if the mod does not allow [project distribution](https://support.curseforge.com/en/support/solutions/articles/9000207877).
 
 ## Fingerprints
-TODO
+You can search files on CurseForge by their fingerprint. This can for example be used to find the Download source
+for a mod that's installed on a server. CurseForge uses a variation of Murmur2 hashing with the seed 1 for these fingerprints.
+
+### Obtaining fingerprints
+From the API:
+```php
+$file = $client->getModFile(420561, 3787455);
+$fingerprint = $file->getFileFingerprint();
+```
+
+From a raw string using our CursedFingerprintHelper class:
+```php
+$fingerprint = CursedFingerprintHelper::getFingerprint("foo");
+```
+
+From a local file using our helper class:
+```php
+$fingerprint = CursedFingerprintHelper::getFingerprintFromFile("/path/to/file.jar");
+```
+This will read the file in chunks and calculate the fingerprint from that.
+
+From any source using our helper class:
+```php
+$helper = new CursedFingerprintHelper($length);
+
+while ($source->hasNextChunk()) {
+    $helper->nextChunk($source->getNextChunk());
+}
+
+$fingerprint = $helper->finalize();
+```
+Note that the length field has to exclude whitespaces (\x09, \x0a, \x0d, \x20).
+You can use the `stripWhiteSpcaes` or `isWhiteSpaceCharacter` methods to do that.
+
+### Obtaining matches
+```php
+$files = $client->getFilesByFingerPrintMatches([1949504940, 1177254054]);
+foreach ($files as $file) {
+    echo $file->getFile()->getDisplayName() . PHP_EOL;
+}
+```
 
 ## Minecraft
 TODO
