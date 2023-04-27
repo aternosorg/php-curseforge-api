@@ -38,7 +38,7 @@ class ClientTest extends TestCase
      */
     public function setUp(): void
     {
-        $this->apiClient = new CurseForgeAPIClient(getenv("CURSEFORGE_API_TOKEN"));
+        $this->apiClient = new CurseForgeAPIClient(getenv("CURSEFORGE_API_KEY"));
         $this->apiClient->setUserAgent("aternos/php-curseforge-api@1.0.0 (contact@aternos.org)");
     }
 
