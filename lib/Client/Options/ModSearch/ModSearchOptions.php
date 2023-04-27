@@ -47,10 +47,12 @@ class ModSearchOptions
 
     /**
      * @param int $gameId
+     * @return $this
      */
-    public function setGameId(int $gameId): void
+    public function setGameId(int $gameId): static
     {
         $this->gameId = $gameId;
+        return $this;
     }
 
     /**
@@ -63,10 +65,12 @@ class ModSearchOptions
 
     /**
      * @param int|null $classId
+     * @return $this
      */
-    public function setClassId(?int $classId): void
+    public function setClassId(?int $classId): static
     {
         $this->classId = $classId;
+        return $this;
     }
 
     /**
@@ -79,10 +83,12 @@ class ModSearchOptions
 
     /**
      * @param int|null $categoryId
+     * @return $this
      */
-    public function setCategoryId(?int $categoryId): void
+    public function setCategoryId(?int $categoryId): static
     {
         $this->categoryId = $categoryId;
+        return $this;
     }
 
     /**
@@ -95,10 +101,12 @@ class ModSearchOptions
 
     /**
      * @param string|null $gameVersion
+     * @return $this
      */
-    public function setGameVersion(?string $gameVersion): void
+    public function setGameVersion(?string $gameVersion): static
     {
         $this->gameVersion = $gameVersion;
+        return $this;
     }
 
     /**
@@ -111,10 +119,12 @@ class ModSearchOptions
 
     /**
      * @param string|null $searchFilter
+     * @return $this
      */
-    public function setSearchFilter(?string $searchFilter): void
+    public function setSearchFilter(?string $searchFilter): static
     {
         $this->searchFilter = $searchFilter;
+        return $this;
     }
 
     /**
@@ -127,10 +137,12 @@ class ModSearchOptions
 
     /**
      * @param string|null $sortFiled
+     * @return $this
      */
-    public function setSortFiled(?string $sortFiled): void
+    public function setSortFiled(?string $sortFiled): static
     {
         $this->sortFiled = $sortFiled;
+        return $this;
     }
 
     /**
@@ -143,10 +155,12 @@ class ModSearchOptions
 
     /**
      * @param string|null $sortOrder
+     * @return $this
      */
-    public function setSortOrder(?string $sortOrder): void
+    public function setSortOrder(?string $sortOrder): static
     {
         $this->sortOrder = $sortOrder;
+        return $this;
     }
 
     /**
@@ -159,10 +173,12 @@ class ModSearchOptions
 
     /**
      * @param int|null $modLoaderType
+     * @return $this
      */
-    public function setModLoaderType(?int $modLoaderType): void
+    public function setModLoaderType(?int $modLoaderType): static
     {
         $this->modLoaderType = $modLoaderType;
+        return $this;
     }
 
     /**
@@ -175,10 +191,12 @@ class ModSearchOptions
 
     /**
      * @param int|null $gameVersionTypeId
+     * @return $this
      */
-    public function setGameVersionTypeId(?int $gameVersionTypeId): void
+    public function setGameVersionTypeId(?int $gameVersionTypeId): static
     {
         $this->gameVersionTypeId = $gameVersionTypeId;
+        return $this;
     }
 
     /**
@@ -191,10 +209,12 @@ class ModSearchOptions
 
     /**
      * @param int|null $authorId
+     * @return $this
      */
-    public function setAuthorId(?int $authorId): void
+    public function setAuthorId(?int $authorId): static
     {
         $this->authorId = $authorId;
+        return $this;
     }
 
     /**
@@ -207,10 +227,12 @@ class ModSearchOptions
 
     /**
      * @param string|null $slug
+     * @return $this
      */
-    public function setSlug(?string $slug): void
+    public function setSlug(?string $slug): static
     {
         $this->slug = $slug;
+        return $this;
     }
 
     /**
@@ -223,10 +245,12 @@ class ModSearchOptions
 
     /**
      * @param int $offset
+     * @return $this
      */
-    public function setOffset(int $offset): void
+    public function setOffset(int $offset): static
     {
         $this->offset = $offset;
+        return $this;
     }
 
     /**
@@ -239,9 +263,11 @@ class ModSearchOptions
 
     /**
      * @param int $pageSize
+     * @return $this
      */
-    public function setPageSize(int $pageSize): void
+    public function setPageSize(int $pageSize): static
     {
         $this->pageSize = $pageSize;
+        return $this;
     }
 }

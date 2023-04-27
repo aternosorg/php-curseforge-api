@@ -27,10 +27,12 @@ class ModFilesOptions
 
     /**
      * @param int $modId
+     * @return $this
      */
-    public function setModId(int $modId): void
+    public function setModId(int $modId): static
     {
         $this->modId = $modId;
+        return $this;
     }
 
     /**
@@ -43,10 +45,12 @@ class ModFilesOptions
 
     /**
      * @param string|null $gameVersion
+     * @return $this
      */
-    public function setGameVersion(?string $gameVersion): void
+    public function setGameVersion(?string $gameVersion): static
     {
         $this->gameVersion = $gameVersion;
+        return $this;
     }
 
     /**
@@ -59,10 +63,12 @@ class ModFilesOptions
 
     /**
      * @param ModLoaderType|null $modLoaderType
+     * @return $this
      */
-    public function setModLoaderType(?ModLoaderType $modLoaderType): void
+    public function setModLoaderType(?ModLoaderType $modLoaderType): static
     {
         $this->modLoaderType = $modLoaderType;
+        return $this;
     }
 
     /**
@@ -75,10 +81,12 @@ class ModFilesOptions
 
     /**
      * @param int|null $gameVersionTypeId
+     * @return $this
      */
-    public function setGameVersionTypeId(?int $gameVersionTypeId): void
+    public function setGameVersionTypeId(?int $gameVersionTypeId): static
     {
         $this->gameVersionTypeId = $gameVersionTypeId;
+        return $this;
     }
 
     /**
@@ -91,10 +99,12 @@ class ModFilesOptions
 
     /**
      * @param int $offset
+     * @return $this
      */
-    public function setOffset(int $offset): void
+    public function setOffset(int $offset): static
     {
         $this->offset = $offset;
+        return $this;
     }
 
     /**
@@ -107,9 +117,11 @@ class ModFilesOptions
 
     /**
      * @param int $pageSize
+     * @return $this
      */
-    public function setPageSize(int $pageSize): void
+    public function setPageSize(int $pageSize): static
     {
         $this->pageSize = $pageSize;
+        return $this;
     }
 }
