@@ -78,6 +78,8 @@ class File implements ModelInterface, ArrayAccess, \JsonSerializable
         'alternate_file_id' => 'int',
         'is_server_pack' => 'bool',
         'server_pack_file_id' => 'int',
+        'is_early_access_content' => 'bool',
+        'early_access_end_date' => '\DateTime',
         'file_fingerprint' => 'int',
         'modules' => '\Aternos\CurseForgeApi\Model\FileModule[]'
     ];
@@ -111,6 +113,8 @@ class File implements ModelInterface, ArrayAccess, \JsonSerializable
         'alternate_file_id' => 'int32',
         'is_server_pack' => null,
         'server_pack_file_id' => 'int32',
+        'is_early_access_content' => null,
+        'early_access_end_date' => 'date-time',
         'file_fingerprint' => 'int64',
         'modules' => null
     ];
@@ -142,6 +146,8 @@ class File implements ModelInterface, ArrayAccess, \JsonSerializable
 		'alternate_file_id' => true,
 		'is_server_pack' => true,
 		'server_pack_file_id' => true,
+		'is_early_access_content' => true,
+		'early_access_end_date' => true,
 		'file_fingerprint' => false,
 		'modules' => false
     ];
@@ -253,6 +259,8 @@ class File implements ModelInterface, ArrayAccess, \JsonSerializable
         'alternate_file_id' => 'alternateFileId',
         'is_server_pack' => 'isServerPack',
         'server_pack_file_id' => 'serverPackFileId',
+        'is_early_access_content' => 'isEarlyAccessContent',
+        'early_access_end_date' => 'earlyAccessEndDate',
         'file_fingerprint' => 'fileFingerprint',
         'modules' => 'modules'
     ];
@@ -284,6 +292,8 @@ class File implements ModelInterface, ArrayAccess, \JsonSerializable
         'alternate_file_id' => 'setAlternateFileId',
         'is_server_pack' => 'setIsServerPack',
         'server_pack_file_id' => 'setServerPackFileId',
+        'is_early_access_content' => 'setIsEarlyAccessContent',
+        'early_access_end_date' => 'setEarlyAccessEndDate',
         'file_fingerprint' => 'setFileFingerprint',
         'modules' => 'setModules'
     ];
@@ -315,6 +325,8 @@ class File implements ModelInterface, ArrayAccess, \JsonSerializable
         'alternate_file_id' => 'getAlternateFileId',
         'is_server_pack' => 'getIsServerPack',
         'server_pack_file_id' => 'getServerPackFileId',
+        'is_early_access_content' => 'getIsEarlyAccessContent',
+        'early_access_end_date' => 'getEarlyAccessEndDate',
         'file_fingerprint' => 'getFileFingerprint',
         'modules' => 'getModules'
     ];
@@ -397,6 +409,8 @@ class File implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('alternate_file_id', $data ?? [], null);
         $this->setIfExists('is_server_pack', $data ?? [], null);
         $this->setIfExists('server_pack_file_id', $data ?? [], null);
+        $this->setIfExists('is_early_access_content', $data ?? [], null);
+        $this->setIfExists('early_access_end_date', $data ?? [], null);
         $this->setIfExists('file_fingerprint', $data ?? [], null);
         $this->setIfExists('modules', $data ?? [], null);
     }
@@ -1041,6 +1055,74 @@ class File implements ModelInterface, ArrayAccess, \JsonSerializable
             }
         }
         $this->container['server_pack_file_id'] = $server_pack_file_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets is_early_access_content
+     *
+     * @return bool|null
+     */
+    public function getIsEarlyAccessContent()
+    {
+        return $this->container['is_early_access_content'];
+    }
+
+    /**
+     * Sets is_early_access_content
+     *
+     * @param bool|null $is_early_access_content is_early_access_content
+     *
+     * @return self
+     */
+    public function setIsEarlyAccessContent($is_early_access_content)
+    {
+        if (is_null($is_early_access_content)) {
+            array_push($this->openAPINullablesSetToNull, 'is_early_access_content');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('is_early_access_content', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['is_early_access_content'] = $is_early_access_content;
+
+        return $this;
+    }
+
+    /**
+     * Gets early_access_end_date
+     *
+     * @return \DateTime|null
+     */
+    public function getEarlyAccessEndDate()
+    {
+        return $this->container['early_access_end_date'];
+    }
+
+    /**
+     * Sets early_access_end_date
+     *
+     * @param \DateTime|null $early_access_end_date early_access_end_date
+     *
+     * @return self
+     */
+    public function setEarlyAccessEndDate($early_access_end_date)
+    {
+        if (is_null($early_access_end_date)) {
+            array_push($this->openAPINullablesSetToNull, 'early_access_end_date');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('early_access_end_date', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['early_access_end_date'] = $early_access_end_date;
 
         return $this;
     }

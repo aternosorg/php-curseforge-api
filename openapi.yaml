@@ -1065,6 +1065,13 @@ components:
           type: integer
           format: int32
           nullable: true
+        isEarlyAccessContent:
+          type: boolean
+          nullable: true
+        earlyAccessEndDate:
+          type: string
+          format: date-time
+          nullable: true
         fileFingerprint:
           type: integer
           format: int64
