@@ -28,6 +28,7 @@ use Aternos\CurseForgeApi\Model\GetModsByIdsListRequestBody;
 use Aternos\CurseForgeApi\Model\MinecraftGameVersion;
 use Aternos\CurseForgeApi\Model\MinecraftModLoaderIndex;
 use Aternos\CurseForgeApi\Model\MinecraftModLoaderVersion;
+use GuzzleHttp\ClientInterface;
 
 /**
  * Class CurseForgeAPIClient
@@ -37,6 +38,7 @@ use Aternos\CurseForgeApi\Model\MinecraftModLoaderVersion;
  */
 class CurseForgeAPIClient
 {
+    protected ?ClientInterface $httpClient;
 
     protected Configuration $configuration;
 
@@ -58,9 +60,11 @@ class CurseForgeAPIClient
      * CurseForgeAPIClient constructor.
      * @param string $apiToken API token used for authentication (required)
      * @param Configuration|null $configuration
+     * @param ClientInterface|null $httpClient
      */
-    public function __construct(string $apiToken, ?Configuration $configuration = null)
+    public function __construct(string $apiToken, ?Configuration $configuration = null, ClientInterface $httpClient = null)
     {
+        $this->httpClient = $httpClient;
         $this->configuration = $configuration ?? (Configuration::getDefaultConfiguration())
             ->setUserAgent("php-curseforge-api/1.0.0");
         $this->setApiToken($apiToken);
@@ -75,12 +79,12 @@ class CurseForgeAPIClient
         $this->configuration = $configuration;
         $this->configuration->setBooleanFormatForQueryString(Configuration::BOOLEAN_FORMAT_STRING);
 
-        $this->categories = new CategoriesApi(null, $this->configuration);
-        $this->files = new FilesApi(null, $this->configuration);
-        $this->fingerprints = new FingerprintsApi(null, $this->configuration);
-        $this->games = new GamesApi(null, $this->configuration);
-        $this->minecraft = new MinecraftApi(null, $this->configuration);
-        $this->mods = new ModsApi(null, $this->configuration);
+        $this->categories = new CategoriesApi($this->httpClient, $this->configuration);
+        $this->files = new FilesApi($this->httpClient, $this->configuration);
+        $this->fingerprints = new FingerprintsApi($this->httpClient, $this->configuration);
+        $this->games = new GamesApi($this->httpClient, $this->configuration);
+        $this->minecraft = new MinecraftApi($this->httpClient, $this->configuration);
+        $this->mods = new ModsApi($this->httpClient, $this->configuration);
         return $this;
     }
 
@@ -105,6 +109,18 @@ class CurseForgeAPIClient
     {
         $this->apiToken = $apiKey;
         $this->configuration->setApiKey("x-api-key", $apiKey);
+        return $this->setConfiguration($this->configuration);
+    }
+
+    /**
+     * Set the HTTP client used for all requests.
+     * When null, the default HTTP client from Guzzle will be used.
+     * @param ClientInterface|null $httpClient
+     * @return $this
+     */
+    public function setHttpClient(?ClientInterface $httpClient): static
+    {
+        $this->httpClient = $httpClient;
         return $this->setConfiguration($this->configuration);
     }
 
