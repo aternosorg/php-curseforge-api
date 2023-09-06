@@ -32,6 +32,6 @@
         "psr-4": { "Aternos\\CurseForgeApi\\" : "lib/" }
     },
     "autoload-dev": {
-        "psr-4": { "Aternos\\CurseForgeApi\\Test\\" : "test/" }
+        "psr-4": { "Aternos\\CurseForgeApi\\Tests\\" : "tests/" }
     }
 }

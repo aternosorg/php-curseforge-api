@@ -19,6 +19,6 @@ class FingerprintHelperTest extends TestCase
     }
 
     public function testFile() {
-        $this->assertEquals(3069266640, CursedFingerprintHelper::getFingerprintFromFile( __DIR__ . "/test.txt"));
+        $this->assertEquals(3069266640, CursedFingerprintHelper::getFingerprintFromFile(__DIR__ . "/test.txt"));
     }
 }
