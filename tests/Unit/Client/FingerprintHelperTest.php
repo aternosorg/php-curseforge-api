@@ -1,6 +1,6 @@
 <?php
 
-namespace Aternos\CurseForgeApi\Test\Client;
+namespace Aternos\CurseForgeApi\Tests\Unit\Client;
 
 use Aternos\CurseForgeApi\Client\CursedFingerprintHelper;
 use PHPUnit\Framework\TestCase;
@@ -19,6 +19,6 @@ class FingerprintHelperTest extends TestCase
     }
 
     public function testFile() {
-        $this->assertEquals(3069266640, CursedFingerprintHelper::getFingerprintFromFile(__DIR__ . "/test.txt"));
+        $this->assertEquals(3069266640, CursedFingerprintHelper::getFingerprintFromFile(__DIR__ . "/Fixtures/test.txt"));
     }
 }
