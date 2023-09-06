@@ -26,7 +26,7 @@
  * Please update the test case below to test the model.
  */
 
-namespace Aternos\CurseForgeApi\Test\Model;
+namespace Aternos\CurseForgeApi\Tests\Integration\Model;
 
 use PHPUnit\Framework\TestCase;
 

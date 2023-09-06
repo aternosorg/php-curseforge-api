@@ -1,6 +1,6 @@
 <?php
 
-namespace Aternos\CurseForgeApi\Test\Client;
+namespace Aternos\CurseForgeApi\Tests\Integration\Client;
 
 use Aternos\CurseForgeApi\ApiException;
 use Aternos\CurseForgeApi\Client\CurseForgeAPIClient;

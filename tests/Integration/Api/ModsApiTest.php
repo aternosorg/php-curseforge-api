@@ -25,7 +25,7 @@
  * Please update the test case below to test the endpoint.
  */
 
-namespace Aternos\CurseForgeApi\Test\Api;
+namespace Aternos\CurseForgeApi\Tests\Integration\Api;
 
 use \Aternos\CurseForgeApi\Configuration;
 use \Aternos\CurseForgeApi\ApiException;
