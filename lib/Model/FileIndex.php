@@ -408,7 +408,7 @@ class FileIndex implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets release_type
      *
-     * @return \Aternos\CurseForgeApi\Model\FileReleaseType|null
+     * @return int|null
      */
     public function getReleaseType()
     {
@@ -418,7 +418,7 @@ class FileIndex implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets release_type
      *
-     * @param \Aternos\CurseForgeApi\Model\FileReleaseType|null $release_type release_type
+     * @param int|null $release_type release_type
      *
      * @return self
      */
