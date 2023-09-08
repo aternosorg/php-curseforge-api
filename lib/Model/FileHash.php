@@ -326,7 +326,8 @@ class FileHash implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets algo
      *
-     * @return \Aternos\CurseForgeApi\Model\HashAlgo|null
+     * @see HashAlgo
+     * @return int|null
      */
     public function getAlgo()
     {
@@ -336,7 +337,8 @@ class FileHash implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets algo
      *
-     * @param \Aternos\CurseForgeApi\Model\HashAlgo|null $algo algo
+     * @see HashAlgo
+     * @param int|null $algo algo
      *
      * @return self
      */

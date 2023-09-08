@@ -598,7 +598,8 @@ class MinecraftGameVersion implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Gets game_version_type_status
      *
-     * @return \Aternos\CurseForgeApi\Model\GameVersionTypeStatus|null
+     * @see GameVersionTypeStatus
+     * @return int|null
      */
     public function getGameVersionTypeStatus()
     {
@@ -608,7 +609,8 @@ class MinecraftGameVersion implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets game_version_type_status
      *
-     * @param \Aternos\CurseForgeApi\Model\GameVersionTypeStatus|null $game_version_type_status game_version_type_status
+     * @see GameVersionTypeStatus
+     * @param int|null $game_version_type_status game_version_type_status
      *
      * @return self
      */

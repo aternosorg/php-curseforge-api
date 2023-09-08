@@ -462,7 +462,8 @@ class MinecraftModLoaderIndex implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Gets type
      *
-     * @return \Aternos\CurseForgeApi\Model\ModLoaderType|null
+     * @see ModLoaderType
+     * @return int|null
      */
     public function getType()
     {
@@ -472,7 +473,8 @@ class MinecraftModLoaderIndex implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets type
      *
-     * @param \Aternos\CurseForgeApi\Model\ModLoaderType|null $type type
+     * @see ModLoaderType
+     * @param int|null $type type
      *
      * @return self
      */

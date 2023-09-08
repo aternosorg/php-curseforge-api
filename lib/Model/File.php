@@ -622,6 +622,7 @@ class File implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets release_type
      *
+     * @see FileReleaseType
      * @return int|null
      */
     public function getReleaseType()
@@ -632,6 +633,7 @@ class File implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets release_type
      *
+     * @see FileReleaseType
      * @param int|null $release_type release_type
      *
      * @return self

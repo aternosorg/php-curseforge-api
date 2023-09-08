@@ -1352,7 +1352,7 @@ class FilesApi
      *
      * @param  int $mod_id The mod id the files belong to (required)
      * @param  string $game_version Filter by game version string (optional)
-     * @param  ModLoaderType $mod_loader_type ModLoaderType enumeration Filter only files associated to a given modloader (Forge, Fabric ...). (optional)
+     * @param  int $mod_loader_type ModLoaderType enumeration Filter only files associated to a given modloader (Forge, Fabric ...). (optional)
      * @param  int $game_version_type_id Filter only files that are tagged with versions of the given gameVersionTypeId (optional)
      * @param  int $index A zero based index of the first item to include in the response, the limit is: (index + pageSize &lt;&#x3D; 10,000). (optional)
      * @param  int $page_size The number of items to include in the response, the default/maximum value is 50. (optional)
@@ -1375,7 +1375,7 @@ class FilesApi
      *
      * @param  int $mod_id The mod id the files belong to (required)
      * @param  string $game_version Filter by game version string (optional)
-     * @param  ModLoaderType $mod_loader_type ModLoaderType enumeration Filter only files associated to a given modloader (Forge, Fabric ...). (optional)
+     * @param  int $mod_loader_type ModLoaderType enumeration Filter only files associated to a given modloader (Forge, Fabric ...). (optional)
      * @param  int $game_version_type_id Filter only files that are tagged with versions of the given gameVersionTypeId (optional)
      * @param  int $index A zero based index of the first item to include in the response, the limit is: (index + pageSize &lt;&#x3D; 10,000). (optional)
      * @param  int $page_size The number of items to include in the response, the default/maximum value is 50. (optional)
@@ -1480,7 +1480,7 @@ class FilesApi
      *
      * @param  int $mod_id The mod id the files belong to (required)
      * @param  string $game_version Filter by game version string (optional)
-     * @param  ModLoaderType $mod_loader_type ModLoaderType enumeration Filter only files associated to a given modloader (Forge, Fabric ...). (optional)
+     * @param  int $mod_loader_type ModLoaderType enumeration Filter only files associated to a given modloader (Forge, Fabric ...). (optional)
      * @param  int $game_version_type_id Filter only files that are tagged with versions of the given gameVersionTypeId (optional)
      * @param  int $index A zero based index of the first item to include in the response, the limit is: (index + pageSize &lt;&#x3D; 10,000). (optional)
      * @param  int $page_size The number of items to include in the response, the default/maximum value is 50. (optional)
@@ -1506,7 +1506,7 @@ class FilesApi
      *
      * @param  int $mod_id The mod id the files belong to (required)
      * @param  string $game_version Filter by game version string (optional)
-     * @param  ModLoaderType $mod_loader_type ModLoaderType enumeration Filter only files associated to a given modloader (Forge, Fabric ...). (optional)
+     * @param  int $mod_loader_type ModLoaderType enumeration Filter only files associated to a given modloader (Forge, Fabric ...). (optional)
      * @param  int $game_version_type_id Filter only files that are tagged with versions of the given gameVersionTypeId (optional)
      * @param  int $index A zero based index of the first item to include in the response, the limit is: (index + pageSize &lt;&#x3D; 10,000). (optional)
      * @param  int $page_size The number of items to include in the response, the default/maximum value is 50. (optional)
@@ -1561,7 +1561,7 @@ class FilesApi
      *
      * @param  int $mod_id The mod id the files belong to (required)
      * @param  string $game_version Filter by game version string (optional)
-     * @param  ModLoaderType $mod_loader_type ModLoaderType enumeration Filter only files associated to a given modloader (Forge, Fabric ...). (optional)
+     * @param  int $mod_loader_type ModLoaderType enumeration Filter only files associated to a given modloader (Forge, Fabric ...). (optional)
      * @param  int $game_version_type_id Filter only files that are tagged with versions of the given gameVersionTypeId (optional)
      * @param  int $index A zero based index of the first item to include in the response, the limit is: (index + pageSize &lt;&#x3D; 10,000). (optional)
      * @param  int $page_size The number of items to include in the response, the default/maximum value is 50. (optional)

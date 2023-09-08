@@ -408,6 +408,7 @@ class FileIndex implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets release_type
      *
+     * @see FileReleaseType
      * @return int|null
      */
     public function getReleaseType()
@@ -418,6 +419,7 @@ class FileIndex implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets release_type
      *
+     * @see FileReleaseType
      * @param int|null $release_type release_type
      *
      * @return self
@@ -469,7 +471,8 @@ class FileIndex implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets mod_loader
      *
-     * @return \Aternos\CurseForgeApi\Model\ModLoaderType|null
+     * @see ModLoaderType
+     * @return int|null
      */
     public function getModLoader()
     {
@@ -479,7 +482,8 @@ class FileIndex implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets mod_loader
      *
-     * @param \Aternos\CurseForgeApi\Model\ModLoaderType|null $mod_loader mod_loader
+     * @see ModLoaderType
+     * @param int|null $mod_loader mod_loader
      *
      * @return self
      */

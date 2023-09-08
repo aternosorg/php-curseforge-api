@@ -609,7 +609,8 @@ class MinecraftModLoaderVersion implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Gets type
      *
-     * @return \Aternos\CurseForgeApi\Model\ModLoaderType|null
+     * @see ModLoaderType
+     * @return int|null
      */
     public function getType()
     {
@@ -619,7 +620,8 @@ class MinecraftModLoaderVersion implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets type
      *
-     * @param \Aternos\CurseForgeApi\Model\ModLoaderType|null $type type
+     * @see ModLoaderType
+     * @param int|null $type type
      *
      * @return self
      */
@@ -690,7 +692,8 @@ class MinecraftModLoaderVersion implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Gets install_method
      *
-     * @return \Aternos\CurseForgeApi\Model\ModLoaderInstallMethod|null
+     * @see ModLoaderInstallMethod
+     * @return int|null
      */
     public function getInstallMethod()
     {
@@ -700,7 +703,8 @@ class MinecraftModLoaderVersion implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets install_method
      *
-     * @param \Aternos\CurseForgeApi\Model\ModLoaderInstallMethod|null $install_method install_method
+     * @see ModLoaderInstallMethod
+     * @param int|null $install_method install_method
      *
      * @return self
      */
@@ -1041,7 +1045,8 @@ class MinecraftModLoaderVersion implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Gets mod_loader_game_version_type_status
      *
-     * @return \Aternos\CurseForgeApi\Model\GameVersionTypeStatus|null
+     * @see GameVersionTypeStatus
+     * @return int|null
      */
     public function getModLoaderGameVersionTypeStatus()
     {
@@ -1051,7 +1056,8 @@ class MinecraftModLoaderVersion implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets mod_loader_game_version_type_status
      *
-     * @param \Aternos\CurseForgeApi\Model\GameVersionTypeStatus|null $mod_loader_game_version_type_status mod_loader_game_version_type_status
+     * @see GameVersionTypeStatus
+     * @param int|null $mod_loader_game_version_type_status mod_loader_game_version_type_status
      *
      * @return self
      */
@@ -1149,7 +1155,8 @@ class MinecraftModLoaderVersion implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Gets mc_game_version_type_status
      *
-     * @return \Aternos\CurseForgeApi\Model\GameVersionTypeStatus|null
+     * @see GameVersionTypeStatus
+     * @return int|null
      */
     public function getMcGameVersionTypeStatus()
     {
@@ -1159,7 +1166,8 @@ class MinecraftModLoaderVersion implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets mc_game_version_type_status
      *
-     * @param \Aternos\CurseForgeApi\Model\GameVersionTypeStatus|null $mc_game_version_type_status mc_game_version_type_status
+     * @see GameVersionTypeStatus
+     * @param int|null $mc_game_version_type_status mc_game_version_type_status
      *
      * @return self
      */

@@ -622,7 +622,7 @@ class Mod implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets status
      *
-     * @return \Aternos\CurseForgeApi\Model\ModStatus|null
+     * @return int|null
      */
     public function getStatus()
     {
@@ -632,7 +632,7 @@ class Mod implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets status
      *
-     * @param \Aternos\CurseForgeApi\Model\ModStatus|null $status status
+     * @param int|null $status status
      *
      * @return self
      */
