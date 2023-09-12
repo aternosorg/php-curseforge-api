@@ -10,7 +10,7 @@ class ModSearchOptions
      * @param int|null $categoryId
      * @param string|null $gameVersion
      * @param string|null $searchFilter Filter by free text search in the mod name and author
-     * @param ModSearchSortField|null $sortFiled
+     * @param ModSearchSortField|null $sortField
      * @param SortOrder|null $sortOrder
      * @param ModLoaderType|null $modLoaderType Filter only mods associated to a given modloader (Forge, Fabric ...). Must be coupled with gameVersion.
      * @param int|null $gameVersionTypeId Filter only mods that contain files tagged with versions of the given gameVersionTypeId
@@ -25,7 +25,7 @@ class ModSearchOptions
         protected ?int                $categoryId = null,
         protected ?string             $gameVersion = null,
         protected ?string             $searchFilter = null,
-        protected ?ModSearchSortField $sortFiled = null,
+        protected ?ModSearchSortField $sortField = null,
         protected ?SortOrder          $sortOrder = null,
         protected ?ModLoaderType      $modLoaderType = null,
         protected ?int                $gameVersionTypeId = null,
@@ -132,16 +132,16 @@ class ModSearchOptions
      */
     public function getSortField(): ?ModSearchSortField
     {
-        return $this->sortFiled;
+        return $this->sortField;
     }
 
     /**
-     * @param string|null $sortFiled
+     * @param ModSearchSortField|null $sortField
      * @return $this
      */
-    public function setSortFiled(?string $sortFiled): static
+    public function setSortField(?ModSearchSortField $sortField): static
     {
-        $this->sortFiled = $sortFiled;
+        $this->sortField = $sortField;
         return $this;
     }
 
