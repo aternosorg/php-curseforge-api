@@ -154,10 +154,10 @@ class ModSearchOptions
     }
 
     /**
-     * @param string|null $sortOrder
+     * @param SortOrder|null $sortOrder
      * @return $this
      */
-    public function setSortOrder(?string $sortOrder): static
+    public function setSortOrder(?SortOrder $sortOrder): static
     {
         $this->sortOrder = $sortOrder;
         return $this;
