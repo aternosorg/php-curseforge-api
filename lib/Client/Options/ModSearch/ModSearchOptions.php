@@ -172,10 +172,10 @@ class ModSearchOptions
     }
 
     /**
-     * @param int|null $modLoaderType
+     * @param ModLoaderType|null $modLoaderType
      * @return $this
      */
-    public function setModLoaderType(?int $modLoaderType): static
+    public function setModLoaderType(?ModLoaderType $modLoaderType): static
     {
         $this->modLoaderType = $modLoaderType;
         return $this;
