@@ -1,5 +1,5 @@
 invokerPackage: Aternos\CurseForgeApi
-artifactVersion: 1.2.1
+artifactVersion: 1.2.2
 generatorName: php
 outputDir: .
 sourceFolder: src
