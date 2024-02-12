@@ -10,4 +10,5 @@ enum ModLoaderType: int
     case LITE_LOADER = 3;
     case FABRIC = 4;
     case QUILT = 5;
+    case NEOFORGE = 6;
 }
