@@ -28,10 +28,11 @@ class PaginatedModList extends PaginatedList
         }, $this->response->getData()));
     }
 
-    public function getOffset(int $offset): static
+    public function getOffset(int $offset, int $pageSize): static
     {
         $options = clone $this->options;
         $options->setOffset($offset);
+        $options->setPageSize($pageSize);
         return $this->client->searchMods($options);
     }
 }

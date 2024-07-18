@@ -18,6 +18,12 @@ use Iterator;
  */
 abstract class PaginatedList implements Iterator, ArrayAccess, Countable
 {
+    /**
+     * The limit for how many results are allowed to be requested.
+     * @type int
+     */
+    public const LIMIT = 10_000;
+
     protected int $iterator = 0;
 
     protected function __construct(
@@ -31,6 +37,15 @@ abstract class PaginatedList implements Iterator, ArrayAccess, Countable
     }
 
     /**
+     * Get the pagination part of the response
+     * @return Pagination
+     */
+    public function getPagination(): Pagination
+    {
+        return $this->pagination;
+    }
+
+    /**
      * @return T[]
      */
     public function getResults(): array
@@ -41,10 +56,11 @@ abstract class PaginatedList implements Iterator, ArrayAccess, Countable
     /**
      * Get a new page of results starting at the given offset
      * @param int $offset
+     * @param int $pageSize
      * @return $this
      * @throws ApiException
      */
-    public abstract function getOffset(int $offset): static;
+    public abstract function getOffset(int $offset, int $pageSize): static;
 
     /**
      * returns true if there is a next page with results on it
@@ -52,7 +68,7 @@ abstract class PaginatedList implements Iterator, ArrayAccess, Countable
      */
     public function hasNextPage(): bool
     {
-        return $this->pagination->getTotalCount() > $this->getNextOffset();
+        return min($this->pagination->getTotalCount(), static::LIMIT) > $this->getNextOffset();
     }
 
     /**
@@ -67,16 +83,8 @@ abstract class PaginatedList implements Iterator, ArrayAccess, Countable
             return null;
         }
 
-        return $this->getOffset($this->getNextOffset());
-    }
-
-    /**
-     * get the offset of the next page
-     * @return int
-     */
-    protected function getNextOffset(): int
-    {
-        return $this->pagination->getIndex() + $this->pagination->getPageSize();
+        $offset = $this->getNextOffset();
+        return $this->getOffset($offset, $this->getNextPageSize($offset));
     }
 
     /**
@@ -110,7 +118,7 @@ abstract class PaginatedList implements Iterator, ArrayAccess, Countable
             return null;
         }
 
-        return $this->getOffset($this->getPreviousOffset());
+        return $this->getOffset($this->getPreviousOffset(), $this->pagination->getPageSize());
     }
 
     /**
@@ -219,5 +227,23 @@ abstract class PaginatedList implements Iterator, ArrayAccess, Countable
     public function count(): int
     {
         return count($this->results);
+    }
+
+    /**
+     * @param int $offset
+     * @return int
+     */
+    protected function getNextPageSize(int $offset): int
+    {
+        return min($this->pagination->getPageSize(), static::LIMIT - $offset);
+    }
+
+    /**
+     * get the offset of the next page
+     * @return int
+     */
+    protected function getNextOffset(): int
+    {
+        return $this->pagination->getIndex() + $this->pagination->getPageSize();
     }
 }

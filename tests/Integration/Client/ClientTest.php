@@ -210,6 +210,27 @@ class ClientTest extends TestCase
         }
     }
 
+    public function testSearchModsLastPage()
+    {
+        $options = new ModSearchOptions(static::MINECRAFT_GAME_ID);
+        $options->setPageSize(50);
+        $options->setOffset(9_910);
+
+        $mods = $this->apiClient->searchMods($options);
+        $this->assertNotEmpty($mods);
+        foreach ($mods as $mod) {
+            $this->assertEquals(static::MINECRAFT_GAME_ID, $mod->getData()->getGameId());
+        }
+
+        $this->assertTrue($mods->hasNextPage());
+        $mods = $mods->getNextPage();
+
+        $this->assertNotEmpty($mods);
+        $this->assertFalse($mods->hasNextPage());
+        $this->assertEquals($mods::LIMIT, $mods->getPagination()->getIndex() + $mods->getPagination()->getPageSize());
+    }
+
+
     /**
      * Test searching mods in a category class
      * @return void

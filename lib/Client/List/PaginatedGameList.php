@@ -26,8 +26,8 @@ class PaginatedGameList extends PaginatedList
         }, $gamesResponse->getData()));
     }
 
-    public function getOffset(int $offset): static
+    public function getOffset(int $offset, int $pageSize): static
     {
-        return $this->client->getGames($offset, $this->pagination->getPageSize());
+        return $this->client->getGames($offset, $pageSize);
     }
 }
