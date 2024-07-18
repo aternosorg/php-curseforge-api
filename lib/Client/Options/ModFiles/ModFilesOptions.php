@@ -2,6 +2,7 @@
 
 namespace Aternos\CurseForgeApi\Client\Options\ModFiles;
 
+use Aternos\CurseForgeApi\Client\List\PaginatedFilesList;
 use Aternos\CurseForgeApi\Client\Options\ModSearch\ModLoaderType;
 
 class ModFilesOptions
@@ -12,7 +13,7 @@ class ModFilesOptions
         protected ?ModLoaderType $modLoaderType = null,
         protected ?int           $gameVersionTypeId = null,
         protected int            $offset = 0,
-        protected int            $pageSize = 50,
+        protected int            $pageSize = PaginatedFilesList::MAX_PAGE_SIZE,
     )
     {
     }

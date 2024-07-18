@@ -131,9 +131,12 @@ class CurseForgeAPIClient
      * @return PaginatedGameList
      * @throws ApiException
      */
-    public function getGames(int $offset = 0, int $pageSize = 50): PaginatedGameList
+    public function getGames(int $offset = 0, int $pageSize = PaginatedGameList::MAX_PAGE_SIZE): PaginatedGameList
     {
-        return new PaginatedGameList($this, $this->games->getGames($offset, $pageSize));
+        return new PaginatedGameList($this, $this->games->getGames(
+            $offset,
+            PaginatedGameList::getAllowedPageSize($offset, $pageSize),
+        ));
     }
 
     /**
@@ -243,7 +246,7 @@ class CurseForgeAPIClient
             $options->getAuthorId(),
             $options->getSlug(),
             $options->getOffset(),
-            $options->getPageSize()
+            PaginatedModList::getAllowedPageSize($options->getOffset(), $options->getPageSize()),
         ), $options);
     }
 
@@ -313,7 +316,7 @@ class CurseForgeAPIClient
             $options->getModLoaderType()?->value,
             $options->getGameVersionTypeId(),
             $options->getOffset(),
-            $options->getPageSize(),
+            PaginatedFilesList::getAllowedPageSize($options->getOffset(), $options->getPageSize()),
         ), $options);
     }
 

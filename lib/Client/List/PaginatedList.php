@@ -20,11 +20,29 @@ abstract class PaginatedList implements Iterator, ArrayAccess, Countable
 {
     /**
      * The limit for how many results are allowed to be requested.
-     * @type int
+     * @var int
      */
     public const LIMIT = 10_000;
 
+    /**
+     * The maximum page size that can be requested.
+     * @var int
+     */
+    public const MAX_PAGE_SIZE = 50;
+
     protected int $iterator = 0;
+
+
+    /**
+     * Get the maximum page size that can be requested.
+     * @param int $offset
+     * @param int $target
+     * @return int
+     */
+    public static function getAllowedPageSize(int $offset, int $target = self::MAX_PAGE_SIZE): int
+    {
+        return min($target, self::MAX_PAGE_SIZE, static::LIMIT - $offset);
+    }
 
     protected function __construct(
         protected Pagination $pagination,
@@ -235,7 +253,7 @@ abstract class PaginatedList implements Iterator, ArrayAccess, Countable
      */
     protected function getNextPageSize(int $offset): int
     {
-        return min($this->pagination->getPageSize(), static::LIMIT - $offset);
+        return static::getAllowedPageSize($offset, $this->pagination->getPageSize());
     }
 
     /**

@@ -214,6 +214,18 @@ class ClientTest extends TestCase
     {
         $options = new ModSearchOptions(static::MINECRAFT_GAME_ID);
         $options->setPageSize(50);
+        $options->setOffset(9_960);
+
+        $mods = $this->apiClient->searchMods($options);
+        $this->assertNotEmpty($mods);
+        $this->assertFalse($mods->hasNextPage());
+        $this->assertEquals($mods::LIMIT, $mods->getPagination()->getIndex() + $mods->getPagination()->getPageSize());
+    }
+
+    public function testSearchModsLastPageNext()
+    {
+        $options = new ModSearchOptions(static::MINECRAFT_GAME_ID);
+        $options->setPageSize(50);
         $options->setOffset(9_910);
 
         $mods = $this->apiClient->searchMods($options);

@@ -2,6 +2,8 @@
 
 namespace Aternos\CurseForgeApi\Client\Options\ModSearch;
 
+use Aternos\CurseForgeApi\Client\List\PaginatedModList;
+
 class ModSearchOptions
 {
     /**
@@ -32,7 +34,7 @@ class ModSearchOptions
         protected ?int                $authorId = null,
         protected ?string             $slug = null,
         protected int                 $offset = 0,
-        protected int                 $pageSize = 50,
+        protected int                 $pageSize = PaginatedModList::MAX_PAGE_SIZE,
     )
     {
     }
