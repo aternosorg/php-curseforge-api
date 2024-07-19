@@ -12,4 +12,8 @@ enum ModSearchSortField: int
     case TOTAL_DOWNLOADS = 6;
     case CATEGORY = 7;
     case GAME_VERSION = 8;
+    case EARLY_ACCESS = 9;
+    case FEATURED_RELEASE = 10;
+    case RELEASE_DATE = 11;
+    case RATING = 12;
 }
