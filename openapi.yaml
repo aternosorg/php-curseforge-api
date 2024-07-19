@@ -951,6 +951,9 @@ components:
       enum:
         - 1
         - 2
+      x-enumNames:
+        - Private
+        - Public
     CoreStatus:
       description: |
         CoreStatus
@@ -969,6 +972,13 @@ components:
         - 4
         - 5
         - 6
+      x-enumNames:
+        - Draft
+        - Test
+        - PendingReview
+        - Rejected
+        - Approved
+        - Live
     FeaturedModsResponse:
       type: object
       properties:
@@ -1137,6 +1147,13 @@ components:
         - 4
         - 5
         - 6
+      x-enumNames:
+        - EmbeddedLibrary
+        - OptionalDependency
+        - RequiredDependency
+        - Tool
+        - Incompatible
+        - Include
     FileReleaseType:
       description: |
         Possible enum values:
@@ -1148,6 +1165,10 @@ components:
         - 1
         - 2
         - 3
+      x-enumNames:
+        - Release
+        - Beta
+        - Alpha
     FileStatus:
       description: |
         Status of the file
@@ -1184,6 +1205,22 @@ components:
         - 13
         - 14
         - 15
+      x-enumNames:
+        - Processing
+        - ChangesRequired
+        - UnderReview
+        - Approved
+        - Rejected
+        - MalwareDetected
+        - Deleted
+        - Archived
+        - Testing
+        - Released
+        - ReadyForReview
+        - Deprecated
+        - Baking
+        - AwaitingPublishing
+        - FailedPublishing
     FingerprintFuzzyMatch:
       type: object
       properties:
@@ -1337,6 +1374,10 @@ components:
         - 1
         - 2
         - 3
+      x-enumNames:
+        - Approved
+        - Deleted
+        - New
     GameVersionType:
       type: object
       properties:
@@ -1359,6 +1400,9 @@ components:
       enum:
         - 1
         - 2
+      x-enumNames:
+        - Normal
+        - Deleted
     GetCategoriesResponse:
       type: object
       properties:
@@ -1525,6 +1569,9 @@ components:
       enum:
         - 1
         - 2
+      x-enumNames:
+        - Sha1
+        - Md5
     MinecraftGameVersion:
       type: object
       properties:
@@ -1802,6 +1849,11 @@ components:
         - 2
         - 3
         - 4
+      x-enumNames:
+        - ForgeInstaller
+        - ForgeJarInstall
+        - ForgeInstaller_v2
+        - FabricInstaller
     ModLoaderType:
       description: |
         ModLoaderType
@@ -1822,6 +1874,14 @@ components:
         - 4
         - 5
         - 6
+      x-enumNames:
+        - Any
+        - Forge
+        - Cauldron
+        - LiteLoader
+        - Fabric
+        - Quilt
+        - NeoForge
     ModsSearchSortField:
       description: |
         Possible enum values:
@@ -1833,6 +1893,10 @@ components:
          * 6 = TotalDownloads
          * 7 = Category
          * 8 = GameVersion
+         * 9 = Early Access
+         * 10 = Featured Release
+         * 11 = Release Date
+         * 12 = Rating
       type: integer
       enum:
         - 1
@@ -1843,6 +1907,23 @@ components:
         - 6
         - 7
         - 8
+        - 9
+        - 10
+        - 11
+        - 12
+      x-enumNames:
+        - Featured
+        - Popularity
+        - LastUpdated
+        - Name
+        - Author
+        - TotalDownloads
+        - Category
+        - GameVersion
+        - Early Access
+        - Featured Release
+        - Release Date
+        - Rating
     ModStatus:
       description: |
         Current mod status
@@ -1869,6 +1950,17 @@ components:
         - 8
         - 9
         - 10
+      x-enumNames:
+        - New
+        - ChangesRequired
+        - UnderSoftReview
+        - Approved
+        - Rejected
+        - ChangesMade
+        - Inactive
+        - Abandoned
+        - Deleted
+        - UnderReview
     Pagination:
       type: object
       description: The response pagination information
