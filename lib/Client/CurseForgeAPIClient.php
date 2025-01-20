@@ -62,7 +62,7 @@ class CurseForgeAPIClient
      * @param Configuration|null $configuration
      * @param ClientInterface|null $httpClient
      */
-    public function __construct(string $apiToken, ?Configuration $configuration = null, ClientInterface $httpClient = null)
+    public function __construct(string $apiToken, ?Configuration $configuration = null, ?ClientInterface $httpClient = null)
     {
         $this->httpClient = $httpClient;
         $this->configuration = $configuration ?? (Configuration::getDefaultConfiguration())
