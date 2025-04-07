@@ -278,7 +278,7 @@ class ClientTest extends TestCase
      */
     public function testSearchModsInClass()
     {
-        $options = new ModSearchOptions(static::MINECRAFT_GAME_ID, static::MODS_CATEGORY_ID);
+        $options = new ModSearchOptions(static::MINECRAFT_GAME_ID, classId: static::MODS_CATEGORY_ID);
         $mods = $this->apiClient->searchMods($options);
         $this->assertNotEmpty($mods);
         foreach ($mods as $mod) {
