@@ -10,11 +10,11 @@ namespace Aternos\CurseForgeApi\Client;
  */
 class CursedFingerprintHelper
 {
-    public const MAX_INT = 0xffffffff;
+    public const int MAX_INT = 0xffffffff;
 
-    public const M = 0x5bd1e995;
+    public const int M = 0x5bd1e995;
 
-    public const R = 24;
+    public const int R = 24;
 
     protected int $h;
     protected string $remainingBytes = "";

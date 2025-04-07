@@ -22,13 +22,13 @@ abstract class PaginatedList implements Iterator, ArrayAccess, Countable
      * The limit for how many results are allowed to be requested.
      * @var int
      */
-    public const LIMIT = 10_000;
+    public const int LIMIT = 10_000;
 
     /**
      * The maximum page size that can be requested.
      * @var int
      */
-    public const MAX_PAGE_SIZE = 50;
+    public const int MAX_PAGE_SIZE = 50;
 
     protected int $iterator = 0;
 
