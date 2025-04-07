@@ -235,6 +235,8 @@ class CurseForgeAPIClient
     {
         return new PaginatedModList($this, $this->mods->searchMods(
             $options->getGameId(),
+            $options->getOffset(),
+            PaginatedModList::getAllowedPageSize($options->getOffset(), $options->getPageSize()),
             $options->getClassId(),
             null,
             null,
@@ -250,8 +252,6 @@ class CurseForgeAPIClient
             $options->getEncodedModLoaderTypes(),
             $options->getPrimaryAuthorId(),
             $options->getPremiumType(),
-            $options->getOffset(),
-            PaginatedModList::getAllowedPageSize($options->getOffset(), $options->getPageSize()),
         ), $options);
     }
 
@@ -317,11 +317,14 @@ class CurseForgeAPIClient
     {
         return new PaginatedFilesList($this, $this->files->getModFiles(
             $options->getModId(),
+            $options->getOffset(),
+            PaginatedFilesList::getAllowedPageSize($options->getOffset(), $options->getPageSize()),
             $options->getGameVersion(),
             $options->getModLoaderType()?->value,
             $options->getGameVersionTypeId(),
-            $options->getOffset(),
-            PaginatedFilesList::getAllowedPageSize($options->getOffset(), $options->getPageSize()),
+            $options->getOlderThanProjectFileId(),
+            $options->getReleaseTypes(),
+            $options->getPlatformType()?->value,
         ), $options);
     }
 

@@ -1435,6 +1435,8 @@ class ModsApi
      * Get all mods that match the search criteria.
      *
      * @param  int $game_id Filter by game id. (required)
+     * @param  int|null $index A zero based index of the first item to include in the response, the limit is: (index + pageSize &lt;&#x3D; 10,000). (optional)
+     * @param  int|null $page_size The number of items to include in the response, the default/maximum value is 50. (optional)
      * @param  int|null $class_id Filter by section id (discoverable via Categories) (optional)
      * @param  int|null $category_id Filter by category id (optional)
      * @param  string|null $game_version Filter by game version string (optional)
@@ -1450,17 +1452,15 @@ class ModsApi
      * @param  string|null $mod_loader_types Filter by a list of modloader types. This will override modLoaderType. Limited to 5 items. (optional)
      * @param  int|null $primary_author_id Filter only mods that the given primaryAuthorId is the owner of. (optional)
      * @param  \Aternos\CurseForgeApi\Model\PremiumType|null $premium_type Filter only mods that are Premium or not. (optional)
-     * @param  int|null $index A zero based index of the first item to include in the response, the limit is: (index + pageSize &lt;&#x3D; 10,000). (optional)
-     * @param  int|null $page_size The number of items to include in the response, the default/maximum value is 50. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchMods'] to see the possible values for this operation
      *
      * @throws \Aternos\CurseForgeApi\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \Aternos\CurseForgeApi\Model\SearchModsResponse
      */
-    public function searchMods($game_id, $class_id = null, $category_id = null, $game_version = null, $search_filter = null, $sort_field = null, $sort_order = null, $mod_loader_type = null, $game_version_type_id = null, $author_id = null, $slug = null, $category_ids = null, $game_versions = null, $mod_loader_types = null, $primary_author_id = null, $premium_type = null, $index = null, $page_size = null, string $contentType = self::contentTypes['searchMods'][0])
+    public function searchMods($game_id, $index = null, $page_size = null, $class_id = null, $category_id = null, $game_version = null, $search_filter = null, $sort_field = null, $sort_order = null, $mod_loader_type = null, $game_version_type_id = null, $author_id = null, $slug = null, $category_ids = null, $game_versions = null, $mod_loader_types = null, $primary_author_id = null, $premium_type = null, string $contentType = self::contentTypes['searchMods'][0])
     {
-        list($response) = $this->searchModsWithHttpInfo($game_id, $class_id, $category_id, $game_version, $search_filter, $sort_field, $sort_order, $mod_loader_type, $game_version_type_id, $author_id, $slug, $category_ids, $game_versions, $mod_loader_types, $primary_author_id, $premium_type, $index, $page_size, $contentType);
+        list($response) = $this->searchModsWithHttpInfo($game_id, $index, $page_size, $class_id, $category_id, $game_version, $search_filter, $sort_field, $sort_order, $mod_loader_type, $game_version_type_id, $author_id, $slug, $category_ids, $game_versions, $mod_loader_types, $primary_author_id, $premium_type, $contentType);
         return $response;
     }
 
@@ -1470,6 +1470,8 @@ class ModsApi
      * Get all mods that match the search criteria.
      *
      * @param  int $game_id Filter by game id. (required)
+     * @param  int|null $index A zero based index of the first item to include in the response, the limit is: (index + pageSize &lt;&#x3D; 10,000). (optional)
+     * @param  int|null $page_size The number of items to include in the response, the default/maximum value is 50. (optional)
      * @param  int|null $class_id Filter by section id (discoverable via Categories) (optional)
      * @param  int|null $category_id Filter by category id (optional)
      * @param  string|null $game_version Filter by game version string (optional)
@@ -1485,17 +1487,15 @@ class ModsApi
      * @param  string|null $mod_loader_types Filter by a list of modloader types. This will override modLoaderType. Limited to 5 items. (optional)
      * @param  int|null $primary_author_id Filter only mods that the given primaryAuthorId is the owner of. (optional)
      * @param  \Aternos\CurseForgeApi\Model\PremiumType|null $premium_type Filter only mods that are Premium or not. (optional)
-     * @param  int|null $index A zero based index of the first item to include in the response, the limit is: (index + pageSize &lt;&#x3D; 10,000). (optional)
-     * @param  int|null $page_size The number of items to include in the response, the default/maximum value is 50. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchMods'] to see the possible values for this operation
      *
      * @throws \Aternos\CurseForgeApi\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \Aternos\CurseForgeApi\Model\SearchModsResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function searchModsWithHttpInfo($game_id, $class_id = null, $category_id = null, $game_version = null, $search_filter = null, $sort_field = null, $sort_order = null, $mod_loader_type = null, $game_version_type_id = null, $author_id = null, $slug = null, $category_ids = null, $game_versions = null, $mod_loader_types = null, $primary_author_id = null, $premium_type = null, $index = null, $page_size = null, string $contentType = self::contentTypes['searchMods'][0])
+    public function searchModsWithHttpInfo($game_id, $index = null, $page_size = null, $class_id = null, $category_id = null, $game_version = null, $search_filter = null, $sort_field = null, $sort_order = null, $mod_loader_type = null, $game_version_type_id = null, $author_id = null, $slug = null, $category_ids = null, $game_versions = null, $mod_loader_types = null, $primary_author_id = null, $premium_type = null, string $contentType = self::contentTypes['searchMods'][0])
     {
-        $request = $this->searchModsRequest($game_id, $class_id, $category_id, $game_version, $search_filter, $sort_field, $sort_order, $mod_loader_type, $game_version_type_id, $author_id, $slug, $category_ids, $game_versions, $mod_loader_types, $primary_author_id, $premium_type, $index, $page_size, $contentType);
+        $request = $this->searchModsRequest($game_id, $index, $page_size, $class_id, $category_id, $game_version, $search_filter, $sort_field, $sort_order, $mod_loader_type, $game_version_type_id, $author_id, $slug, $category_ids, $game_versions, $mod_loader_types, $primary_author_id, $premium_type, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1612,6 +1612,8 @@ class ModsApi
      * Get all mods that match the search criteria.
      *
      * @param  int $game_id Filter by game id. (required)
+     * @param  int|null $index A zero based index of the first item to include in the response, the limit is: (index + pageSize &lt;&#x3D; 10,000). (optional)
+     * @param  int|null $page_size The number of items to include in the response, the default/maximum value is 50. (optional)
      * @param  int|null $class_id Filter by section id (discoverable via Categories) (optional)
      * @param  int|null $category_id Filter by category id (optional)
      * @param  string|null $game_version Filter by game version string (optional)
@@ -1627,16 +1629,14 @@ class ModsApi
      * @param  string|null $mod_loader_types Filter by a list of modloader types. This will override modLoaderType. Limited to 5 items. (optional)
      * @param  int|null $primary_author_id Filter only mods that the given primaryAuthorId is the owner of. (optional)
      * @param  \Aternos\CurseForgeApi\Model\PremiumType|null $premium_type Filter only mods that are Premium or not. (optional)
-     * @param  int|null $index A zero based index of the first item to include in the response, the limit is: (index + pageSize &lt;&#x3D; 10,000). (optional)
-     * @param  int|null $page_size The number of items to include in the response, the default/maximum value is 50. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchMods'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function searchModsAsync($game_id, $class_id = null, $category_id = null, $game_version = null, $search_filter = null, $sort_field = null, $sort_order = null, $mod_loader_type = null, $game_version_type_id = null, $author_id = null, $slug = null, $category_ids = null, $game_versions = null, $mod_loader_types = null, $primary_author_id = null, $premium_type = null, $index = null, $page_size = null, string $contentType = self::contentTypes['searchMods'][0])
+    public function searchModsAsync($game_id, $index = null, $page_size = null, $class_id = null, $category_id = null, $game_version = null, $search_filter = null, $sort_field = null, $sort_order = null, $mod_loader_type = null, $game_version_type_id = null, $author_id = null, $slug = null, $category_ids = null, $game_versions = null, $mod_loader_types = null, $primary_author_id = null, $premium_type = null, string $contentType = self::contentTypes['searchMods'][0])
     {
-        return $this->searchModsAsyncWithHttpInfo($game_id, $class_id, $category_id, $game_version, $search_filter, $sort_field, $sort_order, $mod_loader_type, $game_version_type_id, $author_id, $slug, $category_ids, $game_versions, $mod_loader_types, $primary_author_id, $premium_type, $index, $page_size, $contentType)
+        return $this->searchModsAsyncWithHttpInfo($game_id, $index, $page_size, $class_id, $category_id, $game_version, $search_filter, $sort_field, $sort_order, $mod_loader_type, $game_version_type_id, $author_id, $slug, $category_ids, $game_versions, $mod_loader_types, $primary_author_id, $premium_type, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1650,6 +1650,8 @@ class ModsApi
      * Get all mods that match the search criteria.
      *
      * @param  int $game_id Filter by game id. (required)
+     * @param  int|null $index A zero based index of the first item to include in the response, the limit is: (index + pageSize &lt;&#x3D; 10,000). (optional)
+     * @param  int|null $page_size The number of items to include in the response, the default/maximum value is 50. (optional)
      * @param  int|null $class_id Filter by section id (discoverable via Categories) (optional)
      * @param  int|null $category_id Filter by category id (optional)
      * @param  string|null $game_version Filter by game version string (optional)
@@ -1665,17 +1667,15 @@ class ModsApi
      * @param  string|null $mod_loader_types Filter by a list of modloader types. This will override modLoaderType. Limited to 5 items. (optional)
      * @param  int|null $primary_author_id Filter only mods that the given primaryAuthorId is the owner of. (optional)
      * @param  \Aternos\CurseForgeApi\Model\PremiumType|null $premium_type Filter only mods that are Premium or not. (optional)
-     * @param  int|null $index A zero based index of the first item to include in the response, the limit is: (index + pageSize &lt;&#x3D; 10,000). (optional)
-     * @param  int|null $page_size The number of items to include in the response, the default/maximum value is 50. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchMods'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function searchModsAsyncWithHttpInfo($game_id, $class_id = null, $category_id = null, $game_version = null, $search_filter = null, $sort_field = null, $sort_order = null, $mod_loader_type = null, $game_version_type_id = null, $author_id = null, $slug = null, $category_ids = null, $game_versions = null, $mod_loader_types = null, $primary_author_id = null, $premium_type = null, $index = null, $page_size = null, string $contentType = self::contentTypes['searchMods'][0])
+    public function searchModsAsyncWithHttpInfo($game_id, $index = null, $page_size = null, $class_id = null, $category_id = null, $game_version = null, $search_filter = null, $sort_field = null, $sort_order = null, $mod_loader_type = null, $game_version_type_id = null, $author_id = null, $slug = null, $category_ids = null, $game_versions = null, $mod_loader_types = null, $primary_author_id = null, $premium_type = null, string $contentType = self::contentTypes['searchMods'][0])
     {
         $returnType = '\Aternos\CurseForgeApi\Model\SearchModsResponse';
-        $request = $this->searchModsRequest($game_id, $class_id, $category_id, $game_version, $search_filter, $sort_field, $sort_order, $mod_loader_type, $game_version_type_id, $author_id, $slug, $category_ids, $game_versions, $mod_loader_types, $primary_author_id, $premium_type, $index, $page_size, $contentType);
+        $request = $this->searchModsRequest($game_id, $index, $page_size, $class_id, $category_id, $game_version, $search_filter, $sort_field, $sort_order, $mod_loader_type, $game_version_type_id, $author_id, $slug, $category_ids, $game_versions, $mod_loader_types, $primary_author_id, $premium_type, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1717,6 +1717,8 @@ class ModsApi
      * Create request for operation 'searchMods'
      *
      * @param  int $game_id Filter by game id. (required)
+     * @param  int|null $index A zero based index of the first item to include in the response, the limit is: (index + pageSize &lt;&#x3D; 10,000). (optional)
+     * @param  int|null $page_size The number of items to include in the response, the default/maximum value is 50. (optional)
      * @param  int|null $class_id Filter by section id (discoverable via Categories) (optional)
      * @param  int|null $category_id Filter by category id (optional)
      * @param  string|null $game_version Filter by game version string (optional)
@@ -1732,14 +1734,12 @@ class ModsApi
      * @param  string|null $mod_loader_types Filter by a list of modloader types. This will override modLoaderType. Limited to 5 items. (optional)
      * @param  int|null $primary_author_id Filter only mods that the given primaryAuthorId is the owner of. (optional)
      * @param  \Aternos\CurseForgeApi\Model\PremiumType|null $premium_type Filter only mods that are Premium or not. (optional)
-     * @param  int|null $index A zero based index of the first item to include in the response, the limit is: (index + pageSize &lt;&#x3D; 10,000). (optional)
-     * @param  int|null $page_size The number of items to include in the response, the default/maximum value is 50. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchMods'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function searchModsRequest($game_id, $class_id = null, $category_id = null, $game_version = null, $search_filter = null, $sort_field = null, $sort_order = null, $mod_loader_type = null, $game_version_type_id = null, $author_id = null, $slug = null, $category_ids = null, $game_versions = null, $mod_loader_types = null, $primary_author_id = null, $premium_type = null, $index = null, $page_size = null, string $contentType = self::contentTypes['searchMods'][0])
+    public function searchModsRequest($game_id, $index = null, $page_size = null, $class_id = null, $category_id = null, $game_version = null, $search_filter = null, $sort_field = null, $sort_order = null, $mod_loader_type = null, $game_version_type_id = null, $author_id = null, $slug = null, $category_ids = null, $game_versions = null, $mod_loader_types = null, $primary_author_id = null, $premium_type = null, string $contentType = self::contentTypes['searchMods'][0])
     {
 
         // verify the required parameter 'game_id' is set
@@ -1782,6 +1782,24 @@ class ModsApi
             'form', // style
             true, // explode
             true // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $index,
+            'index', // param base name
+            'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $page_size,
+            'pageSize', // param base name
+            'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
@@ -1914,24 +1932,6 @@ class ModsApi
             $premium_type,
             'PremiumType', // param base name
             'PremiumType', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $index,
-            'index', // param base name
-            'integer', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $page_size,
-            'pageSize', // param base name
-            'integer', // openApiType
             'form', // style
             true, // explode
             false // required

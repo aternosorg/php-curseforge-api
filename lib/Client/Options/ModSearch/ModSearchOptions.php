@@ -25,6 +25,8 @@ class ModSearchOptions
      */
     public function __construct(
         protected int                 $gameId,
+        protected int                 $offset = 0,
+        protected int                 $pageSize = PaginatedModList::MAX_PAGE_SIZE,
         protected ?int                $classId = null,
         protected ?array              $categoryIds = null,
         protected ?array              $gameVersions = null,
@@ -37,8 +39,6 @@ class ModSearchOptions
         protected ?int                $primaryAuthorId = null,
         protected ?PremiumType        $premiumType = null,
         protected ?string             $slug = null,
-        protected int                 $offset = 0,
-        protected int                 $pageSize = PaginatedModList::MAX_PAGE_SIZE,
     )
     {
     }
@@ -58,6 +58,42 @@ class ModSearchOptions
     public function setGameId(int $gameId): static
     {
         $this->gameId = $gameId;
+        return $this;
+    }
+
+    /**
+     * @return int
+     */
+    public function getOffset(): int
+    {
+        return $this->offset;
+    }
+
+    /**
+     * @param int $offset
+     * @return $this
+     */
+    public function setOffset(int $offset): static
+    {
+        $this->offset = $offset;
+        return $this;
+    }
+
+    /**
+     * @return int
+     */
+    public function getPageSize(): int
+    {
+        return $this->pageSize;
+    }
+
+    /**
+     * @param int $pageSize
+     * @return $this
+     */
+    public function setPageSize(int $pageSize): static
+    {
+        $this->pageSize = $pageSize;
         return $this;
     }
 
@@ -251,6 +287,7 @@ class ModSearchOptions
     }
 
     /**
+     * Get the mod loader types encoded for the API request
      * @return string|null
      */
     public function getEncodedModLoaderTypes(): ?string
@@ -388,42 +425,6 @@ class ModSearchOptions
     public function setSlug(?string $slug): static
     {
         $this->slug = $slug;
-        return $this;
-    }
-
-    /**
-     * @return int
-     */
-    public function getOffset(): int
-    {
-        return $this->offset;
-    }
-
-    /**
-     * @param int $offset
-     * @return $this
-     */
-    public function setOffset(int $offset): static
-    {
-        $this->offset = $offset;
-        return $this;
-    }
-
-    /**
-     * @return int
-     */
-    public function getPageSize(): int
-    {
-        return $this->pageSize;
-    }
-
-    /**
-     * @param int $pageSize
-     * @return $this
-     */
-    public function setPageSize(int $pageSize): static
-    {
-        $this->pageSize = $pageSize;
         return $this;
     }
 }

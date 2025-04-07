@@ -4,7 +4,7 @@ namespace Aternos\CurseForgeApi\Client\Options\ModSearch;
 
 enum PremiumType: int
 {
-    case All = 0;
-    case Premium = 1;
-    case Free = 2;
+    case ALL = 0;
+    case PREMIUM = 1;
+    case FREE = 2;
 }

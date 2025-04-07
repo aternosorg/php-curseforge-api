@@ -236,6 +236,24 @@ paths:
           schema:
             type: integer
             format: int32
+        - name: index
+          in: query
+          description: >-
+            A zero based index of the first item to include in the response, the
+            limit is: (index + pageSize <= 10,000).
+          required: false
+          schema:
+            type: integer
+            format: int32
+        - name: pageSize
+          in: query
+          description: >-
+            The number of items to include in the response, the default/maximum
+            value is 50.
+          required: false
+          schema:
+            type: integer
+            format: int32
         - name: classId
           in: query
           description: Filter by section id (discoverable via Categories)
@@ -343,24 +361,6 @@ paths:
           required: false
           schema:
             $ref: '#/components/schemas/PremiumType'
-        - name: index
-          in: query
-          description: >-
-            A zero based index of the first item to include in the response, the
-            limit is: (index + pageSize <= 10,000).
-          required: false
-          schema:
-            type: integer
-            format: int32
-        - name: pageSize
-          in: query
-          description: >-
-            The number of items to include in the response, the default/maximum
-            value is 50.
-          required: false
-          schema:
-            type: integer
-            format: int32
       responses:
         '200':
           description: OK
@@ -548,6 +548,24 @@ paths:
           schema:
             type: integer
             format: int32
+        - name: index
+          in: query
+          description: >-
+            A zero based index of the first item to include in the response, the
+            limit is: (index + pageSize <= 10,000).
+          required: false
+          schema:
+            type: integer
+            format: int32
+        - name: pageSize
+          in: query
+          description: >-
+            The number of items to include in the response, the default/maximum
+            value is 50.
+          required: false
+          schema:
+            type: integer
+            format: int32
         - name: gameVersion
           in: query
           description: Filter by game version string
@@ -567,24 +585,6 @@ paths:
           description: >-
             Filter only files that are tagged with versions of the given
             gameVersionTypeId
-          required: false
-          schema:
-            type: integer
-            format: int32
-        - name: index
-          in: query
-          description: >-
-            A zero based index of the first item to include in the response, the
-            limit is: (index + pageSize <= 10,000).
-          required: false
-          schema:
-            type: integer
-            format: int32
-        - name: pageSize
-          in: query
-          description: >-
-            The number of items to include in the response, the default/maximum
-            value is 50.
           required: false
           schema:
             type: integer

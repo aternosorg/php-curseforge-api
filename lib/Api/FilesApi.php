@@ -1451,11 +1451,11 @@ class FilesApi
      * Get mod files.
      *
      * @param  int $mod_id The mod id the files belong to (required)
+     * @param  int|null $index A zero based index of the first item to include in the response, the limit is: (index + pageSize &lt;&#x3D; 10,000). (optional)
+     * @param  int|null $page_size The number of items to include in the response, the default/maximum value is 50. (optional)
      * @param  string|null $game_version Filter by game version string (optional)
      * @param  \Aternos\CurseForgeApi\Model\ModLoaderType|null $mod_loader_type ModLoaderType enumeration Filter only files associated to a given modloader (Forge, Fabric ...). (optional)
      * @param  int|null $game_version_type_id Filter only files that are tagged with versions of the given gameVersionTypeId (optional)
-     * @param  int|null $index A zero based index of the first item to include in the response, the limit is: (index + pageSize &lt;&#x3D; 10,000). (optional)
-     * @param  int|null $page_size The number of items to include in the response, the default/maximum value is 50. (optional)
      * @param  int|null $older_than_project_file_id Filter only files older than the given file ID (optional)
      * @param  \Aternos\CurseForgeApi\Model\FileReleaseType[]|null $release_types Filter only files that are of the given release types (optional)
      * @param  \Aternos\CurseForgeApi\Model\PlatformType|null $platform_type Filter only files supporting the given platform type (optional)
@@ -1465,9 +1465,9 @@ class FilesApi
      * @throws \InvalidArgumentException
      * @return \Aternos\CurseForgeApi\Model\GetModFilesResponse
      */
-    public function getModFiles($mod_id, $game_version = null, $mod_loader_type = null, $game_version_type_id = null, $index = null, $page_size = null, $older_than_project_file_id = null, $release_types = null, $platform_type = null, string $contentType = self::contentTypes['getModFiles'][0])
+    public function getModFiles($mod_id, $index = null, $page_size = null, $game_version = null, $mod_loader_type = null, $game_version_type_id = null, $older_than_project_file_id = null, $release_types = null, $platform_type = null, string $contentType = self::contentTypes['getModFiles'][0])
     {
-        list($response) = $this->getModFilesWithHttpInfo($mod_id, $game_version, $mod_loader_type, $game_version_type_id, $index, $page_size, $older_than_project_file_id, $release_types, $platform_type, $contentType);
+        list($response) = $this->getModFilesWithHttpInfo($mod_id, $index, $page_size, $game_version, $mod_loader_type, $game_version_type_id, $older_than_project_file_id, $release_types, $platform_type, $contentType);
         return $response;
     }
 
@@ -1477,11 +1477,11 @@ class FilesApi
      * Get mod files.
      *
      * @param  int $mod_id The mod id the files belong to (required)
+     * @param  int|null $index A zero based index of the first item to include in the response, the limit is: (index + pageSize &lt;&#x3D; 10,000). (optional)
+     * @param  int|null $page_size The number of items to include in the response, the default/maximum value is 50. (optional)
      * @param  string|null $game_version Filter by game version string (optional)
      * @param  \Aternos\CurseForgeApi\Model\ModLoaderType|null $mod_loader_type ModLoaderType enumeration Filter only files associated to a given modloader (Forge, Fabric ...). (optional)
      * @param  int|null $game_version_type_id Filter only files that are tagged with versions of the given gameVersionTypeId (optional)
-     * @param  int|null $index A zero based index of the first item to include in the response, the limit is: (index + pageSize &lt;&#x3D; 10,000). (optional)
-     * @param  int|null $page_size The number of items to include in the response, the default/maximum value is 50. (optional)
      * @param  int|null $older_than_project_file_id Filter only files older than the given file ID (optional)
      * @param  \Aternos\CurseForgeApi\Model\FileReleaseType[]|null $release_types Filter only files that are of the given release types (optional)
      * @param  \Aternos\CurseForgeApi\Model\PlatformType|null $platform_type Filter only files supporting the given platform type (optional)
@@ -1491,9 +1491,9 @@ class FilesApi
      * @throws \InvalidArgumentException
      * @return array of \Aternos\CurseForgeApi\Model\GetModFilesResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getModFilesWithHttpInfo($mod_id, $game_version = null, $mod_loader_type = null, $game_version_type_id = null, $index = null, $page_size = null, $older_than_project_file_id = null, $release_types = null, $platform_type = null, string $contentType = self::contentTypes['getModFiles'][0])
+    public function getModFilesWithHttpInfo($mod_id, $index = null, $page_size = null, $game_version = null, $mod_loader_type = null, $game_version_type_id = null, $older_than_project_file_id = null, $release_types = null, $platform_type = null, string $contentType = self::contentTypes['getModFiles'][0])
     {
-        $request = $this->getModFilesRequest($mod_id, $game_version, $mod_loader_type, $game_version_type_id, $index, $page_size, $older_than_project_file_id, $release_types, $platform_type, $contentType);
+        $request = $this->getModFilesRequest($mod_id, $index, $page_size, $game_version, $mod_loader_type, $game_version_type_id, $older_than_project_file_id, $release_types, $platform_type, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1610,11 +1610,11 @@ class FilesApi
      * Get mod files.
      *
      * @param  int $mod_id The mod id the files belong to (required)
+     * @param  int|null $index A zero based index of the first item to include in the response, the limit is: (index + pageSize &lt;&#x3D; 10,000). (optional)
+     * @param  int|null $page_size The number of items to include in the response, the default/maximum value is 50. (optional)
      * @param  string|null $game_version Filter by game version string (optional)
      * @param  \Aternos\CurseForgeApi\Model\ModLoaderType|null $mod_loader_type ModLoaderType enumeration Filter only files associated to a given modloader (Forge, Fabric ...). (optional)
      * @param  int|null $game_version_type_id Filter only files that are tagged with versions of the given gameVersionTypeId (optional)
-     * @param  int|null $index A zero based index of the first item to include in the response, the limit is: (index + pageSize &lt;&#x3D; 10,000). (optional)
-     * @param  int|null $page_size The number of items to include in the response, the default/maximum value is 50. (optional)
      * @param  int|null $older_than_project_file_id Filter only files older than the given file ID (optional)
      * @param  \Aternos\CurseForgeApi\Model\FileReleaseType[]|null $release_types Filter only files that are of the given release types (optional)
      * @param  \Aternos\CurseForgeApi\Model\PlatformType|null $platform_type Filter only files supporting the given platform type (optional)
@@ -1623,9 +1623,9 @@ class FilesApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getModFilesAsync($mod_id, $game_version = null, $mod_loader_type = null, $game_version_type_id = null, $index = null, $page_size = null, $older_than_project_file_id = null, $release_types = null, $platform_type = null, string $contentType = self::contentTypes['getModFiles'][0])
+    public function getModFilesAsync($mod_id, $index = null, $page_size = null, $game_version = null, $mod_loader_type = null, $game_version_type_id = null, $older_than_project_file_id = null, $release_types = null, $platform_type = null, string $contentType = self::contentTypes['getModFiles'][0])
     {
-        return $this->getModFilesAsyncWithHttpInfo($mod_id, $game_version, $mod_loader_type, $game_version_type_id, $index, $page_size, $older_than_project_file_id, $release_types, $platform_type, $contentType)
+        return $this->getModFilesAsyncWithHttpInfo($mod_id, $index, $page_size, $game_version, $mod_loader_type, $game_version_type_id, $older_than_project_file_id, $release_types, $platform_type, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1639,11 +1639,11 @@ class FilesApi
      * Get mod files.
      *
      * @param  int $mod_id The mod id the files belong to (required)
+     * @param  int|null $index A zero based index of the first item to include in the response, the limit is: (index + pageSize &lt;&#x3D; 10,000). (optional)
+     * @param  int|null $page_size The number of items to include in the response, the default/maximum value is 50. (optional)
      * @param  string|null $game_version Filter by game version string (optional)
      * @param  \Aternos\CurseForgeApi\Model\ModLoaderType|null $mod_loader_type ModLoaderType enumeration Filter only files associated to a given modloader (Forge, Fabric ...). (optional)
      * @param  int|null $game_version_type_id Filter only files that are tagged with versions of the given gameVersionTypeId (optional)
-     * @param  int|null $index A zero based index of the first item to include in the response, the limit is: (index + pageSize &lt;&#x3D; 10,000). (optional)
-     * @param  int|null $page_size The number of items to include in the response, the default/maximum value is 50. (optional)
      * @param  int|null $older_than_project_file_id Filter only files older than the given file ID (optional)
      * @param  \Aternos\CurseForgeApi\Model\FileReleaseType[]|null $release_types Filter only files that are of the given release types (optional)
      * @param  \Aternos\CurseForgeApi\Model\PlatformType|null $platform_type Filter only files supporting the given platform type (optional)
@@ -1652,10 +1652,10 @@ class FilesApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getModFilesAsyncWithHttpInfo($mod_id, $game_version = null, $mod_loader_type = null, $game_version_type_id = null, $index = null, $page_size = null, $older_than_project_file_id = null, $release_types = null, $platform_type = null, string $contentType = self::contentTypes['getModFiles'][0])
+    public function getModFilesAsyncWithHttpInfo($mod_id, $index = null, $page_size = null, $game_version = null, $mod_loader_type = null, $game_version_type_id = null, $older_than_project_file_id = null, $release_types = null, $platform_type = null, string $contentType = self::contentTypes['getModFiles'][0])
     {
         $returnType = '\Aternos\CurseForgeApi\Model\GetModFilesResponse';
-        $request = $this->getModFilesRequest($mod_id, $game_version, $mod_loader_type, $game_version_type_id, $index, $page_size, $older_than_project_file_id, $release_types, $platform_type, $contentType);
+        $request = $this->getModFilesRequest($mod_id, $index, $page_size, $game_version, $mod_loader_type, $game_version_type_id, $older_than_project_file_id, $release_types, $platform_type, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1697,11 +1697,11 @@ class FilesApi
      * Create request for operation 'getModFiles'
      *
      * @param  int $mod_id The mod id the files belong to (required)
+     * @param  int|null $index A zero based index of the first item to include in the response, the limit is: (index + pageSize &lt;&#x3D; 10,000). (optional)
+     * @param  int|null $page_size The number of items to include in the response, the default/maximum value is 50. (optional)
      * @param  string|null $game_version Filter by game version string (optional)
      * @param  \Aternos\CurseForgeApi\Model\ModLoaderType|null $mod_loader_type ModLoaderType enumeration Filter only files associated to a given modloader (Forge, Fabric ...). (optional)
      * @param  int|null $game_version_type_id Filter only files that are tagged with versions of the given gameVersionTypeId (optional)
-     * @param  int|null $index A zero based index of the first item to include in the response, the limit is: (index + pageSize &lt;&#x3D; 10,000). (optional)
-     * @param  int|null $page_size The number of items to include in the response, the default/maximum value is 50. (optional)
      * @param  int|null $older_than_project_file_id Filter only files older than the given file ID (optional)
      * @param  \Aternos\CurseForgeApi\Model\FileReleaseType[]|null $release_types Filter only files that are of the given release types (optional)
      * @param  \Aternos\CurseForgeApi\Model\PlatformType|null $platform_type Filter only files supporting the given platform type (optional)
@@ -1710,7 +1710,7 @@ class FilesApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getModFilesRequest($mod_id, $game_version = null, $mod_loader_type = null, $game_version_type_id = null, $index = null, $page_size = null, $older_than_project_file_id = null, $release_types = null, $platform_type = null, string $contentType = self::contentTypes['getModFiles'][0])
+    public function getModFilesRequest($mod_id, $index = null, $page_size = null, $game_version = null, $mod_loader_type = null, $game_version_type_id = null, $older_than_project_file_id = null, $release_types = null, $platform_type = null, string $contentType = self::contentTypes['getModFiles'][0])
     {
 
         // verify the required parameter 'mod_id' is set
@@ -1738,6 +1738,24 @@ class FilesApi
 
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $index,
+            'index', // param base name
+            'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $page_size,
+            'pageSize', // param base name
+            'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $game_version,
             'gameVersion', // param base name
             'string', // openApiType
@@ -1758,24 +1776,6 @@ class FilesApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $game_version_type_id,
             'gameVersionTypeId', // param base name
-            'integer', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $index,
-            'index', // param base name
-            'integer', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $page_size,
-            'pageSize', // param base name
             'integer', // openApiType
             'form', // style
             true, // explode
