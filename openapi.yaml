@@ -204,7 +204,7 @@ paths:
             format: int32
         - name: classesOnly
           in: query
-          description: A flag used to only return classes
+          description: A flag used with gameId to return only classes
           required: false
           schema:
             type: boolean
@@ -327,6 +327,54 @@ paths:
           schema:
             type: integer
             format: int32
+        - name: categoryIds
+          in: query
+          description: Filter by a list of category ids. this will override categoryId.
+          required: false
+          schema:
+            # TODO: is this typed as "string" in the original API doc. Check if openapi generator generates arrays
+            # correctly with this option
+            type: array
+            maxItems: 10
+            items:
+              type: integer
+              format: int32
+        - name: gameVersions
+          in: query
+          description: Filter by a list of game version strings. This will override gameVersion.
+          required: false
+          schema:
+            # TODO: is this typed as "string" in the original API doc. Check if openapi generator generates arrays
+            # correctly with this option
+            type: array
+            maxItems: 4
+            items:
+              type: string
+        - name: modLoaderTypes
+          in: query
+          description: Filter by a list of modloader types. This will override modLoaderType.
+          required: false
+          schema:
+            # TODO: is this typed as "string" in the original API doc. Check if openapi generator generates arrays
+            # correctly with this option
+            type: array
+            maxItems: 5
+            items:
+              $ref: '#/components/schemas/ModLoaderType'
+        - name: primaryAuthorId
+          in: query
+          description: Filter only mods that the given primaryAuthorId is the owner of.
+          required: false
+          schema:
+            type: integer
+            format: int32
+        - name: PremiumType
+          in: query
+          description: Filter only mods that are Premium or not.
+          required: false
+          schema:
+            $ref: '#/components/schemas/PremiumType'
+
       responses:
         '200':
           description: OK
@@ -437,6 +485,20 @@ paths:
           schema:
             type: integer
             format: int32
+        - name: raw
+          in: query
+          description: Get raw description without things like external link redirects
+          schema:
+            type: boolean
+        - name: stripped
+          in: query
+          description: Get the description with all HTML tags removed
+          schema:
+            type: boolean
+        - name: markup
+          in: query
+          schema:
+            type: boolean
       responses:
         '200':
           description: OK
@@ -541,6 +603,28 @@ paths:
           schema:
             type: integer
             format: int32
+        - name: olderThanProjectFileId
+          in: query
+          description: Filter only files older than the given file ID
+          required: false
+          schema:
+            type: integer
+            format: int32
+        - name: releaseTypes
+          in: query
+          description: Filter only files that are of the given release types
+          required: false
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/FileReleaseType'
+              # TODO: test if this causes correct array serialization
+        - name: platformType
+          in: query
+          description: Filter only files supporting the given platform type
+          required: false
+          schema:
+              $ref: '#/components/schemas/PlatformType'
       responses:
         '200':
           description: OK
@@ -661,6 +745,7 @@ paths:
       operationId: getFingerprintMatches
       requestBody:
         required: true
+        description: The request body containing an array of fingerprints
         content:
           application/json:
             schema:
@@ -884,6 +969,18 @@ paths:
         - ApiKeyAuth: [ ]
 components:
   schemas:
+    AffiliationServiceType:
+      type: integer
+      description: |
+        * 1 = Bisect
+        
+        Note: Bisect appears to have both id 1 and 2 for some reason. This is not documented in the official API spec
+      enum:
+        - 1
+        - 2
+      x-enumNames:
+        - Bisect
+        - BisectTwo
     ApiResponseOfListOfMinecraftGameVersion:
       type: object
       properties:
@@ -913,34 +1010,49 @@ components:
       properties:
         id:
           type: integer
-          format: int64
+          format: int32
+          description: The category id
         gameId:
           type: integer
-          format: int64
+          format: int32
+          description: The game id related to the category
         name:
           type: string
+          description: Category name
         slug:
           type: string
+          description: The category slug as it appear in the URL
         url:
           type: string
           format: uri
+          description: The category URL
         iconUrl:
           type: string
           format: uri
+          description: URL for the category icon
         dateModified:
           type: string
           format: date-time
+          description: Last modified date of the category
         isClass:
           type: boolean
+          nullable: true
+          description: A top level category for other categories
         classId:
           type: integer
-          format: int64
+          format: int32
+          nullable: true
+          description: The class id of the category, meaning - the class of which this category is under
         parentCategoryId:
           type: integer
-          format: int64
+          format: int32
+          nullable: true
+          description: The parent category for this category
         displayIndex:
           type: integer
-          format: int64
+          format: int32
+          nullable: true
+          description: The display index for this category
     CoreApiStatus:
       description: |
         CoreApiStatus
@@ -1035,6 +1147,11 @@ components:
           type: integer
           format: int64
           description: The file length in bytes
+        fileSizeOnDisk:
+          type: integer
+          format: int64
+          nullable: true
+          description: The file's size on disk
         downloadCount:
           type: integer
           format: int64
@@ -1042,6 +1159,7 @@ components:
         downloadUrl:
           type: string
           format: uri
+          nullable: true
         gameVersions:
           type: array
           items:
@@ -1188,6 +1306,14 @@ components:
          * 13 = Baking
          * 14 = AwaitingPublishing
          * 15 = FailedPublishing
+         * 16 = Cooking
+         * 17 = Cooked
+         * 18 = UnderManualReview
+         * 19 = ScanningForMalware
+         * 20 = ProcessingFile
+         * 21 = PendingRelease
+         * 22 = ReadyForCooking
+         * 23 = PostProcessing
       type: integer
       enum:
         - 1
@@ -1205,6 +1331,14 @@ components:
         - 13
         - 14
         - 15
+        - 16
+        - 17
+        - 18
+        - 19
+        - 20
+        - 21
+        - 22
+        - 23
       x-enumNames:
         - Processing
         - ChangesRequired
@@ -1221,6 +1355,14 @@ components:
         - Baking
         - AwaitingPublishing
         - FailedPublishing
+        - Cooking
+        - Cooked
+        - UnderManualReview
+        - ScanningForMalware
+        - ProcessingFile
+        - PendingRelease
+        - ReadyForCooking
+        - PostProcessing
     FingerprintFuzzyMatch:
       type: object
       properties:
@@ -1277,11 +1419,11 @@ components:
             $ref: '#/components/schemas/FingerprintMatch'
         partialMatchFingerprints:
           type: object
-        additionalProperties:
-          type: array
-          items:
-            type: integer
-            format: int64
+          additionalProperties:
+            type: array
+            items:
+              type: integer
+              format: int64
         installedFingerprints:
           type: array
           items:
@@ -1327,7 +1469,7 @@ components:
         iconUrl:
           type: string
           format: uri
-        titleUrl:
+        tileUrl:
           type: string
           format: uri
         coverUrl:
@@ -1391,6 +1533,10 @@ components:
           type: string
         slug:
           type: string
+        isSyncable:
+          type: boolean
+        status:
+          $ref: '#/components/schemas/GameVersionTypeStatus'
     GameVersionTypeStatus:
       description: |
         Possible enum values:
@@ -1740,6 +1886,10 @@ components:
           items:
             $ref: '#/components/schemas/ModAsset'
           description: List of screenshots assets
+        videos:
+          type: array
+          items:
+            $ref: '#/components/schemas/ModAsset'
         mainFileId:
           type: integer
           format: int32
@@ -1749,11 +1899,16 @@ components:
           items:
             $ref: '#/components/schemas/File'
           description: List of latest files of the mod
-        latestFileIndexes:
+        latestFilesIndexes:
           type: array
           items:
             $ref: '#/components/schemas/FileIndex'
           description: List of file related details for the latest files of the mod
+        latestEarlyAccessFilesIndexes:
+          type: array
+          items:
+            $ref: '#/components/schemas/FileIndex'
+          description: List of file related details for the latest early access files of the mod
         dateCreated:
           type: string
           format: date-time
@@ -1783,6 +1938,19 @@ components:
           type: integer
           format: int32
           description: The mod's thumbs up count
+        hasCommentsEnabled:
+          type: boolean
+          nullable: true
+          description: Does the mod enable comments
+        ratingDetails:
+          $ref: '#/components/schemas/RatingDetails'
+        serverAffiliation:
+          $ref: '#/components/schemas/ServerAffiliation'
+        socialLinks:
+          type: array
+          description: The mod's social links
+          items:
+            $ref: '#/components/schemas/SocialLink'
     ModAsset:
       type: object
       properties:
@@ -1811,6 +1979,9 @@ components:
         name:
           type: string
         url:
+          type: string
+          format: uri
+        avatarUrl:
           type: string
           format: uri
     ModDescriptionResponse:
@@ -1983,6 +2154,119 @@ components:
           type: integer
           format: int64
           description: The total number of items available by the request
+    PlatformType:
+      type: integer
+      description: |
+        * 0 = Empty
+        * 1 = Windows
+        * 2 = XboxOne
+        * 3 = XboxXS
+        * 4 = Linux
+        * 5 = PS4
+        * 6 = PS5
+        * 7 = Mac
+        * 8 = IOS
+        * 9 = TVOS
+        * 10 = Android
+        * 11 = Switch
+        * 12 = WindowsServer
+        * 13 = LinuxServer
+      enum:
+        - 0
+        - 1
+        - 2
+        - 3
+        - 4
+        - 5
+        - 6
+        - 7
+        - 8
+        - 9
+        - 10
+        - 11
+        - 12
+        - 13
+      x-enumNames:
+        - Empty
+        - Windows
+        - XboxOne
+        - XboxXS
+        - Linux
+        - PS4
+        - PS5
+        - Mac
+        - IOS
+        - TVOS
+        - Android
+        - Switch
+        - WindowsServer
+        - LinuxServer
+    PremiumType:
+      type: integer
+      description: |
+        * 0 = All
+        * 1 = Premium
+        * 2 = Free
+      enum:
+        - 0
+        - 1
+        - 2
+      x-enumNames:
+        - All
+        - Premium
+        - Free
+    RatingDetails:
+      type: object
+      properties:
+        rating:
+          type: number
+          format: decimal
+          nullable: true
+        totalRatings:
+          type: integer
+          format: int32
+          nullable: true
+        positiveRatings:
+          type: integer
+          format: int32
+          nullable: true
+        score:
+          $ref: '#/components/schemas/RatingScore'
+    RatingScore:
+      type: integer
+      description: |
+        * 0 = NotEnoughReviews
+        * 1 = OverwhelminglyPositive
+        * 2 = VeryPositive
+        * 3 = Positive
+        * 4 = MostlyPositive
+        * 5 = Mixed
+        * 6 = MostlyNegative
+        * 7 = Negative
+        * 8 = VeryNegative
+        * 9 = OverwhelminglyNegative
+      enum:
+        - 0
+        - 1
+        - 2
+        - 3
+        - 4
+        - 5
+        - 6
+        - 7
+        - 8
+        - 9
+      x-enumNames:
+        - NotEnoughReviews
+        - OverwhelminglyPositive
+        - VeryPositive
+        - Positive
+        - MostlyPositive
+        - Mixed
+        - MostlyNegative
+        - Negative
+        - VeryNegative
+        - OverwhelminglyNegative
     SearchModsResponse:
       type: object
       properties:
@@ -1993,6 +2277,78 @@ components:
           description: The response data
         pagination:
           $ref: '#/components/schemas/Pagination'
+    ServerAffiliation:
+      type: object
+      properties:
+        isEnabled:
+          type: boolean
+          description: Whether the server affiliate program is enabled for this mod
+        isDefaultBanner:
+          type: boolean
+        hasDiscount:
+          type: boolean
+        affiliationService:
+          $ref: '#/components/schemas/AffiliationServiceType'
+        defaultBannerCustomTitle:
+          type: string
+        customImageUrl:
+          type: string
+          format: uri
+        affiliationLink:
+          type: string
+          format: uri
+    SocialLink:
+      type: object
+      properties:
+        type:
+          $ref: '#/components/schemas/SocialLinkType'
+        url:
+          type: string
+          format: uri
+    SocialLinkType:
+      type: integer
+      description: |
+        * 1 = Mastodon
+        * 2 = Discord
+        * 3 = Website
+        * 4 = Facebook
+        * 5 = Twitter
+        * 6 = Instagram
+        * 7 = Patreon
+        * 8 = Twitch
+        * 9 = Reddit
+        * 10 = Youtube
+        * 11 = TikTok
+        * 12 = Pinterest
+        * 13 = Github
+      enum:
+        - 1
+        - 2
+        - 3
+        - 4
+        - 5
+        - 6
+        - 7
+        - 8
+        - 9
+        - 10
+        - 11
+        - 12
+        - 13
+      x-enumNames:
+        - Mastodon
+        - Discord
+        - Website
+        - Facebook
+        - Twitter
+        - Instagram
+        - Patreon
+        - Twitch
+        - Reddit
+        - Youtube
+        - TikTok
+        - Pinterest
+        - Github
     SortableGameVersion:
       type: object
       properties:
