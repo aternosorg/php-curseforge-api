@@ -1,6 +1,6 @@
 <?php
 /**
- * ModAuthor
+ * RatingDetails
  *
  * PHP version 7.4
  *
@@ -32,7 +32,7 @@ use \ArrayAccess;
 use \Aternos\CurseForgeApi\ObjectSerializer;
 
 /**
- * ModAuthor Class Doc Comment
+ * RatingDetails Class Doc Comment
  *
  * @category Class
  * @package  Aternos\CurseForgeApi
@@ -40,7 +40,7 @@ use \Aternos\CurseForgeApi\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class ModAuthor implements ModelInterface, ArrayAccess, \JsonSerializable
+class RatingDetails implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class ModAuthor implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'ModAuthor';
+    protected static $openAPIModelName = 'RatingDetails';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,10 +57,10 @@ class ModAuthor implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'id' => 'int',
-        'name' => 'string',
-        'url' => 'string',
-        'avatar_url' => 'string'
+        'rating' => 'float',
+        'total_ratings' => 'int',
+        'positive_ratings' => 'int',
+        'score' => '\Aternos\CurseForgeApi\Model\RatingScore'
     ];
 
     /**
@@ -71,10 +71,10 @@ class ModAuthor implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'id' => 'int32',
-        'name' => null,
-        'url' => 'uri',
-        'avatar_url' => 'uri'
+        'rating' => 'decimal',
+        'total_ratings' => 'int32',
+        'positive_ratings' => 'int32',
+        'score' => null
     ];
 
     /**
@@ -83,10 +83,10 @@ class ModAuthor implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'id' => false,
-        'name' => false,
-        'url' => false,
-        'avatar_url' => false
+        'rating' => true,
+        'total_ratings' => true,
+        'positive_ratings' => true,
+        'score' => false
     ];
 
     /**
@@ -175,10 +175,10 @@ class ModAuthor implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'id' => 'id',
-        'name' => 'name',
-        'url' => 'url',
-        'avatar_url' => 'avatarUrl'
+        'rating' => 'rating',
+        'total_ratings' => 'totalRatings',
+        'positive_ratings' => 'positiveRatings',
+        'score' => 'score'
     ];
 
     /**
@@ -187,10 +187,10 @@ class ModAuthor implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'id' => 'setId',
-        'name' => 'setName',
-        'url' => 'setUrl',
-        'avatar_url' => 'setAvatarUrl'
+        'rating' => 'setRating',
+        'total_ratings' => 'setTotalRatings',
+        'positive_ratings' => 'setPositiveRatings',
+        'score' => 'setScore'
     ];
 
     /**
@@ -199,10 +199,10 @@ class ModAuthor implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'id' => 'getId',
-        'name' => 'getName',
-        'url' => 'getUrl',
-        'avatar_url' => 'getAvatarUrl'
+        'rating' => 'getRating',
+        'total_ratings' => 'getTotalRatings',
+        'positive_ratings' => 'getPositiveRatings',
+        'score' => 'getScore'
     ];
 
     /**
@@ -262,10 +262,10 @@ class ModAuthor implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('id', $data ?? [], null);
-        $this->setIfExists('name', $data ?? [], null);
-        $this->setIfExists('url', $data ?? [], null);
-        $this->setIfExists('avatar_url', $data ?? [], null);
+        $this->setIfExists('rating', $data ?? [], null);
+        $this->setIfExists('total_ratings', $data ?? [], null);
+        $this->setIfExists('positive_ratings', $data ?? [], null);
+        $this->setIfExists('score', $data ?? [], null);
     }
 
     /**
@@ -311,109 +311,130 @@ class ModAuthor implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets id
+     * Gets rating
+     *
+     * @return float|null
+     */
+    public function getRating()
+    {
+        return $this->container['rating'];
+    }
+
+    /**
+     * Sets rating
+     *
+     * @param float|null $rating rating
+     *
+     * @return self
+     */
+    public function setRating($rating)
+    {
+        if (is_null($rating)) {
+            array_push($this->openAPINullablesSetToNull, 'rating');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('rating', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['rating'] = $rating;
+
+        return $this;
+    }
+
+    /**
+     * Gets total_ratings
      *
      * @return int|null
      */
-    public function getId()
+    public function getTotalRatings()
     {
-        return $this->container['id'];
+        return $this->container['total_ratings'];
     }
 
     /**
-     * Sets id
+     * Sets total_ratings
      *
-     * @param int|null $id id
+     * @param int|null $total_ratings total_ratings
      *
      * @return self
      */
-    public function setId($id)
+    public function setTotalRatings($total_ratings)
     {
-        if (is_null($id)) {
-            throw new \InvalidArgumentException('non-nullable id cannot be null');
+        if (is_null($total_ratings)) {
+            array_push($this->openAPINullablesSetToNull, 'total_ratings');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('total_ratings', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
-        $this->container['id'] = $id;
+        $this->container['total_ratings'] = $total_ratings;
 
         return $this;
     }
 
     /**
-     * Gets name
+     * Gets positive_ratings
      *
-     * @return string|null
+     * @return int|null
      */
-    public function getName()
+    public function getPositiveRatings()
     {
-        return $this->container['name'];
+        return $this->container['positive_ratings'];
     }
 
     /**
-     * Sets name
+     * Sets positive_ratings
      *
-     * @param string|null $name name
+     * @param int|null $positive_ratings positive_ratings
      *
      * @return self
      */
-    public function setName($name)
+    public function setPositiveRatings($positive_ratings)
     {
-        if (is_null($name)) {
-            throw new \InvalidArgumentException('non-nullable name cannot be null');
+        if (is_null($positive_ratings)) {
+            array_push($this->openAPINullablesSetToNull, 'positive_ratings');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('positive_ratings', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
-        $this->container['name'] = $name;
+        $this->container['positive_ratings'] = $positive_ratings;
 
         return $this;
     }
 
     /**
-     * Gets url
+     * Gets score
      *
-     * @return string|null
+     * @return \Aternos\CurseForgeApi\Model\RatingScore|null
      */
-    public function getUrl()
+    public function getScore()
     {
-        return $this->container['url'];
+        return $this->container['score'];
     }
 
     /**
-     * Sets url
+     * Sets score
      *
-     * @param string|null $url url
+     * @param \Aternos\CurseForgeApi\Model\RatingScore|null $score score
      *
      * @return self
      */
-    public function setUrl($url)
+    public function setScore($score)
     {
-        if (is_null($url)) {
-            throw new \InvalidArgumentException('non-nullable url cannot be null');
+        if (is_null($score)) {
+            throw new \InvalidArgumentException('non-nullable score cannot be null');
         }
-        $this->container['url'] = $url;
-
-        return $this;
-    }
-
-    /**
-     * Gets avatar_url
-     *
-     * @return string|null
-     */
-    public function getAvatarUrl()
-    {
-        return $this->container['avatar_url'];
-    }
-
-    /**
-     * Sets avatar_url
-     *
-     * @param string|null $avatar_url avatar_url
-     *
-     * @return self
-     */
-    public function setAvatarUrl($avatar_url)
-    {
-        if (is_null($avatar_url)) {
-            throw new \InvalidArgumentException('non-nullable avatar_url cannot be null');
-        }
-        $this->container['avatar_url'] = $avatar_url;
+        $this->container['score'] = $score;
 
         return $this;
     }

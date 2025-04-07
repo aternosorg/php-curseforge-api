@@ -1,6 +1,6 @@
 <?php
 /**
- * ModAuthor
+ * SocialLink
  *
  * PHP version 7.4
  *
@@ -32,7 +32,7 @@ use \ArrayAccess;
 use \Aternos\CurseForgeApi\ObjectSerializer;
 
 /**
- * ModAuthor Class Doc Comment
+ * SocialLink Class Doc Comment
  *
  * @category Class
  * @package  Aternos\CurseForgeApi
@@ -40,7 +40,7 @@ use \Aternos\CurseForgeApi\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class ModAuthor implements ModelInterface, ArrayAccess, \JsonSerializable
+class SocialLink implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class ModAuthor implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'ModAuthor';
+    protected static $openAPIModelName = 'SocialLink';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,10 +57,8 @@ class ModAuthor implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'id' => 'int',
-        'name' => 'string',
-        'url' => 'string',
-        'avatar_url' => 'string'
+        'type' => '\Aternos\CurseForgeApi\Model\SocialLinkType',
+        'url' => 'string'
     ];
 
     /**
@@ -71,10 +69,8 @@ class ModAuthor implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'id' => 'int32',
-        'name' => null,
-        'url' => 'uri',
-        'avatar_url' => 'uri'
+        'type' => null,
+        'url' => 'uri'
     ];
 
     /**
@@ -83,10 +79,8 @@ class ModAuthor implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'id' => false,
-        'name' => false,
-        'url' => false,
-        'avatar_url' => false
+        'type' => false,
+        'url' => false
     ];
 
     /**
@@ -175,10 +169,8 @@ class ModAuthor implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'id' => 'id',
-        'name' => 'name',
-        'url' => 'url',
-        'avatar_url' => 'avatarUrl'
+        'type' => 'type',
+        'url' => 'url'
     ];
 
     /**
@@ -187,10 +179,8 @@ class ModAuthor implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'id' => 'setId',
-        'name' => 'setName',
-        'url' => 'setUrl',
-        'avatar_url' => 'setAvatarUrl'
+        'type' => 'setType',
+        'url' => 'setUrl'
     ];
 
     /**
@@ -199,10 +189,8 @@ class ModAuthor implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'id' => 'getId',
-        'name' => 'getName',
-        'url' => 'getUrl',
-        'avatar_url' => 'getAvatarUrl'
+        'type' => 'getType',
+        'url' => 'getUrl'
     ];
 
     /**
@@ -262,10 +250,8 @@ class ModAuthor implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('id', $data ?? [], null);
-        $this->setIfExists('name', $data ?? [], null);
+        $this->setIfExists('type', $data ?? [], null);
         $this->setIfExists('url', $data ?? [], null);
-        $this->setIfExists('avatar_url', $data ?? [], null);
     }
 
     /**
@@ -311,55 +297,28 @@ class ModAuthor implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets id
+     * Gets type
      *
-     * @return int|null
+     * @return \Aternos\CurseForgeApi\Model\SocialLinkType|null
      */
-    public function getId()
+    public function getType()
     {
-        return $this->container['id'];
+        return $this->container['type'];
     }
 
     /**
-     * Sets id
+     * Sets type
      *
-     * @param int|null $id id
+     * @param \Aternos\CurseForgeApi\Model\SocialLinkType|null $type type
      *
      * @return self
      */
-    public function setId($id)
+    public function setType($type)
     {
-        if (is_null($id)) {
-            throw new \InvalidArgumentException('non-nullable id cannot be null');
+        if (is_null($type)) {
+            throw new \InvalidArgumentException('non-nullable type cannot be null');
         }
-        $this->container['id'] = $id;
-
-        return $this;
-    }
-
-    /**
-     * Gets name
-     *
-     * @return string|null
-     */
-    public function getName()
-    {
-        return $this->container['name'];
-    }
-
-    /**
-     * Sets name
-     *
-     * @param string|null $name name
-     *
-     * @return self
-     */
-    public function setName($name)
-    {
-        if (is_null($name)) {
-            throw new \InvalidArgumentException('non-nullable name cannot be null');
-        }
-        $this->container['name'] = $name;
+        $this->container['type'] = $type;
 
         return $this;
     }
@@ -387,33 +346,6 @@ class ModAuthor implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable url cannot be null');
         }
         $this->container['url'] = $url;
-
-        return $this;
-    }
-
-    /**
-     * Gets avatar_url
-     *
-     * @return string|null
-     */
-    public function getAvatarUrl()
-    {
-        return $this->container['avatar_url'];
-    }
-
-    /**
-     * Sets avatar_url
-     *
-     * @param string|null $avatar_url avatar_url
-     *
-     * @return self
-     */
-    public function setAvatarUrl($avatar_url)
-    {
-        if (is_null($avatar_url)) {
-            throw new \InvalidArgumentException('non-nullable avatar_url cannot be null');
-        }
-        $this->container['avatar_url'] = $avatar_url;
 
         return $this;
     }

@@ -1,6 +1,6 @@
 <?php
 /**
- * ModStatus
+ * PlatformType
  *
  * PHP version 7.4
  *
@@ -30,19 +30,21 @@ namespace Aternos\CurseForgeApi\Model;
 use \Aternos\CurseForgeApi\ObjectSerializer;
 
 /**
- * ModStatus Class Doc Comment
+ * PlatformType Class Doc Comment
  *
  * @category Class
- * @description Current mod status Possible enum values:  * 1 &#x3D; New  * 2 &#x3D; ChangesRequired  * 3 &#x3D; UnderSoftReview  * 4 &#x3D; Approved  * 5 &#x3D; Rejected  * 6 &#x3D; ChangesMade  * 7 &#x3D; Inactive  * 8 &#x3D; Abandoned  * 9 &#x3D; Deleted  * 10 &#x3D; UnderReview
+ * @description * 0 &#x3D; Empty * 1 &#x3D; Windows * 2 &#x3D; XboxOne * 3 &#x3D; XboxXS * 4 &#x3D; Linux * 5 &#x3D; PS4 * 6 &#x3D; PS5 * 7 &#x3D; Mac * 8 &#x3D; IOS * 9 &#x3D; TVOS * 10 &#x3D; Android * 11 &#x3D; Switch * 12 &#x3D; WindowsServer * 13 &#x3D; LinuxServer
  * @package  Aternos\CurseForgeApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
-class ModStatus
+class PlatformType
 {
     /**
      * Possible values of this enum
      */
+    public const NUMBER_0 = 0;
+
     public const NUMBER_1 = 1;
 
     public const NUMBER_2 = 2;
@@ -63,6 +65,12 @@ class ModStatus
 
     public const NUMBER_10 = 10;
 
+    public const NUMBER_11 = 11;
+
+    public const NUMBER_12 = 12;
+
+    public const NUMBER_13 = 13;
+
     /**
      * Gets allowable values of the enum
      * @return string[]
@@ -70,6 +78,7 @@ class ModStatus
     public static function getAllowableEnumValues()
     {
         return [
+            self::NUMBER_0,
             self::NUMBER_1,
             self::NUMBER_2,
             self::NUMBER_3,
@@ -79,7 +88,10 @@ class ModStatus
             self::NUMBER_7,
             self::NUMBER_8,
             self::NUMBER_9,
-            self::NUMBER_10
+            self::NUMBER_10,
+            self::NUMBER_11,
+            self::NUMBER_12,
+            self::NUMBER_13
         ];
     }
 }

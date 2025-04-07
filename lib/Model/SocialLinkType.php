@@ -1,6 +1,6 @@
 <?php
 /**
- * ModStatus
+ * SocialLinkType
  *
  * PHP version 7.4
  *
@@ -30,15 +30,15 @@ namespace Aternos\CurseForgeApi\Model;
 use \Aternos\CurseForgeApi\ObjectSerializer;
 
 /**
- * ModStatus Class Doc Comment
+ * SocialLinkType Class Doc Comment
  *
  * @category Class
- * @description Current mod status Possible enum values:  * 1 &#x3D; New  * 2 &#x3D; ChangesRequired  * 3 &#x3D; UnderSoftReview  * 4 &#x3D; Approved  * 5 &#x3D; Rejected  * 6 &#x3D; ChangesMade  * 7 &#x3D; Inactive  * 8 &#x3D; Abandoned  * 9 &#x3D; Deleted  * 10 &#x3D; UnderReview
+ * @description * 1 &#x3D; Mastodon * 2 &#x3D; Discord * 3 &#x3D; Website * 4 &#x3D; Facebook * 5 &#x3D; Twitter * 6 &#x3D; Instagram * 7 &#x3D; Patreon * 8 &#x3D; Twitch * 9 &#x3D; Reddit * 10 &#x3D; Youtube * 11 &#x3D; TikTok * 12 &#x3D; Pinterest * 13 &#x3D; Github
  * @package  Aternos\CurseForgeApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
-class ModStatus
+class SocialLinkType
 {
     /**
      * Possible values of this enum
@@ -63,6 +63,12 @@ class ModStatus
 
     public const NUMBER_10 = 10;
 
+    public const NUMBER_11 = 11;
+
+    public const NUMBER_12 = 12;
+
+    public const NUMBER_13 = 13;
+
     /**
      * Gets allowable values of the enum
      * @return string[]
@@ -79,7 +85,10 @@ class ModStatus
             self::NUMBER_7,
             self::NUMBER_8,
             self::NUMBER_9,
-            self::NUMBER_10
+            self::NUMBER_10,
+            self::NUMBER_11,
+            self::NUMBER_12,
+            self::NUMBER_13
         ];
     }
 }

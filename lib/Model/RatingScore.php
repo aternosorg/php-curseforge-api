@@ -1,6 +1,6 @@
 <?php
 /**
- * ModStatus
+ * RatingScore
  *
  * PHP version 7.4
  *
@@ -30,19 +30,21 @@ namespace Aternos\CurseForgeApi\Model;
 use \Aternos\CurseForgeApi\ObjectSerializer;
 
 /**
- * ModStatus Class Doc Comment
+ * RatingScore Class Doc Comment
  *
  * @category Class
- * @description Current mod status Possible enum values:  * 1 &#x3D; New  * 2 &#x3D; ChangesRequired  * 3 &#x3D; UnderSoftReview  * 4 &#x3D; Approved  * 5 &#x3D; Rejected  * 6 &#x3D; ChangesMade  * 7 &#x3D; Inactive  * 8 &#x3D; Abandoned  * 9 &#x3D; Deleted  * 10 &#x3D; UnderReview
+ * @description * 0 &#x3D; NotEnoughReviews * 1 &#x3D; OverwhelminglyPositive * 2 &#x3D; VeryPositive * 3 &#x3D; Positive * 4 &#x3D; MostlyPositive * 5 &#x3D; Mixed * 6 &#x3D; MostlyNegative * 7 &#x3D; Negative * 8 &#x3D; VeryNegative * 9 &#x3D; OverwhelminglyNegative
  * @package  Aternos\CurseForgeApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
-class ModStatus
+class RatingScore
 {
     /**
      * Possible values of this enum
      */
+    public const NUMBER_0 = 0;
+
     public const NUMBER_1 = 1;
 
     public const NUMBER_2 = 2;
@@ -61,8 +63,6 @@ class ModStatus
 
     public const NUMBER_9 = 9;
 
-    public const NUMBER_10 = 10;
-
     /**
      * Gets allowable values of the enum
      * @return string[]
@@ -70,6 +70,7 @@ class ModStatus
     public static function getAllowableEnumValues()
     {
         return [
+            self::NUMBER_0,
             self::NUMBER_1,
             self::NUMBER_2,
             self::NUMBER_3,
@@ -78,8 +79,7 @@ class ModStatus
             self::NUMBER_6,
             self::NUMBER_7,
             self::NUMBER_8,
-            self::NUMBER_9,
-            self::NUMBER_10
+            self::NUMBER_9
         ];
     }
 }

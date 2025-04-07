@@ -1,6 +1,6 @@
 <?php
 /**
- * ModAuthor
+ * ServerAffiliation
  *
  * PHP version 7.4
  *
@@ -32,7 +32,7 @@ use \ArrayAccess;
 use \Aternos\CurseForgeApi\ObjectSerializer;
 
 /**
- * ModAuthor Class Doc Comment
+ * ServerAffiliation Class Doc Comment
  *
  * @category Class
  * @package  Aternos\CurseForgeApi
@@ -40,7 +40,7 @@ use \Aternos\CurseForgeApi\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class ModAuthor implements ModelInterface, ArrayAccess, \JsonSerializable
+class ServerAffiliation implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class ModAuthor implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'ModAuthor';
+    protected static $openAPIModelName = 'ServerAffiliation';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,10 +57,13 @@ class ModAuthor implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'id' => 'int',
-        'name' => 'string',
-        'url' => 'string',
-        'avatar_url' => 'string'
+        'is_enabled' => 'bool',
+        'is_default_banner' => 'bool',
+        'has_discount' => 'bool',
+        'affiliation_service' => '\Aternos\CurseForgeApi\Model\AffiliationServiceType',
+        'default_banner_custom_title' => 'string',
+        'custom_image_url' => 'string',
+        'affiliation_link' => 'string'
     ];
 
     /**
@@ -71,10 +74,13 @@ class ModAuthor implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'id' => 'int32',
-        'name' => null,
-        'url' => 'uri',
-        'avatar_url' => 'uri'
+        'is_enabled' => null,
+        'is_default_banner' => null,
+        'has_discount' => null,
+        'affiliation_service' => null,
+        'default_banner_custom_title' => null,
+        'custom_image_url' => 'uri',
+        'affiliation_link' => 'uri'
     ];
 
     /**
@@ -83,10 +89,13 @@ class ModAuthor implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'id' => false,
-        'name' => false,
-        'url' => false,
-        'avatar_url' => false
+        'is_enabled' => false,
+        'is_default_banner' => false,
+        'has_discount' => false,
+        'affiliation_service' => false,
+        'default_banner_custom_title' => false,
+        'custom_image_url' => false,
+        'affiliation_link' => false
     ];
 
     /**
@@ -175,10 +184,13 @@ class ModAuthor implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'id' => 'id',
-        'name' => 'name',
-        'url' => 'url',
-        'avatar_url' => 'avatarUrl'
+        'is_enabled' => 'isEnabled',
+        'is_default_banner' => 'isDefaultBanner',
+        'has_discount' => 'hasDiscount',
+        'affiliation_service' => 'affiliationService',
+        'default_banner_custom_title' => 'defaultBannerCustomTitle',
+        'custom_image_url' => 'customImageUrl',
+        'affiliation_link' => 'affiliationLink'
     ];
 
     /**
@@ -187,10 +199,13 @@ class ModAuthor implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'id' => 'setId',
-        'name' => 'setName',
-        'url' => 'setUrl',
-        'avatar_url' => 'setAvatarUrl'
+        'is_enabled' => 'setIsEnabled',
+        'is_default_banner' => 'setIsDefaultBanner',
+        'has_discount' => 'setHasDiscount',
+        'affiliation_service' => 'setAffiliationService',
+        'default_banner_custom_title' => 'setDefaultBannerCustomTitle',
+        'custom_image_url' => 'setCustomImageUrl',
+        'affiliation_link' => 'setAffiliationLink'
     ];
 
     /**
@@ -199,10 +214,13 @@ class ModAuthor implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'id' => 'getId',
-        'name' => 'getName',
-        'url' => 'getUrl',
-        'avatar_url' => 'getAvatarUrl'
+        'is_enabled' => 'getIsEnabled',
+        'is_default_banner' => 'getIsDefaultBanner',
+        'has_discount' => 'getHasDiscount',
+        'affiliation_service' => 'getAffiliationService',
+        'default_banner_custom_title' => 'getDefaultBannerCustomTitle',
+        'custom_image_url' => 'getCustomImageUrl',
+        'affiliation_link' => 'getAffiliationLink'
     ];
 
     /**
@@ -262,10 +280,13 @@ class ModAuthor implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('id', $data ?? [], null);
-        $this->setIfExists('name', $data ?? [], null);
-        $this->setIfExists('url', $data ?? [], null);
-        $this->setIfExists('avatar_url', $data ?? [], null);
+        $this->setIfExists('is_enabled', $data ?? [], null);
+        $this->setIfExists('is_default_banner', $data ?? [], null);
+        $this->setIfExists('has_discount', $data ?? [], null);
+        $this->setIfExists('affiliation_service', $data ?? [], null);
+        $this->setIfExists('default_banner_custom_title', $data ?? [], null);
+        $this->setIfExists('custom_image_url', $data ?? [], null);
+        $this->setIfExists('affiliation_link', $data ?? [], null);
     }
 
     /**
@@ -311,109 +332,190 @@ class ModAuthor implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets id
+     * Gets is_enabled
      *
-     * @return int|null
+     * @return bool|null
      */
-    public function getId()
+    public function getIsEnabled()
     {
-        return $this->container['id'];
+        return $this->container['is_enabled'];
     }
 
     /**
-     * Sets id
+     * Sets is_enabled
      *
-     * @param int|null $id id
+     * @param bool|null $is_enabled Whether the server affiliate program is enabled for this mod
      *
      * @return self
      */
-    public function setId($id)
+    public function setIsEnabled($is_enabled)
     {
-        if (is_null($id)) {
-            throw new \InvalidArgumentException('non-nullable id cannot be null');
+        if (is_null($is_enabled)) {
+            throw new \InvalidArgumentException('non-nullable is_enabled cannot be null');
         }
-        $this->container['id'] = $id;
+        $this->container['is_enabled'] = $is_enabled;
 
         return $this;
     }
 
     /**
-     * Gets name
+     * Gets is_default_banner
      *
-     * @return string|null
+     * @return bool|null
      */
-    public function getName()
+    public function getIsDefaultBanner()
     {
-        return $this->container['name'];
+        return $this->container['is_default_banner'];
     }
 
     /**
-     * Sets name
+     * Sets is_default_banner
      *
-     * @param string|null $name name
+     * @param bool|null $is_default_banner is_default_banner
      *
      * @return self
      */
-    public function setName($name)
+    public function setIsDefaultBanner($is_default_banner)
     {
-        if (is_null($name)) {
-            throw new \InvalidArgumentException('non-nullable name cannot be null');
+        if (is_null($is_default_banner)) {
+            throw new \InvalidArgumentException('non-nullable is_default_banner cannot be null');
         }
-        $this->container['name'] = $name;
+        $this->container['is_default_banner'] = $is_default_banner;
 
         return $this;
     }
 
     /**
-     * Gets url
+     * Gets has_discount
      *
-     * @return string|null
+     * @return bool|null
      */
-    public function getUrl()
+    public function getHasDiscount()
     {
-        return $this->container['url'];
+        return $this->container['has_discount'];
     }
 
     /**
-     * Sets url
+     * Sets has_discount
      *
-     * @param string|null $url url
+     * @param bool|null $has_discount has_discount
      *
      * @return self
      */
-    public function setUrl($url)
+    public function setHasDiscount($has_discount)
     {
-        if (is_null($url)) {
-            throw new \InvalidArgumentException('non-nullable url cannot be null');
+        if (is_null($has_discount)) {
+            throw new \InvalidArgumentException('non-nullable has_discount cannot be null');
         }
-        $this->container['url'] = $url;
+        $this->container['has_discount'] = $has_discount;
 
         return $this;
     }
 
     /**
-     * Gets avatar_url
+     * Gets affiliation_service
      *
-     * @return string|null
+     * @return \Aternos\CurseForgeApi\Model\AffiliationServiceType|null
      */
-    public function getAvatarUrl()
+    public function getAffiliationService()
     {
-        return $this->container['avatar_url'];
+        return $this->container['affiliation_service'];
     }
 
     /**
-     * Sets avatar_url
+     * Sets affiliation_service
      *
-     * @param string|null $avatar_url avatar_url
+     * @param \Aternos\CurseForgeApi\Model\AffiliationServiceType|null $affiliation_service affiliation_service
      *
      * @return self
      */
-    public function setAvatarUrl($avatar_url)
+    public function setAffiliationService($affiliation_service)
     {
-        if (is_null($avatar_url)) {
-            throw new \InvalidArgumentException('non-nullable avatar_url cannot be null');
+        if (is_null($affiliation_service)) {
+            throw new \InvalidArgumentException('non-nullable affiliation_service cannot be null');
         }
-        $this->container['avatar_url'] = $avatar_url;
+        $this->container['affiliation_service'] = $affiliation_service;
+
+        return $this;
+    }
+
+    /**
+     * Gets default_banner_custom_title
+     *
+     * @return string|null
+     */
+    public function getDefaultBannerCustomTitle()
+    {
+        return $this->container['default_banner_custom_title'];
+    }
+
+    /**
+     * Sets default_banner_custom_title
+     *
+     * @param string|null $default_banner_custom_title default_banner_custom_title
+     *
+     * @return self
+     */
+    public function setDefaultBannerCustomTitle($default_banner_custom_title)
+    {
+        if (is_null($default_banner_custom_title)) {
+            throw new \InvalidArgumentException('non-nullable default_banner_custom_title cannot be null');
+        }
+        $this->container['default_banner_custom_title'] = $default_banner_custom_title;
+
+        return $this;
+    }
+
+    /**
+     * Gets custom_image_url
+     *
+     * @return string|null
+     */
+    public function getCustomImageUrl()
+    {
+        return $this->container['custom_image_url'];
+    }
+
+    /**
+     * Sets custom_image_url
+     *
+     * @param string|null $custom_image_url custom_image_url
+     *
+     * @return self
+     */
+    public function setCustomImageUrl($custom_image_url)
+    {
+        if (is_null($custom_image_url)) {
+            throw new \InvalidArgumentException('non-nullable custom_image_url cannot be null');
+        }
+        $this->container['custom_image_url'] = $custom_image_url;
+
+        return $this;
+    }
+
+    /**
+     * Gets affiliation_link
+     *
+     * @return string|null
+     */
+    public function getAffiliationLink()
+    {
+        return $this->container['affiliation_link'];
+    }
+
+    /**
+     * Sets affiliation_link
+     *
+     * @param string|null $affiliation_link affiliation_link
+     *
+     * @return self
+     */
+    public function setAffiliationLink($affiliation_link)
+    {
+        if (is_null($affiliation_link)) {
+            throw new \InvalidArgumentException('non-nullable affiliation_link cannot be null');
+        }
+        $this->container['affiliation_link'] = $affiliation_link;
 
         return $this;
     }
