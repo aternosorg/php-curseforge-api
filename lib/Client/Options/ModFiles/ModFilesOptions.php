@@ -16,7 +16,7 @@ class ModFilesOptions
      * @param ModLoaderType|null $modLoaderType mod loader type to filter files by
      * @param int|null $gameVersionTypeId show only files that are tagged with versions of the given gameVersionTypeId
      * @param int|null $olderThanProjectFileId show only files that are older than the given projectFileId
-     * @param array|null $releaseTypes array of release types to filter files by
+     * @param ReleaseType[]|null $releaseTypes array of release types to filter files by
      * @param PlatformType|null $platformType platform type to filter files by
      */
     public function __construct(
