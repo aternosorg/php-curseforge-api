@@ -34,11 +34,12 @@ class Category
     {
         if ($options === null) {
             $options = new ModSearchOptions($this->category->getGameId());
-            if ($this->category->getIsClass()) {
-                $options->setClassId($this->category->getId());
-            } else {
-                $options->setCategoryId($this->category->getId());
-            }
+        }
+
+        if ($this->category->getIsClass()) {
+            $options->setClassId($this->category->getId());
+        } else {
+            $options->setCategoryIds([$this->category->getId()]);
         }
 
         return $this->client->searchMods($options);

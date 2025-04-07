@@ -14,17 +14,17 @@ class ClientTest extends TestCase
 
     protected ?CurseForgeAPIClient $apiClient = null;
 
-    protected const MINECRAFT_GAME_ID = 432;
+    protected const int MINECRAFT_GAME_ID = 432;
 
-    protected const MODS_CATEGORY_ID = 6;
+    protected const int MODS_CATEGORY_ID = 6;
 
-    protected const MCLOGS_MOD_ID = 420561;
+    protected const int MCLOGS_MOD_ID = 420561;
 
-    protected const MCLOGS_PLUGIN_ID = 278568;
+    protected const int MCLOGS_PLUGIN_ID = 278568;
 
-    protected const MOTDGG_PLUGIN_ID = 715033;
+    protected const int MOTDGG_PLUGIN_ID = 715033;
 
-    protected const MCLOGS_PRIMARY_CATEGORY_ID = 435;
+    protected const int MCLOGS_PRIMARY_CATEGORY_ID = 435;
 
     /**
      * Setup before running any test cases
@@ -171,6 +171,34 @@ class ClientTest extends TestCase
         foreach ($categories as $category) {
             $this->assertTrue($category->getData()->getIsClass());
         }
+
+        for ($i = 0; $i < 3; $i++) {
+            $category = $categories[$i];
+            $this->assertEquals(static::MINECRAFT_GAME_ID, $category->getGame()->getData()->getId());
+
+            $mods = $category->getMods();
+            $this->assertNotEmpty($mods);
+            foreach ($mods->getResults() as $mod) {
+                if ($category->getData()->getIsClass()) {
+                    $this->assertEquals($category->getData()->getId(), $mod->getData()->getClassId());
+                }
+                else {
+                    $this->assertContains($category->getData()->getId(),
+                        array_map(fn($category) => $category->getId(), $mod->getData()->getCategories()));
+                }
+            }
+        }
+    }
+
+    public function testGetCategory()
+    {
+        $category = $this->apiClient->getCategory(static::MINECRAFT_GAME_ID, static::MCLOGS_PRIMARY_CATEGORY_ID);
+        $this->assertNotNull($category);
+
+        $this->assertEquals(static::MCLOGS_PRIMARY_CATEGORY_ID, $category->getData()->getId());
+
+        $category = $this->apiClient->getCategory(static::MINECRAFT_GAME_ID, -1);
+        $this->assertNull($category);
     }
 
     /**

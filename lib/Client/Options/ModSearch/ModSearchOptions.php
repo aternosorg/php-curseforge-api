@@ -9,14 +9,16 @@ class ModSearchOptions
     /**
      * @param int $gameId
      * @param int|null $classId
-     * @param int|null $categoryId
-     * @param string|null $gameVersion
+     * @param int[]|null $categoryIds
+     * @param string[]|null $gameVersions
      * @param string|null $searchFilter Filter by free text search in the mod name and author
      * @param ModSearchSortField|null $sortField
      * @param SortOrder|null $sortOrder
-     * @param ModLoaderType|null $modLoaderType Filter only mods associated to a given modloader (Forge, Fabric ...). Must be coupled with gameVersion.
+     * @param ModLoaderType[]|null $modLoaderTypes Filter only mods associated to a given modloader (Forge, Fabric ...). Must be coupled with gameVersion.
      * @param int|null $gameVersionTypeId Filter only mods that contain files tagged with versions of the given gameVersionTypeId
-     * @param int|null $authorId
+     * @param int|null $authorId Filter only mods that the given authorId is a member of
+     * @param int|null $primaryAuthorId Filter only mods that have the given author as primary author
+     * @param PremiumType|null $premiumType Filter only mods that are Premium or not
      * @param string|null $slug Filter by slug (coupled with classId will result in a unique result).
      * @param int $offset
      * @param int $pageSize
@@ -24,14 +26,16 @@ class ModSearchOptions
     public function __construct(
         protected int                 $gameId,
         protected ?int                $classId = null,
-        protected ?int                $categoryId = null,
-        protected ?string             $gameVersion = null,
+        protected ?array              $categoryIds = null,
+        protected ?array              $gameVersions = null,
         protected ?string             $searchFilter = null,
         protected ?ModSearchSortField $sortField = null,
         protected ?SortOrder          $sortOrder = null,
-        protected ?ModLoaderType      $modLoaderType = null,
+        protected ?array              $modLoaderTypes = null,
         protected ?int                $gameVersionTypeId = null,
         protected ?int                $authorId = null,
+        protected ?int                $primaryAuthorId = null,
+        protected ?PremiumType        $premiumType = null,
         protected ?string             $slug = null,
         protected int                 $offset = 0,
         protected int                 $pageSize = PaginatedModList::MAX_PAGE_SIZE,
@@ -76,38 +80,111 @@ class ModSearchOptions
     }
 
     /**
-     * @return int|null
+     * @return int[]|null
      */
-    public function getCategoryId(): ?int
+    public function getCategoryIds(): ?array
     {
-        return $this->categoryId;
+        return $this->categoryIds;
     }
 
     /**
-     * @param int|null $categoryId
+     * Get the categories encoded for the API request
+     * @return string|null
+     */
+    public function getEncodedCategoryIds(): ?string
+    {
+        if ($this->categoryIds === null) {
+            return null;
+        }
+
+        return json_encode($this->categoryIds);
+    }
+
+    /**
+     * Set the category IDs to filter the search results
+     * @param int[]|null $categoryIds
      * @return $this
      */
-    public function setCategoryId(?int $categoryId): static
+    public function setCategoryIds(?array $categoryIds): static
     {
-        $this->categoryId = $categoryId;
+        $this->categoryIds = $categoryIds;
         return $this;
     }
 
     /**
-     * @return string|null
+     * Add a category ID to filter the search results
+     * @param int $categoryId
+     * @return $this
      */
-    public function getGameVersion(): ?string
+    public function addCategoryId(int $categoryId): static
     {
-        return $this->gameVersion;
+        $this->categoryIds ??= [];
+        $this->categoryIds[] = $categoryId;
+        return $this;
     }
 
     /**
-     * @param string|null $gameVersion
+     * Remove a category ID from the filter
+     * @param int $categoryId
      * @return $this
      */
-    public function setGameVersion(?string $gameVersion): static
+    public function removeCategoryId(int $categoryId): static
     {
-        $this->gameVersion = $gameVersion;
+        $this->categoryIds = array_filter($this->categoryIds, fn($value) => $value !== $categoryId);
+        return $this;
+    }
+
+    /**
+     * @return string[]|null
+     */
+    public function getGameVersions(): ?array
+    {
+        return $this->gameVersions;
+    }
+
+    /**
+     * Get the game versions encoded for the API request
+     * @return string|null
+     */
+    public function getEncodedGameVersions(): ?string
+    {
+        if ($this->gameVersions === null) {
+            return null;
+        }
+
+        return json_encode($this->gameVersions);
+    }
+
+    /**
+     * @param string[]|null $gameVersions
+     * @return $this
+     */
+    public function setGameVersions(?array $gameVersions): static
+    {
+        $this->gameVersions = $gameVersions;
+        return $this;
+    }
+
+    /**
+     * Add a game version to the filter
+     * @param string $gameVersion
+     * @return $this
+     */
+    public function addGameVersion(string $gameVersion): static
+    {
+        $this->gameVersions ??= [];
+        $this->gameVersions[] = $gameVersion;
+        return $this;
+    }
+
+    /**
+     * Remove a game version from the filter
+     * @param string $gameVersion
+     * @return $this
+     */
+    public function removeGameVersion(string $gameVersion): static
+    {
+        $this->gameVersions = array_filter($this->gameVersions, fn($value) => $value !== $gameVersion);
         return $this;
     }
 
@@ -166,20 +243,61 @@ class ModSearchOptions
     }
 
     /**
-     * @return ModLoaderType|null
+     * @return ModLoaderType[]|null
      */
-    public function getModLoaderType(): ?ModLoaderType
+    public function getModLoaderTypes(): ?array
     {
-        return $this->modLoaderType;
+        return $this->modLoaderTypes;
     }
 
     /**
-     * @param ModLoaderType|null $modLoaderType
+     * @return string|null
+     */
+    public function getEncodedModLoaderTypes(): ?string
+    {
+        if ($this->modLoaderTypes === null) {
+            return null;
+        }
+
+        $result = [];
+
+        foreach ($this->modLoaderTypes as $modLoaderType) {
+            $result[] = $modLoaderType->value;
+        }
+
+        return json_encode($result);
+    }
+
+    /**
+     * @param ModLoaderType[]|null $modLoaderTypes
      * @return $this
      */
-    public function setModLoaderType(?ModLoaderType $modLoaderType): static
+    public function setModLoaderTypes(?array $modLoaderTypes): static
     {
-        $this->modLoaderType = $modLoaderType;
+        $this->modLoaderTypes = $modLoaderTypes;
+        return $this;
+    }
+
+    /**
+     * Add a mod loader type to the filter
+     * @param ModLoaderType $modLoaderType
+     * @return $this
+     */
+    public function addModLoaderType(ModLoaderType $modLoaderType): static
+    {
+        $this->modLoaderTypes ??= [];
+        $this->modLoaderTypes[] = $modLoaderType;
+        return $this;
+    }
+
+    /**
+     * Remove a mod loader type from the filter
+     * @param ModLoaderType $modLoaderType
+     * @return $this
+     */
+    public function removeModLoaderType(ModLoaderType $modLoaderType): static
+    {
+        $this->modLoaderTypes = array_filter($this->modLoaderTypes, fn($value) => $value !== $modLoaderType);
         return $this;
     }
 
@@ -216,6 +334,42 @@ class ModSearchOptions
     public function setAuthorId(?int $authorId): static
     {
         $this->authorId = $authorId;
+        return $this;
+    }
+
+    /**
+     * @return int|null
+     */
+    public function getPrimaryAuthorId(): ?int
+    {
+        return $this->primaryAuthorId;
+    }
+
+    /**
+     * @param int|null $primaryAuthorId
+     * @return $this
+     */
+    public function setPrimaryAuthorId(?int $primaryAuthorId): static
+    {
+        $this->primaryAuthorId = $primaryAuthorId;
+        return $this;
+    }
+
+    /**
+     * @return PremiumType|null
+     */
+    public function getPremiumType(): ?PremiumType
+    {
+        return $this->premiumType;
+    }
+
+    /**
+     * @param PremiumType|null $premiumType
+     * @return $this
+     */
+    public function setPremiumType(?PremiumType $premiumType): static
+    {
+        $this->premiumType = $premiumType;
         return $this;
     }
 

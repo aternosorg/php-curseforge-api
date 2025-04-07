@@ -309,6 +309,40 @@ paths:
           required: false
           schema:
             type: string
+        - name: categoryIds
+          in: query
+          description: Filter by a list of category ids. this will override categoryId. Limited to 10 items.
+          required: false
+          schema:
+            # Setting type to array is not possible here because CurseForge uses a non-standard representation.
+            type: string
+        - name: gameVersions
+          in: query
+          description: Filter by a list of game version strings. This will override gameVersion. Limited to 4 items.
+          required: false
+          schema:
+            # Setting type to array is not possible here because CurseForge uses a non-standard representation.
+            type: string
+        - name: modLoaderTypes
+          in: query
+          description: Filter by a list of modloader types. This will override modLoaderType. Limited to 5 items.
+          required: false
+          schema:
+            # Setting type to array is not possible here because CurseForge uses a non-standard representation.
+            type: string
+        - name: primaryAuthorId
+          in: query
+          description: Filter only mods that the given primaryAuthorId is the owner of.
+          required: false
+          schema:
+            type: integer
+            format: int32
+        - name: PremiumType
+          in: query
+          description: Filter only mods that are Premium or not.
+          required: false
+          schema:
+            $ref: '#/components/schemas/PremiumType'
         - name: index
           in: query
           description: >-
@@ -327,54 +361,6 @@ paths:
           schema:
             type: integer
             format: int32
-        - name: categoryIds
-          in: query
-          description: Filter by a list of category ids. this will override categoryId.
-          required: false
-          schema:
-            # TODO: is this typed as "string" in the original API doc. Check if openapi generator generates arrays
-            # correctly with this option
-            type: array
-            maxItems: 10
-            items:
-              type: integer
-              format: int32
-        - name: gameVersions
-          in: query
-          description: Filter by a list of game version strings. This will override gameVersion.
-          required: false
-          schema:
-            # TODO: is this typed as "string" in the original API doc. Check if openapi generator generates arrays
-            # correctly with this option
-            type: array
-            maxItems: 4
-            items:
-              type: string
-        - name: modLoaderTypes
-          in: query
-          description: Filter by a list of modloader types. This will override modLoaderType.
-          required: false
-          schema:
-            # TODO: is this typed as "string" in the original API doc. Check if openapi generator generates arrays
-            # correctly with this option
-            type: array
-            maxItems: 5
-            items:
-              $ref: '#/components/schemas/ModLoaderType'
-        - name: primaryAuthorId
-          in: query
-          description: Filter only mods that the given primaryAuthorId is the owner of.
-          required: false
-          schema:
-            type: integer
-            format: int32
-        - name: PremiumType
-          in: query
-          description: Filter only mods that are Premium or not.
-          required: false
-          schema:
-            $ref: '#/components/schemas/PremiumType'
-
       responses:
         '200':
           description: OK
