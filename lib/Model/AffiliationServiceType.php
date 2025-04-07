@@ -33,7 +33,7 @@ use \Aternos\CurseForgeApi\ObjectSerializer;
  * AffiliationServiceType Class Doc Comment
  *
  * @category Class
- * @description * 1 &#x3D; Bisect  Note: Bisect appears to have both id 1 and 2 for some reason
+ * @description * 1 &#x3D; Bisect  Note: Bisect appears to have both id 1 and 2 for some reason. This is not documented in the official API spec The official spec also does not mention 0 which appears to be the default for projects that do not use the affiliate program.
  * @package  Aternos\CurseForgeApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -43,6 +43,8 @@ class AffiliationServiceType
     /**
      * Possible values of this enum
      */
+    public const NUMBER_0 = 0;
+
     public const NUMBER_1 = 1;
 
     public const NUMBER_2 = 2;
@@ -54,6 +56,7 @@ class AffiliationServiceType
     public static function getAllowableEnumValues()
     {
         return [
+            self::NUMBER_0,
             self::NUMBER_1,
             self::NUMBER_2
         ];

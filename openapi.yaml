@@ -975,10 +975,14 @@ components:
         * 1 = Bisect
         
         Note: Bisect appears to have both id 1 and 2 for some reason. This is not documented in the official API spec
+        The official spec also does not mention 0 which appears to be the default for projects that do not use the
+        affiliate program.
       enum:
+        - 0
         - 1
         - 2
       x-enumNames:
+        - None
         - Bisect
         - BisectTwo
     ApiResponseOfListOfMinecraftGameVersion:
