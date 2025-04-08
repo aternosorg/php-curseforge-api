@@ -2311,6 +2311,7 @@ components:
         * 11 = TikTok
         * 12 = Pinterest
         * 13 = Github
+        * 14 = Bluesky
       enum:
         - 1
         - 2
@@ -2325,6 +2326,7 @@ components:
         - 11
         - 12
         - 13
+        - 14
       x-enumNames:
         - Mastodon
         - Discord
@@ -2339,6 +2341,7 @@ components:
         - TikTok
         - Pinterest
         - Github
+        - Bluesky
     SortableGameVersion:
       type: object
       properties:

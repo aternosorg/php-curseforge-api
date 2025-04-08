@@ -33,7 +33,7 @@ use \Aternos\CurseForgeApi\ObjectSerializer;
  * SocialLinkType Class Doc Comment
  *
  * @category Class
- * @description * 1 &#x3D; Mastodon * 2 &#x3D; Discord * 3 &#x3D; Website * 4 &#x3D; Facebook * 5 &#x3D; Twitter * 6 &#x3D; Instagram * 7 &#x3D; Patreon * 8 &#x3D; Twitch * 9 &#x3D; Reddit * 10 &#x3D; Youtube * 11 &#x3D; TikTok * 12 &#x3D; Pinterest * 13 &#x3D; Github
+ * @description * 1 &#x3D; Mastodon * 2 &#x3D; Discord * 3 &#x3D; Website * 4 &#x3D; Facebook * 5 &#x3D; Twitter * 6 &#x3D; Instagram * 7 &#x3D; Patreon * 8 &#x3D; Twitch * 9 &#x3D; Reddit * 10 &#x3D; Youtube * 11 &#x3D; TikTok * 12 &#x3D; Pinterest * 13 &#x3D; Github * 14 &#x3D; Bluesky
  * @package  Aternos\CurseForgeApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -69,6 +69,8 @@ class SocialLinkType
 
     public const NUMBER_13 = 13;
 
+    public const NUMBER_14 = 14;
+
     /**
      * Gets allowable values of the enum
      * @return string[]
@@ -88,7 +90,8 @@ class SocialLinkType
             self::NUMBER_10,
             self::NUMBER_11,
             self::NUMBER_12,
-            self::NUMBER_13
+            self::NUMBER_13,
+            self::NUMBER_14
         ];
     }
 }
