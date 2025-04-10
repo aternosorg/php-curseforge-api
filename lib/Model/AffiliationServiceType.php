@@ -43,11 +43,11 @@ class AffiliationServiceType
     /**
      * Possible values of this enum
      */
-    public const NUMBER_0 = 0;
+    public const NONE = 0;
 
-    public const NUMBER_1 = 1;
+    public const BISECT = 1;
 
-    public const NUMBER_2 = 2;
+    public const BISECT_TWO = 2;
 
     /**
      * Gets allowable values of the enum
@@ -56,9 +56,9 @@ class AffiliationServiceType
     public static function getAllowableEnumValues()
     {
         return [
-            self::NUMBER_0,
-            self::NUMBER_1,
-            self::NUMBER_2
+            self::NONE,
+            self::BISECT,
+            self::BISECT_TWO
         ];
     }
 }

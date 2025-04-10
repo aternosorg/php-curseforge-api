@@ -43,13 +43,13 @@ class ModLoaderInstallMethod
     /**
      * Possible values of this enum
      */
-    public const NUMBER_1 = 1;
+    public const FORGE_INSTALLER = 1;
 
-    public const NUMBER_2 = 2;
+    public const FORGE_JAR_INSTALL = 2;
 
-    public const NUMBER_3 = 3;
+    public const FORGE_INSTALLER_V2 = 3;
 
-    public const NUMBER_4 = 4;
+    public const FABRIC_INSTALLER = 4;
 
     /**
      * Gets allowable values of the enum
@@ -58,10 +58,10 @@ class ModLoaderInstallMethod
     public static function getAllowableEnumValues()
     {
         return [
-            self::NUMBER_1,
-            self::NUMBER_2,
-            self::NUMBER_3,
-            self::NUMBER_4
+            self::FORGE_INSTALLER,
+            self::FORGE_JAR_INSTALL,
+            self::FORGE_INSTALLER_V2,
+            self::FABRIC_INSTALLER
         ];
     }
 }

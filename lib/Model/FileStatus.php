@@ -43,51 +43,51 @@ class FileStatus
     /**
      * Possible values of this enum
      */
-    public const NUMBER_1 = 1;
+    public const PROCESSING = 1;
 
-    public const NUMBER_2 = 2;
+    public const CHANGES_REQUIRED = 2;
 
-    public const NUMBER_3 = 3;
+    public const UNDER_REVIEW = 3;
 
-    public const NUMBER_4 = 4;
+    public const APPROVED = 4;
 
-    public const NUMBER_5 = 5;
+    public const REJECTED = 5;
 
-    public const NUMBER_6 = 6;
+    public const MALWARE_DETECTED = 6;
 
-    public const NUMBER_7 = 7;
+    public const DELETED = 7;
 
-    public const NUMBER_8 = 8;
+    public const ARCHIVED = 8;
 
-    public const NUMBER_9 = 9;
+    public const TESTING = 9;
 
-    public const NUMBER_10 = 10;
+    public const RELEASED = 10;
 
-    public const NUMBER_11 = 11;
+    public const READY_FOR_REVIEW = 11;
 
-    public const NUMBER_12 = 12;
+    public const DEPRECATED = 12;
 
-    public const NUMBER_13 = 13;
+    public const BAKING = 13;
 
-    public const NUMBER_14 = 14;
+    public const AWAITING_PUBLISHING = 14;
 
-    public const NUMBER_15 = 15;
+    public const FAILED_PUBLISHING = 15;
 
-    public const NUMBER_16 = 16;
+    public const COOKING = 16;
 
-    public const NUMBER_17 = 17;
+    public const COOKED = 17;
 
-    public const NUMBER_18 = 18;
+    public const UNDER_MANUAL_REVIEW = 18;
 
-    public const NUMBER_19 = 19;
+    public const SCANNING_FOR_MALWARE = 19;
 
-    public const NUMBER_20 = 20;
+    public const PROCESSING_FILE = 20;
 
-    public const NUMBER_21 = 21;
+    public const PENDING_RELEASE = 21;
 
-    public const NUMBER_22 = 22;
+    public const READY_FOR_COOKING = 22;
 
-    public const NUMBER_23 = 23;
+    public const POST_PROCESSING = 23;
 
     /**
      * Gets allowable values of the enum
@@ -96,29 +96,29 @@ class FileStatus
     public static function getAllowableEnumValues()
     {
         return [
-            self::NUMBER_1,
-            self::NUMBER_2,
-            self::NUMBER_3,
-            self::NUMBER_4,
-            self::NUMBER_5,
-            self::NUMBER_6,
-            self::NUMBER_7,
-            self::NUMBER_8,
-            self::NUMBER_9,
-            self::NUMBER_10,
-            self::NUMBER_11,
-            self::NUMBER_12,
-            self::NUMBER_13,
-            self::NUMBER_14,
-            self::NUMBER_15,
-            self::NUMBER_16,
-            self::NUMBER_17,
-            self::NUMBER_18,
-            self::NUMBER_19,
-            self::NUMBER_20,
-            self::NUMBER_21,
-            self::NUMBER_22,
-            self::NUMBER_23
+            self::PROCESSING,
+            self::CHANGES_REQUIRED,
+            self::UNDER_REVIEW,
+            self::APPROVED,
+            self::REJECTED,
+            self::MALWARE_DETECTED,
+            self::DELETED,
+            self::ARCHIVED,
+            self::TESTING,
+            self::RELEASED,
+            self::READY_FOR_REVIEW,
+            self::DEPRECATED,
+            self::BAKING,
+            self::AWAITING_PUBLISHING,
+            self::FAILED_PUBLISHING,
+            self::COOKING,
+            self::COOKED,
+            self::UNDER_MANUAL_REVIEW,
+            self::SCANNING_FOR_MALWARE,
+            self::PROCESSING_FILE,
+            self::PENDING_RELEASE,
+            self::READY_FOR_COOKING,
+            self::POST_PROCESSING
         ];
     }
 }

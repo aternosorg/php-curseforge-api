@@ -43,9 +43,9 @@ class HashAlgo
     /**
      * Possible values of this enum
      */
-    public const NUMBER_1 = 1;
+    public const SHA1 = 1;
 
-    public const NUMBER_2 = 2;
+    public const MD5 = 2;
 
     /**
      * Gets allowable values of the enum
@@ -54,8 +54,8 @@ class HashAlgo
     public static function getAllowableEnumValues()
     {
         return [
-            self::NUMBER_1,
-            self::NUMBER_2
+            self::SHA1,
+            self::MD5
         ];
     }
 }

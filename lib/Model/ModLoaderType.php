@@ -43,19 +43,19 @@ class ModLoaderType
     /**
      * Possible values of this enum
      */
-    public const NUMBER_0 = 0;
+    public const ANY = 0;
 
-    public const NUMBER_1 = 1;
+    public const FORGE = 1;
 
-    public const NUMBER_2 = 2;
+    public const CAULDRON = 2;
 
-    public const NUMBER_3 = 3;
+    public const LITE_LOADER = 3;
 
-    public const NUMBER_4 = 4;
+    public const FABRIC = 4;
 
-    public const NUMBER_5 = 5;
+    public const QUILT = 5;
 
-    public const NUMBER_6 = 6;
+    public const NEO_FORGE = 6;
 
     /**
      * Gets allowable values of the enum
@@ -64,13 +64,13 @@ class ModLoaderType
     public static function getAllowableEnumValues()
     {
         return [
-            self::NUMBER_0,
-            self::NUMBER_1,
-            self::NUMBER_2,
-            self::NUMBER_3,
-            self::NUMBER_4,
-            self::NUMBER_5,
-            self::NUMBER_6
+            self::ANY,
+            self::FORGE,
+            self::CAULDRON,
+            self::LITE_LOADER,
+            self::FABRIC,
+            self::QUILT,
+            self::NEO_FORGE
         ];
     }
 }

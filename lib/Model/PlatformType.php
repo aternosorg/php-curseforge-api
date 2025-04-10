@@ -43,33 +43,33 @@ class PlatformType
     /**
      * Possible values of this enum
      */
-    public const NUMBER_0 = 0;
+    public const _EMPTY = 0;
 
-    public const NUMBER_1 = 1;
+    public const WINDOWS = 1;
 
-    public const NUMBER_2 = 2;
+    public const XBOX_ONE = 2;
 
-    public const NUMBER_3 = 3;
+    public const XBOX_XS = 3;
 
-    public const NUMBER_4 = 4;
+    public const LINUX = 4;
 
-    public const NUMBER_5 = 5;
+    public const PS4 = 5;
 
-    public const NUMBER_6 = 6;
+    public const PS5 = 6;
 
-    public const NUMBER_7 = 7;
+    public const MAC = 7;
 
-    public const NUMBER_8 = 8;
+    public const IOS = 8;
 
-    public const NUMBER_9 = 9;
+    public const TVOS = 9;
 
-    public const NUMBER_10 = 10;
+    public const ANDROID = 10;
 
-    public const NUMBER_11 = 11;
+    public const _SWITCH = 11;
 
-    public const NUMBER_12 = 12;
+    public const WINDOWS_SERVER = 12;
 
-    public const NUMBER_13 = 13;
+    public const LINUX_SERVER = 13;
 
     /**
      * Gets allowable values of the enum
@@ -78,20 +78,20 @@ class PlatformType
     public static function getAllowableEnumValues()
     {
         return [
-            self::NUMBER_0,
-            self::NUMBER_1,
-            self::NUMBER_2,
-            self::NUMBER_3,
-            self::NUMBER_4,
-            self::NUMBER_5,
-            self::NUMBER_6,
-            self::NUMBER_7,
-            self::NUMBER_8,
-            self::NUMBER_9,
-            self::NUMBER_10,
-            self::NUMBER_11,
-            self::NUMBER_12,
-            self::NUMBER_13
+            self::_EMPTY,
+            self::WINDOWS,
+            self::XBOX_ONE,
+            self::XBOX_XS,
+            self::LINUX,
+            self::PS4,
+            self::PS5,
+            self::MAC,
+            self::IOS,
+            self::TVOS,
+            self::ANDROID,
+            self::_SWITCH,
+            self::WINDOWS_SERVER,
+            self::LINUX_SERVER
         ];
     }
 }

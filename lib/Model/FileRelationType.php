@@ -43,17 +43,17 @@ class FileRelationType
     /**
      * Possible values of this enum
      */
-    public const NUMBER_1 = 1;
+    public const EMBEDDED_LIBRARY = 1;
 
-    public const NUMBER_2 = 2;
+    public const OPTIONAL_DEPENDENCY = 2;
 
-    public const NUMBER_3 = 3;
+    public const REQUIRED_DEPENDENCY = 3;
 
-    public const NUMBER_4 = 4;
+    public const TOOL = 4;
 
-    public const NUMBER_5 = 5;
+    public const INCOMPATIBLE = 5;
 
-    public const NUMBER_6 = 6;
+    public const _INCLUDE = 6;
 
     /**
      * Gets allowable values of the enum
@@ -62,12 +62,12 @@ class FileRelationType
     public static function getAllowableEnumValues()
     {
         return [
-            self::NUMBER_1,
-            self::NUMBER_2,
-            self::NUMBER_3,
-            self::NUMBER_4,
-            self::NUMBER_5,
-            self::NUMBER_6
+            self::EMBEDDED_LIBRARY,
+            self::OPTIONAL_DEPENDENCY,
+            self::REQUIRED_DEPENDENCY,
+            self::TOOL,
+            self::INCOMPATIBLE,
+            self::_INCLUDE
         ];
     }
 }

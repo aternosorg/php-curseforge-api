@@ -43,33 +43,33 @@ class SocialLinkType
     /**
      * Possible values of this enum
      */
-    public const NUMBER_1 = 1;
+    public const MASTODON = 1;
 
-    public const NUMBER_2 = 2;
+    public const DISCORD = 2;
 
-    public const NUMBER_3 = 3;
+    public const WEBSITE = 3;
 
-    public const NUMBER_4 = 4;
+    public const FACEBOOK = 4;
 
-    public const NUMBER_5 = 5;
+    public const TWITTER = 5;
 
-    public const NUMBER_6 = 6;
+    public const INSTAGRAM = 6;
 
-    public const NUMBER_7 = 7;
+    public const PATREON = 7;
 
-    public const NUMBER_8 = 8;
+    public const TWITCH = 8;
 
-    public const NUMBER_9 = 9;
+    public const REDDIT = 9;
 
-    public const NUMBER_10 = 10;
+    public const YOUTUBE = 10;
 
-    public const NUMBER_11 = 11;
+    public const TIK_TOK = 11;
 
-    public const NUMBER_12 = 12;
+    public const PINTEREST = 12;
 
-    public const NUMBER_13 = 13;
+    public const GITHUB = 13;
 
-    public const NUMBER_14 = 14;
+    public const BLUESKY = 14;
 
     /**
      * Gets allowable values of the enum
@@ -78,20 +78,20 @@ class SocialLinkType
     public static function getAllowableEnumValues()
     {
         return [
-            self::NUMBER_1,
-            self::NUMBER_2,
-            self::NUMBER_3,
-            self::NUMBER_4,
-            self::NUMBER_5,
-            self::NUMBER_6,
-            self::NUMBER_7,
-            self::NUMBER_8,
-            self::NUMBER_9,
-            self::NUMBER_10,
-            self::NUMBER_11,
-            self::NUMBER_12,
-            self::NUMBER_13,
-            self::NUMBER_14
+            self::MASTODON,
+            self::DISCORD,
+            self::WEBSITE,
+            self::FACEBOOK,
+            self::TWITTER,
+            self::INSTAGRAM,
+            self::PATREON,
+            self::TWITCH,
+            self::REDDIT,
+            self::YOUTUBE,
+            self::TIK_TOK,
+            self::PINTEREST,
+            self::GITHUB,
+            self::BLUESKY
         ];
     }
 }

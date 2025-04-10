@@ -43,25 +43,25 @@ class RatingScore
     /**
      * Possible values of this enum
      */
-    public const NUMBER_0 = 0;
+    public const NOT_ENOUGH_REVIEWS = 0;
 
-    public const NUMBER_1 = 1;
+    public const OVERWHELMINGLY_POSITIVE = 1;
 
-    public const NUMBER_2 = 2;
+    public const VERY_POSITIVE = 2;
 
-    public const NUMBER_3 = 3;
+    public const POSITIVE = 3;
 
-    public const NUMBER_4 = 4;
+    public const MOSTLY_POSITIVE = 4;
 
-    public const NUMBER_5 = 5;
+    public const MIXED = 5;
 
-    public const NUMBER_6 = 6;
+    public const MOSTLY_NEGATIVE = 6;
 
-    public const NUMBER_7 = 7;
+    public const NEGATIVE = 7;
 
-    public const NUMBER_8 = 8;
+    public const VERY_NEGATIVE = 8;
 
-    public const NUMBER_9 = 9;
+    public const OVERWHELMINGLY_NEGATIVE = 9;
 
     /**
      * Gets allowable values of the enum
@@ -70,16 +70,16 @@ class RatingScore
     public static function getAllowableEnumValues()
     {
         return [
-            self::NUMBER_0,
-            self::NUMBER_1,
-            self::NUMBER_2,
-            self::NUMBER_3,
-            self::NUMBER_4,
-            self::NUMBER_5,
-            self::NUMBER_6,
-            self::NUMBER_7,
-            self::NUMBER_8,
-            self::NUMBER_9
+            self::NOT_ENOUGH_REVIEWS,
+            self::OVERWHELMINGLY_POSITIVE,
+            self::VERY_POSITIVE,
+            self::POSITIVE,
+            self::MOSTLY_POSITIVE,
+            self::MIXED,
+            self::MOSTLY_NEGATIVE,
+            self::NEGATIVE,
+            self::VERY_NEGATIVE,
+            self::OVERWHELMINGLY_NEGATIVE
         ];
     }
 }

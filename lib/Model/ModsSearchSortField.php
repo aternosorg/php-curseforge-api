@@ -43,29 +43,29 @@ class ModsSearchSortField
     /**
      * Possible values of this enum
      */
-    public const NUMBER_1 = 1;
+    public const FEATURED = 1;
 
-    public const NUMBER_2 = 2;
+    public const POPULARITY = 2;
 
-    public const NUMBER_3 = 3;
+    public const LAST_UPDATED = 3;
 
-    public const NUMBER_4 = 4;
+    public const NAME = 4;
 
-    public const NUMBER_5 = 5;
+    public const AUTHOR = 5;
 
-    public const NUMBER_6 = 6;
+    public const TOTAL_DOWNLOADS = 6;
 
-    public const NUMBER_7 = 7;
+    public const CATEGORY = 7;
 
-    public const NUMBER_8 = 8;
+    public const GAME_VERSION = 8;
 
-    public const NUMBER_9 = 9;
+    public const EARLY_ACCESS = 9;
 
-    public const NUMBER_10 = 10;
+    public const FEATURED_RELEASE = 10;
 
-    public const NUMBER_11 = 11;
+    public const RELEASE_DATE = 11;
 
-    public const NUMBER_12 = 12;
+    public const RATING = 12;
 
     /**
      * Gets allowable values of the enum
@@ -74,18 +74,18 @@ class ModsSearchSortField
     public static function getAllowableEnumValues()
     {
         return [
-            self::NUMBER_1,
-            self::NUMBER_2,
-            self::NUMBER_3,
-            self::NUMBER_4,
-            self::NUMBER_5,
-            self::NUMBER_6,
-            self::NUMBER_7,
-            self::NUMBER_8,
-            self::NUMBER_9,
-            self::NUMBER_10,
-            self::NUMBER_11,
-            self::NUMBER_12
+            self::FEATURED,
+            self::POPULARITY,
+            self::LAST_UPDATED,
+            self::NAME,
+            self::AUTHOR,
+            self::TOTAL_DOWNLOADS,
+            self::CATEGORY,
+            self::GAME_VERSION,
+            self::EARLY_ACCESS,
+            self::FEATURED_RELEASE,
+            self::RELEASE_DATE,
+            self::RATING
         ];
     }
 }

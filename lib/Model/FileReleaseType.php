@@ -43,11 +43,11 @@ class FileReleaseType
     /**
      * Possible values of this enum
      */
-    public const NUMBER_1 = 1;
+    public const RELEASE = 1;
 
-    public const NUMBER_2 = 2;
+    public const BETA = 2;
 
-    public const NUMBER_3 = 3;
+    public const ALPHA = 3;
 
     /**
      * Gets allowable values of the enum
@@ -56,9 +56,9 @@ class FileReleaseType
     public static function getAllowableEnumValues()
     {
         return [
-            self::NUMBER_1,
-            self::NUMBER_2,
-            self::NUMBER_3
+            self::RELEASE,
+            self::BETA,
+            self::ALPHA
         ];
     }
 }

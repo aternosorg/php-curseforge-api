@@ -43,11 +43,11 @@ class PremiumType
     /**
      * Possible values of this enum
      */
-    public const NUMBER_0 = 0;
+    public const ALL = 0;
 
-    public const NUMBER_1 = 1;
+    public const PREMIUM = 1;
 
-    public const NUMBER_2 = 2;
+    public const FREE = 2;
 
     /**
      * Gets allowable values of the enum
@@ -56,9 +56,9 @@ class PremiumType
     public static function getAllowableEnumValues()
     {
         return [
-            self::NUMBER_0,
-            self::NUMBER_1,
-            self::NUMBER_2
+            self::ALL,
+            self::PREMIUM,
+            self::FREE
         ];
     }
 }

@@ -43,25 +43,25 @@ class ModStatus
     /**
      * Possible values of this enum
      */
-    public const NUMBER_1 = 1;
+    public const _NEW = 1;
 
-    public const NUMBER_2 = 2;
+    public const CHANGES_REQUIRED = 2;
 
-    public const NUMBER_3 = 3;
+    public const UNDER_SOFT_REVIEW = 3;
 
-    public const NUMBER_4 = 4;
+    public const APPROVED = 4;
 
-    public const NUMBER_5 = 5;
+    public const REJECTED = 5;
 
-    public const NUMBER_6 = 6;
+    public const CHANGES_MADE = 6;
 
-    public const NUMBER_7 = 7;
+    public const INACTIVE = 7;
 
-    public const NUMBER_8 = 8;
+    public const ABANDONED = 8;
 
-    public const NUMBER_9 = 9;
+    public const DELETED = 9;
 
-    public const NUMBER_10 = 10;
+    public const UNDER_REVIEW = 10;
 
     /**
      * Gets allowable values of the enum
@@ -70,16 +70,16 @@ class ModStatus
     public static function getAllowableEnumValues()
     {
         return [
-            self::NUMBER_1,
-            self::NUMBER_2,
-            self::NUMBER_3,
-            self::NUMBER_4,
-            self::NUMBER_5,
-            self::NUMBER_6,
-            self::NUMBER_7,
-            self::NUMBER_8,
-            self::NUMBER_9,
-            self::NUMBER_10
+            self::_NEW,
+            self::CHANGES_REQUIRED,
+            self::UNDER_SOFT_REVIEW,
+            self::APPROVED,
+            self::REJECTED,
+            self::CHANGES_MADE,
+            self::INACTIVE,
+            self::ABANDONED,
+            self::DELETED,
+            self::UNDER_REVIEW
         ];
     }
 }

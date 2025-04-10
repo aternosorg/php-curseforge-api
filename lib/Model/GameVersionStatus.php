@@ -43,11 +43,11 @@ class GameVersionStatus
     /**
      * Possible values of this enum
      */
-    public const NUMBER_1 = 1;
+    public const APPROVED = 1;
 
-    public const NUMBER_2 = 2;
+    public const DELETED = 2;
 
-    public const NUMBER_3 = 3;
+    public const _NEW = 3;
 
     /**
      * Gets allowable values of the enum
@@ -56,9 +56,9 @@ class GameVersionStatus
     public static function getAllowableEnumValues()
     {
         return [
-            self::NUMBER_1,
-            self::NUMBER_2,
-            self::NUMBER_3
+            self::APPROVED,
+            self::DELETED,
+            self::_NEW
         ];
     }
 }

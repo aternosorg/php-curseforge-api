@@ -43,9 +43,9 @@ class CoreApiStatus
     /**
      * Possible values of this enum
      */
-    public const NUMBER_1 = 1;
+    public const _PRIVATE = 1;
 
-    public const NUMBER_2 = 2;
+    public const _PUBLIC = 2;
 
     /**
      * Gets allowable values of the enum
@@ -54,8 +54,8 @@ class CoreApiStatus
     public static function getAllowableEnumValues()
     {
         return [
-            self::NUMBER_1,
-            self::NUMBER_2
+            self::_PRIVATE,
+            self::_PUBLIC
         ];
     }
 }
