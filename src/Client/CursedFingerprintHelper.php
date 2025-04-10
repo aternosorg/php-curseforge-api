@@ -169,6 +169,7 @@ class CursedFingerprintHelper
      * @param int $h
      * @param int $k
      * @return int
+     * @noinspection SpellCheckingInspection
      */
     protected function mmix(int $h, int $k): int
     {
