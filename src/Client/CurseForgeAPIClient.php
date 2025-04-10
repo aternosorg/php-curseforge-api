@@ -241,8 +241,8 @@ class CurseForgeAPIClient
             null,
             null,
             $options->getSearchFilter(),
-            $options->getSortField()?->value,
-            $options->getSortOrder()?->value,
+            $options->getSortField(),
+            $options->getSortOrder(),
             null,
             $options->getGameVersionTypeId(),
             $options->getAuthorId(),
@@ -320,11 +320,11 @@ class CurseForgeAPIClient
             $options->getOffset(),
             PaginatedFilesList::getAllowedPageSize($options->getOffset(), $options->getPageSize()),
             $options->getGameVersion(),
-            $options->getModLoaderType()?->value,
+            $options->getModLoaderType(),
             $options->getGameVersionTypeId(),
             $options->getOlderThanProjectFileId(),
             $options->getReleaseTypes(),
-            $options->getPlatformType()?->value,
+            $options->getPlatformType(),
         ), $options);
     }
 
