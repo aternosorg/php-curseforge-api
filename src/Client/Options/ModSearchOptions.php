@@ -28,21 +28,21 @@ class ModSearchOptions
      * @param int $pageSize
      */
     public function __construct(
-        protected int                 $gameId,
-        protected int                 $offset = 0,
-        protected int                 $pageSize = PaginatedModList::MAX_PAGE_SIZE,
-        protected ?int                $classId = null,
-        protected ?array              $categoryIds = null,
-        protected ?array              $gameVersions = null,
-        protected ?string             $searchFilter = null,
+        protected int                  $gameId,
+        protected int                  $offset = 0,
+        protected int                  $pageSize = PaginatedModList::MAX_PAGE_SIZE,
+        protected ?int                 $classId = null,
+        protected ?array               $categoryIds = null,
+        protected ?array               $gameVersions = null,
+        protected ?string              $searchFilter = null,
         protected ?ModsSearchSortField $sortField = null,
-        protected ?SortOrder          $sortOrder = null,
-        protected ?array              $modLoaderTypes = null,
-        protected ?int                $gameVersionTypeId = null,
-        protected ?int                $authorId = null,
-        protected ?int                $primaryAuthorId = null,
-        protected ?PremiumType        $premiumType = null,
-        protected ?string             $slug = null,
+        protected ?SortOrder           $sortOrder = null,
+        protected ?array               $modLoaderTypes = null,
+        protected ?int                 $gameVersionTypeId = null,
+        protected ?int                 $authorId = null,
+        protected ?int                 $primaryAuthorId = null,
+        protected ?PremiumType         $premiumType = null,
+        protected ?string              $slug = null,
     )
     {
     }
