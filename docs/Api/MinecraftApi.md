@@ -4,10 +4,10 @@ All URIs are relative to https://api.curseforge.com, except if the operation def
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
-| [**getMinecraftModLoaders()**](MinecraftApi.md#getMinecraftModLoaders) | **GET** /minecraft/modloader | Get Minecraft ModLoaders |
-| [**getMinecraftVersions()**](MinecraftApi.md#getMinecraftVersions) | **GET** /minecraft/version | Get Minecraft Versions |
-| [**getSpecificMinecraftModLoader()**](MinecraftApi.md#getSpecificMinecraftModLoader) | **GET** /minecraft/modloader/{modLoaderName} | Get Specific Minecraft ModLoader |
-| [**getSpecificMinecraftVersion()**](MinecraftApi.md#getSpecificMinecraftVersion) | **GET** /minecraft/version/{gameVersionString} | Get Specific Minecraft Version |
+| [**getMinecraftModLoaders()**](MinecraftApi.md#getMinecraftModLoaders) | **GET** /v1/minecraft/modloader | Get Minecraft ModLoaders |
+| [**getMinecraftVersions()**](MinecraftApi.md#getMinecraftVersions) | **GET** /v1/minecraft/version | Get Minecraft Versions |
+| [**getSpecificMinecraftModLoader()**](MinecraftApi.md#getSpecificMinecraftModLoader) | **GET** /v1/minecraft/modloader/{modLoaderName} | Get Specific Minecraft ModLoader |
+| [**getSpecificMinecraftVersion()**](MinecraftApi.md#getSpecificMinecraftVersion) | **GET** /v1/minecraft/version/{gameVersionString} | Get Specific Minecraft Version |
 
 
 ## `getMinecraftModLoaders()`
@@ -27,11 +27,17 @@ Get Minecraft ModLoaders
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure API key authorization: ApiKeyAuth
+$config = Aternos\CurseForgeApi\Configuration::getDefaultConfiguration()->setApiKey('x-api-key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Aternos\CurseForgeApi\Configuration::getDefaultConfiguration()->setApiKeyPrefix('x-api-key', 'Bearer');
+
 
 $apiInstance = new Aternos\CurseForgeApi\Api\MinecraftApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
 $version = 'version_example'; // string
 $include_all = True; // bool
@@ -57,7 +63,7 @@ try {
 
 ### Authorization
 
-No authorization required
+[ApiKeyAuth](../../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -85,11 +91,17 @@ Get Minecraft Versions
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure API key authorization: ApiKeyAuth
+$config = Aternos\CurseForgeApi\Configuration::getDefaultConfiguration()->setApiKey('x-api-key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Aternos\CurseForgeApi\Configuration::getDefaultConfiguration()->setApiKeyPrefix('x-api-key', 'Bearer');
+
 
 $apiInstance = new Aternos\CurseForgeApi\Api\MinecraftApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
 $sort_descending = True; // bool
 
@@ -113,7 +125,7 @@ try {
 
 ### Authorization
 
-No authorization required
+[ApiKeyAuth](../../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -141,11 +153,17 @@ Get Specific Minecraft ModLoader
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure API key authorization: ApiKeyAuth
+$config = Aternos\CurseForgeApi\Configuration::getDefaultConfiguration()->setApiKey('x-api-key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Aternos\CurseForgeApi\Configuration::getDefaultConfiguration()->setApiKeyPrefix('x-api-key', 'Bearer');
+
 
 $apiInstance = new Aternos\CurseForgeApi\Api\MinecraftApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
 $mod_loader_name = 'mod_loader_name_example'; // string
 
@@ -169,7 +187,7 @@ try {
 
 ### Authorization
 
-No authorization required
+[ApiKeyAuth](../../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -197,11 +215,17 @@ Get Specific Minecraft Version
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure API key authorization: ApiKeyAuth
+$config = Aternos\CurseForgeApi\Configuration::getDefaultConfiguration()->setApiKey('x-api-key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Aternos\CurseForgeApi\Configuration::getDefaultConfiguration()->setApiKeyPrefix('x-api-key', 'Bearer');
+
 
 $apiInstance = new Aternos\CurseForgeApi\Api\MinecraftApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
 $game_version_string = 'game_version_string_example'; // string
 
@@ -225,7 +249,7 @@ try {
 
 ### Authorization
 
-No authorization required
+[ApiKeyAuth](../../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 

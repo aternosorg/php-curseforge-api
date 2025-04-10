@@ -5,15 +5,11 @@
          colors="true">
   <source>
     <include>
-      <directory>lib</directory>
+      <directory>src</directory>
     </include>
   </source>
   <testsuites>
     <testsuite name="integration">
-      <!--
-      <directory>./tests/Integration/Api</directory>
-      <directory>./tests/Integration/Model</directory>
-      -->
       <directory>./tests/Integration/Client</directory>
     </testsuite>
     <testsuite name="unit">

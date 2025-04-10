@@ -19,9 +19,11 @@ Name | Type | Description | Notes
 **authors** | [**\Aternos\CurseForgeApi\Model\ModAuthor[]**](ModAuthor.md) | List of the mod&#39;s authors | [optional]
 **logo** | [**\Aternos\CurseForgeApi\Model\ModAsset**](ModAsset.md) |  | [optional]
 **screenshots** | [**\Aternos\CurseForgeApi\Model\ModAsset[]**](ModAsset.md) | List of screenshots assets | [optional]
+**videos** | [**\Aternos\CurseForgeApi\Model\ModAsset[]**](ModAsset.md) |  | [optional]
 **main_file_id** | **int** | The id of the main file of the mod | [optional]
 **latest_files** | [**\Aternos\CurseForgeApi\Model\File[]**](File.md) | List of latest files of the mod | [optional]
-**latest_file_indexes** | [**\Aternos\CurseForgeApi\Model\FileIndex[]**](FileIndex.md) | List of file related details for the latest files of the mod | [optional]
+**latest_files_indexes** | [**\Aternos\CurseForgeApi\Model\FileIndex[]**](FileIndex.md) | List of file related details for the latest files of the mod | [optional]
+**latest_early_access_files_indexes** | [**\Aternos\CurseForgeApi\Model\FileIndex[]**](FileIndex.md) | List of file related details for the latest early access files of the mod | [optional]
 **date_created** | **\DateTime** | The creation date of the mod | [optional]
 **date_modified** | **\DateTime** | The last time the mod was modified | [optional]
 **date_released** | **\DateTime** | The release date of the mod | [optional]
@@ -29,5 +31,9 @@ Name | Type | Description | Notes
 **game_popularity_rank** | **int** | The mod popularity rank for the game | [optional]
 **is_available** | **bool** | Is the mod available for search. This can be false when a mod is experimental, in a deleted state or has only alpha files | [optional]
 **thumbs_up_count** | **int** | The mod&#39;s thumbs up count | [optional]
+**has_comments_enabled** | **bool** | Does the mod enable comments | [optional]
+**rating_details** | [**\Aternos\CurseForgeApi\Model\RatingDetails**](RatingDetails.md) |  | [optional]
+**server_affiliation** | [**\Aternos\CurseForgeApi\Model\ServerAffiliation**](ServerAffiliation.md) |  | [optional]
+**social_links** | [**\Aternos\CurseForgeApi\Model\SocialLink[]**](SocialLink.md) | The mod&#39;s social links | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

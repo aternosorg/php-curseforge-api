@@ -1,6 +1,6 @@
 invokerPackage: Aternos\CurseForgeApi
 artifactVersion: 1.3.2
-generatorName: php
+generatorName: php-nextgen
 outputDir: .
 sourceFolder: src
 inputSpec: openapi.yaml

@@ -15,6 +15,7 @@ Name | Type | Description | Notes
 **hashes** | [**\Aternos\CurseForgeApi\Model\FileHash[]**](FileHash.md) | The file hash (i.e. md5 or sha1) | [optional]
 **file_date** | **\DateTime** | The file timestamp | [optional]
 **file_length** | **int** | The file length in bytes | [optional]
+**file_size_on_disk** | **int** | The file&#39;s size on disk | [optional]
 **download_count** | **int** | The number of downloads for the file | [optional]
 **download_url** | **string** |  | [optional]
 **game_versions** | **string[]** | List of game versions this file is relevant for | [optional]
@@ -25,6 +26,8 @@ Name | Type | Description | Notes
 **alternate_file_id** | **int** |  | [optional]
 **is_server_pack** | **bool** |  | [optional]
 **server_pack_file_id** | **int** |  | [optional]
+**is_early_access_content** | **bool** |  | [optional]
+**early_access_end_date** | **\DateTime** |  | [optional]
 **file_fingerprint** | **int** |  | [optional]
 **modules** | [**\Aternos\CurseForgeApi\Model\FileModule[]**](FileModule.md) |  | [optional]
 
