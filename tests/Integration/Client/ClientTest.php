@@ -5,8 +5,8 @@ namespace Aternos\CurseForgeApi\Tests\Integration\Client;
 use Aternos\CurseForgeApi\ApiException;
 use Aternos\CurseForgeApi\Client\CurseForgeAPIClient;
 use Aternos\CurseForgeApi\Client\Options\ModSearch\ModSearchOptions;
-use Aternos\CurseForgeApi\Client\Options\ModSearch\SortOrder;
 use Aternos\CurseForgeApi\Model\FingerprintMatch;
+use Aternos\CurseForgeApi\Model\SortOrder;
 use PHPUnit\Framework\TestCase;
 
 class ClientTest extends TestCase

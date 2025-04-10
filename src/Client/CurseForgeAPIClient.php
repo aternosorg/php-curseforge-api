@@ -14,7 +14,6 @@ use Aternos\CurseForgeApi\Client\List\PaginatedGameList;
 use Aternos\CurseForgeApi\Client\List\PaginatedModList;
 use Aternos\CurseForgeApi\Client\Options\ModFiles\ModFilesOptions;
 use Aternos\CurseForgeApi\Client\Options\ModSearch\ModSearchOptions;
-use Aternos\CurseForgeApi\Client\Options\ModSearch\SortOrder;
 use Aternos\CurseForgeApi\Configuration;
 use Aternos\CurseForgeApi\Model\FingerprintFuzzyMatchResult;
 use Aternos\CurseForgeApi\Model\FingerprintMatchesResult;
@@ -28,6 +27,7 @@ use Aternos\CurseForgeApi\Model\GetModsByIdsListRequestBody;
 use Aternos\CurseForgeApi\Model\MinecraftGameVersion;
 use Aternos\CurseForgeApi\Model\MinecraftModLoaderIndex;
 use Aternos\CurseForgeApi\Model\MinecraftModLoaderVersion;
+use Aternos\CurseForgeApi\Model\SortOrder;
 use GuzzleHttp\ClientInterface;
 
 /**

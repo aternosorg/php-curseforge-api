@@ -2372,6 +2372,9 @@ components:
       enum:
         - asc
         - desc
+      x-enum-varnames:
+        - Ascending
+        - Descending
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

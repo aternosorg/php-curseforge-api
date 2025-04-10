@@ -37,9 +37,9 @@ namespace Aternos\CurseForgeApi\Model;
  */
 enum SortOrder: string
 {
-    case ASC = 'asc';
+    case ASCENDING = 'asc';
 
-    case DESC = 'desc';
+    case DESCENDING = 'desc';
 }
 
 

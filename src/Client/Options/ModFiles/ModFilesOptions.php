@@ -3,7 +3,9 @@
 namespace Aternos\CurseForgeApi\Client\Options\ModFiles;
 
 use Aternos\CurseForgeApi\Client\List\PaginatedFilesList;
-use Aternos\CurseForgeApi\Client\Options\ModSearch\ModLoaderType;
+use Aternos\CurseForgeApi\Model\FileReleaseType;
+use Aternos\CurseForgeApi\Model\ModLoaderType;
+use Aternos\CurseForgeApi\Model\PlatformType;
 
 class ModFilesOptions
 {
@@ -16,7 +18,7 @@ class ModFilesOptions
      * @param ModLoaderType|null $modLoaderType mod loader type to filter files by
      * @param int|null $gameVersionTypeId show only files that are tagged with versions of the given gameVersionTypeId
      * @param int|null $olderThanProjectFileId show only files that are older than the given projectFileId
-     * @param ReleaseType[]|null $releaseTypes array of release types to filter files by
+     * @param FileReleaseType[]|null $releaseTypes array of release types to filter files by
      * @param PlatformType|null $platformType platform type to filter files by
      */
     public function __construct(
@@ -160,7 +162,7 @@ class ModFilesOptions
     }
 
     /**
-     * @return ReleaseType[]|null
+     * @return FileReleaseType[]|null
      */
     public function getReleaseTypes(): ?array
     {
@@ -168,7 +170,7 @@ class ModFilesOptions
     }
 
     /**
-     * @param ReleaseType[]|null $releaseTypes
+     * @param FileReleaseType[]|null $releaseTypes
      * @return $this
      */
     public function setReleaseTypes(?array $releaseTypes): static
@@ -178,10 +180,10 @@ class ModFilesOptions
     }
 
     /**
-     * @param ReleaseType $releaseType
+     * @param FileReleaseType $releaseType
      * @return $this
      */
-    public function addReleaseType(ReleaseType $releaseType): static
+    public function addReleaseType(FileReleaseType $releaseType): static
     {
         $this->releaseTypes ??= [];
         $this->releaseTypes[] = $releaseType;
@@ -189,10 +191,10 @@ class ModFilesOptions
     }
 
     /**
-     * @param ReleaseType $releaseType
+     * @param FileReleaseType $releaseType
      * @return $this
      */
-    public function removeReleaseType(ReleaseType $releaseType): static
+    public function removeReleaseType(FileReleaseType $releaseType): static
     {
         $this->releaseTypes = array_filter($this->releaseTypes, fn($type) => $type !== $releaseType);
         return $this;
