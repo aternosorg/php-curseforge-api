@@ -1516,7 +1516,7 @@ class ModsApi
      * @param  int|null $category_id Filter by category id (optional)
      * @param  string|null $game_version Filter by game version string (optional)
      * @param  string|null $search_filter Filter by free text search in the mod name and author (optional)
-     * @param  \Aternos\CurseForgeApi\Model\ModsSearchSortField|null $sort_field Filter by ModsSearchSortField enumeration (optional)
+     * @param  \Aternos\CurseForgeApi\Model\ModSearchSortField|null $sort_field Filter by ModsSearchSortField enumeration (optional)
      * @param  \Aternos\CurseForgeApi\Model\SortOrder|null $sort_order &#39;asc&#39; if sort is in ascending order, &#39;desc&#39; if sort is in descending order (optional)
      * @param  \Aternos\CurseForgeApi\Model\ModLoaderType|null $mod_loader_type Filter only mods associated to a given modloader (Forge, Fabric ...). Must be coupled with gameVersion. (optional)
      * @param  int|null $game_version_type_id Filter only mods that contain files tagged with versions of the given gameVersionTypeId (optional)
@@ -1541,7 +1541,7 @@ class ModsApi
         ?int $category_id = null,
         ?string $game_version = null,
         ?string $search_filter = null,
-        ?\Aternos\CurseForgeApi\Model\ModsSearchSortField $sort_field = null,
+        ?\Aternos\CurseForgeApi\Model\ModSearchSortField $sort_field = null,
         ?\Aternos\CurseForgeApi\Model\SortOrder $sort_order = null,
         ?\Aternos\CurseForgeApi\Model\ModLoaderType $mod_loader_type = null,
         ?int $game_version_type_id = null,
@@ -1571,7 +1571,7 @@ class ModsApi
      * @param  int|null $category_id Filter by category id (optional)
      * @param  string|null $game_version Filter by game version string (optional)
      * @param  string|null $search_filter Filter by free text search in the mod name and author (optional)
-     * @param  \Aternos\CurseForgeApi\Model\ModsSearchSortField|null $sort_field Filter by ModsSearchSortField enumeration (optional)
+     * @param  \Aternos\CurseForgeApi\Model\ModSearchSortField|null $sort_field Filter by ModsSearchSortField enumeration (optional)
      * @param  \Aternos\CurseForgeApi\Model\SortOrder|null $sort_order &#39;asc&#39; if sort is in ascending order, &#39;desc&#39; if sort is in descending order (optional)
      * @param  \Aternos\CurseForgeApi\Model\ModLoaderType|null $mod_loader_type Filter only mods associated to a given modloader (Forge, Fabric ...). Must be coupled with gameVersion. (optional)
      * @param  int|null $game_version_type_id Filter only mods that contain files tagged with versions of the given gameVersionTypeId (optional)
@@ -1596,7 +1596,7 @@ class ModsApi
         ?int $category_id = null,
         ?string $game_version = null,
         ?string $search_filter = null,
-        ?\Aternos\CurseForgeApi\Model\ModsSearchSortField $sort_field = null,
+        ?\Aternos\CurseForgeApi\Model\ModSearchSortField $sort_field = null,
         ?\Aternos\CurseForgeApi\Model\SortOrder $sort_order = null,
         ?\Aternos\CurseForgeApi\Model\ModLoaderType $mod_loader_type = null,
         ?int $game_version_type_id = null,
@@ -1733,7 +1733,7 @@ class ModsApi
      * @param  int|null $category_id Filter by category id (optional)
      * @param  string|null $game_version Filter by game version string (optional)
      * @param  string|null $search_filter Filter by free text search in the mod name and author (optional)
-     * @param  \Aternos\CurseForgeApi\Model\ModsSearchSortField|null $sort_field Filter by ModsSearchSortField enumeration (optional)
+     * @param  \Aternos\CurseForgeApi\Model\ModSearchSortField|null $sort_field Filter by ModsSearchSortField enumeration (optional)
      * @param  \Aternos\CurseForgeApi\Model\SortOrder|null $sort_order &#39;asc&#39; if sort is in ascending order, &#39;desc&#39; if sort is in descending order (optional)
      * @param  \Aternos\CurseForgeApi\Model\ModLoaderType|null $mod_loader_type Filter only mods associated to a given modloader (Forge, Fabric ...). Must be coupled with gameVersion. (optional)
      * @param  int|null $game_version_type_id Filter only mods that contain files tagged with versions of the given gameVersionTypeId (optional)
@@ -1757,7 +1757,7 @@ class ModsApi
         ?int $category_id = null,
         ?string $game_version = null,
         ?string $search_filter = null,
-        ?\Aternos\CurseForgeApi\Model\ModsSearchSortField $sort_field = null,
+        ?\Aternos\CurseForgeApi\Model\ModSearchSortField $sort_field = null,
         ?\Aternos\CurseForgeApi\Model\SortOrder $sort_order = null,
         ?\Aternos\CurseForgeApi\Model\ModLoaderType $mod_loader_type = null,
         ?int $game_version_type_id = null,
@@ -1791,7 +1791,7 @@ class ModsApi
      * @param  int|null $category_id Filter by category id (optional)
      * @param  string|null $game_version Filter by game version string (optional)
      * @param  string|null $search_filter Filter by free text search in the mod name and author (optional)
-     * @param  \Aternos\CurseForgeApi\Model\ModsSearchSortField|null $sort_field Filter by ModsSearchSortField enumeration (optional)
+     * @param  \Aternos\CurseForgeApi\Model\ModSearchSortField|null $sort_field Filter by ModsSearchSortField enumeration (optional)
      * @param  \Aternos\CurseForgeApi\Model\SortOrder|null $sort_order &#39;asc&#39; if sort is in ascending order, &#39;desc&#39; if sort is in descending order (optional)
      * @param  \Aternos\CurseForgeApi\Model\ModLoaderType|null $mod_loader_type Filter only mods associated to a given modloader (Forge, Fabric ...). Must be coupled with gameVersion. (optional)
      * @param  int|null $game_version_type_id Filter only mods that contain files tagged with versions of the given gameVersionTypeId (optional)
@@ -1815,7 +1815,7 @@ class ModsApi
         ?int $category_id = null,
         ?string $game_version = null,
         ?string $search_filter = null,
-        ?\Aternos\CurseForgeApi\Model\ModsSearchSortField $sort_field = null,
+        ?\Aternos\CurseForgeApi\Model\ModSearchSortField $sort_field = null,
         ?\Aternos\CurseForgeApi\Model\SortOrder $sort_order = null,
         ?\Aternos\CurseForgeApi\Model\ModLoaderType $mod_loader_type = null,
         ?int $game_version_type_id = null,
@@ -1878,7 +1878,7 @@ class ModsApi
      * @param  int|null $category_id Filter by category id (optional)
      * @param  string|null $game_version Filter by game version string (optional)
      * @param  string|null $search_filter Filter by free text search in the mod name and author (optional)
-     * @param  \Aternos\CurseForgeApi\Model\ModsSearchSortField|null $sort_field Filter by ModsSearchSortField enumeration (optional)
+     * @param  \Aternos\CurseForgeApi\Model\ModSearchSortField|null $sort_field Filter by ModsSearchSortField enumeration (optional)
      * @param  \Aternos\CurseForgeApi\Model\SortOrder|null $sort_order &#39;asc&#39; if sort is in ascending order, &#39;desc&#39; if sort is in descending order (optional)
      * @param  \Aternos\CurseForgeApi\Model\ModLoaderType|null $mod_loader_type Filter only mods associated to a given modloader (Forge, Fabric ...). Must be coupled with gameVersion. (optional)
      * @param  int|null $game_version_type_id Filter only mods that contain files tagged with versions of the given gameVersionTypeId (optional)
@@ -1902,7 +1902,7 @@ class ModsApi
         ?int $category_id = null,
         ?string $game_version = null,
         ?string $search_filter = null,
-        ?\Aternos\CurseForgeApi\Model\ModsSearchSortField $sort_field = null,
+        ?\Aternos\CurseForgeApi\Model\ModSearchSortField $sort_field = null,
         ?\Aternos\CurseForgeApi\Model\SortOrder $sort_order = null,
         ?\Aternos\CurseForgeApi\Model\ModLoaderType $mod_loader_type = null,
         ?int $game_version_type_id = null,
@@ -2016,7 +2016,7 @@ class ModsApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $sort_field?->value,
             'sortField', // param base name
-            'ModsSearchSortField', // openApiType
+            'ModSearchSortField', // openApiType
             'form', // style
             true, // explode
             false // required

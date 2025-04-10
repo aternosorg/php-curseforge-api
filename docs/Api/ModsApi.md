@@ -301,7 +301,7 @@ $class_id = 56; // int | Filter by section id (discoverable via Categories)
 $category_id = 56; // int | Filter by category id
 $game_version = 'game_version_example'; // string | Filter by game version string
 $search_filter = 'search_filter_example'; // string | Filter by free text search in the mod name and author
-$sort_field = new \Aternos\CurseForgeApi\Model\\Aternos\CurseForgeApi\Model\ModsSearchSortField(); // \Aternos\CurseForgeApi\Model\ModsSearchSortField | Filter by ModsSearchSortField enumeration
+$sort_field = new \Aternos\CurseForgeApi\Model\\Aternos\CurseForgeApi\Model\ModSearchSortField(); // \Aternos\CurseForgeApi\Model\ModSearchSortField | Filter by ModsSearchSortField enumeration
 $sort_order = new \Aternos\CurseForgeApi\Model\\Aternos\CurseForgeApi\Model\SortOrder(); // \Aternos\CurseForgeApi\Model\SortOrder | 'asc' if sort is in ascending order, 'desc' if sort is in descending order
 $mod_loader_type = new \Aternos\CurseForgeApi\Model\\Aternos\CurseForgeApi\Model\ModLoaderType(); // \Aternos\CurseForgeApi\Model\ModLoaderType | Filter only mods associated to a given modloader (Forge, Fabric ...). Must be coupled with gameVersion.
 $game_version_type_id = 56; // int | Filter only mods that contain files tagged with versions of the given gameVersionTypeId
@@ -332,7 +332,7 @@ try {
 | **category_id** | **int**| Filter by category id | [optional] |
 | **game_version** | **string**| Filter by game version string | [optional] |
 | **search_filter** | **string**| Filter by free text search in the mod name and author | [optional] |
-| **sort_field** | [**\Aternos\CurseForgeApi\Model\ModsSearchSortField**](../Model/.md)| Filter by ModsSearchSortField enumeration | [optional] |
+| **sort_field** | [**\Aternos\CurseForgeApi\Model\ModSearchSortField**](../Model/.md)| Filter by ModsSearchSortField enumeration | [optional] |
 | **sort_order** | [**\Aternos\CurseForgeApi\Model\SortOrder**](../Model/.md)| &#39;asc&#39; if sort is in ascending order, &#39;desc&#39; if sort is in descending order | [optional] |
 | **mod_loader_type** | [**\Aternos\CurseForgeApi\Model\ModLoaderType**](../Model/.md)| Filter only mods associated to a given modloader (Forge, Fabric ...). Must be coupled with gameVersion. | [optional] |
 | **game_version_type_id** | **int**| Filter only mods that contain files tagged with versions of the given gameVersionTypeId | [optional] |

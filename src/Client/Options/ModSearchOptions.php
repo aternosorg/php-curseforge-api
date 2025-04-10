@@ -4,7 +4,7 @@ namespace Aternos\CurseForgeApi\Client\Options;
 
 use Aternos\CurseForgeApi\Client\List\PaginatedModList;
 use Aternos\CurseForgeApi\Model\ModLoaderType;
-use Aternos\CurseForgeApi\Model\ModsSearchSortField;
+use Aternos\CurseForgeApi\Model\ModSearchSortField;
 use Aternos\CurseForgeApi\Model\PremiumType;
 use Aternos\CurseForgeApi\Model\SortOrder;
 
@@ -16,7 +16,7 @@ class ModSearchOptions
      * @param int[]|null $categoryIds
      * @param string[]|null $gameVersions
      * @param string|null $searchFilter Filter by free text search in the mod name and author
-     * @param ModsSearchSortField|null $sortField
+     * @param ModSearchSortField|null $sortField
      * @param SortOrder|null $sortOrder
      * @param ModLoaderType[]|null $modLoaderTypes Filter only mods associated to a given mod loader (Forge, Fabric ...). Must be coupled with gameVersion.
      * @param int|null $gameVersionTypeId Filter only mods that contain files tagged with versions of the given gameVersionTypeId
@@ -28,21 +28,21 @@ class ModSearchOptions
      * @param int $pageSize
      */
     public function __construct(
-        protected int                  $gameId,
-        protected int                  $offset = 0,
-        protected int                  $pageSize = PaginatedModList::MAX_PAGE_SIZE,
-        protected ?int                 $classId = null,
-        protected ?array               $categoryIds = null,
-        protected ?array               $gameVersions = null,
-        protected ?string              $searchFilter = null,
-        protected ?ModsSearchSortField $sortField = null,
-        protected ?SortOrder           $sortOrder = null,
-        protected ?array               $modLoaderTypes = null,
-        protected ?int                 $gameVersionTypeId = null,
-        protected ?int                 $authorId = null,
-        protected ?int                 $primaryAuthorId = null,
-        protected ?PremiumType         $premiumType = null,
-        protected ?string              $slug = null,
+        protected int                 $gameId,
+        protected int                 $offset = 0,
+        protected int                 $pageSize = PaginatedModList::MAX_PAGE_SIZE,
+        protected ?int                $classId = null,
+        protected ?array              $categoryIds = null,
+        protected ?array              $gameVersions = null,
+        protected ?string             $searchFilter = null,
+        protected ?ModSearchSortField $sortField = null,
+        protected ?SortOrder          $sortOrder = null,
+        protected ?array              $modLoaderTypes = null,
+        protected ?int                $gameVersionTypeId = null,
+        protected ?int                $authorId = null,
+        protected ?int                $primaryAuthorId = null,
+        protected ?PremiumType        $premiumType = null,
+        protected ?string             $slug = null,
     )
     {
     }
@@ -247,18 +247,18 @@ class ModSearchOptions
     }
 
     /**
-     * @return ModsSearchSortField|null
+     * @return ModSearchSortField|null
      */
-    public function getSortField(): ?ModsSearchSortField
+    public function getSortField(): ?ModSearchSortField
     {
         return $this->sortField;
     }
 
     /**
-     * @param ModsSearchSortField|null $sortField
+     * @param ModSearchSortField|null $sortField
      * @return $this
      */
-    public function setSortField(?ModsSearchSortField $sortField): static
+    public function setSortField(?ModSearchSortField $sortField): static
     {
         $this->sortField = $sortField;
         return $this;

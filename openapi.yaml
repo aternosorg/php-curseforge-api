@@ -285,7 +285,7 @@ paths:
           description: Filter by ModsSearchSortField enumeration
           required: false
           schema:
-            $ref: '#/components/schemas/ModsSearchSortField'
+            $ref: '#/components/schemas/ModSearchSortField'
         - name: sortOrder
           in: query
           description: >
@@ -2043,7 +2043,7 @@ components:
         - Fabric
         - Quilt
         - NeoForge
-    ModsSearchSortField:
+    ModSearchSortField:
       description: |
         Possible enum values:
          * 1 = Featured
