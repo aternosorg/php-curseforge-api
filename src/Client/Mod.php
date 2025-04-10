@@ -4,7 +4,7 @@ namespace Aternos\CurseForgeApi\Client;
 
 use Aternos\CurseForgeApi\ApiException;
 use Aternos\CurseForgeApi\Client\List\PaginatedFilesList;
-use Aternos\CurseForgeApi\Client\Options\ModFiles\ModFilesOptions;
+use Aternos\CurseForgeApi\Client\Options\ModFilesOptions;
 use Aternos\CurseForgeApi\Model\Mod as ModModel;
 
 class Mod

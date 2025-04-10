@@ -4,7 +4,7 @@ namespace Aternos\CurseForgeApi\Client\List;
 
 use Aternos\CurseForgeApi\Client\CurseForgeAPIClient;
 use Aternos\CurseForgeApi\Client\Mod;
-use Aternos\CurseForgeApi\Client\Options\ModSearch\ModSearchOptions;
+use Aternos\CurseForgeApi\Client\Options\ModSearchOptions;
 use Aternos\CurseForgeApi\Model\Mod as ModModel;
 use Aternos\CurseForgeApi\Model\SearchModsResponse;
 

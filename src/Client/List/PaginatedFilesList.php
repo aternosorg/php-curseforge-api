@@ -4,7 +4,7 @@ namespace Aternos\CurseForgeApi\Client\List;
 
 use Aternos\CurseForgeApi\Client\CurseForgeAPIClient;
 use Aternos\CurseForgeApi\Client\File;
-use Aternos\CurseForgeApi\Client\Options\ModFiles\ModFilesOptions;
+use Aternos\CurseForgeApi\Client\Options\ModFilesOptions;
 use Aternos\CurseForgeApi\Model\File as FileModel;
 use Aternos\CurseForgeApi\Model\GetModFilesResponse;
 

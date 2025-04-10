@@ -1,6 +1,6 @@
 <?php
 
-namespace Aternos\CurseForgeApi\Client\Options\ModFiles;
+namespace Aternos\CurseForgeApi\Client\Options;
 
 use Aternos\CurseForgeApi\Client\List\PaginatedFilesList;
 use Aternos\CurseForgeApi\Model\FileReleaseType;

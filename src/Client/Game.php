@@ -4,7 +4,7 @@ namespace Aternos\CurseForgeApi\Client;
 
 use Aternos\CurseForgeApi\ApiException;
 use Aternos\CurseForgeApi\Client\List\PaginatedModList;
-use Aternos\CurseForgeApi\Client\Options\ModSearch\ModSearchOptions;
+use Aternos\CurseForgeApi\Client\Options\ModSearchOptions;
 use Aternos\CurseForgeApi\Model\Game as GameModel;
 use Aternos\CurseForgeApi\Model\GameVersionsByTypeV2;
 

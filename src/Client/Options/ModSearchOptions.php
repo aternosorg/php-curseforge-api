@@ -1,6 +1,6 @@
 <?php
 
-namespace Aternos\CurseForgeApi\Client\Options\ModSearch;
+namespace Aternos\CurseForgeApi\Client\Options;
 
 use Aternos\CurseForgeApi\Client\List\PaginatedModList;
 use Aternos\CurseForgeApi\Model\ModLoaderType;
