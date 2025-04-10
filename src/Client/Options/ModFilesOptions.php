@@ -196,7 +196,7 @@ class ModFilesOptions
      */
     public function removeReleaseType(FileReleaseType $releaseType): static
     {
-        $this->releaseTypes = array_filter($this->releaseTypes, fn($type) => $type !== $releaseType);
+        $this->releaseTypes = array_values(array_filter($this->releaseTypes, fn($type) => $type !== $releaseType));
         return $this;
     }
 

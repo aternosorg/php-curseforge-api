@@ -170,7 +170,7 @@ class ModSearchOptions
      */
     public function removeCategoryId(int $categoryId): static
     {
-        $this->categoryIds = array_filter($this->categoryIds, fn($value) => $value !== $categoryId);
+        $this->categoryIds = array_values(array_filter($this->categoryIds, fn($value) => $value !== $categoryId));
         return $this;
     }
 
@@ -224,7 +224,7 @@ class ModSearchOptions
      */
     public function removeGameVersion(string $gameVersion): static
     {
-        $this->gameVersions = array_filter($this->gameVersions, fn($value) => $value !== $gameVersion);
+        $this->gameVersions = array_values(array_filter($this->gameVersions, fn($value) => $value !== $gameVersion));
         return $this;
     }
 
@@ -338,7 +338,7 @@ class ModSearchOptions
      */
     public function removeModLoaderType(ModLoaderType $modLoaderType): static
     {
-        $this->modLoaderTypes = array_filter($this->modLoaderTypes, fn($value) => $value !== $modLoaderType);
+        $this->modLoaderTypes = array_values(array_filter($this->modLoaderTypes, fn($value) => $value !== $modLoaderType));
         return $this;
     }
 
