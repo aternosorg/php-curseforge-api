@@ -99,6 +99,12 @@ class ClientTest extends TestCase
         $game = $this->apiClient->getGame(static::MINECRAFT_GAME_ID);
         $this->assertEquals(static::MINECRAFT_GAME_ID, $game->getData()->getId());
         $this->assertEquals("Minecraft", $game->getData()->getName());
+
+        $versions = $game->getVersions();
+        $this->assertNotEmpty($versions);
+
+        $categories = $game->getCategories();
+        $this->assertNotEmpty($categories);
     }
 
     /**
@@ -230,6 +236,13 @@ class ClientTest extends TestCase
             $this->assertEquals(static::MINECRAFT_GAME_ID, $mod->getData()->getGameId());
         }
 
+        $this->assertNull($mods->getPreviousPage());
+
+        $mods = $mods->getNextPage();
+        foreach ($mods as $mod) {
+            $this->assertEquals(static::MINECRAFT_GAME_ID, $mod->getData()->getGameId());
+        }
+
         $game = $this->apiClient->getGame(static::MINECRAFT_GAME_ID);
         $mods = $game->searchMods();
         $this->assertNotEmpty($mods);
@@ -297,7 +310,9 @@ class ClientTest extends TestCase
         $mod = $this->apiClient->getMod(static::MCLOGS_MOD_ID);
 
         $this->assertEquals(static::MCLOGS_MOD_ID, $mod->getData()->getId());
+        $this->assertEquals(static::MINECRAFT_GAME_ID, $mod->getGame()->getData()->getId());
         $this->assertEquals(static::MCLOGS_PRIMARY_CATEGORY_ID, $mod->getPrimaryCategory()->getData()->getId());
+        $this->assertEquals(static::MODS_CATEGORY_ID, $mod->getCategoryClass()->getData()->getId());
     }
 
     /**
@@ -353,10 +368,17 @@ class ClientTest extends TestCase
         $mod = $this->apiClient->getMod(static::MCLOGS_MOD_ID);
 
         $file = $mod->getMainFile();
+
+
+        $this->assertEquals($mod, $file->getMod());
+
         $this->assertEquals($mod->getData()->getMainFileId(), $file->getData()->getId());
         $this->assertNotNull($file->getChangelog());
+
         $this->assertTrue($mod->getData()->getAllowModDistribution());
         $this->assertNotEmpty($this->apiClient->getModFileDownloadURL($mod->getData()->getId(), $file->getData()->getId()));
+
+        $this->assertNull($file->getServerPack());
     }
 
     /**
