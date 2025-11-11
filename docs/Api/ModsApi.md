@@ -268,7 +268,7 @@ try {
 ## `searchMods()`
 
 ```php
-searchMods($game_id, $index, $page_size, $class_id, $category_id, $game_version, $search_filter, $sort_field, $sort_order, $mod_loader_type, $game_version_type_id, $author_id, $slug, $category_ids, $game_versions, $mod_loader_types, $primary_author_id, $premium_type): \Aternos\CurseForgeApi\Model\SearchModsResponse
+searchMods($game_id, $index, $class_id, $category_id, $category_ids, $game_version, $game_versions, $search_filter, $sort_field, $sort_order, $mod_loader_type, $mod_loader_types, $game_version_type_id, $author_id, $primary_author_id, $premium_type, $slug, $client_compatible, $mods_search_enhanced_features, $page_size): \Aternos\CurseForgeApi\Model\SearchModsResponse
 ```
 
 Get all mods that match the search criteria.
@@ -296,25 +296,27 @@ $apiInstance = new Aternos\CurseForgeApi\Api\ModsApi(
 );
 $game_id = 56; // int | Filter by game id.
 $index = 56; // int | A zero based index of the first item to include in the response, the limit is: (index + pageSize <= 10,000).
-$page_size = 56; // int | The number of items to include in the response, the default/maximum value is 50.
 $class_id = 56; // int | Filter by section id (discoverable via Categories)
 $category_id = 56; // int | Filter by category id
+$category_ids = 'category_ids_example'; // string | Filter by a list of category ids - this will override categoryId categoryIds=[1,2,3...] The maximum allowed category ids per query is 10
 $game_version = 'game_version_example'; // string | Filter by game version string
+$game_versions = 'game_versions_example'; // string | Filter by a list of game version strings - this will override gameVersion gameVersions=[\"1.19.1\", \"1.19.2\", \"1.20.1\"...] The maximum allowed category ids per query is 4
 $search_filter = 'search_filter_example'; // string | Filter by free text search in the mod name and author
-$sort_field = new \Aternos\CurseForgeApi\Model\\Aternos\CurseForgeApi\Model\ModSearchSortField(); // \Aternos\CurseForgeApi\Model\ModSearchSortField | Filter by ModsSearchSortField enumeration
+$sort_field = new \Aternos\CurseForgeApi\Model\\Aternos\CurseForgeApi\Model\ModsSearchSortField(); // \Aternos\CurseForgeApi\Model\ModsSearchSortField | Filter by ModsSearchSortField enumeration
 $sort_order = new \Aternos\CurseForgeApi\Model\\Aternos\CurseForgeApi\Model\SortOrder(); // \Aternos\CurseForgeApi\Model\SortOrder | 'asc' if sort is in ascending order, 'desc' if sort is in descending order
 $mod_loader_type = new \Aternos\CurseForgeApi\Model\\Aternos\CurseForgeApi\Model\ModLoaderType(); // \Aternos\CurseForgeApi\Model\ModLoaderType | Filter only mods associated to a given modloader (Forge, Fabric ...). Must be coupled with gameVersion.
+$mod_loader_types = 'mod_loader_types_example'; // string | Filter by a list of mod loader types - this will override modLoaderType modLoaderTypes=[Forge,Fabric, ...] Max values = 5
 $game_version_type_id = 56; // int | Filter only mods that contain files tagged with versions of the given gameVersionTypeId
 $author_id = 56; // int | Filter only mods that the given authorId is a member of.
-$slug = 'slug_example'; // string | Filter by slug (coupled with classId will result in a unique result).
-$category_ids = 'category_ids_example'; // string | Filter by a list of category ids. this will override categoryId. Limited to 10 items.
-$game_versions = 'game_versions_example'; // string | Filter by a list of game version strings. This will override gameVersion. Limited to 4 items.
-$mod_loader_types = 'mod_loader_types_example'; // string | Filter by a list of modloader types. This will override modLoaderType. Limited to 5 items.
 $primary_author_id = 56; // int | Filter only mods that the given primaryAuthorId is the owner of.
 $premium_type = new \Aternos\CurseForgeApi\Model\\Aternos\CurseForgeApi\Model\PremiumType(); // \Aternos\CurseForgeApi\Model\PremiumType | Filter only mods that are Premium or not.
+$slug = 'slug_example'; // string | Filter by slug (coupled with classId will result in a unique result).
+$client_compatible = True; // bool | When set to true, will filter out any mod that doesn't have a default file that is compatible with the client. This is usually due to a bad file structure of the file (which might cause unexpected behaviours on the user's machine - such as overriding other mods installed).
+$mods_search_enhanced_features = 56; // int | Bitwise number with values from ModsSearchEnhancedFeatures
+$page_size = 56; // int | The number of items to include in the response, the default/maximum value is 50.
 
 try {
-    $result = $apiInstance->searchMods($game_id, $index, $page_size, $class_id, $category_id, $game_version, $search_filter, $sort_field, $sort_order, $mod_loader_type, $game_version_type_id, $author_id, $slug, $category_ids, $game_versions, $mod_loader_types, $primary_author_id, $premium_type);
+    $result = $apiInstance->searchMods($game_id, $index, $class_id, $category_id, $category_ids, $game_version, $game_versions, $search_filter, $sort_field, $sort_order, $mod_loader_type, $mod_loader_types, $game_version_type_id, $author_id, $primary_author_id, $premium_type, $slug, $client_compatible, $mods_search_enhanced_features, $page_size);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ModsApi->searchMods: ', $e->getMessage(), PHP_EOL;
@@ -327,22 +329,24 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **game_id** | **int**| Filter by game id. | |
 | **index** | **int**| A zero based index of the first item to include in the response, the limit is: (index + pageSize &lt;&#x3D; 10,000). | [optional] |
-| **page_size** | **int**| The number of items to include in the response, the default/maximum value is 50. | [optional] |
 | **class_id** | **int**| Filter by section id (discoverable via Categories) | [optional] |
 | **category_id** | **int**| Filter by category id | [optional] |
+| **category_ids** | **string**| Filter by a list of category ids - this will override categoryId categoryIds&#x3D;[1,2,3...] The maximum allowed category ids per query is 10 | [optional] |
 | **game_version** | **string**| Filter by game version string | [optional] |
+| **game_versions** | **string**| Filter by a list of game version strings - this will override gameVersion gameVersions&#x3D;[\&quot;1.19.1\&quot;, \&quot;1.19.2\&quot;, \&quot;1.20.1\&quot;...] The maximum allowed category ids per query is 4 | [optional] |
 | **search_filter** | **string**| Filter by free text search in the mod name and author | [optional] |
-| **sort_field** | [**\Aternos\CurseForgeApi\Model\ModSearchSortField**](../Model/.md)| Filter by ModsSearchSortField enumeration | [optional] |
+| **sort_field** | [**\Aternos\CurseForgeApi\Model\ModsSearchSortField**](../Model/.md)| Filter by ModsSearchSortField enumeration | [optional] |
 | **sort_order** | [**\Aternos\CurseForgeApi\Model\SortOrder**](../Model/.md)| &#39;asc&#39; if sort is in ascending order, &#39;desc&#39; if sort is in descending order | [optional] |
 | **mod_loader_type** | [**\Aternos\CurseForgeApi\Model\ModLoaderType**](../Model/.md)| Filter only mods associated to a given modloader (Forge, Fabric ...). Must be coupled with gameVersion. | [optional] |
+| **mod_loader_types** | **string**| Filter by a list of mod loader types - this will override modLoaderType modLoaderTypes&#x3D;[Forge,Fabric, ...] Max values &#x3D; 5 | [optional] |
 | **game_version_type_id** | **int**| Filter only mods that contain files tagged with versions of the given gameVersionTypeId | [optional] |
 | **author_id** | **int**| Filter only mods that the given authorId is a member of. | [optional] |
-| **slug** | **string**| Filter by slug (coupled with classId will result in a unique result). | [optional] |
-| **category_ids** | **string**| Filter by a list of category ids. this will override categoryId. Limited to 10 items. | [optional] |
-| **game_versions** | **string**| Filter by a list of game version strings. This will override gameVersion. Limited to 4 items. | [optional] |
-| **mod_loader_types** | **string**| Filter by a list of modloader types. This will override modLoaderType. Limited to 5 items. | [optional] |
 | **primary_author_id** | **int**| Filter only mods that the given primaryAuthorId is the owner of. | [optional] |
 | **premium_type** | [**\Aternos\CurseForgeApi\Model\PremiumType**](../Model/.md)| Filter only mods that are Premium or not. | [optional] |
+| **slug** | **string**| Filter by slug (coupled with classId will result in a unique result). | [optional] |
+| **client_compatible** | **bool**| When set to true, will filter out any mod that doesn&#39;t have a default file that is compatible with the client. This is usually due to a bad file structure of the file (which might cause unexpected behaviours on the user&#39;s machine - such as overriding other mods installed). | [optional] |
+| **mods_search_enhanced_features** | **int**| Bitwise number with values from ModsSearchEnhancedFeatures | [optional] |
+| **page_size** | **int**| The number of items to include in the response, the default/maximum value is 50. | [optional] |
 
 ### Return type
 

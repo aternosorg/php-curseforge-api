@@ -245,15 +245,6 @@ paths:
           schema:
             type: integer
             format: int32
-        - name: pageSize
-          in: query
-          description: >-
-            The number of items to include in the response, the default/maximum
-            value is 50.
-          required: false
-          schema:
-            type: integer
-            format: int32
         - name: classId
           in: query
           description: Filter by section id (discoverable via Categories)
@@ -268,10 +259,26 @@ paths:
           schema:
             type: integer
             format: int32
+        - name: categoryIds
+          in: query
+          description: >-
+            Filter by a list of category ids - this will override categoryId
+            categoryIds=[1,2,3...]
+            The maximum allowed category ids per query is 10
+          schema:
+            type: string
         - name: gameVersion
           in: query
           description: Filter by game version string
           required: false
+          schema:
+            type: string
+        - name: gameVersions
+          in: query
+          description: >-
+            Filter by a list of game version strings - this will override gameVersion
+            gameVersions=["1.19.1", "1.19.2", "1.20.1"...]
+            The maximum allowed category ids per query is 4
           schema:
             type: string
         - name: searchFilter
@@ -285,7 +292,7 @@ paths:
           description: Filter by ModsSearchSortField enumeration
           required: false
           schema:
-            $ref: '#/components/schemas/ModSearchSortField'
+            $ref: '#/components/schemas/ModsSearchSortField'
         - name: sortOrder
           in: query
           description: >
@@ -301,7 +308,17 @@ paths:
             ...). Must be coupled with gameVersion.
           required: false
           schema:
+            nullable: true
             $ref: '#/components/schemas/ModLoaderType'
+        - name: modLoaderTypes
+          in: query
+          description: >-
+            Filter by a list of mod loader types - this will override modLoaderType
+            modLoaderTypes=[Forge,Fabric, ...]
+            Max values = 5
+          schema:
+            # Setting type to array is not possible here because CurseForge uses a non-standard representation.
+            type: string
         - name: gameVersionTypeId
           in: query
           description: >-
@@ -311,43 +328,15 @@ paths:
           schema:
             type: integer
             format: int32
+            nullable: true
         - name: authorId
           in: query
-          description: >-
-            Filter only mods that the given authorId is a member of.
+          description: Filter only mods that the given authorId is a member of.
           required: false
           schema:
             type: integer
             format: int32
-        - name: slug
-          in: query
-          description: >-
-            Filter by slug (coupled with classId will result in a unique
-            result).
-          required: false
-          schema:
-            type: string
-        - name: categoryIds
-          in: query
-          description: Filter by a list of category ids. this will override categoryId. Limited to 10 items.
-          required: false
-          schema:
-            # Setting type to array is not possible here because CurseForge uses a non-standard representation.
-            type: string
-        - name: gameVersions
-          in: query
-          description: Filter by a list of game version strings. This will override gameVersion. Limited to 4 items.
-          required: false
-          schema:
-            # Setting type to array is not possible here because CurseForge uses a non-standard representation.
-            type: string
-        - name: modLoaderTypes
-          in: query
-          description: Filter by a list of modloader types. This will override modLoaderType. Limited to 5 items.
-          required: false
-          schema:
-            # Setting type to array is not possible here because CurseForge uses a non-standard representation.
-            type: string
+            nullable: true
         - name: primaryAuthorId
           in: query
           description: Filter only mods that the given primaryAuthorId is the owner of.
@@ -355,12 +344,41 @@ paths:
           schema:
             type: integer
             format: int32
+            nullable: true
         - name: PremiumType
           in: query
           description: Filter only mods that are Premium or not.
           required: false
           schema:
             $ref: '#/components/schemas/PremiumType'
+        - name: slug
+          in: query
+          description: >-
+            Filter by slug (coupled with classId will result in a unique
+            result).
+          schema:
+            type: string
+        - name: clientCompatible
+          in: query
+          description: |-
+            When set to true, will filter out any mod that doesn't have a default
+            file that is compatible with the client. This is usually due to a bad
+            file structure of the file (which might cause unexpected behaviours on
+            the user's machine - such as overriding other mods installed).
+          schema:
+            type: boolean
+        - name: modsSearchEnhancedFeatures
+          in: query
+          description: Bitwise number with values from ModsSearchEnhancedFeatures
+          schema:
+            type: integer
+            format: int64
+        - name: pageSize
+          in: query
+          description: The number of items to include in the response, the default/maximum value is 50.
+          schema:
+            type: integer
+            format: int32
       responses:
         '200':
           description: OK
@@ -2043,7 +2061,7 @@ components:
         - Fabric
         - Quilt
         - NeoForge
-    ModSearchSortField:
+    ModsSearchSortField:
       description: |
         Possible enum values:
          * 1 = Featured

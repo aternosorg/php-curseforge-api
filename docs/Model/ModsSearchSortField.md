@@ -1,4 +1,4 @@
-# # ModSearchSortField
+# # ModsSearchSortField
 
 ## Properties
 

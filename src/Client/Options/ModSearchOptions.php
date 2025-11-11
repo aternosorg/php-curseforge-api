@@ -4,7 +4,7 @@ namespace Aternos\CurseForgeApi\Client\Options;
 
 use Aternos\CurseForgeApi\Client\List\PaginatedModList;
 use Aternos\CurseForgeApi\Model\ModLoaderType;
-use Aternos\CurseForgeApi\Model\ModSearchSortField;
+use Aternos\CurseForgeApi\Model\ModsSearchSortField;
 use Aternos\CurseForgeApi\Model\PremiumType;
 use Aternos\CurseForgeApi\Model\SortOrder;
 
@@ -16,7 +16,7 @@ class ModSearchOptions
      * @param int[]|null $categoryIds
      * @param string[]|null $gameVersions
      * @param string|null $searchFilter Filter by free text search in the mod name and author
-     * @param ModSearchSortField|null $sortField
+     * @param ModsSearchSortField|null $sortField
      * @param SortOrder|null $sortOrder
      * @param ModLoaderType[]|null $modLoaderTypes Filter only mods associated to a given mod loader (Forge, Fabric ...). Must be coupled with gameVersion.
      * @param int|null $gameVersionTypeId Filter only mods that contain files tagged with versions of the given gameVersionTypeId
@@ -35,7 +35,7 @@ class ModSearchOptions
         protected ?array              $categoryIds = null,
         protected ?array              $gameVersions = null,
         protected ?string             $searchFilter = null,
-        protected ?ModSearchSortField $sortField = null,
+        protected ?ModsSearchSortField $sortField = null,
         protected ?SortOrder          $sortOrder = null,
         protected ?array              $modLoaderTypes = null,
         protected ?int                $gameVersionTypeId = null,
@@ -247,18 +247,18 @@ class ModSearchOptions
     }
 
     /**
-     * @return ModSearchSortField|null
+     * @return ModsSearchSortField|null
      */
-    public function getSortField(): ?ModSearchSortField
+    public function getSortField(): ?ModsSearchSortField
     {
         return $this->sortField;
     }
 
     /**
-     * @param ModSearchSortField|null $sortField
+     * @param ModsSearchSortField|null $sortField
      * @return $this
      */
-    public function setSortField(?ModSearchSortField $sortField): static
+    public function setSortField(?ModsSearchSortField $sortField): static
     {
         $this->sortField = $sortField;
         return $this;
