@@ -235,7 +235,7 @@ class CurseForgeAPIClient
     {
         $response = $this->mods->searchMods(
             game_id: $options->getGameId(),
-            index: null,
+            index: $options->getOffset(),
             class_id: $options->getClassId(),
             category_id: null,
             category_ids: $options->getEncodedCategoryIds(),
