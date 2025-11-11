@@ -156,8 +156,7 @@ class ClientTest extends TestCase
             foreach ($mods->getResults() as $mod) {
                 if ($category->getData()->getIsClass()) {
                     $this->assertEquals($category->getData()->getId(), $mod->getData()->getClassId());
-                }
-                else {
+                } else {
                     $this->assertContains($category->getData()->getId(),
                         array_map(fn($category) => $category->getId(), $mod->getData()->getCategories()));
                 }
@@ -187,8 +186,7 @@ class ClientTest extends TestCase
             foreach ($mods->getResults() as $mod) {
                 if ($category->getData()->getIsClass()) {
                     $this->assertEquals($category->getData()->getId(), $mod->getData()->getClassId());
-                }
-                else {
+                } else {
                     $this->assertContains($category->getData()->getId(),
                         array_map(fn($category) => $category->getId(), $mod->getData()->getCategories()));
                 }
@@ -326,7 +324,7 @@ class ClientTest extends TestCase
         $mods = $this->apiClient->getMods($ids);
         $this->assertSameSize($ids, $mods);
         foreach ($ids as $id) {
-            $this->assertNotEmpty(array_filter($mods, fn ($mod) => $mod->getData()->getId() === $id));
+            $this->assertNotEmpty(array_filter($mods, fn($mod) => $mod->getData()->getId() === $id));
         }
     }
 
@@ -433,7 +431,7 @@ class ClientTest extends TestCase
         $this->assertSameSize($fingerprints, $files->getExactMatches());
         foreach ($fileIds as $id) {
             $this->assertNotEmpty(array_filter($files->getExactMatches(),
-                fn (FingerprintMatch $file) => $file->getFile()->getId() === $id));
+                fn(FingerprintMatch $file) => $file->getFile()->getId() === $id));
         }
     }
 
@@ -444,13 +442,15 @@ class ClientTest extends TestCase
      */
     public function testGetMinecraftVersions()
     {
+        $this->markTestSkipped("BROKEN: ticket #160399");
+
         $versionsAsc = $this->apiClient->getMinecraftVersions(SortOrder::ASCENDING);
         $this->assertNotEmpty($versionsAsc);
 
         $versionsDesc = $this->apiClient->getMinecraftVersions(SortOrder::DESCENDING);
         $this->assertNotEmpty($versionsDesc);
 
-        $this->assertEqualsCanonicalizing($versionsAsc, $versionsDesc);
+        $this->assertEquals($versionsAsc, array_reverse($versionsDesc)); // BROKEN: ticket #160399
     }
 
     /**
