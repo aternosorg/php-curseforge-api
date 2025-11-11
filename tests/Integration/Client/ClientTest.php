@@ -442,7 +442,7 @@ class ClientTest extends TestCase
      */
     public function testGetMinecraftVersions()
     {
-        $this->markTestSkipped("BROKEN: ticket #160399");
+        $this->markTestSkipped("BROKEN");
 
         $versionsAsc = $this->apiClient->getMinecraftVersions(SortOrder::ASCENDING);
         $this->assertNotEmpty($versionsAsc);
@@ -450,7 +450,7 @@ class ClientTest extends TestCase
         $versionsDesc = $this->apiClient->getMinecraftVersions(SortOrder::DESCENDING);
         $this->assertNotEmpty($versionsDesc);
 
-        $this->assertEquals($versionsAsc, array_reverse($versionsDesc)); // BROKEN: ticket #160399
+        $this->assertEquals($versionsAsc, array_reverse($versionsDesc));
     }
 
     /**
