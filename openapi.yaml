@@ -245,15 +245,6 @@ paths:
           schema:
             type: integer
             format: int32
-        - name: pageSize
-          in: query
-          description: >-
-            The number of items to include in the response, the default/maximum
-            value is 50.
-          required: false
-          schema:
-            type: integer
-            format: int32
         - name: classId
           in: query
           description: Filter by section id (discoverable via Categories)
@@ -384,8 +375,7 @@ paths:
             format: int64
         - name: pageSize
           in: query
-          description: The number of items to include in the response,  the default/maximum
-            value is 50.
+          description: The number of items to include in the response, the default/maximum value is 50.
           schema:
             type: integer
             format: int32
