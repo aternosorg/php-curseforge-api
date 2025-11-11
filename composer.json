@@ -21,11 +21,11 @@
         "ext-curl": "*",
         "ext-json": "*",
         "ext-mbstring": "*",
-        "guzzlehttp/guzzle": "^7.4.5",
+        "guzzlehttp/guzzle": "^7.9",
         "guzzlehttp/psr7": "^2.0"
     },
     "require-dev": {
-        "phpunit/phpunit": "^12.1"
+        "phpunit/phpunit": "^12.4"
     },
     "autoload": {
         "psr-4": { "Aternos\\CurseForgeApi\\" : "src/" }
