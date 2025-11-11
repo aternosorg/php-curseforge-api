@@ -233,26 +233,29 @@ class CurseForgeAPIClient
      */
     public function searchMods(ModSearchOptions $options): PaginatedModList
     {
-        return new PaginatedModList($this, $this->mods->searchMods(
-            $options->getGameId(),
-            $options->getOffset(),
-            PaginatedModList::getAllowedPageSize($options->getOffset(), $options->getPageSize()),
-            $options->getClassId(),
-            null,
-            null,
-            $options->getSearchFilter(),
-            $options->getSortField(),
-            $options->getSortOrder(),
-            null,
-            $options->getGameVersionTypeId(),
-            $options->getAuthorId(),
-            $options->getSlug(),
-            $options->getEncodedCategoryIds(),
-            $options->getEncodedGameVersions(),
-            $options->getEncodedModLoaderTypes(),
-            $options->getPrimaryAuthorId(),
-            $options->getPremiumType(),
-        ), $options);
+        $response = $this->mods->searchMods(
+            game_id: $options->getGameId(),
+            index: null,
+            class_id: $options->getClassId(),
+            category_id: null,
+            category_ids: $options->getEncodedCategoryIds(),
+            game_version: null,
+            game_versions: $options->getEncodedGameVersions(),
+            search_filter: $options->getSearchFilter(),
+            sort_field: $options->getSortField(),
+            sort_order: $options->getSortOrder(),
+            mod_loader_type: null,
+            mod_loader_types: $options->getEncodedModLoaderTypes(),
+            game_version_type_id: $options->getGameVersionTypeId(),
+            author_id: $options->getAuthorId(),
+            primary_author_id: $options->getPrimaryAuthorId(),
+            premium_type: $options->getPremiumType(),
+            slug: $options->getSlug(),
+            client_compatible: null,
+            mods_search_enhanced_features: null,
+            page_size: PaginatedModList::getAllowedPageSize($options->getOffset(), $options->getPageSize())
+        );
+        return new PaginatedModList($this, $response, $options);
     }
 
     /**
