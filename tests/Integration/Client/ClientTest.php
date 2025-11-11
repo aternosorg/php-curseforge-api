@@ -444,13 +444,13 @@ class ClientTest extends TestCase
      */
     public function testGetMinecraftVersions()
     {
-        $versions = $this->apiClient->getMinecraftVersions(SortOrder::ASCENDING);
-        $this->assertNotEmpty($versions);
+        $versionsAsc = $this->apiClient->getMinecraftVersions(SortOrder::ASCENDING);
+        $this->assertNotEmpty($versionsAsc);
 
-        $reverseVersions = $this->apiClient->getMinecraftVersions(SortOrder::DESCENDING);
-        $this->assertNotEmpty($reverseVersions);
+        $versionsDesc = $this->apiClient->getMinecraftVersions(SortOrder::DESCENDING);
+        $this->assertNotEmpty($versionsDesc);
 
-        $this->assertEquals($versions, array_reverse($reverseVersions)); // BROKEN: ticket #160399
+        $this->assertEqualsCanonicalizing($versionsAsc, $versionsDesc);
     }
 
     /**
