@@ -1,6 +1,6 @@
 <?php
 /**
- * ModSearchSortField
+ * ModsSearchSortField
  *
  * PHP version 8.1
  *
@@ -28,14 +28,14 @@
 namespace Aternos\CurseForgeApi\Model;
 
 /**
- * ModSearchSortField Class Doc Comment
+ * ModsSearchSortField Class Doc Comment
  *
  * @description Possible enum values:  * 1 &#x3D; Featured  * 2 &#x3D; Popularity  * 3 &#x3D; LastUpdated              * 4 &#x3D; Name  * 5 &#x3D; Author  * 6 &#x3D; TotalDownloads  * 7 &#x3D; Category  * 8 &#x3D; GameVersion  * 9 &#x3D; Early Access  * 10 &#x3D; Featured Release  * 11 &#x3D; Release Date  * 12 &#x3D; Rating
  * @package  Aternos\CurseForgeApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
-enum ModSearchSortField: int
+enum ModsSearchSortField: int
 {
     case FEATURED = 1;
 

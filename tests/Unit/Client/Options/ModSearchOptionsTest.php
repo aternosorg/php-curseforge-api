@@ -4,7 +4,7 @@ namespace Aternos\CurseForgeApi\Tests\Unit\Client\Options;
 
 use Aternos\CurseForgeApi\Client\Options\ModSearchOptions;
 use Aternos\CurseForgeApi\Model\ModLoaderType;
-use Aternos\CurseForgeApi\Model\ModSearchSortField;
+use Aternos\CurseForgeApi\Model\ModsSearchSortField;
 use Aternos\CurseForgeApi\Model\PremiumType;
 use Aternos\CurseForgeApi\Model\SortOrder;
 use PHPUnit\Framework\TestCase;
@@ -155,8 +155,8 @@ class ModSearchOptionsTest extends TestCase
     {
         $modSearchOptions = new ModSearchOptions(1);
         $this->assertNull($modSearchOptions->getSortField());
-        $modSearchOptions->setSortField(ModSearchSortField::NAME);
-        $this->assertSame(ModSearchSortField::NAME, $modSearchOptions->getSortField());
+        $modSearchOptions->setSortField(ModsSearchSortField::NAME);
+        $this->assertSame(ModsSearchSortField::NAME, $modSearchOptions->getSortField());
         $modSearchOptions->setSortField(null);
         $this->assertNull($modSearchOptions->getSortField());
     }
