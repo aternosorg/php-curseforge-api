@@ -1,4 +1,4 @@
-# # CoreStatus
+# CoreStatus
 
 ## Properties
 

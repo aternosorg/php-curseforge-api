@@ -1,4 +1,4 @@
-# # FingerprintMatchesResult
+# FingerprintMatchesResult
 
 ## Properties
 

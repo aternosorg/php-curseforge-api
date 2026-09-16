@@ -1,4 +1,4 @@
-# # ModLinks
+# ModLinks
 
 ## Properties
 

@@ -1,4 +1,4 @@
-# # GetGamesResponse
+# GetGamesResponse
 
 ## Properties
 

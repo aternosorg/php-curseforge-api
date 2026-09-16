@@ -1,4 +1,4 @@
-# # FileIndex
+# FileIndex
 
 ## Properties
 

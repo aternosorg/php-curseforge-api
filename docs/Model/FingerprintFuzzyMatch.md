@@ -1,4 +1,4 @@
-# # FingerprintFuzzyMatch
+# FingerprintFuzzyMatch
 
 ## Properties
 

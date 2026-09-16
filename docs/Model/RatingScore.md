@@ -1,4 +1,4 @@
-# # RatingScore
+# RatingScore
 
 ## Properties
 

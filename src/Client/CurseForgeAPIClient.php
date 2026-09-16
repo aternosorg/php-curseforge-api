@@ -252,6 +252,8 @@ class CurseForgeAPIClient
             $options->getEncodedModLoaderTypes(),
             $options->getPrimaryAuthorId(),
             $options->getPremiumType(),
+            $options->getClientCompatible(),
+            $options->getModsSearchEnhancedFeatures(),
         ), $options);
     }
 
@@ -269,12 +271,17 @@ class CurseForgeAPIClient
     /**
      * Fetch multiple mods at once
      * @param int[] $modIds
+     * @param int[] $devModIds
+     * @param bool|null $filterPcOnly
      * @return Mod[]
      * @throws ApiException
      */
-    public function getMods(array $modIds): array
+    public function getMods(array $modIds, array $devModIds = [], ?bool $filterPcOnly = null): array
     {
-        $body = (new GetModsByIdsListRequestBody())->setModIds($modIds);
+        $body = (new GetModsByIdsListRequestBody())
+            ->setModIds($modIds)
+            ->setDevModIds($devModIds)
+            ->setFilterPcOnly($filterPcOnly);
         return array_map(fn($mod) => new Mod($this, $mod), $this->mods->getMods($body)->getData());
     }
 
@@ -283,15 +290,20 @@ class CurseForgeAPIClient
      * @param int $gameId
      * @param int[] $excludedModIds
      * @param int|null $gameVersionTypeId
+     * @param bool|null $clientCompatible
      * @return FeaturedMods
      * @throws ApiException
      */
-    public function getFeaturedMods(int $gameId, array $excludedModIds = [], ?int $gameVersionTypeId = null): FeaturedMods
+    public function getFeaturedMods(int $gameId, array $excludedModIds = [], ?int $gameVersionTypeId = null, ?bool $clientCompatible = null): FeaturedMods
     {
         $body = (new GetFeaturedModsRequestBody())
             ->setGameId($gameId)
             ->setExcludedModIds($excludedModIds)
             ->setGameVersionTypeId($gameVersionTypeId);
+
+        if ($clientCompatible !== null) {
+            $body->setClientCompatible($clientCompatible);
+        }
 
         return new FeaturedMods($this, $this->mods->getFeaturedMods($body)->getData());
     }
@@ -299,12 +311,13 @@ class CurseForgeAPIClient
     /**
      * Get the description of a mod as html
      * @param int $modId
+     * @param string|null $lang
      * @return string|null
      * @throws ApiException
      */
-    public function getModDescription(int $modId): ?string
+    public function getModDescription(int $modId, ?string $lang = null): ?string
     {
-        return $this->mods->getModDescription($modId)->getData();
+        return $this->mods->getModDescription($modId, lang: $lang)->getData();
     }
 
     /**
@@ -325,6 +338,7 @@ class CurseForgeAPIClient
             $options->getOlderThanProjectFileId(),
             $options->getReleaseTypes(),
             $options->getPlatformType(),
+            $options->getClientCompatible(),
         ), $options);
     }
 
@@ -356,12 +370,15 @@ class CurseForgeAPIClient
      * Get the changelog of a mod file as html
      * @param int $modId
      * @param int $fileId
+     * @param bool|null $raw Get raw changelog without things like external link redirects
+     * @param bool|null $stripped Get the changelog with all HTML tags removed
+     * @param bool|null $markup
      * @return string
      * @throws ApiException
      */
-    public function getModFileChangelog(int $modId, int $fileId): string
+    public function getModFileChangelog(int $modId, int $fileId, ?bool $raw = null, ?bool $stripped = null, ?bool $markup = null): string
     {
-        return $this->files->getModFileChangelog($modId, $fileId)->getData();
+        return $this->files->getModFileChangelog($modId, $fileId, $raw, $stripped, $markup)->getData();
     }
 
     /**

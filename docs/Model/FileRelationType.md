@@ -1,4 +1,4 @@
-# # FileRelationType
+# FileRelationType
 
 ## Properties
 

@@ -1,4 +1,4 @@
-# # GetFilesResponse
+# GetFilesResponse
 
 ## Properties
 

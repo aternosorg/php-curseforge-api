@@ -1,4 +1,4 @@
-# # GetFingerprintFuzzyMatchesResponse
+# GetFingerprintFuzzyMatchesResponse
 
 ## Properties
 

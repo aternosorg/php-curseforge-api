@@ -1,4 +1,4 @@
-# # ModLoaderType
+# ModLoaderType
 
 ## Properties
 

@@ -1,4 +1,4 @@
-# # ModDescriptionResponse
+# ModDescriptionResponse
 
 ## Properties
 

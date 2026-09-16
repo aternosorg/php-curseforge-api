@@ -1,4 +1,4 @@
-# # MinecraftModLoaderIndex
+# MinecraftModLoaderIndex
 
 ## Properties
 

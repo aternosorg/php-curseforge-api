@@ -1,4 +1,4 @@
-# # GetModFilesResponse
+# GetModFilesResponse
 
 ## Properties
 

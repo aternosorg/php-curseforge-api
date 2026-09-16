@@ -1,4 +1,4 @@
-# # SocialLink
+# SocialLink
 
 ## Properties
 

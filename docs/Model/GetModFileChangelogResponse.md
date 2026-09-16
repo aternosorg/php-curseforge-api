@@ -1,4 +1,4 @@
-# # GetModFileChangelogResponse
+# GetModFileChangelogResponse
 
 ## Properties
 

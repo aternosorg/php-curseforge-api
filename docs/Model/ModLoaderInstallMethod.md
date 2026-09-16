@@ -1,4 +1,4 @@
-# # ModLoaderInstallMethod
+# ModLoaderInstallMethod
 
 ## Properties
 

@@ -1,4 +1,4 @@
-# # FileReleaseType
+# FileReleaseType
 
 ## Properties
 

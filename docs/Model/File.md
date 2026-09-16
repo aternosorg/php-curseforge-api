@@ -1,4 +1,4 @@
-# # File
+# File
 
 ## Properties
 
@@ -30,5 +30,6 @@ Name | Type | Description | Notes
 **early_access_end_date** | **\DateTime** |  | [optional]
 **file_fingerprint** | **int** |  | [optional]
 **modules** | [**\Aternos\CurseForgeApi\Model\FileModule[]**](FileModule.md) |  | [optional]
+**cooking_info** | [**\Aternos\CurseForgeApi\Model\CookerInfo**](CookerInfo.md) |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

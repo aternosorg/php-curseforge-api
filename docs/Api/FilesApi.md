@@ -140,7 +140,7 @@ try {
 ## `getModFileChangelog()`
 
 ```php
-getModFileChangelog($mod_id, $file_id): \Aternos\CurseForgeApi\Model\GetModFileChangelogResponse
+getModFileChangelog($mod_id, $file_id, $raw, $stripped, $markup): \Aternos\CurseForgeApi\Model\GetModFileChangelogResponse
 ```
 
 Get mod file changelog
@@ -168,9 +168,12 @@ $apiInstance = new Aternos\CurseForgeApi\Api\FilesApi(
 );
 $mod_id = 56; // int | The mod id the file belongs to
 $file_id = 56; // int | The file id.
+$raw = True; // bool | Get raw changelog without things like external link redirects
+$stripped = True; // bool | Get the changelog with all HTML tags removed
+$markup = True; // bool
 
 try {
-    $result = $apiInstance->getModFileChangelog($mod_id, $file_id);
+    $result = $apiInstance->getModFileChangelog($mod_id, $file_id, $raw, $stripped, $markup);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling FilesApi->getModFileChangelog: ', $e->getMessage(), PHP_EOL;
@@ -183,6 +186,9 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **mod_id** | **int**| The mod id the file belongs to | |
 | **file_id** | **int**| The file id. | |
+| **raw** | **bool**| Get raw changelog without things like external link redirects | [optional] |
+| **stripped** | **bool**| Get the changelog with all HTML tags removed | [optional] |
+| **markup** | **bool**|  | [optional] |
 
 ### Return type
 
@@ -268,7 +274,7 @@ try {
 ## `getModFiles()`
 
 ```php
-getModFiles($mod_id, $index, $page_size, $game_version, $mod_loader_type, $game_version_type_id, $older_than_project_file_id, $release_types, $platform_type): \Aternos\CurseForgeApi\Model\GetModFilesResponse
+getModFiles($mod_id, $index, $page_size, $game_version, $mod_loader_type, $game_version_type_id, $older_than_project_file_id, $release_types, $platform_type, $client_compatible): \Aternos\CurseForgeApi\Model\GetModFilesResponse
 ```
 
 Get mod files.
@@ -303,9 +309,10 @@ $game_version_type_id = 56; // int | Filter only files that are tagged with vers
 $older_than_project_file_id = 56; // int | Filter only files older than the given file ID
 $release_types = array(new \Aternos\CurseForgeApi\Model\\Aternos\CurseForgeApi\Model\FileReleaseType()); // \Aternos\CurseForgeApi\Model\FileReleaseType[] | Filter only files that are of the given release types
 $platform_type = new \Aternos\CurseForgeApi\Model\\Aternos\CurseForgeApi\Model\PlatformType(); // \Aternos\CurseForgeApi\Model\PlatformType | Filter only files supporting the given platform type
+$client_compatible = True; // bool | When set to true, filter OUT any file that isn't client compatible.
 
 try {
-    $result = $apiInstance->getModFiles($mod_id, $index, $page_size, $game_version, $mod_loader_type, $game_version_type_id, $older_than_project_file_id, $release_types, $platform_type);
+    $result = $apiInstance->getModFiles($mod_id, $index, $page_size, $game_version, $mod_loader_type, $game_version_type_id, $older_than_project_file_id, $release_types, $platform_type, $client_compatible);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling FilesApi->getModFiles: ', $e->getMessage(), PHP_EOL;
@@ -325,6 +332,7 @@ try {
 | **older_than_project_file_id** | **int**| Filter only files older than the given file ID | [optional] |
 | **release_types** | [**\Aternos\CurseForgeApi\Model\FileReleaseType[]**](../Model/\Aternos\CurseForgeApi\Model\FileReleaseType.md)| Filter only files that are of the given release types | [optional] |
 | **platform_type** | [**\Aternos\CurseForgeApi\Model\PlatformType**](../Model/.md)| Filter only files supporting the given platform type | [optional] |
+| **client_compatible** | **bool**| When set to true, filter OUT any file that isn&#39;t client compatible. | [optional] |
 
 ### Return type
 

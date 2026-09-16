@@ -1,4 +1,4 @@
-# # GetModFilesRequestBody
+# GetModFilesRequestBody
 
 ## Properties
 

@@ -1,4 +1,4 @@
-# # ServerAffiliation
+# ServerAffiliation
 
 ## Properties
 

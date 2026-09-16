@@ -1,4 +1,4 @@
-# # GetCategoriesResponse
+# GetCategoriesResponse
 
 ## Properties
 

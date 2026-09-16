@@ -1,4 +1,4 @@
-# # GameAssets
+# GameAssets
 
 ## Properties
 

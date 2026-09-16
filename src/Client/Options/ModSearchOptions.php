@@ -24,6 +24,8 @@ class ModSearchOptions
      * @param int|null $primaryAuthorId Filter only mods that have the given author as primary author
      * @param PremiumType|null $premiumType Filter only mods that are Premium or not
      * @param string|null $slug Filter by slug (coupled with classId will result in a unique result).
+     * @param bool|null $clientCompatible When set to true, will filter out any mod that doesn't have a default file that is compatible with the client
+     * @param int|null $modsSearchEnhancedFeatures Bitwise number with values from ModsSearchEnhancedFeatures
      * @param int $offset
      * @param int $pageSize
      */
@@ -43,6 +45,8 @@ class ModSearchOptions
         protected ?int                $primaryAuthorId = null,
         protected ?PremiumType        $premiumType = null,
         protected ?string             $slug = null,
+        protected ?bool               $clientCompatible = null,
+        protected ?int                $modsSearchEnhancedFeatures = null,
     )
     {
     }
@@ -429,6 +433,42 @@ class ModSearchOptions
     public function setSlug(?string $slug): static
     {
         $this->slug = $slug;
+        return $this;
+    }
+
+    /**
+     * @return bool|null
+     */
+    public function getClientCompatible(): ?bool
+    {
+        return $this->clientCompatible;
+    }
+
+    /**
+     * @param bool|null $clientCompatible
+     * @return $this
+     */
+    public function setClientCompatible(?bool $clientCompatible): static
+    {
+        $this->clientCompatible = $clientCompatible;
+        return $this;
+    }
+
+    /**
+     * @return int|null
+     */
+    public function getModsSearchEnhancedFeatures(): ?int
+    {
+        return $this->modsSearchEnhancedFeatures;
+    }
+
+    /**
+     * @param int|null $modsSearchEnhancedFeatures
+     * @return $this
+     */
+    public function setModsSearchEnhancedFeatures(?int $modsSearchEnhancedFeatures): static
+    {
+        $this->modsSearchEnhancedFeatures = $modsSearchEnhancedFeatures;
         return $this;
     }
 }

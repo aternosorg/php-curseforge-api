@@ -1,4 +1,4 @@
-# # ModAuthor
+# ModAuthor
 
 ## Properties
 

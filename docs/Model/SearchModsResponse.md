@@ -1,4 +1,4 @@
-# # SearchModsResponse
+# SearchModsResponse
 
 ## Properties
 

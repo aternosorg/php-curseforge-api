@@ -20,6 +20,7 @@ class ModFilesOptions
      * @param int|null $olderThanProjectFileId show only files that are older than the given projectFileId
      * @param FileReleaseType[]|null $releaseTypes array of release types to filter files by
      * @param PlatformType|null $platformType platform type to filter files by
+     * @param bool|null $clientCompatible when set to true, filter out any file that isn't client compatible
      */
     public function __construct(
         protected int            $modId,
@@ -31,6 +32,7 @@ class ModFilesOptions
         protected ?int           $olderThanProjectFileId = null,
         protected ?array         $releaseTypes = null,
         protected ?PlatformType  $platformType = null,
+        protected ?bool          $clientCompatible = null,
     )
     {
     }
@@ -215,6 +217,24 @@ class ModFilesOptions
     public function setPlatformType(?PlatformType $platformType): static
     {
         $this->platformType = $platformType;
+        return $this;
+    }
+
+    /**
+     * @return bool|null
+     */
+    public function getClientCompatible(): ?bool
+    {
+        return $this->clientCompatible;
+    }
+
+    /**
+     * @param bool|null $clientCompatible
+     * @return $this
+     */
+    public function setClientCompatible(?bool $clientCompatible): static
+    {
+        $this->clientCompatible = $clientCompatible;
         return $this;
     }
 }

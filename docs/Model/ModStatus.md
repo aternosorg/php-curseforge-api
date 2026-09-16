@@ -1,4 +1,4 @@
-# # ModStatus
+# ModStatus
 
 ## Properties
 
