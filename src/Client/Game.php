@@ -87,11 +87,12 @@ class Game
      * Get all featured mods for this game
      * @param int[] $excludedModIds
      * @param int|null $gameVersionTypeId
+     * @param bool|null $clientCompatible
      * @return FeaturedMods
      * @throws ApiException
      */
-    public function getFeaturedMods(array $excludedModIds = [], ?int $gameVersionTypeId = null): FeaturedMods
+    public function getFeaturedMods(array $excludedModIds = [], ?int $gameVersionTypeId = null, ?bool $clientCompatible = null): FeaturedMods
     {
-        return $this->client->getFeaturedMods($this->game->getId(), $excludedModIds, $gameVersionTypeId);
+        return $this->client->getFeaturedMods($this->game->getId(), $excludedModIds, $gameVersionTypeId, $clientCompatible);
     }
 }

@@ -36,12 +36,13 @@ class Mod
 
     /**
      * Fetch the description of this mod as html
+     * @param string|null $lang
      * @return string|null
      * @throws ApiException
      */
-    public function getDescription(): ?string
+    public function getDescription(?string $lang = null): ?string
     {
-        return $this->client->getModDescription($this->mod->getId());
+        return $this->client->getModDescription($this->mod->getId(), $lang);
     }
 
     /**

@@ -38,12 +38,15 @@ class File
 
     /**
      * Get the changelog of this file
+     * @param bool|null $raw Get raw changelog without things like external link redirects
+     * @param bool|null $stripped Get the changelog with all HTML tags removed
+     * @param bool|null $markup
      * @return string
      * @throws ApiException
      */
-    public function getChangelog(): string
+    public function getChangelog(?bool $raw = null, ?bool $stripped = null, ?bool $markup = null): string
     {
-        return $this->client->getModFileChangelog($this->file->getModId(), $this->file->getId());
+        return $this->client->getModFileChangelog($this->file->getModId(), $this->file->getId(), $raw, $stripped, $markup);
     }
 
     /**
