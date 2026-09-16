@@ -299,8 +299,11 @@ class CurseForgeAPIClient
         $body = (new GetFeaturedModsRequestBody())
             ->setGameId($gameId)
             ->setExcludedModIds($excludedModIds)
-            ->setGameVersionTypeId($gameVersionTypeId)
-            ->setClientCompatible($clientCompatible);
+            ->setGameVersionTypeId($gameVersionTypeId);
+
+        if ($clientCompatible !== null) {
+            $body->setClientCompatible($clientCompatible);
+        }
 
         return new FeaturedMods($this, $this->mods->getFeaturedMods($body)->getData());
     }
