@@ -1,4 +1,4 @@
-# # AffiliationServiceType
+# AffiliationServiceType
 
 ## Properties
 

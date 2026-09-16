@@ -1,4 +1,4 @@
-# # ApiResponseOfListOfMinecraftGameVersion
+# ApiResponseOfListOfMinecraftGameVersion
 
 ## Properties
 

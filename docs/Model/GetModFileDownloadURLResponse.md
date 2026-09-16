@@ -1,4 +1,4 @@
-# # GetModFileDownloadURLResponse
+# GetModFileDownloadURLResponse
 
 ## Properties
 

@@ -1,4 +1,4 @@
-# # CoreApiStatus
+# CoreApiStatus
 
 ## Properties
 

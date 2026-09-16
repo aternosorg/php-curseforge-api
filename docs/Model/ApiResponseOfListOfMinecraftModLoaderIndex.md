@@ -1,4 +1,4 @@
-# # ApiResponseOfListOfMinecraftModLoaderIndex
+# ApiResponseOfListOfMinecraftModLoaderIndex
 
 ## Properties
 

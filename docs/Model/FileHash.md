@@ -1,4 +1,4 @@
-# # FileHash
+# FileHash
 
 ## Properties
 

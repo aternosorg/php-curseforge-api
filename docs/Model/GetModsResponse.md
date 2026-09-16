@@ -1,4 +1,4 @@
-# # GetModsResponse
+# GetModsResponse
 
 ## Properties
 

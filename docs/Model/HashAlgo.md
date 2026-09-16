@@ -1,4 +1,4 @@
-# # HashAlgo
+# HashAlgo
 
 ## Properties
 

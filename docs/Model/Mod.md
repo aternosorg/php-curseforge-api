@@ -1,4 +1,4 @@
-# # Mod
+# Mod
 
 ## Properties
 
@@ -22,6 +22,7 @@ Name | Type | Description | Notes
 **videos** | [**\Aternos\CurseForgeApi\Model\ModAsset[]**](ModAsset.md) |  | [optional]
 **main_file_id** | **int** | The id of the main file of the mod | [optional]
 **latest_files** | [**\Aternos\CurseForgeApi\Model\File[]**](File.md) | List of latest files of the mod | [optional]
+**supports_cross_platform** | **bool** | Whether the mod supports cross-platform play | [optional]
 **latest_files_indexes** | [**\Aternos\CurseForgeApi\Model\FileIndex[]**](FileIndex.md) | List of file related details for the latest files of the mod | [optional]
 **latest_early_access_files_indexes** | [**\Aternos\CurseForgeApi\Model\FileIndex[]**](FileIndex.md) | List of file related details for the latest early access files of the mod | [optional]
 **date_created** | **\DateTime** | The creation date of the mod | [optional]
@@ -35,5 +36,6 @@ Name | Type | Description | Notes
 **rating_details** | [**\Aternos\CurseForgeApi\Model\RatingDetails**](RatingDetails.md) |  | [optional]
 **server_affiliation** | [**\Aternos\CurseForgeApi\Model\ServerAffiliation**](ServerAffiliation.md) |  | [optional]
 **social_links** | [**\Aternos\CurseForgeApi\Model\SocialLink[]**](SocialLink.md) | The mod&#39;s social links | [optional]
+**featured_project_tag** | [**\Aternos\CurseForgeApi\Model\ClientFeaturedProjectTag**](ClientFeaturedProjectTag.md) |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

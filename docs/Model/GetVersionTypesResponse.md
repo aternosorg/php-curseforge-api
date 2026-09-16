@@ -1,4 +1,4 @@
-# # GetVersionTypesResponse
+# GetVersionTypesResponse
 
 ## Properties
 

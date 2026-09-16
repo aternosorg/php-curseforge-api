@@ -1,4 +1,4 @@
-# # FeaturedModsResponse
+# FeaturedModsResponse
 
 ## Properties
 

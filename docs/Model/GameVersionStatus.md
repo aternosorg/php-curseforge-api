@@ -1,4 +1,4 @@
-# # GameVersionStatus
+# GameVersionStatus
 
 ## Properties
 

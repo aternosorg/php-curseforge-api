@@ -1,4 +1,4 @@
-# # MinecraftGameVersion
+# MinecraftGameVersion
 
 ## Properties
 

@@ -1,4 +1,4 @@
-# # MinecraftModLoaderVersion
+# MinecraftModLoaderVersion
 
 ## Properties
 

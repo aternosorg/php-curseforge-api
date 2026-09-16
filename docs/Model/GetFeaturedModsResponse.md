@@ -1,4 +1,4 @@
-# # GetFeaturedModsResponse
+# GetFeaturedModsResponse
 
 ## Properties
 

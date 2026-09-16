@@ -1,4 +1,4 @@
-# # ModAsset
+# ModAsset
 
 ## Properties
 

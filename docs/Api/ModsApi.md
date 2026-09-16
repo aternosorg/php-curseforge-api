@@ -138,7 +138,7 @@ try {
 ## `getModDescription()`
 
 ```php
-getModDescription($mod_id, $raw, $stripped, $markup): \Aternos\CurseForgeApi\Model\ModDescriptionResponse
+getModDescription($mod_id, $raw, $stripped, $markup, $lang): \Aternos\CurseForgeApi\Model\ModDescriptionResponse
 ```
 
 Get mod description.
@@ -168,9 +168,10 @@ $mod_id = 56; // int | The mod id.
 $raw = True; // bool | Get raw description without things like external link redirects
 $stripped = True; // bool | Get the description with all HTML tags removed
 $markup = True; // bool
+$lang = 'en'; // string
 
 try {
-    $result = $apiInstance->getModDescription($mod_id, $raw, $stripped, $markup);
+    $result = $apiInstance->getModDescription($mod_id, $raw, $stripped, $markup, $lang);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ModsApi->getModDescription: ', $e->getMessage(), PHP_EOL;
@@ -185,6 +186,7 @@ try {
 | **raw** | **bool**| Get raw description without things like external link redirects | [optional] |
 | **stripped** | **bool**| Get the description with all HTML tags removed | [optional] |
 | **markup** | **bool**|  | [optional] |
+| **lang** | **string**|  | [optional] [default to &#39;en&#39;] |
 
 ### Return type
 
@@ -268,7 +270,7 @@ try {
 ## `searchMods()`
 
 ```php
-searchMods($game_id, $index, $page_size, $class_id, $category_id, $game_version, $search_filter, $sort_field, $sort_order, $mod_loader_type, $game_version_type_id, $author_id, $slug, $category_ids, $game_versions, $mod_loader_types, $primary_author_id, $premium_type): \Aternos\CurseForgeApi\Model\SearchModsResponse
+searchMods($game_id, $index, $page_size, $class_id, $category_id, $game_version, $search_filter, $sort_field, $sort_order, $mod_loader_type, $game_version_type_id, $author_id, $slug, $category_ids, $game_versions, $mod_loader_types, $primary_author_id, $premium_type, $client_compatible, $mods_search_enhanced_features): \Aternos\CurseForgeApi\Model\SearchModsResponse
 ```
 
 Get all mods that match the search criteria.
@@ -312,9 +314,11 @@ $game_versions = 'game_versions_example'; // string | Filter by a list of game v
 $mod_loader_types = 'mod_loader_types_example'; // string | Filter by a list of modloader types. This will override modLoaderType. Limited to 5 items.
 $primary_author_id = 56; // int | Filter only mods that the given primaryAuthorId is the owner of.
 $premium_type = new \Aternos\CurseForgeApi\Model\\Aternos\CurseForgeApi\Model\PremiumType(); // \Aternos\CurseForgeApi\Model\PremiumType | Filter only mods that are Premium or not.
+$client_compatible = True; // bool | When set to true, will filter out any mod that doesn't have a default file that is compatible with the client. This is usually due to a bad file structure of the file (which might cause unexpected behaviours on the user's machine - such as overriding other mods installed).
+$mods_search_enhanced_features = 56; // int | Bitwise number with values from ModsSearchEnhancedFeatures
 
 try {
-    $result = $apiInstance->searchMods($game_id, $index, $page_size, $class_id, $category_id, $game_version, $search_filter, $sort_field, $sort_order, $mod_loader_type, $game_version_type_id, $author_id, $slug, $category_ids, $game_versions, $mod_loader_types, $primary_author_id, $premium_type);
+    $result = $apiInstance->searchMods($game_id, $index, $page_size, $class_id, $category_id, $game_version, $search_filter, $sort_field, $sort_order, $mod_loader_type, $game_version_type_id, $author_id, $slug, $category_ids, $game_versions, $mod_loader_types, $primary_author_id, $premium_type, $client_compatible, $mods_search_enhanced_features);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ModsApi->searchMods: ', $e->getMessage(), PHP_EOL;
@@ -343,6 +347,8 @@ try {
 | **mod_loader_types** | **string**| Filter by a list of modloader types. This will override modLoaderType. Limited to 5 items. | [optional] |
 | **primary_author_id** | **int**| Filter only mods that the given primaryAuthorId is the owner of. | [optional] |
 | **premium_type** | [**\Aternos\CurseForgeApi\Model\PremiumType**](../Model/.md)| Filter only mods that are Premium or not. | [optional] |
+| **client_compatible** | **bool**| When set to true, will filter out any mod that doesn&#39;t have a default file that is compatible with the client. This is usually due to a bad file structure of the file (which might cause unexpected behaviours on the user&#39;s machine - such as overriding other mods installed). | [optional] |
+| **mods_search_enhanced_features** | **int**| Bitwise number with values from ModsSearchEnhancedFeatures | [optional] |
 
 ### Return type
 

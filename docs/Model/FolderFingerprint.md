@@ -1,4 +1,4 @@
-# # FolderFingerprint
+# FolderFingerprint
 
 ## Properties
 
