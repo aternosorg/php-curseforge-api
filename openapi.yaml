@@ -361,6 +361,24 @@ paths:
           required: false
           schema:
             $ref: '#/components/schemas/PremiumType'
+        - name: clientCompatible
+          in: query
+          description: >-
+            When set to true, will filter out any mod that doesn't have a
+            default file that is compatible with the client. This is usually
+            due to a bad file structure of the file (which might cause
+            unexpected behaviours on the user's machine - such as overriding
+            other mods installed).
+          required: false
+          schema:
+            type: boolean
+        - name: modsSearchEnhancedFeatures
+          in: query
+          description: Bitwise number with values from ModsSearchEnhancedFeatures
+          required: false
+          schema:
+            type: integer
+            format: int64
       responses:
         '200':
           description: OK
@@ -485,6 +503,11 @@ paths:
           in: query
           schema:
             type: boolean
+        - name: lang
+          in: query
+          schema:
+            type: string
+            default: en
       responses:
         '200':
           description: OK
@@ -611,6 +634,14 @@ paths:
           required: false
           schema:
               $ref: '#/components/schemas/PlatformType'
+        - name: clientCompatible
+          in: query
+          description: >-
+            When set to true, filter OUT any file that isn't client
+            compatible.
+          required: false
+          schema:
+            type: boolean
       responses:
         '200':
           description: OK
@@ -674,6 +705,20 @@ paths:
           schema:
             type: integer
             format: int32
+        - name: raw
+          in: query
+          description: Get raw changelog without things like external link redirects
+          schema:
+            type: boolean
+        - name: stripped
+          in: query
+          description: Get the changelog with all HTML tags removed
+          schema:
+            type: boolean
+        - name: markup
+          in: query
+          schema:
+            type: boolean
       responses:
         '200':
           description: OK
@@ -1043,6 +1088,34 @@ components:
           format: int32
           nullable: true
           description: The display index for this category
+    ClientFeaturedProjectTag:
+      description: |
+        ClientFeaturedProjectTag
+        Possible enum values:
+         * 0 = None
+         * 1 = Sponsored
+         * 2 = HiddenGem
+         * 3 = Popular
+      type: integer
+      enum:
+        - 0
+        - 1
+        - 2
+        - 3
+      x-enum-varnames:
+        - None
+        - Sponsored
+        - HiddenGem
+        - Popular
+    CookerInfo:
+      type: object
+      properties:
+        cookerVersion:
+          type: string
+          description: The version of the cooker that processed this file
+        cookerRevision:
+          type: string
+          description: The revision of the cooker that processed this file
     CoreApiStatus:
       description: |
         CoreApiStatus
@@ -1197,6 +1270,8 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/FileModule'
+        cookingInfo:
+          $ref: '#/components/schemas/CookerInfo'
     FileDependency:
       type: object
       properties:
@@ -1453,6 +1528,8 @@ components:
           $ref: '#/components/schemas/CoreStatus'
         apiStatus:
           $ref: '#/components/schemas/CoreApiStatus'
+        supportedFeatures:
+          $ref: '#/components/schemas/GameSupportedFeatures'
     GameAssets:
       type: object
       properties:
@@ -1465,6 +1542,12 @@ components:
         coverUrl:
           type: string
           format: uri
+    GameSupportedFeatures:
+      type: object
+      properties:
+        supportModSubscriptions:
+          type: boolean
+          description: Whether mod subscriptions are supported for this game
     GameVersionsByType:
       type: object
       properties:
@@ -1660,6 +1743,8 @@ components:
           type: integer
           format: int32
           nullable: true
+        clientCompatible:
+          type: boolean
     GetFingerprintMatchesRequestBody:
       type: object
       properties:
@@ -1695,6 +1780,14 @@ components:
           items:
             type: integer
             format: int64
+        devModIds:
+          type: array
+          items:
+            type: integer
+            format: int32
+        filterPcOnly:
+          type: boolean
+          nullable: true
     HashAlgo:
       description: |
         Hash algorithems
@@ -1889,6 +1982,10 @@ components:
           items:
             $ref: '#/components/schemas/File'
           description: List of latest files of the mod
+        supportsCrossPlatform:
+          type: boolean
+          nullable: true
+          description: Whether the mod supports cross-platform play
         latestFilesIndexes:
           type: array
           items:
@@ -1941,6 +2038,8 @@ components:
           description: The mod's social links
           items:
             $ref: '#/components/schemas/SocialLink'
+        featuredProjectTag:
+          $ref: '#/components/schemas/ClientFeaturedProjectTag'
     ModAsset:
       type: object
       properties:
@@ -2058,6 +2157,7 @@ components:
          * 10 = Featured Release
          * 11 = Release Date
          * 12 = Rating
+         * 13 = Relevancy
       type: integer
       enum:
         - 1
@@ -2072,6 +2172,7 @@ components:
         - 10
         - 11
         - 12
+        - 13
       x-enum-varnames:
         - Featured
         - Popularity
@@ -2085,6 +2186,7 @@ components:
         - Featured Release
         - Release Date
         - Rating
+        - Relevancy
     ModStatus:
       description: |
         Current mod status
@@ -2312,6 +2414,11 @@ components:
         * 12 = Pinterest
         * 13 = Github
         * 14 = Bluesky
+        * 15 = Paypal
+        * 16 = PaypalHosted
+        * 17 = GithubSponsors
+        * 18 = Kofi
+        * 19 = BuyMeACoffee
       enum:
         - 1
         - 2
@@ -2327,6 +2434,11 @@ components:
         - 12
         - 13
         - 14
+        - 15
+        - 16
+        - 17
+        - 18
+        - 19
       x-enum-varnames:
         - Mastodon
         - Discord
@@ -2342,6 +2454,11 @@ components:
         - Pinterest
         - Github
         - Bluesky
+        - Paypal
+        - PaypalHosted
+        - GithubSponsors
+        - Kofi
+        - BuyMeACoffee
     SortableGameVersion:
       type: object
       properties:
