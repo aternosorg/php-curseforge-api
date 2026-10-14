@@ -1941,7 +1941,7 @@ components:
           format: int64
           description: Number of downloads for the mod
         isFeatured:
-          format: boolean
+          type: boolean
           description: Whether the mod is included in the featured mods list
         primaryCategoryId:
           type: integer

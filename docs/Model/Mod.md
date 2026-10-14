@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **summary** | **string** | Mod summary | [optional]
 **status** | [**\Aternos\CurseForgeApi\Model\ModStatus**](ModStatus.md) |  | [optional]
 **download_count** | **int** | Number of downloads for the mod | [optional]
-**is_featured** | **mixed** | Whether the mod is included in the featured mods list | [optional]
+**is_featured** | **bool** | Whether the mod is included in the featured mods list | [optional]
 **primary_category_id** | **int** | The main category of the mod as it was chosen by the mod author | [optional]
 **categories** | [**\Aternos\CurseForgeApi\Model\Category[]**](Category.md) | List of categories that this mod is related to | [optional]
 **class_id** | **int** | The class id this mod belongs to | [optional]
