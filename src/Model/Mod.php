@@ -66,7 +66,7 @@ class Mod implements ModelInterface, ArrayAccess, JsonSerializable
         'summary' => 'string',
         'status' => '\Aternos\CurseForgeApi\Model\ModStatus',
         'download_count' => 'int',
-        'is_featured' => 'mixed',
+        'is_featured' => 'bool',
         'primary_category_id' => 'int',
         'categories' => '\Aternos\CurseForgeApi\Model\Category[]',
         'class_id' => 'int',
@@ -107,7 +107,7 @@ class Mod implements ModelInterface, ArrayAccess, JsonSerializable
         'summary' => null,
         'status' => null,
         'download_count' => 'int64',
-        'is_featured' => 'boolean',
+        'is_featured' => null,
         'primary_category_id' => 'int32',
         'categories' => null,
         'class_id' => 'int32',
@@ -148,7 +148,7 @@ class Mod implements ModelInterface, ArrayAccess, JsonSerializable
         'summary' => false,
         'status' => false,
         'download_count' => false,
-        'is_featured' => true,
+        'is_featured' => false,
         'primary_category_id' => false,
         'categories' => false,
         'class_id' => true,
@@ -706,9 +706,9 @@ class Mod implements ModelInterface, ArrayAccess, JsonSerializable
     /**
      * Gets is_featured
      *
-     * @return mixed|null
+     * @return bool|null
      */
-    public function getIsFeatured(): mixed
+    public function getIsFeatured(): ?bool
     {
         return $this->container['is_featured'];
     }
@@ -716,21 +716,14 @@ class Mod implements ModelInterface, ArrayAccess, JsonSerializable
     /**
      * Sets is_featured
      *
-     * @param mixed|null $is_featured Whether the mod is included in the featured mods list
+     * @param bool|null $is_featured Whether the mod is included in the featured mods list
      *
      * @return $this
      */
-    public function setIsFeatured(mixed $is_featured): static
+    public function setIsFeatured(?bool $is_featured): static
     {
         if (is_null($is_featured)) {
-            array_push($this->openAPINullablesSetToNull, 'is_featured');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('is_featured', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+            throw new InvalidArgumentException('non-nullable is_featured cannot be null');
         }
         $this->container['is_featured'] = $is_featured;
 
