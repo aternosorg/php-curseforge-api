@@ -1,0 +1,42 @@
+{
+    "data": [
+        {
+            "id": 5021,
+            "name": "Final Fantasy V",
+            "slug": "final-fantasy-v",
+            "dateModified": "2022-11-06T20:35:12.237Z",
+            "assets": {
+                "iconUrl": null,
+                "tileUrl": "https://media.forgecdn.net/game-box-art/5021_e7882608-f934-457d-8b8f-1b584a9df1c0.png",
+                "coverUrl": null
+            },
+            "status": 6,
+            "apiStatus": 2,
+            "supportedFeatures": {
+                "supportModSubscriptions": false
+            }
+        },
+        {
+            "id": 423,
+            "name": "World of Tanks",
+            "slug": "worldoftanks",
+            "dateModified": "2022-11-28T12:15:21.007Z",
+            "assets": {
+                "iconUrl": "https://media.forgecdn.net/avatars/77/677/636174916166063366.png",
+                "tileUrl": "https://media.forgecdn.net/game-tiles/World+of+Tanks+Tile.jpg",
+                "coverUrl": "https://media.forgecdn.net/game-covers/423_67ef25da-ad0a-4191-9b65-d1420caf4b4e.webp"
+            },
+            "status": 6,
+            "apiStatus": 2,
+            "supportedFeatures": {
+                "supportModSubscriptions": false
+            }
+        }
+    ],
+    "pagination": {
+        "index": 0,
+        "pageSize": 2,
+        "resultCount": 2,
+        "totalCount": 38
+    }
+}
