@@ -3,6 +3,7 @@
 namespace Aternos\CurseForgeApi\Tests\Unit\Client;
 
 use Aternos\CurseForgeApi\ApiException;
+use Aternos\CurseForgeApi\Configuration;
 use GuzzleHttp\Client;
 use GuzzleHttp\Handler\MockHandler;
 use GuzzleHttp\HandlerStack;
@@ -78,5 +79,21 @@ class CurseForgeAPIClientTest extends ClientTestCase
 
         $this->assertCount(1, $history);
         $this->assertRequestCount(0);
+    }
+
+    /**
+     * ObjectSerializer reads the boolean format from the default configuration,
+     * so boolean query parameters must also be sent as strings if the client uses its own configuration.
+     *
+     * @throws ApiException
+     */
+    public function testBooleanQueryParametersAreSentAsStrings(): void
+    {
+        Configuration::getDefaultConfiguration()->setBooleanFormatForQueryString(Configuration::BOOLEAN_FORMAT_INT);
+        $client = $this->createClient([new Response(200, [], '{"data": []}')]);
+
+        $client->getCategories(432, null, true);
+
+        $this->assertGetRequest("/v1/categories", ["gameId" => "432", "classesOnly" => "true"]);
     }
 }

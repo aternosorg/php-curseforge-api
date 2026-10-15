@@ -79,6 +79,12 @@ class CurseForgeAPIClient
         $this->configuration = $configuration;
         $this->configuration->setBooleanFormatForQueryString(Configuration::BOOLEAN_FORMAT_STRING);
 
+        // The ObjectSerializer reads the boolean query string format from the default configuration
+        // instead of the one used for the request, so it has to be set there as well.
+        // Without this, boolean query parameters are sent as 1/0 when a custom configuration is used.
+        Configuration::getDefaultConfiguration()
+            ->setBooleanFormatForQueryString(Configuration::BOOLEAN_FORMAT_STRING);
+
         $this->categories = new CategoriesApi($this->httpClient, $this->configuration);
         $this->files = new FilesApi($this->httpClient, $this->configuration);
         $this->fingerprints = new FingerprintsApi($this->httpClient, $this->configuration);
