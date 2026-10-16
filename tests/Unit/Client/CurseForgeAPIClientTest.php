@@ -5,11 +5,16 @@ namespace Aternos\CurseForgeApi\Tests\Unit\Client;
 use Aternos\CurseForgeApi\ApiException;
 use Aternos\CurseForgeApi\Client\Mod;
 use Aternos\CurseForgeApi\Client\Options\ModSearchOptions;
+use Aternos\CurseForgeApi\Client\Category;
+use Aternos\CurseForgeApi\Client\Game;
+use Aternos\CurseForgeApi\Client\GameVersionType;
 use Aternos\CurseForgeApi\Configuration;
 use Aternos\CurseForgeApi\Model\ModLoaderType;
 use Aternos\CurseForgeApi\Model\ModSearchSortField;
 use Aternos\CurseForgeApi\Model\PremiumType;
 use Aternos\CurseForgeApi\Model\SortOrder;
+use Aternos\CurseForgeApi\Model\GameVersion;
+use Aternos\CurseForgeApi\Model\GameVersionsByTypeV2;
 use GuzzleHttp\Client;
 use GuzzleHttp\Handler\MockHandler;
 use GuzzleHttp\HandlerStack;
@@ -101,6 +106,152 @@ class CurseForgeAPIClientTest extends ClientTestCase
         $client->getCategories(432, null, true);
 
         $this->assertGetRequest("/v1/categories", ["gameId" => "432", "classesOnly" => "true"]);
+    }
+
+    /**
+     * @throws ApiException
+     */
+    public function testGetGames(): void
+    {
+        $client = $this->createClient([new Response(200, [], file_get_contents(__DIR__ . "/Fixtures/getGames.json"))]);
+
+        $games = $client->getGames();
+
+        $this->assertGetRequest("/v1/games", ["index" => "0", "pageSize" => "50"]);
+        $this->assertCount(2, $games);
+        $this->assertContainsOnlyInstancesOf(Game::class, $games->getResults());
+        $this->assertSame("final-fantasy-v", $games[0]->getData()->getSlug());
+    }
+
+    /**
+     * @throws ApiException
+     */
+    public function testGetGamesWithOffsetAndPageSize(): void
+    {
+        $client = $this->createClient([new Response(200, [], file_get_contents(__DIR__ . "/Fixtures/getGames.json"))]);
+
+        $client->getGames(10, 2);
+
+        $this->assertGetRequest("/v1/games", ["index" => "10", "pageSize" => "2"]);
+    }
+
+    /**
+     * @throws ApiException
+     */
+    public function testGetGame(): void
+    {
+        $client = $this->createClient([new Response(200, [], file_get_contents(__DIR__ . "/Fixtures/getGame.json"))]);
+
+        $game = $client->getGame(432);
+
+        $this->assertGetRequest("/v1/games/432");
+        $this->assertSame(432, $game->getData()->getId());
+        $this->assertSame("Minecraft", $game->getData()->getName());
+    }
+
+    /**
+     * @throws ApiException
+     */
+    public function testGetGameVersionTypes(): void
+    {
+        $client = $this->createClient([new Response(200, [], file_get_contents(__DIR__ . "/Fixtures/getVersionTypes.json"))]);
+
+        $versionTypes = $client->getGameVersionTypes(432);
+
+        $this->assertGetRequest("/v1/games/432/version-types");
+        $this->assertCount(3, $versionTypes);
+        $this->assertContainsOnlyInstancesOf(GameVersionType::class, $versionTypes);
+        $this->assertSame("Minecraft 1.1", $versionTypes[0]->getData()->getName());
+    }
+
+    /**
+     * @throws ApiException
+     */
+    public function testGetGameVersions(): void
+    {
+        $client = $this->createClient([new Response(200, [], file_get_contents(__DIR__ . "/Fixtures/getVersionsV2.json"))]);
+
+        $versions = $client->getGameVersions(432);
+
+        $this->assertGetRequest("/v2/games/432/versions");
+        $this->assertCount(3, $versions);
+        $this->assertContainsOnlyInstancesOf(GameVersionsByTypeV2::class, $versions);
+        $this->assertSame(3, $versions[0]->getType());
+    }
+
+    /**
+     * @throws ApiException
+     */
+    public function testGetGameVersionsByType(): void
+    {
+        $client = $this->createClient([new Response(200, [], file_get_contents(__DIR__ . "/Fixtures/getVersionsV2.json"))]);
+
+        $versions = $client->getGameVersionsByType(432, 11);
+
+        $this->assertGetRequest("/v2/games/432/versions");
+        $this->assertContainsOnlyInstancesOf(GameVersion::class, $versions);
+        $this->assertSame(["1.5.3", "1.5.2", "1.5.1"], array_map(fn(GameVersion $version) => $version->getName(), $versions));
+    }
+
+    /**
+     * @throws ApiException
+     */
+    public function testGetGameVersionsByUnknownTypeReturnsEmptyArray(): void
+    {
+        $client = $this->createClient([new Response(200, [], file_get_contents(__DIR__ . "/Fixtures/getVersionsV2.json"))]);
+
+        $this->assertSame([], $client->getGameVersionsByType(432, 1));
+    }
+
+    /**
+     * @throws ApiException
+     */
+    public function testGetCategories(): void
+    {
+        $client = $this->createClient([new Response(200, [], file_get_contents(__DIR__ . "/Fixtures/getCategories.json"))]);
+
+        $categories = $client->getCategories(432);
+
+        $this->assertGetRequest("/v1/categories", ["gameId" => "432"]);
+        $this->assertArrayNotHasKey("classId", $this->getQuery());
+        $this->assertArrayNotHasKey("classesOnly", $this->getQuery());
+        $this->assertCount(5, $categories);
+        $this->assertContainsOnlyInstancesOf(Category::class, $categories);
+    }
+
+    /**
+     * @throws ApiException
+     */
+    public function testGetCategoriesWithClassIdAndClassesOnly(): void
+    {
+        $client = $this->createClient([new Response(200, [], file_get_contents(__DIR__ . "/Fixtures/getCategories.json"))]);
+
+        $client->getCategories(432, 6, true);
+
+        $this->assertGetRequest("/v1/categories", ["gameId" => "432", "classId" => "6", "classesOnly" => "true"]);
+    }
+
+    /**
+     * @throws ApiException
+     */
+    public function testGetCategory(): void
+    {
+        $client = $this->createClient([new Response(200, [], file_get_contents(__DIR__ . "/Fixtures/getCategories.json"))]);
+
+        $category = $client->getCategory(432, 435);
+
+        $this->assertGetRequest("/v1/categories", ["gameId" => "432"]);
+        $this->assertSame("Server Utility", $category->getData()->getName());
+    }
+
+    /**
+     * @throws ApiException
+     */
+    public function testGetUnknownCategoryReturnsNull(): void
+    {
+        $client = $this->createClient([new Response(200, [], file_get_contents(__DIR__ . "/Fixtures/getCategories.json"))]);
+
+        $this->assertNull($client->getCategory(432, 1));
     }
 
     /**

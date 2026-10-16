@@ -1,0 +1,63 @@
+{
+    "data": [
+        {
+            "id": 134,
+            "gameId": 432,
+            "name": "Teleportation",
+            "slug": "teleportation",
+            "url": "https://www.curseforge.com/minecraft/bukkit-plugins/teleportation",
+            "iconUrl": "https://media.forgecdn.net/avatars/65/463/636162917927634490.png",
+            "dateModified": "2016-12-02T22:09:52.763Z",
+            "classId": 5,
+            "parentCategoryId": 5,
+            "displayIndex": 0
+        },
+        {
+            "id": 434,
+            "gameId": 432,
+            "name": "Armor, Tools, and Weapons",
+            "slug": "armor-weapons-tools",
+            "url": "https://www.curseforge.com/minecraft/mc-mods/armor-weapons-tools",
+            "iconUrl": "https://media.forgecdn.net/avatars/6/47/635351498790409758.png",
+            "dateModified": "2014-05-08T17:44:39.057Z",
+            "classId": 6,
+            "parentCategoryId": 6,
+            "displayIndex": 0
+        },
+        {
+            "id": 405,
+            "gameId": 432,
+            "name": "Miscellaneous",
+            "slug": "miscellaneous",
+            "url": "https://www.curseforge.com/minecraft/texture-packs/miscellaneous",
+            "iconUrl": "https://media.forgecdn.net/avatars/6/59/635351501101869320.png",
+            "dateModified": "2020-06-30T17:54:39.157Z",
+            "classId": 12,
+            "parentCategoryId": 12,
+            "displayIndex": 20
+        },
+        {
+            "id": 435,
+            "gameId": 432,
+            "name": "Server Utility",
+            "slug": "server-utility",
+            "url": "https://www.curseforge.com/minecraft/mc-mods/server-utility",
+            "iconUrl": "https://media.forgecdn.net/avatars/6/48/635351498950580836.png",
+            "dateModified": "2014-05-08T17:44:55.057Z",
+            "classId": 6,
+            "parentCategoryId": 6,
+            "displayIndex": 0
+        },
+        {
+            "id": 6,
+            "gameId": 432,
+            "name": "Mods",
+            "slug": "mc-mods",
+            "url": "https://www.curseforge.com/minecraft/mc-mods",
+            "iconUrl": "https://media.forgecdn.net/avatars/52/101/636111139584399357.png",
+            "dateModified": "2026-05-03T12:03:33.26Z",
+            "isClass": true,
+            "displayIndex": 5
+        }
+    ]
+}
