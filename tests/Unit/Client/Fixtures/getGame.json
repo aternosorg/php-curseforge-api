@@ -1,0 +1,18 @@
+{
+    "data": {
+        "id": 432,
+        "name": "Minecraft",
+        "slug": "minecraft",
+        "dateModified": "2025-05-04T08:40:05.227Z",
+        "assets": {
+            "iconUrl": "https://media.forgecdn.net/avatars/1070/13/638605220544214742.webp",
+            "tileUrl": "https://media.forgecdn.net/game-box-art/432_bc6c42ce-5dd9-496a-a5cd-a51cf3584008.jpg",
+            "coverUrl": "https://media.forgecdn.net/game-covers/432_5076448d-feda-439b-9d63-ce86b70459ef.webp"
+        },
+        "status": 6,
+        "apiStatus": 2,
+        "supportedFeatures": {
+            "supportModSubscriptions": false
+        }
+    }
+}

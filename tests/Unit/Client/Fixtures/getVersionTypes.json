@@ -1,0 +1,28 @@
+{
+    "data": [
+        {
+            "id": 15,
+            "gameId": 432,
+            "name": "Minecraft 1.1",
+            "slug": "minecraft-1-1",
+            "isSyncable": true,
+            "status": 1
+        },
+        {
+            "id": 68722,
+            "gameId": 432,
+            "name": "Minecraft 1.15",
+            "slug": "minecraft-1-15",
+            "isSyncable": true,
+            "status": 1
+        },
+        {
+            "id": 73242,
+            "gameId": 432,
+            "name": "Minecraft 1.17",
+            "slug": "minecraft-1-17",
+            "isSyncable": true,
+            "status": 1
+        }
+    ]
+}
