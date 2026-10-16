@@ -3,6 +3,7 @@
 namespace Aternos\CurseForgeApi\Tests\Unit\Client;
 
 use Aternos\CurseForgeApi\ApiException;
+use Aternos\CurseForgeApi\Client\Category;
 use Aternos\CurseForgeApi\Client\Game;
 use Aternos\CurseForgeApi\Client\GameVersionType;
 use Aternos\CurseForgeApi\Configuration;
@@ -194,5 +195,56 @@ class CurseForgeAPIClientTest extends ClientTestCase
         $client = $this->createClient([new Response(200, [], file_get_contents(__DIR__ . "/Fixtures/getVersionsV2.json"))]);
 
         $this->assertSame([], $client->getGameVersionsByType(432, 1));
+    }
+
+    /**
+     * @throws ApiException
+     */
+    public function testGetCategories(): void
+    {
+        $client = $this->createClient([new Response(200, [], file_get_contents(__DIR__ . "/Fixtures/getCategories.json"))]);
+
+        $categories = $client->getCategories(432);
+
+        $this->assertGetRequest("/v1/categories", ["gameId" => "432"]);
+        $this->assertArrayNotHasKey("classId", $this->getQuery());
+        $this->assertArrayNotHasKey("classesOnly", $this->getQuery());
+        $this->assertCount(5, $categories);
+        $this->assertContainsOnlyInstancesOf(Category::class, $categories);
+    }
+
+    /**
+     * @throws ApiException
+     */
+    public function testGetCategoriesWithClassIdAndClassesOnly(): void
+    {
+        $client = $this->createClient([new Response(200, [], file_get_contents(__DIR__ . "/Fixtures/getCategories.json"))]);
+
+        $client->getCategories(432, 6, true);
+
+        $this->assertGetRequest("/v1/categories", ["gameId" => "432", "classId" => "6", "classesOnly" => "true"]);
+    }
+
+    /**
+     * @throws ApiException
+     */
+    public function testGetCategory(): void
+    {
+        $client = $this->createClient([new Response(200, [], file_get_contents(__DIR__ . "/Fixtures/getCategories.json"))]);
+
+        $category = $client->getCategory(432, 435);
+
+        $this->assertGetRequest("/v1/categories", ["gameId" => "432"]);
+        $this->assertSame("Server Utility", $category->getData()->getName());
+    }
+
+    /**
+     * @throws ApiException
+     */
+    public function testGetUnknownCategoryReturnsNull(): void
+    {
+        $client = $this->createClient([new Response(200, [], file_get_contents(__DIR__ . "/Fixtures/getCategories.json"))]);
+
+        $this->assertNull($client->getCategory(432, 1));
     }
 }
