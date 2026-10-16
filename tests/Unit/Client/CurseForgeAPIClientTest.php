@@ -3,18 +3,18 @@
 namespace Aternos\CurseForgeApi\Tests\Unit\Client;
 
 use Aternos\CurseForgeApi\ApiException;
-use Aternos\CurseForgeApi\Client\Mod;
-use Aternos\CurseForgeApi\Client\Options\ModSearchOptions;
 use Aternos\CurseForgeApi\Client\Category;
 use Aternos\CurseForgeApi\Client\Game;
 use Aternos\CurseForgeApi\Client\GameVersionType;
+use Aternos\CurseForgeApi\Client\Mod;
+use Aternos\CurseForgeApi\Client\Options\ModSearchOptions;
 use Aternos\CurseForgeApi\Configuration;
+use Aternos\CurseForgeApi\Model\GameVersion;
+use Aternos\CurseForgeApi\Model\GameVersionsByTypeV2;
 use Aternos\CurseForgeApi\Model\ModLoaderType;
 use Aternos\CurseForgeApi\Model\ModSearchSortField;
 use Aternos\CurseForgeApi\Model\PremiumType;
 use Aternos\CurseForgeApi\Model\SortOrder;
-use Aternos\CurseForgeApi\Model\GameVersion;
-use Aternos\CurseForgeApi\Model\GameVersionsByTypeV2;
 use GuzzleHttp\Client;
 use GuzzleHttp\Handler\MockHandler;
 use GuzzleHttp\HandlerStack;
