@@ -4,15 +4,19 @@ namespace Aternos\CurseForgeApi\Tests\Unit\Client;
 
 use Aternos\CurseForgeApi\ApiException;
 use Aternos\CurseForgeApi\Client\Category;
+use Aternos\CurseForgeApi\Client\File;
 use Aternos\CurseForgeApi\Client\Game;
 use Aternos\CurseForgeApi\Client\GameVersionType;
 use Aternos\CurseForgeApi\Client\Mod;
+use Aternos\CurseForgeApi\Client\Options\ModFilesOptions;
 use Aternos\CurseForgeApi\Client\Options\ModSearchOptions;
 use Aternos\CurseForgeApi\Configuration;
+use Aternos\CurseForgeApi\Model\FileReleaseType;
 use Aternos\CurseForgeApi\Model\GameVersion;
 use Aternos\CurseForgeApi\Model\GameVersionsByTypeV2;
 use Aternos\CurseForgeApi\Model\ModLoaderType;
 use Aternos\CurseForgeApi\Model\ModSearchSortField;
+use Aternos\CurseForgeApi\Model\PlatformType;
 use Aternos\CurseForgeApi\Model\PremiumType;
 use Aternos\CurseForgeApi\Model\SortOrder;
 use GuzzleHttp\Client;
@@ -434,5 +438,141 @@ class CurseForgeAPIClientTest extends ClientTestCase
         $client->getModDescription(420561, "de");
 
         $this->assertGetRequest("/v1/mods/420561/description", ["lang" => "de"]);
+    }
+
+    /**
+     * @throws ApiException
+     */
+    public function testGetModFiles(): void
+    {
+        $client = $this->createClient([new Response(200, [], file_get_contents(__DIR__ . "/Fixtures/getModFiles.json"))]);
+
+        $files = $client->getModFiles(new ModFilesOptions(420561));
+
+        $this->assertGetRequest("/v1/mods/420561/files", ["index" => "0", "pageSize" => "50"]);
+        $this->assertSame(["index", "pageSize"], array_keys($this->getQuery()));
+        $this->assertCount(2, $files);
+        $this->assertContainsOnlyInstancesOf(File::class, $files->getResults());
+        $this->assertSame(117, $files->getPagination()->getTotalCount());
+        $this->assertSame("mclogs-neoforge-26.1-3.3.4.jar", $files[0]->getData()->getFileName());
+        $this->assertSame("mclogs-fabric-26.1-3.3.4.jar", $files[1]->getData()->getFileName());
+    }
+
+    /**
+     * @throws ApiException
+     */
+    public function testGetModFilesSendsAllOptions(): void
+    {
+        $client = $this->createClient([new Response(200, [], file_get_contents(__DIR__ . "/Fixtures/getModFiles.json"))]);
+        $options = (new ModFilesOptions(420561, 10, 20))
+            ->setGameVersion("1.21.1")
+            ->setModLoaderType(ModLoaderType::FABRIC)
+            ->setGameVersionTypeId(77784)
+            ->setOlderThanProjectFileId(8946029)
+            ->setReleaseTypes([FileReleaseType::RELEASE, FileReleaseType::BETA])
+            ->setPlatformType(PlatformType::WINDOWS)
+            ->setClientCompatible(true);
+
+        $client->getModFiles($options);
+
+        $this->assertGetRequest("/v1/mods/420561/files", [
+            "index" => "10",
+            "pageSize" => "20",
+            "gameVersion" => "1.21.1",
+            "modLoaderType" => "4",
+            "gameVersionTypeId" => "77784",
+            "olderThanProjectFileId" => "8946029",
+            "releaseTypes" => ["1", "2"],
+            "platformType" => "1",
+            "clientCompatible" => "true",
+        ]);
+    }
+
+    /**
+     * @throws ApiException
+     */
+    public function testGetModFilesNextPageKeepsOptions(): void
+    {
+        $client = $this->createClient([
+            new Response(200, [], file_get_contents(__DIR__ . "/Fixtures/getModFiles.json")),
+            new Response(200, [], file_get_contents(__DIR__ . "/Fixtures/getModFiles.json")),
+        ]);
+
+        $files = $client->getModFiles((new ModFilesOptions(420561, 0, 2))->setGameVersion("1.21.1"));
+        $files->getNextPage();
+
+        $this->assertGetRequest("/v1/mods/420561/files", ["index" => "2", "pageSize" => "2", "gameVersion" => "1.21.1"], 1);
+    }
+
+    /**
+     * @throws ApiException
+     */
+    public function testGetModFile(): void
+    {
+        $client = $this->createClient([new Response(200, [], file_get_contents(__DIR__ . "/Fixtures/getModFile.json"))]);
+
+        $file = $client->getModFile(420561, 8946029);
+
+        $this->assertGetRequest("/v1/mods/420561/files/8946029");
+        $this->assertSame(8946029, $file->getData()->getId());
+        $this->assertSame(420561, $file->getData()->getModId());
+        $this->assertSame("mclogs-integration 3.3.4", $file->getData()->getDisplayName());
+        $this->assertSame("mclogs-neoforge-26.1-3.3.4.jar", $file->getData()->getFileName());
+        $this->assertSame(FileReleaseType::RELEASE, $file->getData()->getReleaseType());
+        $this->assertSame(317339, $file->getData()->getFileLength());
+    }
+
+    /**
+     * @throws ApiException
+     */
+    public function testGetFiles(): void
+    {
+        $client = $this->createClient([new Response(200, [], file_get_contents(__DIR__ . "/Fixtures/getFiles.json"))]);
+
+        $files = $client->getFiles([8946029, 8946028]);
+
+        $this->assertPostRequest("/v1/mods/files", ["fileIds" => [8946029, 8946028]]);
+        $this->assertCount(2, $files);
+        $this->assertContainsOnlyInstancesOf(File::class, $files);
+        $this->assertSame([8946029, 8946028], array_map(fn(File $file) => $file->getData()->getId(), $files));
+    }
+
+    /**
+     * @throws ApiException
+     */
+    public function testGetModFileChangelog(): void
+    {
+        $client = $this->createClient([new Response(200, [], file_get_contents(__DIR__ . "/Fixtures/getModFileChangelog.json"))]);
+
+        $changelog = $client->getModFileChangelog(420561, 8946029);
+
+        $this->assertGetRequest("/v1/mods/420561/files/8946029/changelog");
+        $this->assertSame([], $this->getQuery());
+        $this->assertSame("<ul>\n<li>List 26.3 support</li>\n</ul>\n", $changelog);
+    }
+
+    /**
+     * @throws ApiException
+     */
+    public function testGetModFileChangelogWithOptions(): void
+    {
+        $client = $this->createClient([new Response(200, [], file_get_contents(__DIR__ . "/Fixtures/getModFileChangelog.json"))]);
+
+        $client->getModFileChangelog(420561, 8946029, true, false, true);
+
+        $this->assertGetRequest("/v1/mods/420561/files/8946029/changelog", ["raw" => "true", "stripped" => "false", "markup" => "true"]);
+    }
+
+    /**
+     * @throws ApiException
+     */
+    public function testGetModFileDownloadURL(): void
+    {
+        $client = $this->createClient([new Response(200, [], file_get_contents(__DIR__ . "/Fixtures/getModFileDownloadURL.json"))]);
+
+        $url = $client->getModFileDownloadURL(420561, 8946029);
+
+        $this->assertGetRequest("/v1/mods/420561/files/8946029/download-url");
+        $this->assertSame("https://edge.forgecdn.net/files/8946/29/mclogs-neoforge-26.1-3.3.4.jar", $url);
     }
 }
