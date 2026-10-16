@@ -1,0 +1,535 @@
+{
+    "data": [
+        {
+            "screenshots": [],
+            "id": 420561,
+            "gameId": 432,
+            "name": "Mclogs - mclo.gs",
+            "slug": "mclo-gs",
+            "links": {
+                "websiteUrl": "https://www.curseforge.com/minecraft/mc-mods/mclo-gs",
+                "wikiUrl": "",
+                "issuesUrl": "https://github.com/aternosorg/mclogs-integration/issues",
+                "sourceUrl": "https://github.com/aternosorg/mclogs-integration"
+            },
+            "summary": "Share your Minecraft server log directly from your server with one simple command. ",
+            "status": 4,
+            "downloadCount": 494489,
+            "favoriteCount": 15,
+            "isFeatured": false,
+            "primaryCategoryId": 435,
+            "categories": [
+                {
+                    "id": 435,
+                    "gameId": 432,
+                    "name": "Server Utility",
+                    "slug": "server-utility",
+                    "url": "https://www.curseforge.com/minecraft/mc-mods/server-utility",
+                    "iconUrl": "https://media.forgecdn.net/avatars/6/48/635351498950580836.png",
+                    "dateModified": "2014-05-08T17:44:55.057Z",
+                    "isClass": false,
+                    "classId": 6,
+                    "parentCategoryId": 6
+                }
+            ],
+            "classId": 6,
+            "authors": [
+                {
+                    "id": 15007584,
+                    "name": "Aternos",
+                    "url": "https://www.curseforge.com/members/aternos",
+                    "avatarUrl": "https://static-cdn.jtvnw.net/jtv_user_pictures/aac8fc81-daa4-4784-a43b-1d6ab1d4c6fb-profile_image-150x150.png",
+                    "userTierInfo": {
+                        "tierLevel": 2,
+                        "downloadsThreshold": 500000
+                    }
+                },
+                {
+                    "id": 21438892,
+                    "name": "JulianVennen",
+                    "url": "https://www.curseforge.com/members/julianvennen",
+                    "avatarUrl": "https://static-cdn.jtvnw.net/jtv_user_pictures/244694d8-83b9-408c-924a-38d0f4116352-profile_image-150x150.png",
+                    "userTierInfo": {
+                        "tierLevel": 0,
+                        "downloadsThreshold": 0
+                    }
+                }
+            ],
+            "logo": {
+                "id": 1659426,
+                "modId": 420561,
+                "title": "639057208443929348.png",
+                "description": "",
+                "thumbnailUrl": "https://media.forgecdn.net/avatars/thumbnails/1659/426/256/256/639057208443929348.png",
+                "url": "https://media.forgecdn.net/avatars/1659/426/639057208443929348.png"
+            },
+            "mainFileId": 8946029,
+            "latestFiles": [
+                {
+                    "id": 3553911,
+                    "gameId": 432,
+                    "modId": 420561,
+                    "isAvailable": true,
+                    "displayName": "mclo.gs v1.3.0 for Forge 1.16.5",
+                    "fileName": "mclogs-forge-1.3.0-for-1.16.5.jar",
+                    "releaseType": 1,
+                    "fileStatus": 4,
+                    "hashes": [
+                        {
+                            "value": "12513f69eee677f5763026621734b97af4841233",
+                            "algo": 1
+                        },
+                        {
+                            "value": "f74210999c2e175480ac39521e95afdf",
+                            "algo": 2
+                        }
+                    ],
+                    "fileDate": "2021-12-07T16:37:02.75Z",
+                    "fileLength": 31346,
+                    "downloadCount": 200,
+                    "downloadUrl": "https://edge.forgecdn.net/files/3553/911/mclogs-forge-1.3.0-for-1.16.5.jar",
+                    "gameVersions": [
+                        "1.16.3",
+                        "1.16.1",
+                        "1.16",
+                        "1.16.4",
+                        "1.16.2"
+                    ],
+                    "sortableGameVersions": [
+                        {
+                            "gameVersionName": "1.16.3",
+                            "gameVersionPadded": "0000000001.0000000016.0000000003",
+                            "gameVersion": "1.16.3",
+                            "gameVersionReleaseDate": "2020-09-10T14:44:20.443Z",
+                            "gameVersionTypeId": 70886
+                        },
+                        {
+                            "gameVersionName": "1.16.1",
+                            "gameVersionPadded": "0000000001.0000000016.0000000001",
+                            "gameVersion": "1.16.1",
+                            "gameVersionReleaseDate": "2020-06-24T12:41:11.823Z",
+                            "gameVersionTypeId": 70886
+                        },
+                        {
+                            "gameVersionName": "1.16",
+                            "gameVersionPadded": "0000000001.0000000016",
+                            "gameVersion": "1.16",
+                            "gameVersionReleaseDate": "2020-06-23T13:41:08.75Z",
+                            "gameVersionTypeId": 70886
+                        },
+                        {
+                            "gameVersionName": "1.16.4",
+                            "gameVersionPadded": "0000000001.0000000016.0000000004",
+                            "gameVersion": "1.16.4",
+                            "gameVersionReleaseDate": "2020-11-02T18:40:51.49Z",
+                            "gameVersionTypeId": 70886
+                        },
+                        {
+                            "gameVersionName": "1.16.2",
+                            "gameVersionPadded": "0000000001.0000000016.0000000002",
+                            "gameVersion": "1.16.2",
+                            "gameVersionReleaseDate": "2020-08-11T16:42:21.863Z",
+                            "gameVersionTypeId": 70886
+                        }
+                    ],
+                    "dependencies": [],
+                    "alternateFileId": 0,
+                    "isServerPack": false,
+                    "fileFingerprint": 2703393364,
+                    "modules": []
+                },
+                {
+                    "id": 6235017,
+                    "gameId": 432,
+                    "modId": 420561,
+                    "isAvailable": true,
+                    "displayName": "mclogs-fabric-1.21.4-3.0.0-dev.jar",
+                    "fileName": "mclogs-fabric-1.21.4-3.0.0-dev.jar",
+                    "releaseType": 3,
+                    "fileStatus": 4,
+                    "hashes": [
+                        {
+                            "value": "13632ac8a83563aa3836139781d62134d376624b",
+                            "algo": 1
+                        },
+                        {
+                            "value": "230ce06a7f88484a6c615869bcc06126",
+                            "algo": 2
+                        }
+                    ],
+                    "fileDate": "2025-02-25T15:59:14.99Z",
+                    "fileLength": 64225,
+                    "downloadCount": 8,
+                    "fileSizeOnDisk": 144589,
+                    "downloadUrl": "https://edge.forgecdn.net/files/6235/17/mclogs-fabric-1.21.4-3.0.0-dev.jar",
+                    "gameVersions": [
+                        "1.21",
+                        "Fabric",
+                        "1.21.4",
+                        "1.21.3",
+                        "1.21.1",
+                        "1.21.2"
+                    ],
+                    "sortableGameVersions": [
+                        {
+                            "gameVersionName": "1.21",
+                            "gameVersionPadded": "0000000001.0000000021",
+                            "gameVersion": "1.21",
+                            "gameVersionReleaseDate": "2024-06-14T00:00:00Z",
+                            "gameVersionTypeId": 77784
+                        },
+                        {
+                            "gameVersionName": "Fabric",
+                            "gameVersionPadded": "0",
+                            "gameVersion": "",
+                            "gameVersionReleaseDate": "2022-09-01T00:00:00Z",
+                            "gameVersionTypeId": 68441
+                        },
+                        {
+                            "gameVersionName": "1.21.4",
+                            "gameVersionPadded": "0000000001.0000000021.0000000004",
+                            "gameVersion": "1.21.4",
+                            "gameVersionReleaseDate": "2024-12-03T16:26:15.35Z",
+                            "gameVersionTypeId": 77784
+                        },
+                        {
+                            "gameVersionName": "1.21.3",
+                            "gameVersionPadded": "0000000001.0000000021.0000000003",
+                            "gameVersion": "1.21.3",
+                            "gameVersionReleaseDate": "2024-10-23T13:16:45.71Z",
+                            "gameVersionTypeId": 77784
+                        },
+                        {
+                            "gameVersionName": "1.21.1",
+                            "gameVersionPadded": "0000000001.0000000021.0000000001",
+                            "gameVersion": "1.21.1",
+                            "gameVersionReleaseDate": "2024-08-08T15:17:53.787Z",
+                            "gameVersionTypeId": 77784
+                        },
+                        {
+                            "gameVersionName": "1.21.2",
+                            "gameVersionPadded": "0000000001.0000000021.0000000002",
+                            "gameVersion": "1.21.2",
+                            "gameVersionReleaseDate": "2024-10-22T00:00:00Z",
+                            "gameVersionTypeId": 77784
+                        }
+                    ],
+                    "dependencies": [
+                        {
+                            "modId": 306612,
+                            "relationType": 3
+                        }
+                    ],
+                    "alternateFileId": 0,
+                    "isServerPack": false,
+                    "fileFingerprint": 3226610985,
+                    "modules": [
+                        {
+                            "name": "META-INF",
+                            "fingerprint": 3437539353
+                        },
+                        {
+                            "name": "gs",
+                            "fingerprint": 2144871004
+                        },
+                        {
+                            "name": "fabric.mod.json",
+                            "fingerprint": 702809486
+                        },
+                        {
+                            "name": "assets",
+                            "fingerprint": 2196086191
+                        },
+                        {
+                            "name": "pack.mcmeta",
+                            "fingerprint": 845577715
+                        }
+                    ]
+                }
+            ],
+            "latestFilesIndexes": [
+                {
+                    "gameVersion": "26.1",
+                    "fileId": 8946029,
+                    "filename": "mclogs-neoforge-26.1-3.3.4.jar",
+                    "releaseType": 1,
+                    "gameVersionTypeId": 83806,
+                    "modLoader": 6
+                },
+                {
+                    "gameVersion": "26.1.1",
+                    "fileId": 8946029,
+                    "filename": "mclogs-neoforge-26.1-3.3.4.jar",
+                    "releaseType": 1,
+                    "gameVersionTypeId": 83806,
+                    "modLoader": 6
+                },
+                {
+                    "gameVersion": "26.1.2",
+                    "fileId": 8946029,
+                    "filename": "mclogs-neoforge-26.1-3.3.4.jar",
+                    "releaseType": 1,
+                    "gameVersionTypeId": 83806,
+                    "modLoader": 6
+                }
+            ],
+            "latestEarlyAccessFilesIndexes": [],
+            "dateCreated": "2020-11-17T21:36:28.057Z",
+            "dateModified": "2026-09-22T10:03:46.67Z",
+            "dateReleased": "2026-09-22T09:44:53.913Z",
+            "allowModDistribution": true,
+            "gamePopularityRank": 13195,
+            "isAvailable": true,
+            "hasCommentsEnabled": true,
+            "licenseType": "MIT License",
+            "thumbsUpCount": 0,
+            "featuredProjectTag": 0
+        },
+        {
+            "screenshots": [],
+            "id": 278568,
+            "gameId": 432,
+            "name": "Mclogs - mclo.gs",
+            "slug": "mclogs",
+            "links": {
+                "websiteUrl": "https://www.curseforge.com/minecraft/bukkit-plugins/mclogs",
+                "wikiUrl": "",
+                "issuesUrl": "https://github.com/aternosorg/mclogs-integration/issues",
+                "sourceUrl": "https://github.com/aternosorg/mclogs-integration"
+            },
+            "summary": "Share your Minecraft server log directly from your server with one simple command. ",
+            "status": 4,
+            "downloadCount": 7632,
+            "favoriteCount": 3,
+            "isFeatured": false,
+            "primaryCategoryId": 115,
+            "categories": [
+                {
+                    "id": 117,
+                    "gameId": 432,
+                    "name": "Chat Related",
+                    "slug": "chat-related",
+                    "url": "https://www.curseforge.com/minecraft/bukkit-plugins/chat-related",
+                    "iconUrl": "https://media.forgecdn.net/avatars/65/450/636162917920915559.png",
+                    "dateModified": "2016-12-02T22:09:52.09Z",
+                    "isClass": false,
+                    "classId": 5,
+                    "parentCategoryId": 5
+                },
+                {
+                    "id": 115,
+                    "gameId": 432,
+                    "name": "Admin Tools",
+                    "slug": "admin-tools",
+                    "url": "https://www.curseforge.com/minecraft/bukkit-plugins/admin-tools",
+                    "iconUrl": "https://media.forgecdn.net/avatars/65/448/636162917918103026.png",
+                    "dateModified": "2016-12-02T22:09:51.92Z",
+                    "isClass": false,
+                    "classId": 5,
+                    "parentCategoryId": 5
+                },
+                {
+                    "id": 127,
+                    "gameId": 432,
+                    "name": "General",
+                    "slug": "general",
+                    "url": "https://www.curseforge.com/minecraft/bukkit-plugins/general",
+                    "iconUrl": "https://media.forgecdn.net/avatars/65/456/636162917924196887.png",
+                    "dateModified": "2016-12-02T22:09:52.42Z",
+                    "isClass": false,
+                    "classId": 5,
+                    "parentCategoryId": 5
+                },
+                {
+                    "id": 128,
+                    "gameId": 432,
+                    "name": "Informational",
+                    "slug": "informational",
+                    "url": "https://www.curseforge.com/minecraft/bukkit-plugins/informational",
+                    "iconUrl": "https://media.forgecdn.net/avatars/65/457/636162917924665620.png",
+                    "dateModified": "2016-12-02T22:09:52.467Z",
+                    "isClass": false,
+                    "classId": 5,
+                    "parentCategoryId": 5
+                },
+                {
+                    "id": 133,
+                    "gameId": 432,
+                    "name": "Miscellaneous",
+                    "slug": "miscellaneous",
+                    "url": "https://www.curseforge.com/minecraft/bukkit-plugins/miscellaneous",
+                    "iconUrl": "https://media.forgecdn.net/avatars/65/462/636162917926853172.png",
+                    "dateModified": "2016-12-02T22:09:52.7Z",
+                    "isClass": false,
+                    "classId": 5,
+                    "parentCategoryId": 5
+                }
+            ],
+            "classId": 5,
+            "authors": [
+                {
+                    "id": 15007584,
+                    "name": "Aternos",
+                    "url": "https://www.curseforge.com/members/aternos",
+                    "avatarUrl": "https://static-cdn.jtvnw.net/jtv_user_pictures/aac8fc81-daa4-4784-a43b-1d6ab1d4c6fb-profile_image-150x150.png",
+                    "userTierInfo": {
+                        "tierLevel": 2,
+                        "downloadsThreshold": 500000
+                    }
+                },
+                {
+                    "id": 21438892,
+                    "name": "JulianVennen",
+                    "url": "https://www.curseforge.com/members/julianvennen",
+                    "avatarUrl": "https://static-cdn.jtvnw.net/jtv_user_pictures/244694d8-83b9-408c-924a-38d0f4116352-profile_image-150x150.png",
+                    "userTierInfo": {
+                        "tierLevel": 0,
+                        "downloadsThreshold": 0
+                    }
+                }
+            ],
+            "logo": {
+                "id": 1659422,
+                "modId": 278568,
+                "title": "639057206113140311.png",
+                "description": "",
+                "thumbnailUrl": "https://media.forgecdn.net/avatars/thumbnails/1659/422/256/256/639057206113140311.png",
+                "url": "https://media.forgecdn.net/avatars/1659/422/639057206113140311.png"
+            },
+            "mainFileId": 8641361,
+            "latestFiles": [
+                {
+                    "id": 8641361,
+                    "gameId": 432,
+                    "modId": 278568,
+                    "isAvailable": true,
+                    "displayName": "mclogs-bukkit-26.1-3.3.2.jar",
+                    "fileName": "mclogs-bukkit-26.1-3.3.2.jar",
+                    "releaseType": 1,
+                    "fileStatus": 4,
+                    "hashes": [
+                        {
+                            "value": "a75daf6b5bb4d45029292f447362b5cdb0c49bbd",
+                            "algo": 1
+                        },
+                        {
+                            "value": "f5e9ceb5eff0e46698e94aa36f64c116",
+                            "algo": 2
+                        }
+                    ],
+                    "fileDate": "2026-08-13T16:53:55.04Z",
+                    "fileLength": 1586301,
+                    "downloadCount": 5,
+                    "fileSizeOnDisk": 3697173,
+                    "downloadUrl": "https://edge.forgecdn.net/files/8641/361/mclogs-bukkit-26.1-3.3.2.jar",
+                    "gameVersions": [
+                        "26.1.1",
+                        "26.1",
+                        "26.1.2",
+                        "26.2"
+                    ],
+                    "sortableGameVersions": [
+                        {
+                            "gameVersionName": "26.1.1",
+                            "gameVersionPadded": "0000000026.0000000001.0000000001",
+                            "gameVersion": "26.1.1",
+                            "gameVersionReleaseDate": "2026-04-09T00:00:00Z",
+                            "gameVersionTypeId": 1
+                        },
+                        {
+                            "gameVersionName": "26.1",
+                            "gameVersionPadded": "0000000026.0000000001",
+                            "gameVersion": "26.1",
+                            "gameVersionReleaseDate": "2026-04-09T00:00:00Z",
+                            "gameVersionTypeId": 1
+                        },
+                        {
+                            "gameVersionName": "26.1.2",
+                            "gameVersionPadded": "0000000026.0000000001.0000000002",
+                            "gameVersion": "26.1.2",
+                            "gameVersionReleaseDate": "2026-04-09T00:00:00Z",
+                            "gameVersionTypeId": 1
+                        },
+                        {
+                            "gameVersionName": "26.2",
+                            "gameVersionPadded": "0000000026.0000000002",
+                            "gameVersion": "26.2",
+                            "gameVersionReleaseDate": "2026-06-16T00:00:00Z",
+                            "gameVersionTypeId": 1
+                        }
+                    ],
+                    "dependencies": [],
+                    "alternateFileId": 0,
+                    "isServerPack": false,
+                    "fileFingerprint": 528184115,
+                    "modules": [
+                        {
+                            "name": "META-INF",
+                            "fingerprint": 4058928240
+                        },
+                        {
+                            "name": "gs",
+                            "fingerprint": 1327173963
+                        },
+                        {
+                            "name": "plugin.yml",
+                            "fingerprint": 4207311037
+                        },
+                        {
+                            "name": "org",
+                            "fingerprint": 3750992258
+                        },
+                        {
+                            "name": "com",
+                            "fingerprint": 4021501202
+                        },
+                        {
+                            "name": "net",
+                            "fingerprint": 3310300148
+                        }
+                    ]
+                }
+            ],
+            "latestFilesIndexes": [
+                {
+                    "gameVersion": "26.1.1",
+                    "fileId": 8641361,
+                    "filename": "mclogs-bukkit-26.1-3.3.2.jar",
+                    "releaseType": 1,
+                    "gameVersionTypeId": 1
+                },
+                {
+                    "gameVersion": "26.1",
+                    "fileId": 8641361,
+                    "filename": "mclogs-bukkit-26.1-3.3.2.jar",
+                    "releaseType": 1,
+                    "gameVersionTypeId": 1
+                },
+                {
+                    "gameVersion": "26.1.2",
+                    "fileId": 8641361,
+                    "filename": "mclogs-bukkit-26.1-3.3.2.jar",
+                    "releaseType": 1,
+                    "gameVersionTypeId": 1
+                }
+            ],
+            "latestEarlyAccessFilesIndexes": [],
+            "dateCreated": "2017-09-22T20:06:09.267Z",
+            "dateModified": "2026-08-13T17:03:39.103Z",
+            "dateReleased": "2026-08-13T16:53:55.04Z",
+            "allowModDistribution": true,
+            "gamePopularityRank": 58020,
+            "isAvailable": true,
+            "hasCommentsEnabled": true,
+            "licenseType": "MIT License",
+            "thumbsUpCount": 0,
+            "featuredProjectTag": 0
+        }
+    ],
+    "pagination": {
+        "index": 0,
+        "pageSize": 2,
+        "resultCount": 2,
+        "totalCount": 2
+    }
+}

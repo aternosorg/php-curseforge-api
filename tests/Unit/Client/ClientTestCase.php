@@ -102,6 +102,21 @@ abstract class ClientTestCase extends TestCase
     }
 
     /**
+     * Assert that a recorded request is a POST request to the given path with the given JSON body
+     * @param string $path e.g. /v1/mods
+     * @param array $body expected JSON body, decoded as associative array
+     * @param int $index
+     * @return void
+     */
+    protected function assertPostRequest(string $path, array $body, int $index = 0): void
+    {
+        $request = $this->getRequest($index);
+        $this->assertSame("POST", $request->getMethod());
+        $this->assertSame($path, $request->getUri()->getPath());
+        $this->assertSame($body, json_decode((string)$request->getBody(), true));
+    }
+
+    /**
      * Assert the number of requests that were sent
      * @param int $count
      * @return void

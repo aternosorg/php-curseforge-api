@@ -1,0 +1,1589 @@
+{
+    "data": {
+        "featured": [
+            {
+                "screenshots": [],
+                "id": 1360926,
+                "gameId": 432,
+                "name": "Cobblemon SMP - The #1 Legendary Pokemon Adventure ",
+                "slug": "complex-cobblemon",
+                "links": {
+                    "websiteUrl": "https://www.curseforge.com/minecraft/modpacks/complex-cobblemon",
+                    "wikiUrl": "https://www.mc-complex.com/cobblemon/",
+                    "issuesUrl": "",
+                    "sourceUrl": null
+                },
+                "summary": "✅💯 The Ultimate Pokémon Academy! 💯✅ Catch, train, and level your Pokémon with friends in Cobblemon. Enjoy mods included in cobbleverse, Level up, and grow all your mons —starting your cobblemon verse journey! The Best Optimized RPG MMO Experience atm!.🌟",
+                "status": 4,
+                "downloadCount": 1338519,
+                "favoriteCount": 0,
+                "isFeatured": true,
+                "primaryCategoryId": 4476,
+                "categories": [
+                    {
+                        "id": 4476,
+                        "gameId": 432,
+                        "name": "Exploration",
+                        "slug": "exploration",
+                        "url": "https://www.curseforge.com/minecraft/modpacks/exploration",
+                        "iconUrl": "https://media.forgecdn.net/avatars/14/486/635596815896417213.png",
+                        "dateModified": "2015-02-16T17:06:29.69Z",
+                        "isClass": false,
+                        "classId": 4471,
+                        "parentCategoryId": 4471
+                    },
+                    {
+                        "id": 4482,
+                        "gameId": 432,
+                        "name": "Extra Large",
+                        "slug": "extra-large",
+                        "url": "https://www.curseforge.com/minecraft/modpacks/extra-large",
+                        "iconUrl": "https://media.forgecdn.net/avatars/14/472/635596760403562826.png",
+                        "dateModified": "2015-02-16T15:34:00.357Z",
+                        "isClass": false,
+                        "classId": 4471,
+                        "parentCategoryId": 4471
+                    },
+                    {
+                        "id": 4478,
+                        "gameId": 432,
+                        "name": "Quests",
+                        "slug": "quests",
+                        "url": "https://www.curseforge.com/minecraft/modpacks/quests",
+                        "iconUrl": "https://media.forgecdn.net/avatars/14/487/635596816137981263.png",
+                        "dateModified": "2015-02-16T17:06:53.797Z",
+                        "isClass": false,
+                        "classId": 4471,
+                        "parentCategoryId": 4471
+                    },
+                    {
+                        "id": 4473,
+                        "gameId": 432,
+                        "name": "Magic",
+                        "slug": "magic",
+                        "url": "https://www.curseforge.com/minecraft/modpacks/magic",
+                        "iconUrl": "https://media.forgecdn.net/avatars/14/474/635596760578719019.png",
+                        "dateModified": "2015-02-16T15:34:17.873Z",
+                        "isClass": false,
+                        "classId": 4471,
+                        "parentCategoryId": 4471
+                    },
+                    {
+                        "id": 4475,
+                        "gameId": 432,
+                        "name": "Adventure and RPG",
+                        "slug": "adventure-and-rpg",
+                        "url": "https://www.curseforge.com/minecraft/modpacks/adventure-and-rpg",
+                        "iconUrl": "https://media.forgecdn.net/avatars/14/480/635596775049811800.png",
+                        "dateModified": "2015-02-16T15:58:24.98Z",
+                        "isClass": false,
+                        "classId": 4471,
+                        "parentCategoryId": 4471
+                    }
+                ],
+                "classId": 4471,
+                "authors": [
+                    {
+                        "id": 112598432,
+                        "name": "FrankCG",
+                        "url": "https://www.curseforge.com/members/frankcg",
+                        "avatarUrl": "https://static-cdn.jtvnw.net/jtv_user_pictures/xarth/404_user_70x70.png"
+                    }
+                ],
+                "logo": {
+                    "id": 1497387,
+                    "modId": 1360926,
+                    "title": "638972731634654794.webp",
+                    "description": "",
+                    "thumbnailUrl": "",
+                    "url": "https://media.forgecdn.net/avatars/1497/387/638972731634654794.webp"
+                },
+                "mainFileId": 8267500,
+                "latestFiles": [
+                    {
+                        "id": 8267500,
+                        "gameId": 432,
+                        "modId": 1360926,
+                        "isAvailable": true,
+                        "displayName": "complexcobblemon-v1.7.3a.zip",
+                        "fileName": "complexcobblemon-v1.7.3a.zip",
+                        "releaseType": 1,
+                        "fileStatus": 4,
+                        "hashes": [
+                            {
+                                "value": "472ea14ac4fea5dd2ea8f2b7528e91be8c67651e",
+                                "algo": 1
+                            },
+                            {
+                                "value": "273cd3273bdd48207f1f361ea35ec8be",
+                                "algo": 2
+                            }
+                        ],
+                        "fileDate": "2026-06-17T16:55:06.51Z",
+                        "fileLength": 25874896,
+                        "downloadCount": 405417,
+                        "fileSizeOnDisk": 26163945,
+                        "downloadUrl": null,
+                        "gameVersions": [
+                            "Fabric",
+                            "1.21.1"
+                        ],
+                        "sortableGameVersions": [
+                            {
+                                "gameVersionName": "Fabric",
+                                "gameVersionPadded": "0",
+                                "gameVersion": "",
+                                "gameVersionReleaseDate": "2022-09-01T00:00:00Z",
+                                "gameVersionTypeId": 68441
+                            },
+                            {
+                                "gameVersionName": "1.21.1",
+                                "gameVersionPadded": "0000000001.0000000021.0000000001",
+                                "gameVersion": "1.21.1",
+                                "gameVersionReleaseDate": "2024-08-08T15:17:53.787Z",
+                                "gameVersionTypeId": 77784
+                            }
+                        ],
+                        "dependencies": [],
+                        "alternateFileId": 0,
+                        "isServerPack": false,
+                        "fileFingerprint": 3672964330,
+                        "modules": [
+                            {
+                                "name": "manifest.json",
+                                "fingerprint": 3571878451
+                            },
+                            {
+                                "name": "modlist.html",
+                                "fingerprint": 729137995
+                            },
+                            {
+                                "name": "overrides",
+                                "fingerprint": 3007385705
+                            }
+                        ]
+                    },
+                    {
+                        "id": 8912066,
+                        "gameId": 432,
+                        "modId": 1360926,
+                        "isAvailable": true,
+                        "displayName": "complexcobblemon-v1.8.1.zip",
+                        "fileName": "complexcobblemon-v1.8.1.zip",
+                        "releaseType": 2,
+                        "fileStatus": 4,
+                        "hashes": [
+                            {
+                                "value": "57b2df67ee5f3ccb1fbdeb3ca08d229f5f344642",
+                                "algo": 1
+                            },
+                            {
+                                "value": "a989b755c3f7c68151ec86b6bbb2f953",
+                                "algo": 2
+                            }
+                        ],
+                        "fileDate": "2026-09-18T14:13:14.653Z",
+                        "fileLength": 25868428,
+                        "downloadCount": 0,
+                        "fileSizeOnDisk": 26163945,
+                        "downloadUrl": null,
+                        "gameVersions": [
+                            "Fabric",
+                            "1.21.1"
+                        ],
+                        "sortableGameVersions": [
+                            {
+                                "gameVersionName": "Fabric",
+                                "gameVersionPadded": "0",
+                                "gameVersion": "",
+                                "gameVersionReleaseDate": "2022-09-01T00:00:00Z",
+                                "gameVersionTypeId": 68441
+                            },
+                            {
+                                "gameVersionName": "1.21.1",
+                                "gameVersionPadded": "0000000001.0000000021.0000000001",
+                                "gameVersion": "1.21.1",
+                                "gameVersionReleaseDate": "2024-08-08T15:17:53.787Z",
+                                "gameVersionTypeId": 77784
+                            }
+                        ],
+                        "dependencies": [],
+                        "alternateFileId": 0,
+                        "isServerPack": false,
+                        "fileFingerprint": 1152505002,
+                        "modules": [
+                            {
+                                "name": "manifest.json",
+                                "fingerprint": 368066158
+                            },
+                            {
+                                "name": "modlist.html",
+                                "fingerprint": 729137995
+                            },
+                            {
+                                "name": "overrides",
+                                "fingerprint": 3007385705
+                            }
+                        ]
+                    }
+                ],
+                "latestFilesIndexes": [
+                    {
+                        "gameVersion": "1.21.1",
+                        "fileId": 8912066,
+                        "filename": "complexcobblemon-v1.8.1.zip",
+                        "releaseType": 2,
+                        "gameVersionTypeId": 77784,
+                        "modLoader": 4
+                    },
+                    {
+                        "gameVersion": "1.21.1",
+                        "fileId": 8267500,
+                        "filename": "complexcobblemon-v1.7.3a.zip",
+                        "releaseType": 1,
+                        "gameVersionTypeId": 77784,
+                        "modLoader": 4
+                    }
+                ],
+                "latestEarlyAccessFilesIndexes": [],
+                "dateCreated": "2025-10-08T09:50:14.71Z",
+                "dateModified": "2026-10-03T19:34:05.773Z",
+                "dateReleased": "2026-09-18T14:13:14.653Z",
+                "allowModDistribution": false,
+                "gamePopularityRank": 3828,
+                "isAvailable": true,
+                "thumbsUpCount": 0,
+                "socialLinks": [
+                    {
+                        "type": 2,
+                        "url": "http://discord.gg/complexpixel"
+                    },
+                    {
+                        "type": 3,
+                        "url": "https://www.mc-complex.com/cobblemon/"
+                    }
+                ],
+                "featuredProjectTag": 1
+            },
+            {
+                "screenshots": [
+                    {
+                        "id": 1002305,
+                        "modId": 1011903,
+                        "title": "Cobblemon GG",
+                        "description": "A raid happening in Cobblemon GG Minecraft server.",
+                        "thumbnailUrl": "https://media.forgecdn.net/attachments/thumbnails/1002/305/310/172/cobblemon-gg-raid.png",
+                        "url": "https://media.forgecdn.net/attachments/1002/305/cobblemon-gg-raid.png"
+                    },
+                    {
+                        "id": 1358269,
+                        "modId": 1011903,
+                        "title": "Elite 4",
+                        "description": "Defeat the Elite 4!",
+                        "thumbnailUrl": "https://media.forgecdn.net/attachments/thumbnails/1358/269/310/172/elite4.png",
+                        "url": "https://media.forgecdn.net/attachments/1358/269/elite4.png"
+                    },
+                    {
+                        "id": 1358270,
+                        "modId": 1011903,
+                        "title": "Events & Skins",
+                        "description": "Seasonal Events and Skins!",
+                        "thumbnailUrl": "https://media.forgecdn.net/attachments/thumbnails/1358/270/310/172/summer.png",
+                        "url": "https://media.forgecdn.net/attachments/1358/270/summer.png"
+                    }
+                ],
+                "id": 1011903,
+                "gameId": 432,
+                "name": "Cobblemon.gg - #1 Cobblemon Experience - Game of The Year",
+                "slug": "cobblemon-gg",
+                "links": {
+                    "websiteUrl": "https://www.curseforge.com/minecraft/modpacks/cobblemon-gg",
+                    "wikiUrl": "https://cobblemon.gg/wiki",
+                    "issuesUrl": null,
+                    "sourceUrl": null
+                },
+                "summary": "🔥 Welcome to Elite Trainer Cobblemon - Master Multiverse.  Cobblemon.gg is your premier destination for an unparalleled Minecraft – Cobblemon – Pokémon experience!",
+                "status": 4,
+                "downloadCount": 647215,
+                "favoriteCount": 0,
+                "isFeatured": true,
+                "primaryCategoryId": 4476,
+                "categories": [
+                    {
+                        "id": 4484,
+                        "gameId": 432,
+                        "name": "Multiplayer",
+                        "slug": "multiplayer",
+                        "url": "https://www.curseforge.com/minecraft/modpacks/multiplayer",
+                        "iconUrl": "https://media.forgecdn.net/avatars/14/481/635596792838491141.png",
+                        "dateModified": "2015-02-16T16:28:03.85Z",
+                        "isClass": false,
+                        "classId": 4471,
+                        "parentCategoryId": 4471
+                    },
+                    {
+                        "id": 4476,
+                        "gameId": 432,
+                        "name": "Exploration",
+                        "slug": "exploration",
+                        "url": "https://www.curseforge.com/minecraft/modpacks/exploration",
+                        "iconUrl": "https://media.forgecdn.net/avatars/14/486/635596815896417213.png",
+                        "dateModified": "2015-02-16T17:06:29.69Z",
+                        "isClass": false,
+                        "classId": 4471,
+                        "parentCategoryId": 4471
+                    },
+                    {
+                        "id": 4482,
+                        "gameId": 432,
+                        "name": "Extra Large",
+                        "slug": "extra-large",
+                        "url": "https://www.curseforge.com/minecraft/modpacks/extra-large",
+                        "iconUrl": "https://media.forgecdn.net/avatars/14/472/635596760403562826.png",
+                        "dateModified": "2015-02-16T15:34:00.357Z",
+                        "isClass": false,
+                        "classId": 4471,
+                        "parentCategoryId": 4471
+                    },
+                    {
+                        "id": 4478,
+                        "gameId": 432,
+                        "name": "Quests",
+                        "slug": "quests",
+                        "url": "https://www.curseforge.com/minecraft/modpacks/quests",
+                        "iconUrl": "https://media.forgecdn.net/avatars/14/487/635596816137981263.png",
+                        "dateModified": "2015-02-16T17:06:53.797Z",
+                        "isClass": false,
+                        "classId": 4471,
+                        "parentCategoryId": 4471
+                    },
+                    {
+                        "id": 4473,
+                        "gameId": 432,
+                        "name": "Magic",
+                        "slug": "magic",
+                        "url": "https://www.curseforge.com/minecraft/modpacks/magic",
+                        "iconUrl": "https://media.forgecdn.net/avatars/14/474/635596760578719019.png",
+                        "dateModified": "2015-02-16T15:34:17.873Z",
+                        "isClass": false,
+                        "classId": 4471,
+                        "parentCategoryId": 4471
+                    }
+                ],
+                "classId": 4471,
+                "authors": [
+                    {
+                        "id": 131747165,
+                        "name": "hihihih565",
+                        "url": "https://www.curseforge.com/members/hihihih565",
+                        "avatarUrl": "https://media.forgecdn.net/avatars/1479/113/638961366358985339.png"
+                    }
+                ],
+                "logo": {
+                    "id": 2089493,
+                    "modId": 1011903,
+                    "title": "639266477707573992.webp",
+                    "description": "",
+                    "thumbnailUrl": "",
+                    "url": "https://media.forgecdn.net/avatars/2089/493/639266477707573992.webp"
+                },
+                "mainFileId": 9154852,
+                "latestFiles": [
+                    {
+                        "id": 9154852,
+                        "gameId": 432,
+                        "modId": 1011903,
+                        "isAvailable": true,
+                        "displayName": "Cobblemon.gg 3.9",
+                        "fileName": "Cobblemon.gg-3.9.zip",
+                        "releaseType": 1,
+                        "fileStatus": 4,
+                        "hashes": [
+                            {
+                                "value": "8ddb9f363ab6d13007ba322bc68ba625ebb404ac",
+                                "algo": 1
+                            },
+                            {
+                                "value": "a00567304758714a94fe37855fdbfae3",
+                                "algo": 2
+                            }
+                        ],
+                        "fileDate": "2026-10-13T08:14:05.707Z",
+                        "fileLength": 369284168,
+                        "downloadCount": 2822,
+                        "fileSizeOnDisk": 379271852,
+                        "downloadUrl": null,
+                        "gameVersions": [
+                            "Fabric",
+                            "1.21.1"
+                        ],
+                        "sortableGameVersions": [
+                            {
+                                "gameVersionName": "Fabric",
+                                "gameVersionPadded": "0",
+                                "gameVersion": "",
+                                "gameVersionReleaseDate": "2022-09-01T00:00:00Z",
+                                "gameVersionTypeId": 68441
+                            },
+                            {
+                                "gameVersionName": "1.21.1",
+                                "gameVersionPadded": "0000000001.0000000021.0000000001",
+                                "gameVersion": "1.21.1",
+                                "gameVersionReleaseDate": "2024-08-08T15:17:53.787Z",
+                                "gameVersionTypeId": 77784
+                            }
+                        ],
+                        "dependencies": [],
+                        "alternateFileId": 0,
+                        "isServerPack": false,
+                        "fileFingerprint": 2483059344,
+                        "modules": [
+                            {
+                                "name": "manifest.json",
+                                "fingerprint": 2291583243
+                            },
+                            {
+                                "name": "modlist.html",
+                                "fingerprint": 2328433721
+                            },
+                            {
+                                "name": "overrides",
+                                "fingerprint": 2561831315
+                            },
+                            {
+                                "name": "profileImage",
+                                "fingerprint": 367839310
+                            }
+                        ]
+                    }
+                ],
+                "latestFilesIndexes": [
+                    {
+                        "gameVersion": "1.21.1",
+                        "fileId": 9154852,
+                        "filename": "Cobblemon.gg-3.9.zip",
+                        "releaseType": 1,
+                        "gameVersionTypeId": 77784,
+                        "modLoader": 4
+                    },
+                    {
+                        "gameVersion": "1.20.1",
+                        "fileId": 5859506,
+                        "filename": "Cobblemon GG 1.1.3.zip",
+                        "releaseType": 1,
+                        "gameVersionTypeId": 75125,
+                        "modLoader": 4
+                    }
+                ],
+                "latestEarlyAccessFilesIndexes": [],
+                "dateCreated": "2024-10-29T15:00:51.4Z",
+                "dateModified": "2026-10-14T05:50:01.39Z",
+                "dateReleased": "2026-10-13T08:14:05.707Z",
+                "allowModDistribution": false,
+                "gamePopularityRank": 5456,
+                "isAvailable": true,
+                "thumbsUpCount": 0,
+                "socialLinks": [
+                    {
+                        "type": 3,
+                        "url": "https://cobblemon.gg/"
+                    },
+                    {
+                        "type": 2,
+                        "url": "https://discord.gg/cobblemongg"
+                    }
+                ],
+                "featuredProjectTag": 1
+            }
+        ],
+        "popular": [
+            {
+                "screenshots": [],
+                "id": 388172,
+                "gameId": 432,
+                "name": "GeckoLib",
+                "slug": "geckolib",
+                "links": {
+                    "websiteUrl": "https://www.curseforge.com/minecraft/mc-mods/geckolib",
+                    "wikiUrl": "https://github.com/bernie-g/geckolib/wiki",
+                    "issuesUrl": "https://github.com/bernie-g/geckolib/issues",
+                    "sourceUrl": "https://github.com/bernie-g/geckolib"
+                },
+                "summary": "A 3D animation library for entities, blocks, items, armor, and more!",
+                "status": 4,
+                "downloadCount": 409094041,
+                "favoriteCount": 0,
+                "isFeatured": false,
+                "primaryCategoryId": 421,
+                "categories": [
+                    {
+                        "id": 421,
+                        "gameId": 432,
+                        "name": "API and Library",
+                        "slug": "library-api",
+                        "url": "https://www.curseforge.com/minecraft/mc-mods/library-api",
+                        "iconUrl": "https://media.forgecdn.net/avatars/6/36/635351496947765531.png",
+                        "dateModified": "2014-05-23T03:21:44.06Z",
+                        "isClass": false,
+                        "classId": 6,
+                        "parentCategoryId": 6
+                    }
+                ],
+                "classId": 6,
+                "authors": [
+                    {
+                        "id": 100005756,
+                        "name": "Gecko",
+                        "url": "https://www.curseforge.com/members/gecko",
+                        "avatarUrl": "https://static-cdn.jtvnw.net/jtv_user_pictures/10cc0485-6e73-446c-8d32-3b58c4aa0b67-profile_image-150x150.png"
+                    },
+                    {
+                        "id": 102710925,
+                        "name": "EliotL",
+                        "url": "https://www.curseforge.com/members/eliotl",
+                        "avatarUrl": "https://static-cdn.jtvnw.net/jtv_user_pictures/eliotl-profile_image-51a2d982149a680c-150x150.png"
+                    }
+                ],
+                "logo": {
+                    "id": 1081393,
+                    "modId": 388172,
+                    "title": "638621132937140582.png",
+                    "description": "",
+                    "thumbnailUrl": "https://media.forgecdn.net/avatars/thumbnails/1081/393/256/256/638621132937140582.png",
+                    "url": "https://media.forgecdn.net/avatars/1081/393/638621132937140582.png"
+                },
+                "mainFileId": 8945638,
+                "latestFiles": [
+                    {
+                        "id": 3188481,
+                        "gameId": 432,
+                        "modId": 388172,
+                        "isAvailable": true,
+                        "displayName": "forge-1.12.2-geckolib-3.0.0-beta.5.jar",
+                        "fileName": "forge-1.12.2-geckolib-3.0.0-beta.5.jar",
+                        "releaseType": 2,
+                        "fileStatus": 4,
+                        "hashes": [
+                            {
+                                "value": "ca7035f68cd4431a384262be7e684a7f3b596e79",
+                                "algo": 1
+                            },
+                            {
+                                "value": "3d0eb295fd8e499f76b549e085edd8c0",
+                                "algo": 2
+                            }
+                        ],
+                        "fileDate": "2021-02-01T04:47:52.663Z",
+                        "fileLength": 3679964,
+                        "downloadCount": 9472,
+                        "downloadUrl": "https://edge.forgecdn.net/files/3188/481/forge-1.12.2-geckolib-3.0.0-beta.5.jar",
+                        "gameVersions": [
+                            "1.12.2"
+                        ],
+                        "sortableGameVersions": [
+                            {
+                                "gameVersionName": "1.12.2",
+                                "gameVersionPadded": "0000000001.0000000012.0000000002",
+                                "gameVersion": "1.12.2",
+                                "gameVersionReleaseDate": "2017-09-18T05:00:00Z",
+                                "gameVersionTypeId": 628
+                            }
+                        ],
+                        "dependencies": [],
+                        "alternateFileId": 0,
+                        "isServerPack": false,
+                        "fileFingerprint": 3999757708,
+                        "modules": [
+                            {
+                                "name": "META-INF",
+                                "fingerprint": 1689384183
+                            },
+                            {
+                                "name": "software",
+                                "fingerprint": 3577279111
+                            },
+                            {
+                                "name": "assets",
+                                "fingerprint": 3871847775
+                            },
+                            {
+                                "name": "geckolib.png",
+                                "fingerprint": 3653859787
+                            },
+                            {
+                                "name": "mcmod.info",
+                                "fingerprint": 2312685867
+                            },
+                            {
+                                "name": "pack.mcmeta",
+                                "fingerprint": 3380797652
+                            },
+                            {
+                                "name": "org",
+                                "fingerprint": 3807885378
+                            }
+                        ]
+                    },
+                    {
+                        "id": 3197366,
+                        "gameId": 432,
+                        "modId": 388172,
+                        "isAvailable": true,
+                        "displayName": "forge-1.12.2-geckolib-3.0.0-beta.7.jar",
+                        "fileName": "forge-1.12.2-geckolib-3.0.0-beta.7.jar",
+                        "releaseType": 1,
+                        "fileStatus": 4,
+                        "hashes": [
+                            {
+                                "value": "16bf1532493261cc2a02fdff6ef836c30a6ed0c1",
+                                "algo": 1
+                            },
+                            {
+                                "value": "7f787fe1b332596f4c669228e63d504b",
+                                "algo": 2
+                            }
+                        ],
+                        "fileDate": "2021-02-08T22:17:38.367Z",
+                        "fileLength": 3680008,
+                        "downloadCount": 450161,
+                        "downloadUrl": "https://edge.forgecdn.net/files/3197/366/forge-1.12.2-geckolib-3.0.0-beta.7.jar",
+                        "gameVersions": [
+                            "1.12.2"
+                        ],
+                        "sortableGameVersions": [
+                            {
+                                "gameVersionName": "1.12.2",
+                                "gameVersionPadded": "0000000001.0000000012.0000000002",
+                                "gameVersion": "1.12.2",
+                                "gameVersionReleaseDate": "2017-09-18T05:00:00Z",
+                                "gameVersionTypeId": 628
+                            }
+                        ],
+                        "dependencies": [],
+                        "alternateFileId": 0,
+                        "isServerPack": false,
+                        "fileFingerprint": 3396664737,
+                        "modules": [
+                            {
+                                "name": "META-INF",
+                                "fingerprint": 3614830990
+                            },
+                            {
+                                "name": "software",
+                                "fingerprint": 3225287877
+                            },
+                            {
+                                "name": "assets",
+                                "fingerprint": 3871847775
+                            },
+                            {
+                                "name": "geckolib.png",
+                                "fingerprint": 3653859787
+                            },
+                            {
+                                "name": "mcmod.info",
+                                "fingerprint": 2312685867
+                            },
+                            {
+                                "name": "pack.mcmeta",
+                                "fingerprint": 3380797652
+                            },
+                            {
+                                "name": "org",
+                                "fingerprint": 3807885378
+                            }
+                        ]
+                    }
+                ],
+                "latestFilesIndexes": [
+                    {
+                        "gameVersion": "26.3",
+                        "fileId": 8945638,
+                        "filename": "geckolib-neoforge-26.3-5.5.7.jar",
+                        "releaseType": 1,
+                        "gameVersionTypeId": 88556,
+                        "modLoader": 6
+                    },
+                    {
+                        "gameVersion": "26.3",
+                        "fileId": 8945634,
+                        "filename": "geckolib-forge-26.3-5.5.7.jar",
+                        "releaseType": 1,
+                        "gameVersionTypeId": 88556,
+                        "modLoader": 1
+                    },
+                    {
+                        "gameVersion": "26.3",
+                        "fileId": 8945630,
+                        "filename": "geckolib-fabric-26.3-5.5.7.jar",
+                        "releaseType": 1,
+                        "gameVersionTypeId": 88556,
+                        "modLoader": 4
+                    }
+                ],
+                "latestEarlyAccessFilesIndexes": [],
+                "dateCreated": "2020-06-08T21:02:20.903Z",
+                "dateModified": "2026-09-22T08:18:54.967Z",
+                "dateReleased": "2026-09-22T08:02:22.297Z",
+                "allowModDistribution": true,
+                "gamePopularityRank": 1,
+                "isAvailable": true,
+                "thumbsUpCount": 0,
+                "socialLinks": [
+                    {
+                        "type": 2,
+                        "url": "https://discord.gg/pPEqBgJtZW"
+                    }
+                ],
+                "featuredProjectTag": 0
+            },
+            {
+                "screenshots": [
+                    {
+                        "id": 2042808,
+                        "modId": 238222,
+                        "title": "image-attachment_69545b4f-0e02-40ba-b855-d407b8e1dcac.png",
+                        "description": "",
+                        "thumbnailUrl": "https://media.forgecdn.net/attachments/thumbnails/2042/808/310/172/ytuxxol-png.png",
+                        "url": "https://media.forgecdn.net/attachments/2042/808/ytuxxol-png.png"
+                    }
+                ],
+                "id": 238222,
+                "gameId": 432,
+                "name": "Just Enough Items (JEI)",
+                "slug": "jei",
+                "links": {
+                    "websiteUrl": "https://www.curseforge.com/minecraft/mc-mods/jei",
+                    "wikiUrl": "",
+                    "issuesUrl": "https://github.com/mezz/JustEnoughItems/issues?q=is%3Aissue",
+                    "sourceUrl": "https://github.com/mezz/JustEnoughItems"
+                },
+                "summary": "View Items and Recipes",
+                "status": 4,
+                "downloadCount": 631444910,
+                "favoriteCount": 0,
+                "isFeatured": false,
+                "primaryCategoryId": 423,
+                "categories": [
+                    {
+                        "id": 423,
+                        "gameId": 432,
+                        "name": "Map and Information",
+                        "slug": "map-information",
+                        "url": "https://www.curseforge.com/minecraft/mc-mods/map-information",
+                        "iconUrl": "https://media.forgecdn.net/avatars/6/38/635351497437388438.png",
+                        "dateModified": "2014-05-08T17:42:23.74Z",
+                        "isClass": false,
+                        "classId": 6,
+                        "parentCategoryId": 6
+                    },
+                    {
+                        "id": 421,
+                        "gameId": 432,
+                        "name": "API and Library",
+                        "slug": "library-api",
+                        "url": "https://www.curseforge.com/minecraft/mc-mods/library-api",
+                        "iconUrl": "https://media.forgecdn.net/avatars/6/36/635351496947765531.png",
+                        "dateModified": "2014-05-23T03:21:44.06Z",
+                        "isClass": false,
+                        "classId": 6,
+                        "parentCategoryId": 6
+                    }
+                ],
+                "classId": 6,
+                "authors": [
+                    {
+                        "id": 17072262,
+                        "name": "mezz",
+                        "url": "https://www.curseforge.com/members/mezz",
+                        "avatarUrl": "https://static-cdn.jtvnw.net/jtv_user_pictures/ce4a8a5fe354959b-profile_image-150x150.png"
+                    }
+                ],
+                "logo": {
+                    "id": 29069,
+                    "modId": 238222,
+                    "title": "635838945588716414.jpeg",
+                    "description": "",
+                    "thumbnailUrl": "https://media.forgecdn.net/avatars/thumbnails/29/69/256/256/635838945588716414.jpeg",
+                    "url": "https://media.forgecdn.net/avatars/29/69/635838945588716414.jpeg"
+                },
+                "mainFileId": 8792638,
+                "latestFiles": [
+                    {
+                        "id": 3040523,
+                        "gameId": 432,
+                        "modId": 238222,
+                        "isAvailable": true,
+                        "displayName": "jei_1.12.2-4.16.1.301.jar",
+                        "fileName": "jei_1.12.2-4.16.1.301.jar",
+                        "releaseType": 1,
+                        "fileStatus": 4,
+                        "hashes": [
+                            {
+                                "value": "3045e8440ea44071d8b83c4e7b3c190348fdc527",
+                                "algo": 1
+                            },
+                            {
+                                "value": "1dee4be93d666e2228039c551e927b35",
+                                "algo": 2
+                            }
+                        ],
+                        "fileDate": "2020-08-24T01:01:39.123Z",
+                        "fileLength": 653211,
+                        "downloadCount": 29039447,
+                        "downloadUrl": "https://edge.forgecdn.net/files/3040/523/jei_1.12.2-4.16.1.301.jar",
+                        "gameVersions": [
+                            "1.12.2"
+                        ],
+                        "sortableGameVersions": [
+                            {
+                                "gameVersionName": "1.12.2",
+                                "gameVersionPadded": "0000000001.0000000012.0000000002",
+                                "gameVersion": "1.12.2",
+                                "gameVersionReleaseDate": "2017-09-18T05:00:00Z",
+                                "gameVersionTypeId": 628
+                            }
+                        ],
+                        "dependencies": [],
+                        "alternateFileId": 0,
+                        "isServerPack": false,
+                        "fileFingerprint": 3089143260,
+                        "modules": [
+                            {
+                                "name": "META-INF",
+                                "fingerprint": 2236405288
+                            },
+                            {
+                                "name": "mezz",
+                                "fingerprint": 2222830911
+                            },
+                            {
+                                "name": "pack.mcmeta",
+                                "fingerprint": 1488642189
+                            },
+                            {
+                                "name": "mcmod.info",
+                                "fingerprint": 3528499262
+                            },
+                            {
+                                "name": "assets",
+                                "fingerprint": 9943101
+                            }
+                        ]
+                    },
+                    {
+                        "id": 3272039,
+                        "gameId": 432,
+                        "modId": 238222,
+                        "isAvailable": true,
+                        "displayName": "jei-1.13.2-5.0.0.31.jar",
+                        "fileName": "jei-1.13.2-5.0.0.31.jar",
+                        "releaseType": 3,
+                        "fileStatus": 4,
+                        "hashes": [
+                            {
+                                "value": "aa15cdea079db8b91d75e3c68216df80a70545d8",
+                                "algo": 1
+                            },
+                            {
+                                "value": "1ee1f4fb4c6e199c02c7d15cbd0d2c8a",
+                                "algo": 2
+                            }
+                        ],
+                        "fileDate": "2021-04-11T03:49:47.687Z",
+                        "fileLength": 690802,
+                        "downloadCount": 32375,
+                        "downloadUrl": "https://edge.forgecdn.net/files/3272/39/jei-1.13.2-5.0.0.31.jar",
+                        "gameVersions": [
+                            "1.13.2"
+                        ],
+                        "sortableGameVersions": [
+                            {
+                                "gameVersionName": "1.13.2",
+                                "gameVersionPadded": "0000000001.0000000013.0000000002",
+                                "gameVersion": "1.13.2",
+                                "gameVersionReleaseDate": "2018-10-22T00:00:00Z",
+                                "gameVersionTypeId": 55023
+                            }
+                        ],
+                        "dependencies": [],
+                        "alternateFileId": 0,
+                        "isServerPack": false,
+                        "fileFingerprint": 2700304635,
+                        "modules": [
+                            {
+                                "name": "META-INF",
+                                "fingerprint": 1102858494
+                            },
+                            {
+                                "name": "mezz",
+                                "fingerprint": 2811918946
+                            },
+                            {
+                                "name": "pack.mcmeta",
+                                "fingerprint": 3652707984
+                            },
+                            {
+                                "name": "assets",
+                                "fingerprint": 88833534
+                            }
+                        ]
+                    }
+                ],
+                "latestFilesIndexes": [
+                    {
+                        "gameVersion": "1.20.1",
+                        "fileId": 9174950,
+                        "filename": "jei-1.20.1-fabric-15.70.0.221.jar",
+                        "releaseType": 2,
+                        "gameVersionTypeId": 75125,
+                        "modLoader": 4
+                    },
+                    {
+                        "gameVersion": "1.20.1",
+                        "fileId": 9174949,
+                        "filename": "jei-1.20.1-forge-15.70.0.221.jar",
+                        "releaseType": 2,
+                        "gameVersionTypeId": 75125,
+                        "modLoader": 1
+                    },
+                    {
+                        "gameVersion": "26.3",
+                        "fileId": 9174418,
+                        "filename": "jei-26.3-neoforge-31.12.0.66.jar",
+                        "releaseType": 2,
+                        "gameVersionTypeId": 88556,
+                        "modLoader": 6
+                    }
+                ],
+                "latestEarlyAccessFilesIndexes": [],
+                "dateCreated": "2015-11-23T23:00:41.923Z",
+                "dateModified": "2026-10-14T16:34:48.923Z",
+                "dateReleased": "2026-10-14T16:12:30.687Z",
+                "allowModDistribution": true,
+                "gamePopularityRank": 2,
+                "isAvailable": true,
+                "thumbsUpCount": 1,
+                "featuredProjectTag": 0
+            }
+        ],
+        "recentlyUpdated": [
+            {
+                "screenshots": [
+                    {
+                        "id": 1429220,
+                        "modId": 1407981,
+                        "title": "Banner",
+                        "description": "Generated via Minecraft Title Generator plugin on Blockbench (Minecraft assets used under Mojang’s EULA and Brand Guidelines)",
+                        "thumbnailUrl": "https://media.forgecdn.net/attachments/thumbnails/1429/220/310/172/a26b427556f27a70a28432935267a05fabf99caf-png.png",
+                        "url": "https://media.forgecdn.net/attachments/1429/220/a26b427556f27a70a28432935267a05fabf99caf-png.png"
+                    },
+                    {
+                        "id": 1741632,
+                        "modId": 1407981,
+                        "title": "Focus Recipes",
+                        "description": "All Aspect Focus recipes in order of appearance as of v1.3.1",
+                        "thumbnailUrl": "https://media.forgecdn.net/attachments/thumbnails/1741/632/310/172/focus_recipes-png.png",
+                        "url": "https://media.forgecdn.net/attachments/1741/632/focus_recipes-png.png"
+                    },
+                    {
+                        "id": 1741633,
+                        "modId": 1407981,
+                        "title": "Aspect: Dragonkin",
+                        "description": "Introduced: v1.0.0",
+                        "thumbnailUrl": "https://media.forgecdn.net/attachments/thumbnails/1741/633/310/172/dragonkin-png.png",
+                        "url": "https://media.forgecdn.net/attachments/1741/633/dragonkin-png.png"
+                    },
+                    {
+                        "id": 1741634,
+                        "modId": 1407981,
+                        "title": "Aspect: Frostling",
+                        "description": "Introduced: v1.0.0",
+                        "thumbnailUrl": "https://media.forgecdn.net/attachments/thumbnails/1741/634/310/172/frostling-png.png",
+                        "url": "https://media.forgecdn.net/attachments/1741/634/frostling-png.png"
+                    },
+                    {
+                        "id": 1741635,
+                        "modId": 1407981,
+                        "title": "Aspect: Remnant",
+                        "description": "Introduced: v1.0.0",
+                        "thumbnailUrl": "https://media.forgecdn.net/attachments/thumbnails/1741/635/310/172/remnant-png.png",
+                        "url": "https://media.forgecdn.net/attachments/1741/635/remnant-png.png"
+                    },
+                    {
+                        "id": 1741636,
+                        "modId": 1407981,
+                        "title": "Aspect: Pebblemite",
+                        "description": "Introduced: v1.0.0",
+                        "thumbnailUrl": "https://media.forgecdn.net/attachments/thumbnails/1741/636/310/172/pebblemite-png.png",
+                        "url": "https://media.forgecdn.net/attachments/1741/636/pebblemite-png.png"
+                    },
+                    {
+                        "id": 1741637,
+                        "modId": 1407981,
+                        "title": "Aspect: Voidborne",
+                        "description": "Introduced: v1.0.0",
+                        "thumbnailUrl": "https://media.forgecdn.net/attachments/thumbnails/1741/637/310/172/voidborne-png.png",
+                        "url": "https://media.forgecdn.net/attachments/1741/637/voidborne-png.png"
+                    },
+                    {
+                        "id": 1741638,
+                        "modId": 1407981,
+                        "title": "Aspect: Phoenix",
+                        "description": "Introduced: v1.0.0",
+                        "thumbnailUrl": "https://media.forgecdn.net/attachments/thumbnails/1741/638/310/172/phoenix-png.png",
+                        "url": "https://media.forgecdn.net/attachments/1741/638/phoenix-png.png"
+                    },
+                    {
+                        "id": 1741639,
+                        "modId": 1407981,
+                        "title": "Aspect: Morphling",
+                        "description": "Introduced: v1.1.0",
+                        "thumbnailUrl": "https://media.forgecdn.net/attachments/thumbnails/1741/639/310/172/morphling-png.png",
+                        "url": "https://media.forgecdn.net/attachments/1741/639/morphling-png.png"
+                    }
+                ],
+                "id": 1407981,
+                "gameId": 432,
+                "name": "Aspects: Reclaimed",
+                "slug": "aspects-reclaimed",
+                "links": {
+                    "websiteUrl": "https://www.curseforge.com/minecraft/mc-mods/aspects-reclaimed",
+                    "wikiUrl": null,
+                    "issuesUrl": null,
+                    "sourceUrl": "https://github.com/CyraLX/Aspects-Reclaimed"
+                },
+                "summary": "An Aspects Addon introducing 7 new Aspects inspired by concepts that go beyond the base modification",
+                "status": 4,
+                "downloadCount": 4085,
+                "favoriteCount": 0,
+                "isFeatured": false,
+                "primaryCategoryId": 422,
+                "categories": [
+                    {
+                        "id": 418,
+                        "gameId": 432,
+                        "name": "Genetics",
+                        "slug": "technology-genetics",
+                        "url": "https://www.curseforge.com/minecraft/mc-mods/technology/technology-genetics",
+                        "iconUrl": "https://media.forgecdn.net/avatars/6/33/635351495921521214.png",
+                        "dateModified": "2014-05-08T17:39:52.153Z",
+                        "isClass": false,
+                        "classId": 6,
+                        "parentCategoryId": 412
+                    },
+                    {
+                        "id": 422,
+                        "gameId": 432,
+                        "name": "Adventure and RPG",
+                        "slug": "adventure-rpg",
+                        "url": "https://www.curseforge.com/minecraft/mc-mods/adventure-rpg",
+                        "iconUrl": "https://media.forgecdn.net/avatars/6/37/635351497295252123.png",
+                        "dateModified": "2014-05-08T17:42:09.54Z",
+                        "isClass": false,
+                        "classId": 6,
+                        "parentCategoryId": 6
+                    },
+                    {
+                        "id": 419,
+                        "gameId": 432,
+                        "name": "Magic",
+                        "slug": "magic",
+                        "url": "https://www.curseforge.com/minecraft/mc-mods/magic",
+                        "iconUrl": "https://media.forgecdn.net/avatars/6/34/635351496247862494.png",
+                        "dateModified": "2014-05-08T17:40:24.787Z",
+                        "isClass": false,
+                        "classId": 6,
+                        "parentCategoryId": 6
+                    }
+                ],
+                "classId": 6,
+                "authors": [
+                    {
+                        "id": 102306723,
+                        "name": "efimity",
+                        "url": "https://www.curseforge.com/members/efimity",
+                        "avatarUrl": "https://static-cdn.jtvnw.net/jtv_user_pictures/9bbdb6b5-d44d-4b8f-8694-18b8d09d411f-profile_image-150x150.png"
+                    },
+                    {
+                        "id": 128818362,
+                        "name": "CyraLX",
+                        "url": "https://www.curseforge.com/members/cyralx",
+                        "avatarUrl": "https://avatars.githubusercontent.com/u/51757300?v=4"
+                    }
+                ],
+                "logo": {
+                    "id": 1871743,
+                    "modId": 1407981,
+                    "title": "639173364652395874.png",
+                    "description": "",
+                    "thumbnailUrl": "https://media.forgecdn.net/avatars/thumbnails/1871/743/256/256/639173364652395874.png",
+                    "url": "https://media.forgecdn.net/avatars/1871/743/639173364652395874.png"
+                },
+                "mainFileId": 9189621,
+                "latestFiles": [
+                    {
+                        "id": 9189621,
+                        "gameId": 432,
+                        "modId": 1407981,
+                        "isAvailable": true,
+                        "displayName": "Aspects: Reclaimed v1.3.3 (1.21.6-1.21.8)",
+                        "fileName": "corrupted-aspects-reclaimed-1.3.3-1.21.6-1.21.8.jar",
+                        "releaseType": 1,
+                        "fileStatus": 4,
+                        "hashes": [
+                            {
+                                "value": "020298ff93fd3c44d07c1ae4f745170ff94095ce",
+                                "algo": 1
+                            },
+                            {
+                                "value": "7f181eeaeaf93182c95151669ac2abfd",
+                                "algo": 2
+                            }
+                        ],
+                        "fileDate": "2026-10-15T10:08:36.36Z",
+                        "fileLength": 553572,
+                        "downloadCount": 0,
+                        "fileSizeOnDisk": 3144174,
+                        "downloadUrl": "https://edge.forgecdn.net/files/9189/621/corrupted-aspects-reclaimed-1.3.3-1.21.6-1.21.8.jar",
+                        "gameVersions": [
+                            "Client",
+                            "Fabric",
+                            "1.21.8",
+                            "1.21.6",
+                            "1.21.7",
+                            "NeoForge",
+                            "Server"
+                        ],
+                        "sortableGameVersions": [
+                            {
+                                "gameVersionName": "Client",
+                                "gameVersionPadded": "0",
+                                "gameVersion": "",
+                                "gameVersionReleaseDate": "2022-12-08T00:00:00Z",
+                                "gameVersionTypeId": 75208
+                            },
+                            {
+                                "gameVersionName": "Fabric",
+                                "gameVersionPadded": "0",
+                                "gameVersion": "",
+                                "gameVersionReleaseDate": "2022-09-01T00:00:00Z",
+                                "gameVersionTypeId": 68441
+                            },
+                            {
+                                "gameVersionName": "1.21.8",
+                                "gameVersionPadded": "0000000001.0000000021.0000000008",
+                                "gameVersion": "1.21.8",
+                                "gameVersionReleaseDate": "2025-07-17T14:01:29.007Z",
+                                "gameVersionTypeId": 77784
+                            },
+                            {
+                                "gameVersionName": "1.21.6",
+                                "gameVersionPadded": "0000000001.0000000021.0000000006",
+                                "gameVersion": "1.21.6",
+                                "gameVersionReleaseDate": "2025-06-17T19:44:59.623Z",
+                                "gameVersionTypeId": 77784
+                            },
+                            {
+                                "gameVersionName": "1.21.7",
+                                "gameVersionPadded": "0000000001.0000000021.0000000007",
+                                "gameVersion": "1.21.7",
+                                "gameVersionReleaseDate": "2025-06-30T14:45:05.54Z",
+                                "gameVersionTypeId": 77784
+                            },
+                            {
+                                "gameVersionName": "NeoForge",
+                                "gameVersionPadded": "0",
+                                "gameVersion": "",
+                                "gameVersionReleaseDate": "2023-07-25T00:00:00Z",
+                                "gameVersionTypeId": 68441
+                            },
+                            {
+                                "gameVersionName": "Server",
+                                "gameVersionPadded": "0",
+                                "gameVersion": "",
+                                "gameVersionReleaseDate": "2022-12-08T00:00:00Z",
+                                "gameVersionTypeId": 75208
+                            }
+                        ],
+                        "dependencies": [
+                            {
+                                "modId": 1293013,
+                                "relationType": 3
+                            }
+                        ],
+                        "alternateFileId": 0,
+                        "isServerPack": false,
+                        "fileFingerprint": 181298122,
+                        "modules": [
+                            {
+                                "name": "META-INF",
+                                "fingerprint": 2043300175
+                            },
+                            {
+                                "name": "LICENCE",
+                                "fingerprint": 3298097541
+                            },
+                            {
+                                "name": "latest_changelog.md",
+                                "fingerprint": 2917570740
+                            },
+                            {
+                                "name": "pack.png",
+                                "fingerprint": 307149779
+                            },
+                            {
+                                "name": "assets",
+                                "fingerprint": 956668244
+                            },
+                            {
+                                "name": "data",
+                                "fingerprint": 2882498621
+                            },
+                            {
+                                "name": "pack.mcmeta",
+                                "fingerprint": 2248618469
+                            },
+                            {
+                                "name": "overlay_21_10_backport_data",
+                                "fingerprint": 1679366259
+                            },
+                            {
+                                "name": "overlay_26_1_backport_data",
+                                "fingerprint": 963792626
+                            },
+                            {
+                                "name": "overlay_26_2_backport_data",
+                                "fingerprint": 2239456376
+                            },
+                            {
+                                "name": "fabric.mod.json",
+                                "fingerprint": 1987794150
+                            }
+                        ]
+                    }
+                ],
+                "latestFilesIndexes": [
+                    {
+                        "gameVersion": "1.21.8",
+                        "fileId": 9189621,
+                        "filename": "corrupted-aspects-reclaimed-1.3.3-1.21.6-1.21.8.jar",
+                        "releaseType": 1,
+                        "gameVersionTypeId": 77784,
+                        "modLoader": 4
+                    },
+                    {
+                        "gameVersion": "1.21.8",
+                        "fileId": 9189621,
+                        "filename": "corrupted-aspects-reclaimed-1.3.3-1.21.6-1.21.8.jar",
+                        "releaseType": 1,
+                        "gameVersionTypeId": 77784,
+                        "modLoader": 6
+                    },
+                    {
+                        "gameVersion": "1.21.6",
+                        "fileId": 9189621,
+                        "filename": "corrupted-aspects-reclaimed-1.3.3-1.21.6-1.21.8.jar",
+                        "releaseType": 1,
+                        "gameVersionTypeId": 77784,
+                        "modLoader": 4
+                    }
+                ],
+                "latestEarlyAccessFilesIndexes": [],
+                "dateCreated": "2026-01-03T07:17:35.253Z",
+                "dateModified": "2026-10-15T10:12:26.103Z",
+                "dateReleased": "2026-10-15T10:08:36.36Z",
+                "allowModDistribution": true,
+                "gamePopularityRank": 43412,
+                "isAvailable": true,
+                "thumbsUpCount": 0,
+                "socialLinks": [
+                    {
+                        "type": 2,
+                        "url": "https://discord.gg/WCxY5AzfA4"
+                    }
+                ],
+                "featuredProjectTag": 0
+            },
+            {
+                "screenshots": [
+                    {
+                        "id": 2053362,
+                        "modId": 1744632,
+                        "title": "Crystal detail and effects settings",
+                        "description": "The F8 settings screen with Core only selected, beam and animation toggles, and distance-based detail controls.",
+                        "thumbnailUrl": "https://media.forgecdn.net/attachments/thumbnails/2053/362/310/172/settings-core-draft-26-3-png.png",
+                        "url": "https://media.forgecdn.net/attachments/2053/362/settings-core-draft-26-3-png.png"
+                    },
+                    {
+                        "id": 2053363,
+                        "modId": 1744632,
+                        "title": "Vanilla crystal detail",
+                        "description": "The crystal with its normal glass detail and beam, captured in Minecraft 26.3.",
+                        "thumbnailUrl": "https://media.forgecdn.net/attachments/thumbnails/2053/363/310/172/world-vanilla-26-3-png.png",
+                        "url": "https://media.forgecdn.net/attachments/2053/363/world-vanilla-26-3-png.png"
+                    },
+                    {
+                        "id": 2053364,
+                        "modId": 1744632,
+                        "title": "Core-only crystal detail",
+                        "description": "Core-only rendering keeps the crystal visible while removing its glass shells. The beam remains enabled.",
+                        "thumbnailUrl": "https://media.forgecdn.net/attachments/thumbnails/2053/364/310/172/world-core-only-26-3-png.png",
+                        "url": "https://media.forgecdn.net/attachments/2053/364/world-core-only-26-3-png.png"
+                    },
+                    {
+                        "id": 2053365,
+                        "modId": 1744632,
+                        "title": "Core-only detail with beams off",
+                        "description": "The optional beam toggle removes the beam visual while the crystal core remains visible. Genuine Minecraft 26.3 capture.",
+                        "thumbnailUrl": "https://media.forgecdn.net/attachments/thumbnails/2053/365/310/172/world-core-no-beam-26-3-png.png",
+                        "url": "https://media.forgecdn.net/attachments/2053/365/world-core-no-beam-26-3-png.png"
+                    }
+                ],
+                "id": 1744632,
+                "gameId": 432,
+                "name": "PixelCrystalOptimizer",
+                "slug": "pixelcrystaloptimizer",
+                "links": {
+                    "websiteUrl": "https://www.curseforge.com/minecraft/mc-mods/pixelcrystaloptimizer",
+                    "wikiUrl": null,
+                    "issuesUrl": null,
+                    "sourceUrl": null
+                },
+                "summary": "Optional end-crystal rendering simplification with distance-based detail, beam controls, and an F8 settings screen.",
+                "status": 4,
+                "downloadCount": 93,
+                "favoriteCount": 0,
+                "isFeatured": false,
+                "primaryCategoryId": 6814,
+                "categories": [
+                    {
+                        "id": 6814,
+                        "gameId": 432,
+                        "name": "Performance",
+                        "slug": "performance",
+                        "url": "https://www.curseforge.com/minecraft/mc-mods/performance",
+                        "iconUrl": "https://media.forgecdn.net/avatars/933/987/638409849610531091.png",
+                        "dateModified": "2024-01-16T06:56:01.057Z",
+                        "isClass": false,
+                        "classId": 6,
+                        "parentCategoryId": 6
+                    }
+                ],
+                "classId": 6,
+                "authors": [
+                    {
+                        "id": 131334088,
+                        "name": "dreamiiing",
+                        "url": "https://www.curseforge.com/members/dreamiiing",
+                        "avatarUrl": "https://lh3.googleusercontent.com/a/ACg8ocKYE0cKZUJ74IanGuEiFvP_IRSKYi2Z3sH17OUpsI9ntAzvQg=s96-c"
+                    }
+                ],
+                "logo": {
+                    "id": 2117976,
+                    "modId": 1744632,
+                    "title": "639275783763157560.png",
+                    "description": "",
+                    "thumbnailUrl": "https://media.forgecdn.net/avatars/thumbnails/2117/976/256/256/639275783763157560.png",
+                    "url": "https://media.forgecdn.net/avatars/2117/976/639275783763157560.png"
+                },
+                "mainFileId": 9189620,
+                "latestFiles": [
+                    {
+                        "id": 9172784,
+                        "gameId": 432,
+                        "modId": 1744632,
+                        "isAvailable": true,
+                        "displayName": "PixelCrystalOptimizer 1.0.0 Beta - Fabric 26.3",
+                        "fileName": "pixel-crystal-optimizer-fabric-1.0.0+26.3.jar",
+                        "releaseType": 2,
+                        "fileStatus": 4,
+                        "hashes": [
+                            {
+                                "value": "93a27a0c44c51b57007197f3a81d80313f88c034",
+                                "algo": 1
+                            },
+                            {
+                                "value": "4695be64ca23d00e6fca7af8a312889c",
+                                "algo": 2
+                            }
+                        ],
+                        "fileDate": "2026-10-14T12:51:58.633Z",
+                        "fileLength": 17710,
+                        "downloadCount": 2,
+                        "fileSizeOnDisk": 27662,
+                        "downloadUrl": null,
+                        "gameVersions": [
+                            "Client",
+                            "Fabric",
+                            "26.3"
+                        ],
+                        "sortableGameVersions": [
+                            {
+                                "gameVersionName": "Client",
+                                "gameVersionPadded": "0",
+                                "gameVersion": "",
+                                "gameVersionReleaseDate": "2022-12-08T00:00:00Z",
+                                "gameVersionTypeId": 75208
+                            },
+                            {
+                                "gameVersionName": "Fabric",
+                                "gameVersionPadded": "0",
+                                "gameVersion": "",
+                                "gameVersionReleaseDate": "2022-09-01T00:00:00Z",
+                                "gameVersionTypeId": 68441
+                            },
+                            {
+                                "gameVersionName": "26.3",
+                                "gameVersionPadded": "0000000026.0000000003",
+                                "gameVersion": "26.3",
+                                "gameVersionReleaseDate": "2026-09-15T15:46:48.187Z",
+                                "gameVersionTypeId": 88556
+                            }
+                        ],
+                        "dependencies": [],
+                        "alternateFileId": 0,
+                        "isServerPack": false,
+                        "fileFingerprint": 4236824380,
+                        "modules": [
+                            {
+                                "name": "assets",
+                                "fingerprint": 178564586
+                            },
+                            {
+                                "name": "dev",
+                                "fingerprint": 1752371326
+                            },
+                            {
+                                "name": "fabric.mod.json",
+                                "fingerprint": 1401522073
+                            },
+                            {
+                                "name": "pixelcrystaloptimizer.mixins.json",
+                                "fingerprint": 582896974
+                            },
+                            {
+                                "name": "LICENSE",
+                                "fingerprint": 1641829060
+                            }
+                        ]
+                    },
+                    {
+                        "id": 9173018,
+                        "gameId": 432,
+                        "modId": 1744632,
+                        "isAvailable": true,
+                        "displayName": "PixelCrystalOptimizer 1.0.0 Beta - NeoForge 26.3",
+                        "fileName": "pixel-crystal-optimizer-neoforge-1.0.0+26.3.jar",
+                        "releaseType": 2,
+                        "fileStatus": 4,
+                        "hashes": [
+                            {
+                                "value": "1ce2f248c441cf8d71acb0321daf8a4887e94591",
+                                "algo": 1
+                            },
+                            {
+                                "value": "d7d772f11e530099a60af2dce6f195ce",
+                                "algo": 2
+                            }
+                        ],
+                        "fileDate": "2026-10-14T13:12:05.917Z",
+                        "fileLength": 18251,
+                        "downloadCount": 10,
+                        "fileSizeOnDisk": 28175,
+                        "downloadUrl": null,
+                        "gameVersions": [
+                            "Client",
+                            "NeoForge",
+                            "26.3"
+                        ],
+                        "sortableGameVersions": [
+                            {
+                                "gameVersionName": "Client",
+                                "gameVersionPadded": "0",
+                                "gameVersion": "",
+                                "gameVersionReleaseDate": "2022-12-08T00:00:00Z",
+                                "gameVersionTypeId": 75208
+                            },
+                            {
+                                "gameVersionName": "NeoForge",
+                                "gameVersionPadded": "0",
+                                "gameVersion": "",
+                                "gameVersionReleaseDate": "2023-07-25T00:00:00Z",
+                                "gameVersionTypeId": 68441
+                            },
+                            {
+                                "gameVersionName": "26.3",
+                                "gameVersionPadded": "0000000026.0000000003",
+                                "gameVersion": "26.3",
+                                "gameVersionReleaseDate": "2026-09-15T15:46:48.187Z",
+                                "gameVersionTypeId": 88556
+                            }
+                        ],
+                        "dependencies": [],
+                        "alternateFileId": 0,
+                        "isServerPack": false,
+                        "fileFingerprint": 4060524134,
+                        "modules": [
+                            {
+                                "name": "META-INF",
+                                "fingerprint": 959995841
+                            },
+                            {
+                                "name": "assets",
+                                "fingerprint": 178564586
+                            },
+                            {
+                                "name": "dev",
+                                "fingerprint": 948059117
+                            },
+                            {
+                                "name": "pixelcrystaloptimizer.mixins.json",
+                                "fingerprint": 582896974
+                            },
+                            {
+                                "name": "LICENSE",
+                                "fingerprint": 1641829060
+                            }
+                        ]
+                    }
+                ],
+                "latestFilesIndexes": [
+                    {
+                        "gameVersion": "1.16.5",
+                        "fileId": 9189620,
+                        "filename": "pixelcrystaloptimizer-1.0.1+1.16.5-forge.jar",
+                        "releaseType": 2,
+                        "gameVersionTypeId": 70886,
+                        "modLoader": 1
+                    },
+                    {
+                        "gameVersion": "1.15.2",
+                        "fileId": 9189605,
+                        "filename": "pixelcrystaloptimizer-1.0.1+1.15.2-forge.jar",
+                        "releaseType": 2,
+                        "gameVersionTypeId": 68722,
+                        "modLoader": 1
+                    },
+                    {
+                        "gameVersion": "1.14.4",
+                        "fileId": 9189567,
+                        "filename": "pixelcrystaloptimizer-1.0.1+1.14.4-forge.jar",
+                        "releaseType": 2,
+                        "gameVersionTypeId": 64806,
+                        "modLoader": 1
+                    }
+                ],
+                "latestEarlyAccessFilesIndexes": [],
+                "dateCreated": "2026-10-14T13:54:53.283Z",
+                "dateModified": "2026-10-15T10:12:25.763Z",
+                "dateReleased": "2026-10-15T10:08:24.07Z",
+                "allowModDistribution": false,
+                "gamePopularityRank": 999999,
+                "isAvailable": true,
+                "thumbsUpCount": 0,
+                "featuredProjectTag": 0
+            }
+        ]
+    }
+}
