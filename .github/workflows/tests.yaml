@@ -27,7 +27,7 @@ jobs:
         with:
           php-version: ${{ matrix.php-version }}
           extensions: curl, json, mbstring
-          coverage: none
+          coverage: pcov
           tools: composer:v2
 
       - name: Set composer cache directory
@@ -46,8 +46,8 @@ jobs:
       - name: Install composer dependencies
         run: composer install --no-interaction --prefer-dist --no-progress
 
-      - name: Run phpunit unit tests
-        run: vendor/bin/phpunit --testsuite=unit --colors=always --testdox
+      - name: Run phpunit unit tests with coverage
+        run: vendor/bin/phpunit --testsuite=unit --colors=always --testdox --coverage-clover=coverage.xml
 
   # integration tests send requests to the live CurseForge API and need the CURSEFORGE_API_KEY secret,
   # so they only run on the master branch and when started manually
