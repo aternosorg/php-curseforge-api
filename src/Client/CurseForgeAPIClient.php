@@ -34,7 +34,7 @@ use GuzzleHttp\ClientInterface;
  * Class CurseForgeAPIClient
  *
  * @package Aternos\CurseForgeApi\Client
- * @description This class is the main entry point for the hangar api. It provides methods to access all hangar api endpoints.
+ * @description This class is the main entry point for the CurseForge API. It provides methods to access all CurseForge API endpoints.
  */
 class CurseForgeAPIClient
 {
