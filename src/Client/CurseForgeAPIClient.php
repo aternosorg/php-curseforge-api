@@ -28,7 +28,9 @@ use Aternos\CurseForgeApi\Model\MinecraftGameVersion;
 use Aternos\CurseForgeApi\Model\MinecraftModLoaderIndex;
 use Aternos\CurseForgeApi\Model\MinecraftModLoaderVersion;
 use Aternos\CurseForgeApi\Model\SortOrder;
+use Composer\InstalledVersions;
 use GuzzleHttp\ClientInterface;
+use OutOfBoundsException;
 
 /**
  * Class CurseForgeAPIClient
@@ -38,6 +40,11 @@ use GuzzleHttp\ClientInterface;
  */
 class CurseForgeAPIClient
 {
+    /**
+     * Name of this package on packagist, used to look up the installed version
+     */
+    public const string PACKAGE_NAME = "aternos/curseforge-api";
+
     protected ?ClientInterface $httpClient;
 
     protected Configuration $configuration;
@@ -66,8 +73,32 @@ class CurseForgeAPIClient
     {
         $this->httpClient = $httpClient;
         $this->configuration = $configuration ?? (Configuration::getDefaultConfiguration())
-            ->setUserAgent("php-curseforge-api/1.0.0");
+            ->setUserAgent(static::getDefaultUserAgent());
         $this->setApiToken($apiToken);
+    }
+
+    /**
+     * Get the installed version of this library, e.g. "3.1.0" or "dev-master"
+     * Returns "unknown" if the version cannot be determined, e.g. if the library was not installed using composer.
+     * @return string
+     */
+    public static function getLibraryVersion(): string
+    {
+        try {
+            return InstalledVersions::getPrettyVersion(static::PACKAGE_NAME) ?? "unknown";
+        } catch (OutOfBoundsException) {
+            return "unknown";
+        }
+    }
+
+    /**
+     * Get the user agent that identifies this library, e.g. "aternos/php-curseforge-api/3.1.0"
+     * It is used unless a different user agent is set with {@see setUserAgent()}.
+     * @return string
+     */
+    public static function getDefaultUserAgent(): string
+    {
+        return "aternos/php-curseforge-api/" . static::getLibraryVersion();
     }
 
     /**
@@ -95,8 +126,9 @@ class CurseForgeAPIClient
     }
 
     /**
-     * Set the user agent used for HTTP requests
-     * @param string $userAgent
+     * Set the user agent used for HTTP requests.
+     * This replaces the default user agent of this library, see {@see getDefaultUserAgent()}.
+     * @param string $userAgent user agent identifying your application, ideally including contact information
      * @return $this
      */
     public function setUserAgent(string $userAgent): static

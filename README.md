@@ -20,9 +20,10 @@ The main entry point for the API is the `CurseForgeAPIClient` class.
 use Aternos\CurseForgeApi\Client\CurseForgeAPIClient;
 $client = new CurseForgeAPIClient("api-key");
 
-// set a user agent (recommended)
-$client->setUserAgent('aternos/php-curseforge-api-example');
+// set a user agent identifying your application (recommended)
+$client->setUserAgent("my-app/1.0.0 (contact@example.com)");
 ```
+
 **You need an API key to use this client.** If you're a third party you can read more
 about how to get one [here](https://support.curseforge.com/en/support/solutions/articles/9000208346).
 

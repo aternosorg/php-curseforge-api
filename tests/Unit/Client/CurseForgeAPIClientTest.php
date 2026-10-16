@@ -4,6 +4,7 @@ namespace Aternos\CurseForgeApi\Tests\Unit\Client;
 
 use Aternos\CurseForgeApi\ApiException;
 use Aternos\CurseForgeApi\Client\Category;
+use Aternos\CurseForgeApi\Client\CurseForgeAPIClient;
 use Aternos\CurseForgeApi\Client\File;
 use Aternos\CurseForgeApi\Client\Game;
 use Aternos\CurseForgeApi\Client\GameVersionType;
@@ -19,6 +20,7 @@ use Aternos\CurseForgeApi\Model\ModSearchSortField;
 use Aternos\CurseForgeApi\Model\PlatformType;
 use Aternos\CurseForgeApi\Model\PremiumType;
 use Aternos\CurseForgeApi\Model\SortOrder;
+use Composer\InstalledVersions;
 use GuzzleHttp\Client;
 use GuzzleHttp\Handler\MockHandler;
 use GuzzleHttp\HandlerStack;
@@ -64,6 +66,37 @@ class CurseForgeAPIClientTest extends ClientTestCase
         $client->getGame(432);
 
         $this->assertFalse($this->getRequest()->hasHeader("x-api-key"));
+    }
+
+    public function testGetLibraryVersionReturnsInstalledVersion(): void
+    {
+        $this->assertSame(
+            InstalledVersions::getPrettyVersion(CurseForgeAPIClient::PACKAGE_NAME),
+            CurseForgeAPIClient::getLibraryVersion()
+        );
+        $this->assertNotSame("unknown", CurseForgeAPIClient::getLibraryVersion());
+    }
+
+    public function testDefaultUserAgentContainsPackageAndVersion(): void
+    {
+        $this->assertSame(
+            "aternos/php-curseforge-api/" . CurseForgeAPIClient::getLibraryVersion(),
+            CurseForgeAPIClient::getDefaultUserAgent()
+        );
+    }
+
+    /**
+     * @throws ApiException
+     */
+    public function testDefaultUserAgentIsSentWithRequests(): void
+    {
+        $stack = HandlerStack::create(new MockHandler([new Response(200, [], '{"data": {"id": 432}}')]));
+        $stack->push(Middleware::history($this->requests));
+        $client = new CurseForgeAPIClient(static::API_TOKEN, null, new Client(['handler' => $stack]));
+
+        $client->getGame(432);
+
+        $this->assertSame(CurseForgeAPIClient::getDefaultUserAgent(), $this->getRequest()->getHeaderLine("User-Agent"));
     }
 
     /**
