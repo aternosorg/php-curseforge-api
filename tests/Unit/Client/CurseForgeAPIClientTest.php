@@ -130,6 +130,52 @@ class CurseForgeAPIClientTest extends ClientTestCase
     }
 
     /**
+     * Clients created without an explicit configuration must not share one,
+     * otherwise setting the API token or user agent of one client would change it for all others.
+     *
+     * @throws ApiException
+     */
+    public function testClientsWithoutExplicitConfigurationDoNotShareOne(): void
+    {
+        $defaultConfiguration = Configuration::getDefaultConfiguration();
+        $defaultApiKey = $defaultConfiguration->getApiKey("x-api-key");
+        $defaultUserAgent = $defaultConfiguration->getUserAgent();
+
+        $firstHistory = [];
+        $secondHistory = [];
+        $first = new CurseForgeAPIClient("first-api-token", null, $this->createHttpClient($firstHistory));
+        $second = new CurseForgeAPIClient("second-api-token", null, $this->createHttpClient($secondHistory));
+        $first->setUserAgent("first-agent/1.0");
+
+        $first->getGame(432);
+        $second->getGame(432);
+
+        $this->assertSame("first-api-token", $firstHistory[0]['request']->getHeaderLine("x-api-key"));
+        $this->assertSame("first-agent/1.0", $firstHistory[0]['request']->getHeaderLine("User-Agent"));
+        $this->assertSame("second-api-token", $secondHistory[0]['request']->getHeaderLine("x-api-key"));
+        $this->assertSame(CurseForgeAPIClient::getDefaultUserAgent(), $secondHistory[0]['request']->getHeaderLine("User-Agent"));
+        $this->assertSame($defaultApiKey, $defaultConfiguration->getApiKey("x-api-key"));
+        $this->assertSame($defaultUserAgent, $defaultConfiguration->getUserAgent());
+    }
+
+    /**
+     * @throws ApiException
+     */
+    public function testExplicitConfigurationIsUsed(): void
+    {
+        $history = [];
+        $configuration = new Configuration();
+        $client = new CurseForgeAPIClient(static::API_TOKEN, $configuration, $this->createHttpClient($history));
+
+        $client->setUserAgent("custom-agent/1.0");
+        $client->getGame(432);
+
+        $this->assertSame(static::API_TOKEN, $configuration->getApiKey("x-api-key"));
+        $this->assertSame("custom-agent/1.0", $configuration->getUserAgent());
+        $this->assertSame("custom-agent/1.0", $history[0]['request']->getHeaderLine("User-Agent"));
+    }
+
+    /**
      * ObjectSerializer reads the boolean format from the default configuration,
      * so boolean query parameters must also be sent as strings if the client uses its own configuration.
      *
@@ -607,5 +653,18 @@ class CurseForgeAPIClientTest extends ClientTestCase
 
         $this->assertGetRequest("/v1/mods/420561/files/8946029/download-url");
         $this->assertSame("https://edge.forgecdn.net/files/8946/29/mclogs-neoforge-26.1-3.3.4.jar", $url);
+    }
+
+    /**
+     * Create an HTTP client that answers with a single game and records all requests in the given history
+     *
+     * @param array $history
+     * @return Client
+     */
+    protected function createHttpClient(array &$history): Client
+    {
+        $stack = HandlerStack::create(new MockHandler([new Response(200, [], '{"data": {"id": 432}}')]));
+        $stack->push(Middleware::history($history));
+        return new Client(['handler' => $stack]);
     }
 }
