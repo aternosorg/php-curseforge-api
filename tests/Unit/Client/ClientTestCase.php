@@ -3,7 +3,6 @@
 namespace Aternos\CurseForgeApi\Tests\Unit\Client;
 
 use Aternos\CurseForgeApi\Client\CurseForgeAPIClient;
-use Aternos\CurseForgeApi\Configuration;
 use GuzzleHttp\Client;
 use GuzzleHttp\Handler\MockHandler;
 use GuzzleHttp\HandlerStack;
@@ -37,7 +36,6 @@ abstract class ClientTestCase extends TestCase
      * Create a client that answers every request with one of the given responses, in order,
      * and records all requests in {@see $requests}.
      *
-     * The client gets its own configuration, because the default configuration is shared by all clients.
      * @param Response[] $responses
      * @return CurseForgeAPIClient
      */
@@ -45,7 +43,7 @@ abstract class ClientTestCase extends TestCase
     {
         $stack = HandlerStack::create(new MockHandler($responses));
         $stack->push(Middleware::history($this->requests));
-        return new CurseForgeAPIClient(static::API_TOKEN, new Configuration(), new Client(['handler' => $stack]));
+        return new CurseForgeAPIClient(static::API_TOKEN, null, new Client(['handler' => $stack]));
     }
 
     /**

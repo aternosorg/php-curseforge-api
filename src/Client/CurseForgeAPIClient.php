@@ -72,7 +72,7 @@ class CurseForgeAPIClient
     public function __construct(string $apiToken, ?Configuration $configuration = null, ?ClientInterface $httpClient = null)
     {
         $this->httpClient = $httpClient;
-        $this->configuration = $configuration ?? (Configuration::getDefaultConfiguration())
+        $this->configuration = $configuration ?? (new Configuration())
             ->setUserAgent(static::getDefaultUserAgent());
         $this->setApiToken($apiToken);
     }
