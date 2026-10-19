@@ -5,6 +5,8 @@ namespace Aternos\CurseForgeApi\Client;
 use Aternos\CurseForgeApi\ApiException;
 use Aternos\CurseForgeApi\Client\List\PaginatedFilesList;
 use Aternos\CurseForgeApi\Client\Options\ModFilesOptions;
+use Aternos\CurseForgeApi\Model\Category as CategoryModel;
+use Aternos\CurseForgeApi\Model\File as FileModel;
 use Aternos\CurseForgeApi\Model\Mod as ModModel;
 
 class Mod extends ModModel
@@ -63,17 +65,43 @@ class Mod extends ModModel
     }
 
     /**
+     * Get the categories of this mod
+     * @return Category[]|null
+     */
+    public function getCategories(): ?array
+    {
+        $categories = parent::getCategories();
+        if ($categories === null) {
+            return null;
+        }
+        return array_map(fn(CategoryModel $category) => new Category($this->client, $category), $categories);
+    }
+
+    /**
      * Get the primary category of this mod
      * @return Category|null
      */
     public function getPrimaryCategory(): ?Category
     {
-        foreach ($this->getCategories() as $category) {
+        foreach ($this->getCategories() ?? [] as $category) {
             if ($category->getId() === $this->getPrimaryCategoryId()) {
-                return new Category($this->client, $category);
+                return $category;
             }
         }
         return null;
+    }
+
+    /**
+     * Get the latest files of this mod
+     * @return File[]|null
+     */
+    public function getLatestFiles(): ?array
+    {
+        $files = parent::getLatestFiles();
+        if ($files === null) {
+            return null;
+        }
+        return array_map(fn(FileModel $file) => new File($this->client, $file), $files);
     }
 
     /**
