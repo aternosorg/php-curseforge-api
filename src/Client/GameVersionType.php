@@ -17,21 +17,23 @@ class GameVersionType extends GameVersionTypeModel
     }
 
     /**
-     * Get all versions of this type
+     * Fetch all versions of this type
+     * This sends a request to the CurseForge API every time it is called.
      * @return GameVersionsByTypeV2[]
      * @throws ApiException
      */
-    public function getVersions(): array
+    public function fetchVersions(): array
     {
         return $this->client->getGameVersionsByType($this->getGameId(), $this->getId());
     }
 
     /**
-     * Get the game of this type
+     * Fetch the game of this type
+     * This sends a request to the CurseForge API every time it is called.
      * @return Game
      * @throws ApiException
      */
-    public function getGame(): Game
+    public function fetchGame(): Game
     {
         return $this->client->getGame($this->getGameId());
     }

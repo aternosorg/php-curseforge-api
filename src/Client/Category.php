@@ -19,11 +19,12 @@ class Category extends CategoryModel
 
     /**
      * Search mods in this category
+     * This sends a request to the CurseForge API every time it is called.
      * @param ModSearchOptions|null $options
      * @return PaginatedModList
      * @throws ApiException
      */
-    public function getMods(?ModSearchOptions $options = null): PaginatedModList
+    public function fetchMods(?ModSearchOptions $options = null): PaginatedModList
     {
         if ($options === null) {
             $options = new ModSearchOptions($this->getGameId());
@@ -39,11 +40,12 @@ class Category extends CategoryModel
     }
 
     /**
-     * Get the game of this category
+     * Fetch the game of this category
+     * This sends a request to the CurseForge API every time it is called.
      * @return Game
      * @throws ApiException
      */
-    public function getGame(): Game
+    public function fetchGame(): Game
     {
         return $this->client->getGame($this->getGameId());
     }

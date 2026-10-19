@@ -100,10 +100,10 @@ class ClientTest extends TestCase
         $this->assertEquals(static::MINECRAFT_GAME_ID, $game->getId());
         $this->assertEquals("Minecraft", $game->getName());
 
-        $versions = $game->getVersions();
+        $versions = $game->fetchVersions();
         $this->assertNotEmpty($versions);
 
-        $categories = $game->getCategories();
+        $categories = $game->fetchCategories();
         $this->assertNotEmpty($categories);
     }
 
@@ -128,12 +128,12 @@ class ClientTest extends TestCase
         $game = $this->apiClient->getGame(static::MINECRAFT_GAME_ID);
         $this->assertEquals(static::MINECRAFT_GAME_ID, $game->getId());
         $this->assertEquals("Minecraft", $game->getName());
-        $types = $game->getVersionTypes();
+        $types = $game->fetchVersionTypes();
         $this->assertNotEmpty($types);
         foreach ($types as $type) {
-            $this->assertEquals($game, $type->getGame());
-            $gameVersions = $game->getGameVersionsByType($type->getId());
-            $this->assertEquals($gameVersions, $type->getVersions());
+            $this->assertEquals($game, $type->fetchGame());
+            $gameVersions = $game->fetchGameVersionsByType($type->getId());
+            $this->assertEquals($gameVersions, $type->fetchVersions());
         }
     }
 
@@ -149,9 +149,9 @@ class ClientTest extends TestCase
 
         for ($i = 0; $i < 3; $i++) {
             $category = $categories[$i];
-            $this->assertEquals(static::MINECRAFT_GAME_ID, $category->getGame()->getId());
+            $this->assertEquals(static::MINECRAFT_GAME_ID, $category->fetchGame()->getId());
 
-            $mods = $category->getMods();
+            $mods = $category->fetchMods();
             $this->assertNotEmpty($mods);
             foreach ($mods->getResults() as $mod) {
                 if ($category->getIsClass()) {
@@ -179,9 +179,9 @@ class ClientTest extends TestCase
 
         for ($i = 0; $i < 3; $i++) {
             $category = $categories[$i];
-            $this->assertEquals(static::MINECRAFT_GAME_ID, $category->getGame()->getId());
+            $this->assertEquals(static::MINECRAFT_GAME_ID, $category->fetchGame()->getId());
 
-            $mods = $category->getMods();
+            $mods = $category->fetchMods();
             $this->assertNotEmpty($mods);
             foreach ($mods->getResults() as $mod) {
                 if ($category->getIsClass()) {
@@ -308,9 +308,9 @@ class ClientTest extends TestCase
         $mod = $this->apiClient->getMod(static::MCLOGS_MOD_ID);
 
         $this->assertEquals(static::MCLOGS_MOD_ID, $mod->getId());
-        $this->assertEquals(static::MINECRAFT_GAME_ID, $mod->getGame()->getId());
+        $this->assertEquals(static::MINECRAFT_GAME_ID, $mod->fetchGame()->getId());
         $this->assertEquals(static::MCLOGS_PRIMARY_CATEGORY_ID, $mod->getPrimaryCategory()->getId());
-        $this->assertEquals(static::MODS_CATEGORY_ID, $mod->getCategoryClass()->getId());
+        $this->assertEquals(static::MODS_CATEGORY_ID, $mod->fetchCategoryClass()->getId());
     }
 
     /**
@@ -336,7 +336,7 @@ class ClientTest extends TestCase
     public function testGetFeaturedMods()
     {
         $game = $this->apiClient->getGame(static::MINECRAFT_GAME_ID);
-        $featured = $game->getFeaturedMods();
+        $featured = $game->fetchFeaturedMods();
 
         $this->assertNotEmpty($featured->getFeatured());
         $this->assertNotEmpty($featured->getRecentlyUpdated());
@@ -351,7 +351,7 @@ class ClientTest extends TestCase
     public function testGetModDescription()
     {
         $mod = $this->apiClient->getMod(static::MCLOGS_MOD_ID);
-        $description = $mod->getDescription();
+        $description = $mod->fetchDescription();
         $this->assertNotNull($description);
         $this->assertNotEmpty($description);
     }
@@ -365,18 +365,18 @@ class ClientTest extends TestCase
     {
         $mod = $this->apiClient->getMod(static::MCLOGS_MOD_ID);
 
-        $file = $mod->getMainFile();
+        $file = $mod->fetchMainFile();
 
 
-        $this->assertEquals($mod, $file->getMod());
+        $this->assertEquals($mod, $file->fetchMod());
 
         $this->assertEquals($mod->getMainFileId(), $file->getId());
-        $this->assertNotNull($file->getChangelog());
+        $this->assertNotNull($file->fetchChangelog());
 
         $this->assertTrue($mod->getAllowModDistribution());
         $this->assertNotEmpty($this->apiClient->getModFileDownloadURL($mod->getId(), $file->getId()));
 
-        $this->assertNull($file->getServerPack());
+        $this->assertNull($file->fetchServerPack());
     }
 
     /**
@@ -388,7 +388,7 @@ class ClientTest extends TestCase
     {
         $mod = $this->apiClient->getMod(static::MCLOGS_MOD_ID);
 
-        $fileIds = array_map(fn($file) => $file->getId(), $mod->getFiles()->getResults());
+        $fileIds = array_map(fn($file) => $file->getId(), $mod->fetchFiles()->getResults());
         $this->assertNotEmpty($fileIds);
         $files = $this->apiClient->getFiles($fileIds);
         $this->assertSameSize($fileIds, $files);
