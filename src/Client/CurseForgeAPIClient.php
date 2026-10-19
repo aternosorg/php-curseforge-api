@@ -255,7 +255,7 @@ class CurseForgeAPIClient
     public function getCategory(int $gameId, int $categoryId): ?Category
     {
         foreach ($this->getCategories($gameId) as $category) {
-            if ($category->getData()->getId() === $categoryId) {
+            if ($category->getId() === $categoryId) {
                 return $category;
             }
         }

@@ -39,20 +39,20 @@ $games = $client->getGames();
 
 foreach ($games as $game) {
     // like most other methods, this method returns a wrapper
-    // you can use the getData() method to get the game data
-    echo $game->getData()->getName() . PHP_EOL;
+    // wrappers extend the generated models, so all getters can be used directly
+    echo $game->getName() . PHP_EOL;
 }
 
 $games = $games->getNextPage();
 
 foreach ($games as $game) {
-    echo $game->getData()->getName() . PHP_EOL;
+    echo $game->getName() . PHP_EOL;
 }
 ```
 You can also call `getGame` with the ID of a game to get a specific game. For example, 432 is the ID for Minecraft.
 ```php
 $game = $client->getGame(432);
-echo $game->getData()->getSlug() . PHP_EOL;
+echo $game->getSlug() . PHP_EOL;
 ```
 
 ### Game Versions
@@ -146,7 +146,7 @@ $files = $mod->getFiles();
 ```
 It optionally takes a ModFilesOptions object as a parameter:
 ```php
-$options = new ModFilesOptions($mod->getData()->getId());
+$options = new ModFilesOptions($mod->getId());
 $options->setGameVersion("1.19.2");
 
 use \Aternos\CurseForgeApi\Client\Options\ModSearch\ModLoaderType;
@@ -173,7 +173,7 @@ Note that the bulk endpoint doesn't require a mod id.
 #### File Download URLs
 You can get the download URL for a file like this:
 ```php
-$url = $file->getData()->getDownloadUrl();
+$url = $file->getDownloadUrl();
 // or if you don't already have the file object
 $url = $client->getModFileDownloadUrl(420561, 3787455);
 ```

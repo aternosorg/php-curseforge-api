@@ -7,13 +7,14 @@ use Aternos\CurseForgeApi\Client\List\PaginatedFilesList;
 use Aternos\CurseForgeApi\Client\Options\ModFilesOptions;
 use Aternos\CurseForgeApi\Model\Mod as ModModel;
 
-class Mod
+class Mod extends ModModel
 {
     public function __construct(
         protected CurseForgeAPIClient $client,
-        protected ModModel            $mod,
+        ModModel $data
     )
     {
+        parent::__construct($data->container);
     }
 
     /**
@@ -27,11 +28,12 @@ class Mod
     }
 
     /**
+     * @deprecated The mod extends the generated model now, so its getters can be used directly.
      * @return ModModel
      */
     public function getData(): ModModel
     {
-        return $this->mod;
+        return $this;
     }
 
     /**
@@ -42,7 +44,7 @@ class Mod
      */
     public function getDescription(?string $lang = null): ?string
     {
-        return $this->client->getModDescription($this->mod->getId(), $lang);
+        return $this->client->getModDescription($this->getId(), $lang);
     }
 
     /**
@@ -53,7 +55,7 @@ class Mod
      */
     public function getFiles(?ModFilesOptions $options = null): PaginatedFilesList
     {
-        return $this->client->getModFiles($options ?? new ModFilesOptions($this->mod->getId()));
+        return $this->client->getModFiles($options ?? new ModFilesOptions($this->getId()));
     }
 
     /**
@@ -63,7 +65,7 @@ class Mod
      */
     public function getGame(): Game
     {
-        return $this->client->getGame($this->mod->getGameId());
+        return $this->client->getGame($this->getGameId());
     }
 
     /**
@@ -72,8 +74,8 @@ class Mod
      */
     public function getPrimaryCategory(): ?Category
     {
-        foreach ($this->mod->getCategories() as $category) {
-            if ($category->getId() === $this->mod->getPrimaryCategoryId()) {
+        foreach ($this->getCategories() as $category) {
+            if ($category->getId() === $this->getPrimaryCategoryId()) {
                 return new Category($this->client, $category);
             }
         }
@@ -87,7 +89,7 @@ class Mod
      */
     public function getCategoryClass(): Category
     {
-        return $this->client->getCategory($this->mod->getGameId(), $this->mod->getClassId());
+        return $this->client->getCategory($this->getGameId(), $this->getClassId());
     }
 
     /**
@@ -97,7 +99,7 @@ class Mod
      */
     public function getMainFile(): File
     {
-        return $this->getFile($this->mod->getMainFileId());
+        return $this->getFile($this->getMainFileId());
     }
 
     /**
@@ -107,6 +109,6 @@ class Mod
      */
     public function getFile(int $fileId): File
     {
-        return $this->client->getModFile($this->mod->getId(), $fileId);
+        return $this->client->getModFile($this->getId(), $fileId);
     }
 }
