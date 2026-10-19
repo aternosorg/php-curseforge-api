@@ -171,6 +171,14 @@ $files = $client->getModFiles($options);
 ```
 In this case the options are not optional as the mod id is required.
 
+The latest files and the categories of a mod are included in the mod, so no request is needed.
+They are returned as `File` and `Category` wrappers:
+```php
+$latestFiles = $mod->getLatestFiles();
+$categories = $mod->getCategories();
+$primaryCategory = $mod->getPrimaryCategory();
+```
+
 Just like with mods, you can fetch files individually or in bulk:
 ```php
 $file = $client->getModFile(420561, 3787455);

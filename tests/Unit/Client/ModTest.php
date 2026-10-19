@@ -139,4 +139,63 @@ class ModTest extends ClientTestCase
         $this->assertSame(435, $category->getId());
         $this->assertRequestCount(0);
     }
+
+    /**
+     * @throws ApiException
+     */
+    public function testGetCategoriesReturnsWrappers(): void
+    {
+        $client = $this->createClient([
+            new Response(200, [], file_get_contents(__DIR__ . "/Fixtures/getMod.json")),
+            new Response(200, [], file_get_contents(__DIR__ . "/Fixtures/getGame.json")),
+        ]);
+        $mod = $client->getMod(420561);
+
+        $categories = $mod->getCategories();
+
+        $this->assertCount(1, $categories);
+        $this->assertContainsOnlyInstancesOf(Category::class, $categories);
+        $this->assertSame(435, $categories[0]->getId());
+        $this->assertRequestCount(1);
+
+        $categories[0]->fetchGame();
+        $this->assertGetRequest("/v1/games/432", [], 1);
+    }
+
+    public function testGetCategoriesWithoutCategoriesReturnsNull(): void
+    {
+        $mod = new Mod($this->createClient(), new ModModel(["id" => 420561]));
+
+        $this->assertNull($mod->getCategories());
+        $this->assertNull($mod->getPrimaryCategory());
+    }
+
+    /**
+     * @throws ApiException
+     */
+    public function testGetLatestFilesReturnsWrappers(): void
+    {
+        $client = $this->createClient([
+            new Response(200, [], file_get_contents(__DIR__ . "/Fixtures/getMod.json")),
+            new Response(200, [], file_get_contents(__DIR__ . "/Fixtures/getMod.json")),
+        ]);
+        $mod = $client->getMod(420561);
+
+        $files = $mod->getLatestFiles();
+
+        $this->assertCount(2, $files);
+        $this->assertContainsOnlyInstancesOf(File::class, $files);
+        $this->assertSame([3553911, 6235017], array_map(fn(File $file) => $file->getId(), $files));
+        $this->assertRequestCount(1);
+
+        $files[0]->fetchMod();
+        $this->assertGetRequest("/v1/mods/420561", [], 1);
+    }
+
+    public function testGetLatestFilesWithoutFilesReturnsNull(): void
+    {
+        $mod = new Mod($this->createClient(), new ModModel(["id" => 420561]));
+
+        $this->assertNull($mod->getLatestFiles());
+    }
 }

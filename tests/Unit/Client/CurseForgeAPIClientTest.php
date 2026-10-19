@@ -457,6 +457,10 @@ class CurseForgeAPIClientTest extends ClientTestCase
         $this->assertSame(420561, $json["id"]);
         $this->assertSame("mclo-gs", $json["slug"]);
         $this->assertArrayNotHasKey("client", $json);
+        $this->assertSame(435, $json["categories"][0]["id"]);
+        $this->assertArrayNotHasKey("client", $json["categories"][0]);
+        $this->assertSame(3553911, $json["latestFiles"][0]["id"]);
+        $this->assertArrayNotHasKey("client", $json["latestFiles"][0]);
     }
 
     /**
