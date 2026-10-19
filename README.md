@@ -6,6 +6,10 @@ around it to improve the usability.
 The generated code can be found in `src/Api` and `src/Model`. It is recommended to use the
 wrappers in `src/Client` instead of the generated code.
 
+## Requirements
+- PHP 8.4 or newer
+- PHP extensions: curl, json, mbstring
+
 ## Installation
 Install the package via composer:
 ```bash
