@@ -31,6 +31,11 @@ $client->setUserAgent("my-app/1.0.0 (contact@example.com)");
 **You need an API key to use this client.** If you're a third party you can read more
 about how to get one [here](https://support.curseforge.com/en/support/solutions/articles/9000208346).
 
+## Wrappers
+Most methods return wrappers like `Game`, `Mod` or `File`. They extend the generated models in `src/Model`,
+so all getters of the models can be used directly, e.g. `$mod->getName()`.
+Methods of the wrappers that send a request to the API start with `fetch`, e.g. `$mod->fetchFiles()`.
+
 ## Paginated Lists
 Most methods return a paginated list containing a list of results on the current page and methods to
 navigate to the next and previous page. The paginated list implements `Iterator`, `ArrayAccess` and `Countable` so
@@ -64,16 +69,16 @@ A game contains various different version types, you can fetch them like this:
 ```php
 $versionTypes = $client->getGameVersionTypes(432);
 // or
-$versionTypes = $game->getVersionTypes();
+$versionTypes = $game->fetchVersionTypes();
 ```
 Since this endpoint isn't paginated, it returns an array instead of a paginated list.
 
 You can also fetch the versions of a specific version type:
 ```php
-$versions = $client->getGameVersionTypeVersions(432, 68441);
+$versions = $client->getGameVersionsByType(432, 68441);
 // or
 $versionType = $versionTypes[0];
-$versions = $versionType->getVersions();
+$versions = $versionType->fetchVersions();
 ```
 For example: 68441 is the mod loader selection for Minecraft.
 
@@ -81,7 +86,7 @@ You can also get all versions for all version types of a game:
 ```php
 $versions = $client->getGameVersions(432);
 // or
-$versions = $game->getVersions();
+$versions = $game->fetchVersions();
 ```
 
 ### Game Categories
@@ -91,7 +96,7 @@ You can fetch them like this:
 ```php
 $categoryClasses = $client->getCategories(432);
 // or
-$categoryClasses = $game->getCategories();
+$categoryClasses = $game->fetchCategories();
 ```
 Note that this will return both, category classes AND categories.
 
@@ -99,14 +104,14 @@ If you want to get only the category classes you can set the parameter `onlyClas
 ```php
 $categoryClasses = $client->getCategories(432, null, true);
 // or
-$categoryClasses = $game->getCategories(null, true);
+$categoryClasses = $game->fetchCategories(null, true);
 ```
 
 You can fetch categories in a class using the parameter `classId`:
 ```php
 $categories = $client->getCategories(432, 6);
 // or
-$categories = $game->getCategories(6);
+$categories = $game->fetchCategories(6);
 ```
 
 ## Mods
@@ -122,7 +127,7 @@ You can also get a list of featured mods for a game:
 ```php
 $mods = $client->getFeaturedMods(432);
 // or
-$mods = $game->getFeaturedMods();
+$mods = $game->fetchFeaturedMods();
 
 $featured = $mods->getFeatured();
 $popular = $mods->getPopular();
@@ -140,13 +145,13 @@ $mods = $client->getMods([420561, 278568, 715033]);
 
 You can also fetch the HTML for mod descriptions:
 ```php
-$description = $mod->getDescription();
+$description = $mod->fetchDescription();
 ```
 
 ### Mod Files
-To fetch mod files use the method `getFiles()`:
+To fetch mod files use the method `fetchFiles()`:
 ```php
-$files = $mod->getFiles();
+$files = $mod->fetchFiles();
 ```
 It optionally takes a ModFilesOptions object as a parameter:
 ```php

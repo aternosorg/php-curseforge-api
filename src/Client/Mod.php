@@ -29,32 +29,35 @@ class Mod extends ModModel
 
     /**
      * Fetch the description of this mod as html
+     * This sends a request to the CurseForge API every time it is called.
      * @param string|null $lang
      * @return string|null
      * @throws ApiException
      */
-    public function getDescription(?string $lang = null): ?string
+    public function fetchDescription(?string $lang = null): ?string
     {
         return $this->client->getModDescription($this->getId(), $lang);
     }
 
     /**
-     * Get the files of this mod
+     * Fetch the files of this mod
+     * This sends a request to the CurseForge API every time it is called.
      * @param ModFilesOptions|null $options
      * @return PaginatedFilesList
      * @throws ApiException
      */
-    public function getFiles(?ModFilesOptions $options = null): PaginatedFilesList
+    public function fetchFiles(?ModFilesOptions $options = null): PaginatedFilesList
     {
         return $this->client->getModFiles($options ?? new ModFilesOptions($this->getId()));
     }
 
     /**
-     * Get game this mod belongs to
+     * Fetch the game this mod belongs to
+     * This sends a request to the CurseForge API every time it is called.
      * @return Game
      * @throws ApiException
      */
-    public function getGame(): Game
+    public function fetchGame(): Game
     {
         return $this->client->getGame($this->getGameId());
     }
@@ -74,31 +77,35 @@ class Mod extends ModModel
     }
 
     /**
-     * Get the category class of this mod
+     * Fetch the category class of this mod
+     * This sends a request to the CurseForge API every time it is called.
      * @return Category
      * @throws ApiException
      */
-    public function getCategoryClass(): Category
+    public function fetchCategoryClass(): Category
     {
         return $this->client->getCategory($this->getGameId(), $this->getClassId());
     }
 
     /**
-     * Get the main file of this mod
+     * Fetch the main file of this mod
+     * This sends a request to the CurseForge API every time it is called.
      * @return File
      * @throws ApiException
      */
-    public function getMainFile(): File
+    public function fetchMainFile(): File
     {
-        return $this->getFile($this->getMainFileId());
+        return $this->fetchFile($this->getMainFileId());
     }
 
     /**
+     * Fetch a file of this mod
+     * This sends a request to the CurseForge API every time it is called.
      * @param int $fileId
      * @return File
      * @throws ApiException
      */
-    public function getFile(int $fileId): File
+    public function fetchFile(int $fileId): File
     {
         return $this->client->getModFile($this->getId(), $fileId);
     }
