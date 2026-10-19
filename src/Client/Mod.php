@@ -28,15 +28,6 @@ class Mod extends ModModel
     }
 
     /**
-     * @deprecated The mod extends the generated model now, so its getters can be used directly.
-     * @return ModModel
-     */
-    public function getData(): ModModel
-    {
-        return $this;
-    }
-
-    /**
      * Fetch the description of this mod as html
      * @param string|null $lang
      * @return string|null

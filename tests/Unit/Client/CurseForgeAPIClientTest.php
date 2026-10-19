@@ -188,7 +188,6 @@ class CurseForgeAPIClientTest extends ClientTestCase
 
         $this->assertGetRequest("/v1/games/432");
         $this->assertInstanceOf(GameModel::class, $game);
-        $this->assertSame($game, $game->getData());
         $this->assertSame(432, $game->getId());
         $this->assertSame("Minecraft", $game->getName());
     }
@@ -206,7 +205,6 @@ class CurseForgeAPIClientTest extends ClientTestCase
         $this->assertCount(3, $versionTypes);
         $this->assertContainsOnlyInstancesOf(GameVersionType::class, $versionTypes);
         $this->assertInstanceOf(GameVersionTypeModel::class, $versionTypes[0]);
-        $this->assertSame($versionTypes[0], $versionTypes[0]->getData());
         $this->assertSame("Minecraft 1.1", $versionTypes[0]->getName());
     }
 
@@ -288,7 +286,6 @@ class CurseForgeAPIClientTest extends ClientTestCase
 
         $this->assertGetRequest("/v1/categories", ["gameId" => "432"]);
         $this->assertInstanceOf(CategoryModel::class, $category);
-        $this->assertSame($category, $category->getData());
         $this->assertSame("Server Utility", $category->getName());
     }
 
@@ -392,7 +389,6 @@ class CurseForgeAPIClientTest extends ClientTestCase
 
         $this->assertGetRequest("/v1/mods/420561");
         $this->assertInstanceOf(ModModel::class, $mod);
-        $this->assertSame($mod, $mod->getData());
         $this->assertSame(420561, $mod->getId());
         $this->assertSame("mclo-gs", $mod->getSlug());
         $this->assertSame("Mclogs - mclo.gs", $mod->getName());
@@ -578,7 +574,6 @@ class CurseForgeAPIClientTest extends ClientTestCase
 
         $this->assertGetRequest("/v1/mods/420561/files/8946029");
         $this->assertInstanceOf(FileModel::class, $file);
-        $this->assertSame($file, $file->getData());
         $this->assertSame(8946029, $file->getId());
         $this->assertSame(420561, $file->getModId());
         $this->assertSame("mclogs-integration 3.3.4", $file->getDisplayName());

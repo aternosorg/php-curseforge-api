@@ -18,15 +18,6 @@ class Category extends CategoryModel
     }
 
     /**
-     * @deprecated The category extends the generated model now, so its getters can be used directly.
-     * @return CategoryModel
-     */
-    public function getData(): CategoryModel
-    {
-        return $this;
-    }
-
-    /**
      * Search mods in this category
      * @param ModSearchOptions|null $options
      * @return PaginatedModList

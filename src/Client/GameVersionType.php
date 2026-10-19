@@ -17,15 +17,6 @@ class GameVersionType extends GameVersionTypeModel
     }
 
     /**
-     * @deprecated The game version type extends the generated model now, so its getters can be used directly.
-     * @return GameVersionTypeModel
-     */
-    public function getData(): GameVersionTypeModel
-    {
-        return $this;
-    }
-
-    /**
      * Get all versions of this type
      * @return GameVersionsByTypeV2[]
      * @throws ApiException

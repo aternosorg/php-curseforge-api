@@ -24,15 +24,6 @@ class Game extends GameModel
     }
 
     /**
-     * @deprecated The game extends the generated model now, so its getters can be used directly.
-     * @return GameModel
-     */
-    public function getData(): GameModel
-    {
-        return $this;
-    }
-
-    /**
      * Get all version types for this game
      * @return GameVersionType[]
      * @throws ApiException

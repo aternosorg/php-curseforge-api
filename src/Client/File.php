@@ -16,15 +16,6 @@ class File extends FileModel
     }
 
     /**
-     * @deprecated The file extends the generated model now, so its getters can be used directly.
-     * @return FileModel
-     */
-    public function getData(): FileModel
-    {
-        return $this;
-    }
-
-    /**
      * Get the server pack file for this version (if it exists)
      * @return File|null
      * @throws ApiException
