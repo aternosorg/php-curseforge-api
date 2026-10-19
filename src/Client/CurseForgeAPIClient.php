@@ -78,7 +78,7 @@ class CurseForgeAPIClient
     }
 
     /**
-     * Get the installed version of this library, e.g. "3.1.0" or "dev-master"
+     * Get the installed version of this library, e.g. "4.0.0" or "dev-master"
      * Returns "unknown" if the version cannot be determined, e.g. if the library was not installed using composer.
      * @return string
      */
@@ -92,7 +92,7 @@ class CurseForgeAPIClient
     }
 
     /**
-     * Get the user agent that identifies this library, e.g. "aternos/php-curseforge-api/3.1.0"
+     * Get the user agent that identifies this library, e.g. "aternos/php-curseforge-api/4.0.0"
      * It is used unless a different user agent is set with {@see setUserAgent()}.
      * @return string
      */
