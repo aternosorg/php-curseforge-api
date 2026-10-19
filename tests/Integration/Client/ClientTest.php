@@ -74,7 +74,7 @@ class ClientTest extends TestCase
 
         $firstGameOfPage = [];
         while ($games->hasNextPage()) {
-            $firstGameOfPage[] = $games->getResults()[0]->getData()->getId();
+            $firstGameOfPage[] = $games->getResults()[0]->getId();
             $games = $games->getNextPage();
         }
         $this->assertTrue($games->hasPreviousPage());
@@ -82,7 +82,7 @@ class ClientTest extends TestCase
 
         while ($games->hasPreviousPage()) {
             $games = $games->getPreviousPage();
-            $this->assertEquals($firstGameOfPage[array_key_last($firstGameOfPage)], $games->getResults()[0]->getData()->getId());
+            $this->assertEquals($firstGameOfPage[array_key_last($firstGameOfPage)], $games->getResults()[0]->getId());
             array_pop($firstGameOfPage);
         }
         $this->assertFalse($games->hasPreviousPage());
@@ -97,8 +97,8 @@ class ClientTest extends TestCase
     public function testGetGame()
     {
         $game = $this->apiClient->getGame(static::MINECRAFT_GAME_ID);
-        $this->assertEquals(static::MINECRAFT_GAME_ID, $game->getData()->getId());
-        $this->assertEquals("Minecraft", $game->getData()->getName());
+        $this->assertEquals(static::MINECRAFT_GAME_ID, $game->getId());
+        $this->assertEquals("Minecraft", $game->getName());
 
         $versions = $game->getVersions();
         $this->assertNotEmpty($versions);
@@ -126,13 +126,13 @@ class ClientTest extends TestCase
     public function testGetGameVersionTypes()
     {
         $game = $this->apiClient->getGame(static::MINECRAFT_GAME_ID);
-        $this->assertEquals(static::MINECRAFT_GAME_ID, $game->getData()->getId());
-        $this->assertEquals("Minecraft", $game->getData()->getName());
+        $this->assertEquals(static::MINECRAFT_GAME_ID, $game->getId());
+        $this->assertEquals("Minecraft", $game->getName());
         $types = $game->getVersionTypes();
         $this->assertNotEmpty($types);
         foreach ($types as $type) {
             $this->assertEquals($game, $type->getGame());
-            $gameVersions = $game->getGameVersionsByType($type->getData()->getId());
+            $gameVersions = $game->getGameVersionsByType($type->getId());
             $this->assertEquals($gameVersions, $type->getVersions());
         }
     }
@@ -149,16 +149,16 @@ class ClientTest extends TestCase
 
         for ($i = 0; $i < 3; $i++) {
             $category = $categories[$i];
-            $this->assertEquals(static::MINECRAFT_GAME_ID, $category->getGame()->getData()->getId());
+            $this->assertEquals(static::MINECRAFT_GAME_ID, $category->getGame()->getId());
 
             $mods = $category->getMods();
             $this->assertNotEmpty($mods);
             foreach ($mods->getResults() as $mod) {
-                if ($category->getData()->getIsClass()) {
-                    $this->assertEquals($category->getData()->getId(), $mod->getData()->getClassId());
+                if ($category->getIsClass()) {
+                    $this->assertEquals($category->getId(), $mod->getClassId());
                 } else {
-                    $this->assertContains($category->getData()->getId(),
-                        array_map(fn($category) => $category->getId(), $mod->getData()->getCategories()));
+                    $this->assertContains($category->getId(),
+                        array_map(fn($category) => $category->getId(), $mod->getCategories()));
                 }
             }
         }
@@ -174,21 +174,21 @@ class ClientTest extends TestCase
         $categories = $this->apiClient->getCategories(static::MINECRAFT_GAME_ID, null, true);
         $this->assertNotEmpty($categories);
         foreach ($categories as $category) {
-            $this->assertTrue($category->getData()->getIsClass());
+            $this->assertTrue($category->getIsClass());
         }
 
         for ($i = 0; $i < 3; $i++) {
             $category = $categories[$i];
-            $this->assertEquals(static::MINECRAFT_GAME_ID, $category->getGame()->getData()->getId());
+            $this->assertEquals(static::MINECRAFT_GAME_ID, $category->getGame()->getId());
 
             $mods = $category->getMods();
             $this->assertNotEmpty($mods);
             foreach ($mods->getResults() as $mod) {
-                if ($category->getData()->getIsClass()) {
-                    $this->assertEquals($category->getData()->getId(), $mod->getData()->getClassId());
+                if ($category->getIsClass()) {
+                    $this->assertEquals($category->getId(), $mod->getClassId());
                 } else {
-                    $this->assertContains($category->getData()->getId(),
-                        array_map(fn($category) => $category->getId(), $mod->getData()->getCategories()));
+                    $this->assertContains($category->getId(),
+                        array_map(fn($category) => $category->getId(), $mod->getCategories()));
                 }
             }
         }
@@ -199,7 +199,7 @@ class ClientTest extends TestCase
         $category = $this->apiClient->getCategory(static::MINECRAFT_GAME_ID, static::MCLOGS_PRIMARY_CATEGORY_ID);
         $this->assertNotNull($category);
 
-        $this->assertEquals(static::MCLOGS_PRIMARY_CATEGORY_ID, $category->getData()->getId());
+        $this->assertEquals(static::MCLOGS_PRIMARY_CATEGORY_ID, $category->getId());
 
         $category = $this->apiClient->getCategory(static::MINECRAFT_GAME_ID, -1);
         $this->assertNull($category);
@@ -215,8 +215,8 @@ class ClientTest extends TestCase
         $categories = $this->apiClient->getCategories(static::MINECRAFT_GAME_ID, static::MODS_CATEGORY_ID);
         $this->assertNotEmpty($categories);
         foreach ($categories as $category) {
-            $this->assertNotTrue($category->getData()->getIsClass());
-            $this->assertEquals(static::MODS_CATEGORY_ID, $category->getData()->getClassId());
+            $this->assertNotTrue($category->getIsClass());
+            $this->assertEquals(static::MODS_CATEGORY_ID, $category->getClassId());
         }
     }
 
@@ -231,21 +231,21 @@ class ClientTest extends TestCase
         $mods = $this->apiClient->searchMods($options);
         $this->assertNotEmpty($mods);
         foreach ($mods as $mod) {
-            $this->assertEquals(static::MINECRAFT_GAME_ID, $mod->getData()->getGameId());
+            $this->assertEquals(static::MINECRAFT_GAME_ID, $mod->getGameId());
         }
 
         $this->assertNull($mods->getPreviousPage());
 
         $mods = $mods->getNextPage();
         foreach ($mods as $mod) {
-            $this->assertEquals(static::MINECRAFT_GAME_ID, $mod->getData()->getGameId());
+            $this->assertEquals(static::MINECRAFT_GAME_ID, $mod->getGameId());
         }
 
         $game = $this->apiClient->getGame(static::MINECRAFT_GAME_ID);
         $mods = $game->searchMods();
         $this->assertNotEmpty($mods);
         foreach ($mods as $mod) {
-            $this->assertEquals(static::MINECRAFT_GAME_ID, $mod->getData()->getGameId());
+            $this->assertEquals(static::MINECRAFT_GAME_ID, $mod->getGameId());
         }
     }
 
@@ -270,7 +270,7 @@ class ClientTest extends TestCase
         $mods = $this->apiClient->searchMods($options);
         $this->assertNotEmpty($mods);
         foreach ($mods as $mod) {
-            $this->assertEquals(static::MINECRAFT_GAME_ID, $mod->getData()->getGameId());
+            $this->assertEquals(static::MINECRAFT_GAME_ID, $mod->getGameId());
         }
 
         $this->assertTrue($mods->hasNextPage());
@@ -293,8 +293,8 @@ class ClientTest extends TestCase
         $mods = $this->apiClient->searchMods($options);
         $this->assertNotEmpty($mods);
         foreach ($mods as $mod) {
-            $this->assertEquals(static::MINECRAFT_GAME_ID, $mod->getData()->getGameId());
-            $this->assertEquals(static::MODS_CATEGORY_ID, $mod->getData()->getClassId());
+            $this->assertEquals(static::MINECRAFT_GAME_ID, $mod->getGameId());
+            $this->assertEquals(static::MODS_CATEGORY_ID, $mod->getClassId());
         }
     }
 
@@ -307,10 +307,10 @@ class ClientTest extends TestCase
     {
         $mod = $this->apiClient->getMod(static::MCLOGS_MOD_ID);
 
-        $this->assertEquals(static::MCLOGS_MOD_ID, $mod->getData()->getId());
-        $this->assertEquals(static::MINECRAFT_GAME_ID, $mod->getGame()->getData()->getId());
-        $this->assertEquals(static::MCLOGS_PRIMARY_CATEGORY_ID, $mod->getPrimaryCategory()->getData()->getId());
-        $this->assertEquals(static::MODS_CATEGORY_ID, $mod->getCategoryClass()->getData()->getId());
+        $this->assertEquals(static::MCLOGS_MOD_ID, $mod->getId());
+        $this->assertEquals(static::MINECRAFT_GAME_ID, $mod->getGame()->getId());
+        $this->assertEquals(static::MCLOGS_PRIMARY_CATEGORY_ID, $mod->getPrimaryCategory()->getId());
+        $this->assertEquals(static::MODS_CATEGORY_ID, $mod->getCategoryClass()->getId());
     }
 
     /**
@@ -324,7 +324,7 @@ class ClientTest extends TestCase
         $mods = $this->apiClient->getMods($ids);
         $this->assertSameSize($ids, $mods);
         foreach ($ids as $id) {
-            $this->assertNotEmpty(array_filter($mods, fn($mod) => $mod->getData()->getId() === $id));
+            $this->assertNotEmpty(array_filter($mods, fn($mod) => $mod->getId() === $id));
         }
     }
 
@@ -370,11 +370,11 @@ class ClientTest extends TestCase
 
         $this->assertEquals($mod, $file->getMod());
 
-        $this->assertEquals($mod->getData()->getMainFileId(), $file->getData()->getId());
+        $this->assertEquals($mod->getMainFileId(), $file->getId());
         $this->assertNotNull($file->getChangelog());
 
-        $this->assertTrue($mod->getData()->getAllowModDistribution());
-        $this->assertNotEmpty($this->apiClient->getModFileDownloadURL($mod->getData()->getId(), $file->getData()->getId()));
+        $this->assertTrue($mod->getAllowModDistribution());
+        $this->assertNotEmpty($this->apiClient->getModFileDownloadURL($mod->getId(), $file->getId()));
 
         $this->assertNull($file->getServerPack());
     }
@@ -388,12 +388,12 @@ class ClientTest extends TestCase
     {
         $mod = $this->apiClient->getMod(static::MCLOGS_MOD_ID);
 
-        $fileIds = array_map(fn($file) => $file->getData()->getId(), $mod->getFiles()->getResults());
+        $fileIds = array_map(fn($file) => $file->getId(), $mod->getFiles()->getResults());
         $this->assertNotEmpty($fileIds);
         $files = $this->apiClient->getFiles($fileIds);
         $this->assertSameSize($fileIds, $files);
         foreach ($fileIds as $id) {
-            $this->assertNotEmpty(array_filter($files, fn($file) => $file->getData()->getId() === $id));
+            $this->assertNotEmpty(array_filter($files, fn($file) => $file->getId() === $id));
         }
     }
 

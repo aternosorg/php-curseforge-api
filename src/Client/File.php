@@ -5,21 +5,14 @@ namespace Aternos\CurseForgeApi\Client;
 use Aternos\CurseForgeApi\ApiException;
 use Aternos\CurseForgeApi\Model\File as FileModel;
 
-class File
+class File extends FileModel
 {
     public function __construct(
         protected CurseForgeAPIClient $client,
-        protected FileModel $file,
+        FileModel $data
     )
     {
-    }
-
-    /**
-     * @return FileModel
-     */
-    public function getData(): FileModel
-    {
-        return $this->file;
+        parent::__construct($data->container);
     }
 
     /**
@@ -29,11 +22,11 @@ class File
      */
     public function getServerPack(): ?File
     {
-        if (!$this->file->getServerPackFileId()) {
+        if (!$this->getServerPackFileId()) {
             return null;
         }
 
-        return $this->client->getModFile($this->file->getModId(), $this->file->getServerPackFileId());
+        return $this->client->getModFile($this->getModId(), $this->getServerPackFileId());
     }
 
     /**
@@ -46,7 +39,7 @@ class File
      */
     public function getChangelog(?bool $raw = null, ?bool $stripped = null, ?bool $markup = null): string
     {
-        return $this->client->getModFileChangelog($this->file->getModId(), $this->file->getId(), $raw, $stripped, $markup);
+        return $this->client->getModFileChangelog($this->getModId(), $this->getId(), $raw, $stripped, $markup);
     }
 
     /**
@@ -56,6 +49,6 @@ class File
      */
     public function getMod(): Mod
     {
-        return $this->client->getMod($this->file->getModId());
+        return $this->client->getMod($this->getModId());
     }
 }

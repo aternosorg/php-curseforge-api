@@ -6,21 +6,14 @@ use Aternos\CurseForgeApi\ApiException;
 use Aternos\CurseForgeApi\Model\GameVersionsByTypeV2;
 use Aternos\CurseForgeApi\Model\GameVersionType as GameVersionTypeModel;
 
-class GameVersionType
+class GameVersionType extends GameVersionTypeModel
 {
     public function __construct(
         protected CurseForgeAPIClient $client,
-        protected GameVersionTypeModel $gameVersion,
+        GameVersionTypeModel $data
     )
     {
-    }
-
-    /**
-     * @return GameVersionTypeModel
-     */
-    public function getData(): GameVersionTypeModel
-    {
-        return $this->gameVersion;
+        parent::__construct($data->container);
     }
 
     /**
@@ -30,7 +23,7 @@ class GameVersionType
      */
     public function getVersions(): array
     {
-        return $this->client->getGameVersionsByType($this->gameVersion->getGameId(), $this->gameVersion->getId());
+        return $this->client->getGameVersionsByType($this->getGameId(), $this->getId());
     }
 
     /**
@@ -40,6 +33,6 @@ class GameVersionType
      */
     public function getGame(): Game
     {
-        return $this->client->getGame($this->gameVersion->getGameId());
+        return $this->client->getGame($this->getGameId());
     }
 }

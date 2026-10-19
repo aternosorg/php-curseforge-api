@@ -7,21 +7,14 @@ use Aternos\CurseForgeApi\Client\List\PaginatedModList;
 use Aternos\CurseForgeApi\Client\Options\ModSearchOptions;
 use Aternos\CurseForgeApi\Model\Category as CategoryModel;
 
-class Category
+class Category extends CategoryModel
 {
     public function __construct(
         protected CurseForgeAPIClient $client,
-        protected CategoryModel       $category,
+        CategoryModel $data
     )
     {
-    }
-
-    /**
-     * @return CategoryModel
-     */
-    public function getData(): CategoryModel
-    {
-        return $this->category;
+        parent::__construct($data->container);
     }
 
     /**
@@ -33,13 +26,13 @@ class Category
     public function getMods(?ModSearchOptions $options = null): PaginatedModList
     {
         if ($options === null) {
-            $options = new ModSearchOptions($this->category->getGameId());
+            $options = new ModSearchOptions($this->getGameId());
         }
 
-        if ($this->category->getIsClass()) {
-            $options->setClassId($this->category->getId());
+        if ($this->getIsClass()) {
+            $options->setClassId($this->getId());
         } else {
-            $options->setCategoryIds([$this->category->getId()]);
+            $options->setCategoryIds([$this->getId()]);
         }
 
         return $this->client->searchMods($options);
@@ -52,6 +45,6 @@ class Category
      */
     public function getGame(): Game
     {
-        return $this->client->getGame($this->category->getGameId());
+        return $this->client->getGame($this->getGameId());
     }
 }

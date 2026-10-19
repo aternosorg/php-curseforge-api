@@ -8,26 +8,19 @@ use Aternos\CurseForgeApi\Client\Options\ModSearchOptions;
 use Aternos\CurseForgeApi\Model\Game as GameModel;
 use Aternos\CurseForgeApi\Model\GameVersionsByTypeV2;
 
-class Game
+class Game extends GameModel
 {
 
     /**
      * @param CurseForgeAPIClient $client
-     * @param GameModel $game
+     * @param GameModel $data
      */
     public function __construct(
         protected CurseForgeAPIClient $client,
-        protected GameModel $game
+        GameModel $data
     )
     {
-    }
-
-    /**
-     * @return GameModel
-     */
-    public function getData(): GameModel
-    {
-        return $this->game;
+        parent::__construct($data->container);
     }
 
     /**
@@ -37,7 +30,7 @@ class Game
      */
     public function getVersionTypes(): array
     {
-        return $this->client->getGameVersionTypes($this->game->getId());
+        return $this->client->getGameVersionTypes($this->getId());
     }
 
     /**
@@ -47,7 +40,7 @@ class Game
      */
     public function getVersions(): array
     {
-        return $this->client->getGameVersions($this->game->getId());
+        return $this->client->getGameVersions($this->getId());
     }
 
     /**
@@ -58,7 +51,7 @@ class Game
      */
     public function getGameVersionsByType(int $versionTypeId): array
     {
-        return $this->client->getGameVersionsByType($this->game->getId(), $versionTypeId);
+        return $this->client->getGameVersionsByType($this->getId(), $versionTypeId);
     }
 
     /**
@@ -69,7 +62,7 @@ class Game
      */
     public function getCategories(?int $classId = null, ?bool $classesOnly = null): array
     {
-        return $this->client->getCategories($this->game->getId(), $classId, $classesOnly);
+        return $this->client->getCategories($this->getId(), $classId, $classesOnly);
     }
 
     /**
@@ -80,7 +73,7 @@ class Game
      */
     public function searchMods(?ModSearchOptions $options = null): PaginatedModList
     {
-        return $this->client->searchMods($options ?? new ModSearchOptions($this->game->getId()));
+        return $this->client->searchMods($options ?? new ModSearchOptions($this->getId()));
     }
 
     /**
@@ -93,6 +86,6 @@ class Game
      */
     public function getFeaturedMods(array $excludedModIds = [], ?int $gameVersionTypeId = null, ?bool $clientCompatible = null): FeaturedMods
     {
-        return $this->client->getFeaturedMods($this->game->getId(), $excludedModIds, $gameVersionTypeId, $clientCompatible);
+        return $this->client->getFeaturedMods($this->getId(), $excludedModIds, $gameVersionTypeId, $clientCompatible);
     }
 }

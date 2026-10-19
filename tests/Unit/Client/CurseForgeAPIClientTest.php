@@ -12,9 +12,14 @@ use Aternos\CurseForgeApi\Client\Mod;
 use Aternos\CurseForgeApi\Client\Options\ModFilesOptions;
 use Aternos\CurseForgeApi\Client\Options\ModSearchOptions;
 use Aternos\CurseForgeApi\Configuration;
+use Aternos\CurseForgeApi\Model\Category as CategoryModel;
+use Aternos\CurseForgeApi\Model\File as FileModel;
 use Aternos\CurseForgeApi\Model\FileReleaseType;
+use Aternos\CurseForgeApi\Model\Game as GameModel;
 use Aternos\CurseForgeApi\Model\GameVersion;
 use Aternos\CurseForgeApi\Model\GameVersionsByTypeV2;
+use Aternos\CurseForgeApi\Model\GameVersionType as GameVersionTypeModel;
+use Aternos\CurseForgeApi\Model\Mod as ModModel;
 use Aternos\CurseForgeApi\Model\ModLoaderType;
 use Aternos\CurseForgeApi\Model\ModSearchSortField;
 use Aternos\CurseForgeApi\Model\PlatformType;
@@ -203,7 +208,7 @@ class CurseForgeAPIClientTest extends ClientTestCase
         $this->assertGetRequest("/v1/games", ["index" => "0", "pageSize" => "50"]);
         $this->assertCount(2, $games);
         $this->assertContainsOnlyInstancesOf(Game::class, $games->getResults());
-        $this->assertSame("final-fantasy-v", $games[0]->getData()->getSlug());
+        $this->assertSame("final-fantasy-v", $games[0]->getSlug());
     }
 
     /**
@@ -228,8 +233,9 @@ class CurseForgeAPIClientTest extends ClientTestCase
         $game = $client->getGame(432);
 
         $this->assertGetRequest("/v1/games/432");
-        $this->assertSame(432, $game->getData()->getId());
-        $this->assertSame("Minecraft", $game->getData()->getName());
+        $this->assertInstanceOf(GameModel::class, $game);
+        $this->assertSame(432, $game->getId());
+        $this->assertSame("Minecraft", $game->getName());
     }
 
     /**
@@ -244,7 +250,8 @@ class CurseForgeAPIClientTest extends ClientTestCase
         $this->assertGetRequest("/v1/games/432/version-types");
         $this->assertCount(3, $versionTypes);
         $this->assertContainsOnlyInstancesOf(GameVersionType::class, $versionTypes);
-        $this->assertSame("Minecraft 1.1", $versionTypes[0]->getData()->getName());
+        $this->assertInstanceOf(GameVersionTypeModel::class, $versionTypes[0]);
+        $this->assertSame("Minecraft 1.1", $versionTypes[0]->getName());
     }
 
     /**
@@ -324,7 +331,8 @@ class CurseForgeAPIClientTest extends ClientTestCase
         $category = $client->getCategory(432, 435);
 
         $this->assertGetRequest("/v1/categories", ["gameId" => "432"]);
-        $this->assertSame("Server Utility", $category->getData()->getName());
+        $this->assertInstanceOf(CategoryModel::class, $category);
+        $this->assertSame("Server Utility", $category->getName());
     }
 
     /**
@@ -350,8 +358,8 @@ class CurseForgeAPIClientTest extends ClientTestCase
         $this->assertCount(2, $mods);
         $this->assertContainsOnlyInstancesOf(Mod::class, $mods->getResults());
         $this->assertSame(2, $mods->getPagination()->getTotalCount());
-        $this->assertSame("mclo-gs", $mods[0]->getData()->getSlug());
-        $this->assertSame("mclogs", $mods[1]->getData()->getSlug());
+        $this->assertSame("mclo-gs", $mods[0]->getSlug());
+        $this->assertSame("mclogs", $mods[1]->getSlug());
     }
 
     /**
@@ -426,11 +434,29 @@ class CurseForgeAPIClientTest extends ClientTestCase
         $mod = $client->getMod(420561);
 
         $this->assertGetRequest("/v1/mods/420561");
-        $this->assertSame(420561, $mod->getData()->getId());
-        $this->assertSame("mclo-gs", $mod->getData()->getSlug());
-        $this->assertSame("Mclogs - mclo.gs", $mod->getData()->getName());
-        $this->assertSame(6, $mod->getData()->getClassId());
-        $this->assertSame(435, $mod->getData()->getPrimaryCategoryId());
+        $this->assertInstanceOf(ModModel::class, $mod);
+        $this->assertSame(420561, $mod->getId());
+        $this->assertSame("mclo-gs", $mod->getSlug());
+        $this->assertSame("Mclogs - mclo.gs", $mod->getName());
+        $this->assertSame(6, $mod->getClassId());
+        $this->assertSame(435, $mod->getPrimaryCategoryId());
+    }
+
+    /**
+     * Wrappers are serialized like the generated model, without the client.
+     *
+     * @throws ApiException
+     */
+    public function testWrapperIsSerializedLikeModel(): void
+    {
+        $client = $this->createClient([new Response(200, [], file_get_contents(__DIR__ . "/Fixtures/getMod.json"))]);
+
+        $mod = $client->getMod(420561);
+
+        $json = json_decode(json_encode($mod), true);
+        $this->assertSame(420561, $json["id"]);
+        $this->assertSame("mclo-gs", $json["slug"]);
+        $this->assertArrayNotHasKey("client", $json);
     }
 
     /**
@@ -445,7 +471,7 @@ class CurseForgeAPIClientTest extends ClientTestCase
         $this->assertPostRequest("/v1/mods", ["modIds" => [420561, 278568, 715033], "devModIds" => [], "filterPcOnly" => null]);
         $this->assertCount(3, $mods);
         $this->assertContainsOnlyInstancesOf(Mod::class, $mods);
-        $this->assertSame(["mclo-gs", "mclogs", "motd-gg"], array_map(fn(Mod $mod) => $mod->getData()->getSlug(), $mods));
+        $this->assertSame(["mclo-gs", "mclogs", "motd-gg"], array_map(fn(Mod $mod) => $mod->getSlug(), $mods));
     }
 
     /**
@@ -470,7 +496,7 @@ class CurseForgeAPIClientTest extends ClientTestCase
         $featuredMods = $client->getFeaturedMods(432);
 
         $this->assertPostRequest("/v1/mods/featured", ["gameId" => 432, "excludedModIds" => [], "gameVersionTypeId" => null]);
-        $slugs = fn(array $mods) => array_map(fn(Mod $mod) => $mod->getData()->getSlug(), $mods);
+        $slugs = fn(array $mods) => array_map(fn(Mod $mod) => $mod->getSlug(), $mods);
         $this->assertSame(["complex-cobblemon", "cobblemon-gg"], $slugs($featuredMods->getFeatured()));
         $this->assertSame(["geckolib", "jei"], $slugs($featuredMods->getPopular()));
         $this->assertSame(["aspects-reclaimed", "pixelcrystaloptimizer"], $slugs($featuredMods->getRecentlyUpdated()));
@@ -533,8 +559,8 @@ class CurseForgeAPIClientTest extends ClientTestCase
         $this->assertCount(2, $files);
         $this->assertContainsOnlyInstancesOf(File::class, $files->getResults());
         $this->assertSame(117, $files->getPagination()->getTotalCount());
-        $this->assertSame("mclogs-neoforge-26.1-3.3.4.jar", $files[0]->getData()->getFileName());
-        $this->assertSame("mclogs-fabric-26.1-3.3.4.jar", $files[1]->getData()->getFileName());
+        $this->assertSame("mclogs-neoforge-26.1-3.3.4.jar", $files[0]->getFileName());
+        $this->assertSame("mclogs-fabric-26.1-3.3.4.jar", $files[1]->getFileName());
     }
 
     /**
@@ -593,12 +619,13 @@ class CurseForgeAPIClientTest extends ClientTestCase
         $file = $client->getModFile(420561, 8946029);
 
         $this->assertGetRequest("/v1/mods/420561/files/8946029");
-        $this->assertSame(8946029, $file->getData()->getId());
-        $this->assertSame(420561, $file->getData()->getModId());
-        $this->assertSame("mclogs-integration 3.3.4", $file->getData()->getDisplayName());
-        $this->assertSame("mclogs-neoforge-26.1-3.3.4.jar", $file->getData()->getFileName());
-        $this->assertSame(FileReleaseType::RELEASE, $file->getData()->getReleaseType());
-        $this->assertSame(317339, $file->getData()->getFileLength());
+        $this->assertInstanceOf(FileModel::class, $file);
+        $this->assertSame(8946029, $file->getId());
+        $this->assertSame(420561, $file->getModId());
+        $this->assertSame("mclogs-integration 3.3.4", $file->getDisplayName());
+        $this->assertSame("mclogs-neoforge-26.1-3.3.4.jar", $file->getFileName());
+        $this->assertSame(FileReleaseType::RELEASE, $file->getReleaseType());
+        $this->assertSame(317339, $file->getFileLength());
     }
 
     /**
@@ -613,7 +640,7 @@ class CurseForgeAPIClientTest extends ClientTestCase
         $this->assertPostRequest("/v1/mods/files", ["fileIds" => [8946029, 8946028]]);
         $this->assertCount(2, $files);
         $this->assertContainsOnlyInstancesOf(File::class, $files);
-        $this->assertSame([8946029, 8946028], array_map(fn(File $file) => $file->getData()->getId(), $files));
+        $this->assertSame([8946029, 8946028], array_map(fn(File $file) => $file->getId(), $files));
     }
 
     /**
