@@ -2419,6 +2419,7 @@ components:
         * 17 = GithubSponsors
         * 18 = Kofi
         * 19 = BuyMeACoffee
+        * 20 = QQ
       enum:
         - 1
         - 2
@@ -2439,6 +2440,7 @@ components:
         - 17
         - 18
         - 19
+        - 20
       x-enum-varnames:
         - Mastodon
         - Discord
@@ -2459,6 +2461,7 @@ components:
         - GithubSponsors
         - Kofi
         - BuyMeACoffee
+        - QQ
     SortableGameVersion:
       type: object
       properties:
